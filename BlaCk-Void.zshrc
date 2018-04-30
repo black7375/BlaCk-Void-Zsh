@@ -22,6 +22,7 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 ##-------------------------Custom set
+autoload -U compinit && compinit
 source /etc/zsh_command_not_found
 alias tar_compress_gz='tar -zcvf'
 alias tar_extract_gz='tar -zxvf'
@@ -53,6 +54,19 @@ export FZF_DEFAULT_COMMAND='
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
 
+
+if [ -d "$HOME/.cargo/bin" ] ; then
+  export PATH="$PATH:$HOME/.cargo/bin"
+  alias exa_grid='exa --long --grid'
+  alias exa_tree='exa --long --tree'
+fi
+
+if [ -d "/home/linuxbrew" ] ; then
+  export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+  export MANPATH="$MANPATH:/home/linuxbrew/.linuxbrew/share/man"
+  export INFOPATH="$INFOPATH:/home/linuxbrew/.linuxbrew/share/info"
+fi
+
 ##-------------------------Antigen set
 source ~/BlaCk-Void-Zsh/antigen.zsh
 
@@ -73,12 +87,15 @@ antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle wfxr/forgit
 antigen bundle ytet5uy4/fzf-widgets
 antigen bundle git
-antigen bundle seletskiy/zsh-git-smart-commands
 antigen bundle heroku
 antigen bundle supercrabtree/k
 antigen bundle lein
 antigen bundle pip
-#antigen bundle zsh-users/zsh-syntax-highlighting ##fast-syntax-highlighting is better!!
+antigen bundle peterhurford/up.zsh
+
+antigen bundle seletskiy/zsh-git-smart-commands
+
+#antigen bundle zsh-users/zsh-syntax-highlighting
 
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 
@@ -89,46 +106,45 @@ antigen theme bhilburn/powerlevel9k powerlevel9k
 antigen apply
 
 ##-------------------------Plugin Set
-#-----alias-tip
+#alias-tip
 export ZSH_PLUGINS_ALIAS_TIPS_FORCE=0
 
-#-----auto-fu
+#auto-fu
 #zle-line-init () {auto-fu-init;}; zle -N zle-line-init
 #zstyle ':completion:*' completer _oldlist _complete
 #zle -N zle-keymap-select auto-fu-zle-keymap-select
 
-#-----enhancd
+#enhancd
 ENHANCD_FILTER=fzy:fzf:peco
 export ENHANCD_FILTER
 
-#-----zsh-git-smart-commands
+#zsh-git-smart-commands
 alias c='git-smart-commit'
 alias a='git-smart-add'
 alias p='git-smart-push seletskiy'
 alias u='git-smart-pull'
 alias r='git-smart-remote'
 
+
 ##-------------------------PowerLevel9k Set
-#-----Basic Set
+#source ~/.fonts/*.sh
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir dir_writable rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time history load)
 
-##-----Command-Execution-time set
+##Command-Execution-time set
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=2
 
-##-----Double-Lined Prompt
+##Double-Lined Prompt
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
-##-----IconSet
+##IconSet
 #get_icon_names
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
-#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-#POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX=" ❯ "
 
 #POWERLEVEL9K_ANDROID_ICON=$'\ue70e'
 #POWERLEVEL9K_APPLE_ICON=$'\ue711'
@@ -188,12 +204,11 @@ POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=$'\ue0b3' #
 #POWERLEVEL9K_VCS_SVN_ICON=$'\ue268' 
 #POWERLEVEL9K_VCS_TAG_ICON=$'\uf02c'
 #POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uf111' # ●
-#POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf128' #?
+#POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf128' #?                   
 
-##-----Length Set
+##Length Set
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
-
-##-----ColorSet
+##ColorSet
 #for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
 
 #POWERLEVEL9K_NODE_VERSION_BACKGROUND='28'
@@ -218,6 +233,7 @@ POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="000"
 POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND="196"
 POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="226"
 
+
 POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='000'
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='226'
 POWERLEVEL9K_STATUS_OK_BACKGROUND="000" #alpha
@@ -226,6 +242,7 @@ POWERLEVEL9K_STATUS_ERROR_BACKGROUND="196" #red
 POWERLEVEL9K_STATUS_ERROR_FOREGROUND="226" #yellow
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='196'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='226'
+#POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  \uE868  %d.%m.%y}"
 POWERLEVEL9K_HISTORY_BACKGROUND='244'
 POWERLEVEL9K_HISTORY_FOREGROUND='000'
 POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND="196"
@@ -234,10 +251,13 @@ POWERLEVEL9K_LOAD_WARNING_BACKGROUND="040"
 POWERLEVEL9K_LOAD_WARNING_FOREGROUND="000"
 POWERLEVEL9K_LOAD_NORMAL_BACKGROUND="040"
 POWERLEVEL9K_LOAD_NORMAL_FOREGROUND="000"
-
-##-----Others
-#POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  \uE868  %d.%m.%y}"
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status background_jobs root_indicator context dir vcs)
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv nvm load ram rbenv time)
 #POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
 #POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+#POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
+
+#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+##POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX=" ❯ "
 
 ##-------------------------Other System Configs
