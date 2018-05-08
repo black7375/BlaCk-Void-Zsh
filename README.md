@@ -31,13 +31,13 @@ git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/
 bash ~/BlaCk-Void-Zsh/BlaCk-Void-Zsh.sh
 ```
 
-`
+When you want to use with awesome tmux, Check [BlaCk-Void-Tmux](https://github.com/black7375/BlaCk-Void-Tmux/blob/master/README.md).
 
 ### Others
 
 Requirements
 
-* zsh, powerline, thefuck(`pip3 install thefuck`)
+* zsh, powerline
 
 Install
 
@@ -57,8 +57,6 @@ cd nerd-fonts && ./install.sh
 cd ..
 ```
 
-`
-
 * copy .zshrc
 
   `cp -v BlaCk-Void.zshrc  ~/.zshrc`
@@ -77,14 +75,19 @@ Plugin Manager
 
 * [Antigen](https://github.com/zsh-users/antigen)
 
-Default Repo
+Default Repo (robbyrussell's oh-my-zsh).
 
+* Command Not Found
 * Git
 * Heroku
 * Pip
 * Lein
-* Command Not Found
-
+* Sudo
+* Thefuck
+* Tmux
+* Tmuxinator
+* Urltools
+* Z
 
 Custom Repo
 
@@ -99,4 +102,7 @@ Custom Repo
 * [Forgit](https://github.com/wfxr/forgit)
 * [Fzf Widgets](https://github.com/ytet5uy4/fzf-widgets)
 * [Zsh Git Smart Commands](https://github.com/seletskiy/zsh-git-smart-commands)
+* [Zsh History Substring Search](https://github.com/zsh-users/zsh-history-substring-search)
+* [Zsh Interactive Cd](https://github.com/changyuheng/zsh-interactive-cd)
 * [k](https://github.com/supercrabtree/k)
+* [up](https://github.com/peterhurford/up.zsh)
