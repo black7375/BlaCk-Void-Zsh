@@ -1,4 +1,5 @@
 export TERM="xterm-256color"
+export BVZSH=$( cd "$(dirname "$0")" ; pwd )
 ##-------------------------From bashrc-------------------------
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -28,12 +29,18 @@ alias tar_extract_gz='tar -zxvf'
 setopt nonomatch
 setopt interactive_comments
 setopt correct
-eval "$(thefuck --alias)"
+setopt noclobber
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_ALL_DUPS
+setopt SHARE_HISTORY
+setopt HIST_SAVE_NO_DUPS
 
 [[ -s /home/black_void/.autojump/etc/profile.d/autojump.sh ]] && source /home/black_void/.autojump/etc/profile.d/autojump.sh
 source /usr/share/autojump/autojump.zsh
 
-. /usr/share/powerline/bindings/zsh/powerline.zsh
+#. /usr/share/powerline/bindings/zsh/powerline.zsh
 
 if [ -d "$HOME/.cargo/bin" ] ; then
   PATH="$PATH:$HOME/.cargo/bin"
@@ -41,19 +48,149 @@ if [ -d "$HOME/.cargo/bin" ] ; then
   alias exa_tree='exa --long --tree'
 fi
 
+#Terminal image viewer based @z3bra
+img()
+{
+    echo "-------------------------"
+    echo "  Terminal Image Viewer"
+    echo "-------------------------\n"
+    echo "Default: show during 2s."
+    echo "command: img IMAGE_NAME SHOW_TIME"
+
+    WARNING="\n**Warning!!**"
+    NONEXIST="File $1 does not exist.\n"
+
+    if [ ! -f "$1" ] || [ -z "$1"  ]
+    then
+        echo $WARNING
+        echo $NONEXIST
+        return 1 
+    fi
+
+    W3MIMGDISPLAY="/usr/lib/w3m/w3mimgdisplay"
+    FILENAME=$1
+    FONTH=15 #15 # Size of one terminal row
+    FONTW=8 #8  # Size of one terminal column
+    COLUMNS=`tput cols`
+    LINES=`tput lines`
+
+    if [ ! -f "$W3MIMGDISPLAY" ]
+    then
+        echo "\nRequire 'w3m-img' !!"
+        return 1
+    fi
+
+    read width height <<< `echo -e "5;$FILENAME" | $W3MIMGDISPLAY`
+
+    max_width=$(($FONTW * $COLUMNS))
+    max_height=$(($FONTH * $(($LINES - 2)))) # substract one line for prompt
+
+    if test $width -gt $max_width
+    then
+        height=$(($height * $max_width / $width))
+        width=$max_width
+    fi
+    if test $height -gt $max_height
+    then
+        width=$(($width * $max_height / $height))
+        height=$max_height
+    fi
+    erase="6;1;0;$(( FONTW*COLUMNS ));$(( FONTH*LINES ))\n3;"
+    w3m_command="0;1;0;0;$width;$height;;;;;$FILENAME\n4;\n3;"
+
+    tput cup $(($height/$FONTH)) 0
+    echo -e $erase | $W3MIMGDISPLAY
+    echo -e $w3m_command|$W3MIMGDISPLAY
+
+    if [ -n "$2"  ]
+    then
+        sleep $2
+    else
+        sleep 2
+    fi
+}
+
+# Complete words from tmux pane(s) {{{1
+# Source: http://blog.plenz.com/2012-01/zsh-complete-words-from-tmux-pane.html
+# Gist: https://gist.github.com/blueyed/6856354
+_tmux_pane_words() {
+  local expl
+  local -a w
+  if [[ -z "$TMUX_PANE" ]]; then
+    _message "not running inside tmux!"
+    return 1
+  fi
+
+  # Based on vim-tmuxcomplete's splitwords function.
+  # https://github.com/wellle/tmux-complete.vim/blob/master/sh/tmuxcomplete
+  _tmux_capture_pane() {
+    tmux capture-pane -J -p -S -100 $@ |
+      # Remove "^C".
+      sed 's/\^C\S*/ /g' |
+      # copy lines and split words
+      sed -e 'p;s/[^a-zA-Z0-9_]/ /g' |
+      # split on spaces
+      tr -s '[:space:]' '\n' |
+      # remove surrounding non-word characters
+      =grep -o "\w.*\w"
+  }
+  # Capture current pane first.
+  w=( ${(u)=$(_tmux_capture_pane)} )
+  echo $w > /tmp/w1
+  local i
+  for i in $(tmux list-panes -F '#D'); do
+    # Skip current pane (handled before).
+    [[ "$TMUX_PANE" = "$i" ]] && continue
+    w+=( ${(u)=$(_tmux_capture_pane -t $i)} )
+  done
+  _wanted values expl 'words from current tmux pane' compadd -a w
+}
+
+zle -C tmux-pane-words-prefix   complete-word _generic
+zle -C tmux-pane-words-anywhere complete-word _generic
+bindkey '^X^Tt' tmux-pane-words-prefix
+bindkey '^X^TT' tmux-pane-words-anywhere
+zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_words
+zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
+# Display the (interactive) menu on first execution of the hotkey.
+zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' menu yes select interactive
+# zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=* m:{A-Za-z}={a-zA-Z}'
+zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' matcher-list 'b:=* m:{A-Za-z}={a-zA-Z}'
+# }}}
+
+function _tmux_completions() {
+  local -a sessions
+  sessions=($(tmux-ls))
+  compadd -a sessions
+}
+compdef _tmux_completions tmux-open
+
+function tm() {
+    [[ -z "$1" ]] && { echo "usage: tm <session>" >&2; return 1; }
+    tmux has -t $1 && tmux attach -t $1 || tmux new -s $1
+}
+
+function __tmux-sessions() {
+    local expl
+    local -a sessions
+    sessions=( ${${(f)"$(command tmux list-sessions)"}/:[ $'\t']##/:} )
+    _describe -t sessions 'sessions' sessions "$@"
+}
+compdef __tmux-sessions tm
+
 ##-------------------------FZF set
-source ~/BlaCk-Void-Zsh/fzf-set.zsh
+source $BVZSH/fzf-set.zsh
 
 ##-------------------------Antigen set
-source ~/BlaCk-Void-Zsh/antigen.zsh
+source $BVZSH/antigen.zsh
 
 ## Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
 ## Bundles from the default repo.
+antigen bundle autojump
 antigen bundle command-not-found
 antigen bundle git
-antigen bundle heroku
 antigen bundle lein
 antigen bundle pip
 antigen bundle sudo
@@ -75,12 +212,15 @@ antigen bundle b4b4r07/enhancd
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle wfxr/forgit
 antigen bundle ytet5uy4/fzf-widgets
+antigen bundle andrewferrier/fzf-z
 antigen bundle seletskiy/zsh-git-smart-commands
+antigen bundle smallhadroncollider/antigen-git-store
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle changyuheng/zsh-interactive-cd
 #antigen bundle zsh-users/zsh-syntax-highlighting ##fast-syntax-highlighting is better!!
 antigen bundle supercrabtree/k
 antigen bundle peterhurford/up.zsh
+antigen bundle jocelynmallon/zshmarks
 
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 
@@ -92,7 +232,10 @@ antigen theme bhilburn/powerlevel9k powerlevel9k
 antigen apply
 
 ##-------------------------Plugin Set
-#Tmuxinator
+#-----thefuck
+eval "$(thefuck --alias)"
+
+#-----Tmuxinator
 tmux set-window-option -g pane-base-index 1
 
 #-----alias-tip
@@ -272,3 +415,22 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
 #POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  \uE868  %d.%m.%y}"
 
 ##-------------------------Other System Configs
+zsh-update()
+{
+    echo "--------------------"
+    echo "  BlaCk-Zsh Update"
+    echo "--------------------\n"
+
+    echo "\n--------------------"
+    echo "Setting files update"
+    cd $BVZSH && git pull
+    
+    echo "\n--------------------"
+    echo "Plugins update"
+    antigen selfupdate
+    antigen update
+
+    echo "\n--------------------"
+    echo "Fonts update"
+    cd $BVZSH/nerd-fonts && git pull && sudo ./install.sh
+}

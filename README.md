@@ -21,6 +21,15 @@ Tested on Kubuntu 18.04
 * Preview
 
 ![Zsh](https://i.pinimg.com/originals/88/b4/db/88b4dbbd42b2c75afe2f3b9a27fc3747.png)
+![img-zsh](https://i.pinimg.com/originals/1c/7c/c4/1c7cc4e4f88376d6900f7c420baf6d50.png)
+
+* Special Feature!!
+Show image like preview.
+
+You can use with command `img`
+
+ex)
+`img FILE_NAME TIME`(TIME default 2s)
 
 ## Apply
 
@@ -44,7 +53,7 @@ Install
 * Git Clone
 
 `git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/ && cd BlaCk-Void-Zsh`
- 
+
 * antigen
 
 `curl -L git.io/antigen > antigen.zsh`
@@ -57,9 +66,17 @@ cd nerd-fonts && ./install.sh
 cd ..
 ```
 
-* copy .zshrc
+* Add to .zshrc
 
+Source File[Recommend]
+  `echo "source BlaCk-Void.zshrc" >> ~/.zshrc`
+
+or Link
+  `ln -svf BlaCk-Void.zshrc ~/.tmux.conf`
+
+or Copy
   `cp -v BlaCk-Void.zshrc  ~/.zshrc`
+
 
 * Zsh Shell Set
 
