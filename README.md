@@ -24,6 +24,7 @@ Tested on Kubuntu 18.04
 ![img-zsh](https://i.pinimg.com/originals/1c/7c/c4/1c7cc4e4f88376d6900f7c420baf6d50.png)
 
 * Special Feature!!
+
 Show image like preview.
 
 You can use with command `img`
