@@ -21,7 +21,7 @@ Tested on Kubuntu 18.04
 * Preview
 
 ![Zsh](https://i.pinimg.com/originals/88/b4/db/88b4dbbd42b2c75afe2f3b9a27fc3747.png)
-![img-zsh](https://i.pinimg.com/originals/1c/7c/c4/1c7cc4e4f88376d6900f7c420baf6d50.png)
+![img-zsh](https://i.pinimg.com/originals/fb/42/38/fb4238e351fcce454127f8abc5dfdc35.png)
 
 * Special Feature!!
 
