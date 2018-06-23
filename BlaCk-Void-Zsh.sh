@@ -1,12 +1,14 @@
 echo "----------------------------------------"
 echo "         BlaCk-Void Zsh Setup"
 echo "----------------------------------------\n"
+BVZSH=$( cd "$(dirname "$0")" ; pwd )
 
 echo "--------------------"
 echo "  Downloads\n"
-sudo apt-get install zsh zshdb autojump powerline curl python3-dev python3-pip
+sudo apt-get install zsh zshdb autojump powerline curl python3-dev python3-pip shellcheck
 sudo pip3 install thefuck
 curl -L git.io/antigen > antigen.zsh
+git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/
 
 echo "--------------------"
 echo "  Fonts Settings\n"
@@ -27,8 +29,7 @@ else
 fi
 sudo chsh -s /usr/bin/zsh # chsh $USER -s $(which zsh);
 
-BVZH=$( cd "$(dirname "$0")" ; pwd )
-echo "source $BVZH/BlaCk-Void.zshrc" >> ~/.zshrc
+echo "source $BVZSH/BlaCk-Void.zshrc" >> ~/.zshrc
 #cp -v BlaCk-Void.zshrc  ~/.zshrc
 echo "Please relogin session or restart terminal"
 echo "The End!!"

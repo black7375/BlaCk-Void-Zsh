@@ -37,7 +37,7 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt SHARE_HISTORY
 setopt HIST_SAVE_NO_DUPS
 
-[[ -s /home/black_void/.autojump/etc/profile.d/autojump.sh ]] && source /home/black_void/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 source /usr/share/autojump/autojump.zsh
 
 #. /usr/share/powerline/bindings/zsh/powerline.zsh
@@ -180,6 +180,9 @@ compdef __tmux-sessions tm
 
 ##-------------------------FZF set
 source $BVZSH/fzf-set.zsh
+
+##-------------------------Hhighlighter set
+source $BVZSH/hhighlighter/h.sh
 
 ##-------------------------Antigen set
 source $BVZSH/antigen.zsh
@@ -424,11 +427,13 @@ zsh-update()
     echo "\n--------------------"
     echo "Setting files update"
     cd $BVZSH && git pull
-    
+
     echo "\n--------------------"
     echo "Plugins update"
+    cd $BVZSH/hhighlighter && git pull
     antigen selfupdate
     antigen update
+    rm ~/.antigen_system_lastupdate ~/.antigen_plugin_lastupdate
 
     echo "\n--------------------"
     echo "Fonts update"
