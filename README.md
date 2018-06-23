@@ -23,7 +23,7 @@ Tested on Kubuntu 18.04
 ![Zsh](https://i.pinimg.com/originals/88/b4/db/88b4dbbd42b2c75afe2f3b9a27fc3747.png)
 ![img-zsh](https://i.pinimg.com/originals/1c/7c/c4/1c7cc4e4f88376d6900f7c420baf6d50.png)
 
-* Special Feature!!
+* **Special Feature!!**  
 Show image like preview.
 
 You can use with command `img`
@@ -40,55 +40,50 @@ git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/
 bash ~/BlaCk-Void-Zsh/BlaCk-Void-Zsh.sh
 ```
 
-When you want to use with awesome tmux, Check [BlaCk-Void-Tmux](https://github.com/black7375/BlaCk-Void-Tmux/blob/master/README.md).
+When you want to use with awesome tmux, Check [BlaCk-Void-Tmux](https://github.com/black7375/BlaCk-Void-Tmux/blob/master/README.md**.
 
 ### Others
 
-Requirements
+**Requirements**
 
-* zsh, powerline ack(for [h](https://github.com/paoloantinori/hhighlighter))
+* zsh, powerline ack(for [h](https://github.com/paoloantinori/hhighlighter)
 
-Install
+**Install**
 
-* Git Clone
-
+* Git Clone  
 `git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/ && cd BlaCk-Void-Zsh`
 
-* antigen
-
+* antigen  
 `curl -L git.io/antigen > antigen.zsh`
 
-* nerdfont
-
+* nerdfont  
 ``` shell
 git clone https://github.com/ryanoasis/nerd-fonts.git
 cd nerd-fonts && ./install.sh
 cd ..
 ```
 
-* Add to .zshrc
-
-Source File[Recommend]
+* Add to .zshrc  
+  Source File[Recommend]  
   `echo "source BlaCk-Void.zshrc" >> ~/.zshrc`
 
-or Link
+  or Link  
   `ln -svf BlaCk-Void.zshrc ~/.zshrc`
 
-or Copy
+  or Copy  
   `cp -v BlaCk-Void.zshrc  ~/.zshrc`
 
 
-* Zsh Shell Set
-
+* Zsh Shell Set  
   `sudo chsh -s /usr/bin/zsh`
 
 ## Theme
 
-* [Powerlevel9k](https://github.com/bhilburn/powerlevel9k)
+* [Powerlevel9k](https://github.com/bhilburn/powerlevel9k**
 
 ## Plugins
 
-Plugin Manager
+**Plugin Manager***
 
 * [Antigen](https://github.com/zsh-users/antigen)
 
@@ -108,10 +103,10 @@ Default Repo (robbyrussell's oh-my-zsh).
   ESC twice: Puts sudo in front of the current command, or the last one if the command line is empty.
 * [Thefuck](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/thefuck):
   The Fuck plugin — magnificent app which corrects your previous console command.
-* Tmux
+* Tmux(https://github.com/tmux/tmux)
 * Tmuxinator(https://github.com/achiu/terminitor):
   Completions for tmuxinator.
-* Urltools
+* [Urltools](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/urltools)
 * [Z](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/z):
   yet another autojump
 
