@@ -23,12 +23,12 @@ Tested on Kubuntu 18.04
 ![Zsh](https://i.pinimg.com/originals/88/b4/db/88b4dbbd42b2c75afe2f3b9a27fc3747.png)
 ![img-zsh](https://i.pinimg.com/originals/1c/7c/c4/1c7cc4e4f88376d6900f7c420baf6d50.png)
 
-* **Special Feature!!**  
-Show image like preview.
+* **Special Feature!!**
 
+Show image like preview.  
 You can use with command `img`
 
-ex)
+ex)  
 `img FILE_NAME TIME`(TIME default 2s)
 
 ## Apply
@@ -40,13 +40,13 @@ git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/
 bash ~/BlaCk-Void-Zsh/BlaCk-Void-Zsh.sh
 ```
 
-When you want to use with awesome tmux, Check [BlaCk-Void-Tmux](https://github.com/black7375/BlaCk-Void-Tmux/blob/master/README.md**.
+When you want to use with awesome tmux, Check [BlaCk-Void-Tmux](https://github.com/black7375/BlaCk-Void-Tmux/blob/master/README.md).
 
 ### Others
 
 **Requirements**
 
-* zsh, powerline ack(for [h](https://github.com/paoloantinori/hhighlighter)
+* zsh, powerline ack(for [h](https://github.com/paoloantinori/hhighlighter))
 
 **Install**
 
@@ -64,13 +64,14 @@ cd ..
 ```
 
 * Add to .zshrc  
-  Source File[Recommend]  
+
+Source File[Recommend]  
   `echo "source BlaCk-Void.zshrc" >> ~/.zshrc`
 
-  or Link  
+or Link  
   `ln -svf BlaCk-Void.zshrc ~/.zshrc`
 
-  or Copy  
+or Copy  
   `cp -v BlaCk-Void.zshrc  ~/.zshrc`
 
 
@@ -79,15 +80,15 @@ cd ..
 
 ## Theme
 
-* [Powerlevel9k](https://github.com/bhilburn/powerlevel9k**
+* [Powerlevel9k](https://github.com/bhilburn/powerlevel9k)
 
 ## Plugins
 
-**Plugin Manager***
+**Plugin Manager**
 
 * [Antigen](https://github.com/zsh-users/antigen)
 
-Default Repo (robbyrussell's oh-my-zsh).
+**Default Repo (robbyrussell's oh-my-zsh).**
 
 * [Autojump](https://github.com/wting/autojump):
   Enables autojump if installed with homebrew, macports or debian/ubuntu package.
@@ -110,7 +111,7 @@ Default Repo (robbyrussell's oh-my-zsh).
 * [Z](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/z):
   yet another autojump
 
-Custom Repo
+**Custom Repo**
 
 * [Zsh 256 Color](https://github.com/chrissicool/zsh-256color)
 * [Alias Tips](https://github.com/djui/alias-tips)
