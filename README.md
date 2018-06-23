@@ -23,7 +23,7 @@ Tested on Kubuntu 18.04
 ![Zsh](https://i.pinimg.com/originals/88/b4/db/88b4dbbd42b2c75afe2f3b9a27fc3747.png)
 ![img-zsh](https://i.pinimg.com/originals/1c/7c/c4/1c7cc4e4f88376d6900f7c420baf6d50.png)
 
-* **Special Feature!!**
+* **Special Feature!! - Zsh Image Viewer**
 
 Show image like preview.  
 You can use with command `img`
@@ -51,17 +51,21 @@ When you want to use with awesome tmux, Check [BlaCk-Void-Tmux](https://github.c
 **Install**
 
 * Git Clone  
-`git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/ && cd BlaCk-Void-Zsh`
+  ``` shell
+  git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/ && cd BlaCk-Void-Zsh
+  ```
 
 * antigen  
-`curl -L git.io/antigen > antigen.zsh`
+  ``` shell
+  curl -L git.io/antigen > antigen.zsh
+  ```
 
 * nerdfont  
-``` shell
-git clone https://github.com/ryanoasis/nerd-fonts.git
-cd nerd-fonts && ./install.sh
-cd ..
-```
+  ``` shell
+  git clone https://github.com/ryanoasis/nerd-fonts.git
+  cd nerd-fonts && ./install.sh
+  cd ..
+  ```
 
 * Add to .zshrc  
 
