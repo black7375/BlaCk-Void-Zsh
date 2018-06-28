@@ -24,8 +24,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 ##-------------------------Custom set
 source /etc/zsh_command_not_found
-alias tar_compress_gz='tar -zcvf'
-alias tar_extract_gz='tar -zxvf'
+alias tar-compress-gz='tar -zcvf'
+alias tar-extract-gz='tar -zxvf'
 setopt nonomatch
 setopt interactive_comments
 setopt correct
@@ -44,8 +44,8 @@ source /usr/share/autojump/autojump.zsh
 
 if [ -d "$HOME/.cargo/bin" ] ; then
   PATH="$PATH:$HOME/.cargo/bin"
-  alias exa_grid='exa --long --grid'
-  alias exa_tree='exa --long --tree'
+  alias exa-grid='exa --long --grid'
+  alias exa-tree='exa --long --tree'
 fi
 
 #Terminal image viewer based @z3bra
