@@ -33,9 +33,9 @@ You can use with command `img`
 Useage:  
 `img FILE_NAME TIME`(TIME default 2s)
 
-img Feature
-Supported: Konsole, Xterm, Urxvt, Terminology, Yakuake, Terminal.app
-Unsupported: Terminator, Hyper, Tilix, gnome terminal, Guake, LXterminal, Putty
+img Feature  
+Supported: Konsole, Xterm, Urxvt, Terminology, Yakuake, Terminal.app  
+Unsupported: Terminator, Hyper, Tilix, gnome terminal, Guake, LXterminal, Putty  
 Todo Check: iTerm3
 
 for unsupported Terminals  
