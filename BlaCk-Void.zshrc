@@ -48,6 +48,37 @@ if [ -d "$HOME/.cargo/bin" ] ; then
   alias exa-tree='exa --long --tree'
 fi
 
+#Weather
+weather()
+{
+    locale=$1
+    lang=${2:-${LANG%_*}}
+    while [ "$#" -gt 0 ];
+    do
+      case $1 in
+        -h* | --help*)
+        echo "-------------------------"
+         echo "    Terminal Weather"
+        echo "-------------------------\n"
+        echo "weather"
+        echo "or"
+        echo "weather LOCALE LANGUAGE(option)\n"
+        echo "Default LANGUAGE: SYSYEM_LANGUAGE"
+        echo "-------------------------\n"
+        curl wttr.in/:help
+        return
+        ;;
+
+        *)
+        shift
+        ;;
+      esac
+    done
+
+    # change Paris to your default location
+    curl -H "Accept-Language: $lang" wttr.in/$locale
+}
+
 #Terminal image viewer based @z3bra
 img()
 {

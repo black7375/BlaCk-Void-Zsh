@@ -9,6 +9,9 @@ Tested on Kubuntu 18.04
 **Table of Contents**
 
 - [BlaCk Void Zsh](#black-void-zsh)
+    - [Feature](#feature)
+        - [Terminal Image Viewer](#terminal-image-viewer)
+        - [Weather](#weather)
     - [Apply](#apply)
         - [Ubuntu](#ubuntu)
         - [Others](#others)
@@ -17,19 +20,36 @@ Tested on Kubuntu 18.04
 
 <!-- markdown-toc end -->
 
-
+## Feature
 * Preview
 
 ![Zsh](https://i.pinimg.com/originals/88/b4/db/88b4dbbd42b2c75afe2f3b9a27fc3747.png)
+
+### Terminal Image Viewer
 ![img-zsh](https://i.pinimg.com/originals/1c/7c/c4/1c7cc4e4f88376d6900f7c420baf6d50.png)
-
-* **Special Feature!! - Terminal Image Viewer**
-
 Show image like preview.  
 You can use with command `img`
 
-ex)  
+Useage:  
 `img FILE_NAME TIME`(TIME default 2s)
+
+img Feature
+Supported: Konsole, Xterm, Urxvt, Terminology, Yakuake, Terminal.app
+Unsupported: Terminator, Hyper, Tilix, gnome terminal, Guake, LXterminal, Putty
+Todo Check: iTerm3
+
+for unsupported Terminals  
+use [tiv](https://github.com/radare/tiv) or [fim](https://www.nongnu.org/fbi-improved/)
+
+### Weather
+![weather](https://i.pinimg.com/originals/02/7c/fd/027cfd9d099d2ddc42d9bb411d9de592.png)
+
+Useage:  
+`weather`  
+or  
+`weather LOCALE LANGUAGE(option)`
+
+Default Language: Your system's language
 
 ## Apply
 
@@ -46,7 +66,7 @@ When you want to use with awesome tmux, Check [BlaCk-Void-Tmux](https://github.c
 
 **Requirements**
 
-* zsh, powerline, fzf[integrated], ripgrep, ack(for [h](https://github.com/paoloantinori/hhighlighter))
+* zsh, powerline support font, fzf[integrated], ripgrep, ack(for [h](https://github.com/paoloantinori/hhighlighter))
 
 **Install**
 
