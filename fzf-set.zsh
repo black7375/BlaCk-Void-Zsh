@@ -3,6 +3,8 @@
 export FZF_DEFAULT_OPTS="
     --color fg:-1,bg:-1,hl:196,fg+:254,bg+:239,hl+:040
     --color info:226,prompt:226,pointer:196,marker:254,spinner:226
+    --preview 'file {}' 
+    --preview-window down:1
   "
 #hl: red, fg+: white, bg+: gray(or 244), hl+: green
 #info: yellow, pointer: red, marker: white, spinner: yellow
@@ -395,5 +397,4 @@ export FZF_DEFAULT_COMMAND='rg --type f'
 
 ##this is better #https://tinyurl.com/ydx5katm
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"

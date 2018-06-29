@@ -24,8 +24,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 ##-------------------------Custom set
 source /etc/zsh_command_not_found
-alias tar-compress-gz='tar -zcvf'
-alias tar-extract-gz='tar -zxvf'
 setopt nonomatch
 setopt interactive_comments
 setopt correct
@@ -43,10 +41,49 @@ source /usr/share/autojump/autojump.zsh
 #. /usr/share/powerline/bindings/zsh/powerline.zsh
 
 if [ -d "$HOME/.cargo/bin" ] ; then
-  PATH="$PATH:$HOME/.cargo/bin"
+  export PATH="$PATH:$HOME/.cargo/bin"
   alias exa-grid='exa --long --grid'
   alias exa-tree='exa --long --tree'
 fi
+
+if [ -d "$HOME/.local/bin" ] ; then
+  export PATH="$PATH:$HOME/.local/bin"
+fi
+
+#Alias
+alias tar-compress-gz='tar -zcvf'
+alias tar-extract-gz='tar -zxvf'
+alias map='telnet mapscii.me'
+alias url-short='curl -s http://tinyurl.com/api-create.php?url='
+
+ip-info()
+{
+    ip-address=$1
+    while [ "$#" -gt 0 ];
+    do
+      case $1 in
+        -h* | --help*)
+        echo "Command: ip-info IP_ADDRESS\n"
+        echo "Default: your ip address"
+        echo "Option -s or --simple"
+        echo "==>Print only Your address"
+        return
+        ;;
+
+        -s* | --simple*)
+        curl ipinfo.io/ip
+        return
+        ;;
+
+        *)
+        shift
+        ;;
+      esac
+    done
+
+    # change Paris to your default location
+    curl ipinfo.io/$1
+}
 
 #Weather
 weather()
@@ -60,9 +97,9 @@ weather()
         echo "-------------------------"
          echo "    Terminal Weather"
         echo "-------------------------\n"
-        echo "weather"
+        echo "Command: weather"
         echo "or"
-        echo "weather LOCALE LANGUAGE(option)\n"
+        echo "Command: weather LOCALE LANGUAGE(option)\n"
         echo "Default LANGUAGE: SYSYEM_LANGUAGE"
         echo "-------------------------\n"
         curl wttr.in/:help
