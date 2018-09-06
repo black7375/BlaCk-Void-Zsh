@@ -9,6 +9,7 @@ sudo apt-get install zsh zshdb autojump powerline curl python3-dev python3-pip s
 sudo pip3 install thefuck
 curl -L git.io/antigen > antigen.zsh
 git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/
+wget https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping
 
 echo "--------------------"
 echo "  Fonts Settings\n"

@@ -24,6 +24,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 ##-------------------------Custom set
 source /etc/zsh_command_not_found
+alias tar-compress-gz='tar -zcvf'
+alias tar-extract-gz='tar -zxvf'
 setopt nonomatch
 setopt interactive_comments
 setopt correct
@@ -50,11 +52,30 @@ if [ -d "$HOME/.local/bin" ] ; then
   export PATH="$PATH:$HOME/.local/bin"
 fi
 
+if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then
+  export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+fi
+
+if [ -d "/snap/bin" ] ; then
+  export PATH="$PATH:/snap/bin"
+fi
+
+#Histoy
+history-clear()
+{
+    mv ~/.zsh_histoy ~/.zsh_histoy.bak
+}
+history-restore()
+{
+    mv ~/.zsh_histoy.bak ~/.zsh_histoy
+}
+
 #Alias
 alias tar-compress-gz='tar -zcvf'
 alias tar-extract-gz='tar -zxvf'
 alias map='telnet mapscii.me'
 alias url-short='curl -s http://tinyurl.com/api-create.php?url='
+alias prettyping='$BVZSH/prettyping'
 
 ip-info()
 {
@@ -132,7 +153,7 @@ img()
     then
         echo $WARNING
         echo $NONEXIST
-        return 1 
+        return 1
     fi
 
     W3MIMGDISPLAY="/usr/lib/w3m/w3mimgdisplay"
@@ -377,7 +398,7 @@ POWERLEVEL9K_APPLE_ICON=$'\uf179 ' #
 POWERLEVEL9K_AWS_EB_ICON=$'\uf270 ' # or 
 POWERLEVEL9K_AWS_ICON=$'\uf1b3 ' # or $'\ue7ad' 
 POWERLEVEL9K_BACKGROUND_JOBS_ICON=$'\uf013 ' #
-POWERLEVEL9K_BATTERY_ICON=$'\uf241 ' # or $'\uf240 '  
+POWERLEVEL9K_BATTERY_ICON=$'\uf241 ' # or $'\uf240 ' 
 POWERLEVEL9K_CARRIAGE_RETURN_ICON=$'\u21b5' # ↵
 POWERLEVEL9K_DISK_ICON=$'\uf0a0 ' #
 POWERLEVEL9K_EXECUTION_TIME_ICON="Due" #or $'\uf252 ' 
@@ -430,8 +451,8 @@ POWERLEVEL9K_VCS_STAGED_ICON=$'\uf067' #✚ or $'\uf055'  or $'\uf0fe' 
 POWERLEVEL9K_VCS_STASH_ICON=$'\uf01c' # or $'\uf192'  or ⍟
 POWERLEVEL9K_VCS_SVN_ICON="SVN" #$'\ue268'  or 
 POWERLEVEL9K_VCS_TAG_ICON=$'\uf02c ' #
-POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uf111' # or $'\uf06a'  or $'\uf12a'  or $'\uf071'  or '\u25CF' ● 
-POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf128' # or $'\uf059'  $'\uf29c'  or $'\u00b1' ?
+POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uf111 ' # or $'\uf06a'  or $'\uf12a'  or $'\uf071'  or '\u25CF' ●
+POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf128 ' # or $'\uf059'  $'\uf29c'  or $'\u00b1' ?
 POWERLEVEL9K_VPN_ICON="(vpn)"
 POWERLEVEL9K_WINDOWS_ICON=$'\uf17a ' #
 
