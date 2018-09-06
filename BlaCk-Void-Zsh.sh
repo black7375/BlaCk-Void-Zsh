@@ -1,10 +1,12 @@
 echo "----------------------------------------"
 echo "         BlaCk-Void Zsh Setup"
-echo "----------------------------------------\n"
+echo "----------------------------------------"
 BVZSH=$( cd "$(dirname "$0")" ; pwd )
 
+echo ""
 echo "--------------------"
-echo "  Downloads\n"
+echo "  Downloads"
+echo ""
 sudo apt-get install zsh zshdb autojump powerline curl python3-dev python3-pip shellcheck
 sudo pip3 install thefuck
 curl -L git.io/antigen > $BVZSH/antigen.zsh
@@ -18,27 +20,30 @@ brew install fzf ripgrep
 $(brew --prefix)/opt/fzf/install
 
 echo "--------------------"
-echo "  Fonts Settings\n"
+echo "  Fonts Settings"
+echo ""
 git clone https://github.com/ryanoasis/nerd-fonts.git
 cd nerd-fonts && ./install.sh
 cd ..
 
 echo "--------------------"
-echo "  Apply Settings\n"
+echo "  Apply Settings"
+echo ""
 file=~/.zshrc
 if [ -e $file ]
 then
   echo "$file found."
   echo "Now Backup.."
-  cp -v ~/.zshrc ~/.zshrc.bak
+  cp -v $file $file.bak
 else
   echo "$file not found."
 fi
 sudo chsh -s /usr/bin/zsh # chsh $USER -s $(which zsh);
 
-echo "source $BVZSH/BlaCk-Void.zshrc" >> ~/.zshrc
-#cp -v BlaCk-Void.zshrc  ~/.zshrc
+echo "source $BVZSH/BlaCk-Void.zshrc" >> $file
+#cp -v BlaCk-Void.zshrc  $file
 echo "Please relogin session or restart terminal"
-echo "The End!!\n\n"
+echo "The End!!"
+echo ""
 echo "command: zsh-help"
 echo "for BlaCk-Void Zsh update"
