@@ -22,7 +22,7 @@ $(brew --prefix)/opt/fzf/install
 echo "--------------------"
 echo "  Fonts Settings"
 echo ""
-git clone https://github.com/ryanoasis/nerd-fonts.git
+git clone https://github.com/ryanoasis/nerd-fonts.git $BVZSH/nert-fonts
 cd nerd-fonts && ./install.sh
 cd ..
 
