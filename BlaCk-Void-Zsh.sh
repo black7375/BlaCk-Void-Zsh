@@ -7,9 +7,15 @@ echo "--------------------"
 echo "  Downloads\n"
 sudo apt-get install zsh zshdb autojump powerline curl python3-dev python3-pip shellcheck
 sudo pip3 install thefuck
-curl -L git.io/antigen > antigen.zsh
-git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/
-wget https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping
+curl -L git.io/antigen > $BVZSH/antigen.zsh
+git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/hhighlighter
+wget -P $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then
+  export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+fi
+brew install fzf ripgrep
+$(brew --prefix)/opt/fzf/install
 
 echo "--------------------"
 echo "  Fonts Settings\n"
@@ -24,7 +30,7 @@ if [ -e $file ]
 then
   echo "$file found."
   echo "Now Backup.."
-  mv -v ~/.zshrc ~/.zshrc.backup
+  cp -v ~/.zshrc ~/.zshrc.bak
 else
   echo "$file not found."
 fi
