@@ -507,6 +507,14 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
 #POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  \uE868  %d.%m.%y}"
 
 ##-------------------------Other System Configs
+zsh-help()
+{
+    echo "--------------------"
+    echo "  BlaCk-Zsh Help"
+    echo "--------------------\n"
+    echo "command: zsh-update -> zsh update"
+    echo "command: font-update -> NerdFont update"
+}
 zsh-update()
 {
     echo "--------------------"
@@ -519,11 +527,15 @@ zsh-update()
 
     echo "\n--------------------"
     echo "Plugins update"
-    cd $BVZSH/hhighlighter && git pull
-    antigen selfupdate
+        antigen selfupdate
     antigen update
     rm ~/.antigen_system_lastupdate ~/.antigen_plugin_lastupdate
-
+    cd $BVZSH/hhighlighter && git pull
+    brew update
+    brew upgrade fzf ripgrep
+}
+font-update()
+{
     echo "\n--------------------"
     echo "Fonts update"
     cd $BVZSH/nerd-fonts && git pull && sudo ./install.sh

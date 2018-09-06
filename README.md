@@ -35,8 +35,7 @@ Useage:
 
 img Feature  
 Supported: Konsole, Xterm, Urxvt, Terminology, Yakuake, Terminal.app  
-Unsupported: Terminator, Hyper, Tilix, gnome terminal, Guake, LXterminal, Putty  
-Todo Check: iTerm3
+Unsupported: Terminator, Hyper, Tilix, gnome terminal, Guake, LXterminal, Putty, Alacritty  
 
 for unsupported Terminals  
 use [tiv](https://github.com/radare/tiv) or [fim](https://www.nongnu.org/fbi-improved/)
@@ -56,7 +55,7 @@ Default Language: Your system's language
 ### Ubuntu
 
 ``` shell
-git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/
+git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
 bash ~/BlaCk-Void-Zsh/BlaCk-Void-Zsh.sh
 ```
 
@@ -66,13 +65,13 @@ When you want to use with awesome tmux, Check [BlaCk-Void-Tmux](https://github.c
 
 **Requirements**
 
-* zsh, powerline support font, fzf[integrated], ripgrep, ack(for [h](https://github.com/paoloantinori/hhighlighter))
+* zsh, powerline support font, brew, fzf[integrated], ripgrep, ack(for [h](https://github.com/paoloantinori/hhighlighter))
 
 **Install**
 
 * Git Clone  
   ``` shell
-  git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/ && cd BlaCk-Void-Zsh
+  git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh && cd ~/.zsh
   ```
 
 * antigen  

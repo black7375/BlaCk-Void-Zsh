@@ -39,4 +39,6 @@ sudo chsh -s /usr/bin/zsh # chsh $USER -s $(which zsh);
 echo "source $BVZSH/BlaCk-Void.zshrc" >> ~/.zshrc
 #cp -v BlaCk-Void.zshrc  ~/.zshrc
 echo "Please relogin session or restart terminal"
-echo "The End!!"
+echo "The End!!\n\n"
+echo "command: zsh-help"
+echo "for BlaCk-Void Zsh update"
