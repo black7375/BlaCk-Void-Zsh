@@ -56,7 +56,7 @@ Default Language: Your system's language
 
 ``` shell
 git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
-bash ~/BlaCk-Void-Zsh/BlaCk-Void-Zsh.sh
+bash ~/.zsh/BlaCk-Void-Zsh.sh
 ```
 
 When you want to use with awesome tmux, Check [BlaCk-Void-Tmux](https://github.com/black7375/BlaCk-Void-Tmux/blob/master/README.md).
