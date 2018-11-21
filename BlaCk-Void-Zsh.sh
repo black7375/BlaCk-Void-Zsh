@@ -29,18 +29,29 @@ cd ..
 echo "--------------------"
 echo "  Apply Settings"
 echo ""
-file=~/.zshrc
-if [ -e $file ]
+zshrc=~/.zshrc
+if [ -e $zshrc ]
 then
-  echo "$file found."
+  echo "$zshrc found."
   echo "Now Backup.."
-  cp -v $file $file.bak
+  cp -v $zshrc $zshrc.bak
 else
-  echo "$file not found."
+  echo "$zshrc not found."
 fi
+zshenv=~/.zshenv
+if [ -e $zshenv ]
+then
+    echo "$zshenv found."
+    echo "Now Backup.."
+    cp -v $zshenv $zshenv.bak
+else
+    echo "$zshrc not found."
+fi
+
 sudo chsh -s /usr/bin/zsh # chsh $USER -s $(which zsh);
 
-echo "source $BVZSH/BlaCk-Void.zshrc" >> $file
+echo "source $BVZSH/BlaCk-Void.zshrc"  >> $zshrc
+echo "source $BVZSH/BlaCk-Void.zshenv" >> $zshenv
 #cp -v BlaCk-Void.zshrc  $file
 echo "Please relogin session or restart terminal"
 echo "The End!!"

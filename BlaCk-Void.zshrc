@@ -42,24 +42,6 @@ source /usr/share/autojump/autojump.zsh
 
 #. /usr/share/powerline/bindings/zsh/powerline.zsh
 
-if [ -d "$HOME/.cargo/bin" ] ; then
-  export PATH="$PATH:$HOME/.cargo/bin"
-  alias exa-grid='exa --long --grid'
-  alias exa-tree='exa --long --tree'
-fi
-
-if [ -d "$HOME/.local/bin" ] ; then
-  export PATH="$PATH:$HOME/.local/bin"
-fi
-
-if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then
-  export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-fi
-
-if [ -d "/snap/bin" ] ; then
-  export PATH="$PATH:/snap/bin"
-fi
-
 #Histoy
 history-clear()
 {
@@ -412,7 +394,7 @@ POWERLEVEL9K_FREEBSD_ICON="BSD" #or 
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\ue0b0' # 
 POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$'\ue0b1' # 
 POWERLEVEL9K_LINUX_ICON=$'\uf17c ' #
-POWERLEVEL9K_LOAD_ICON=$'\uf524' # or L or $'\uf140 ' 
+POWERLEVEL9K_LOAD_ICON=$'\uf524 ' # or L or $'\uf140 ' 
 POWERLEVEL9K_LOCK_ICON=$'\ue0a2' #
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
