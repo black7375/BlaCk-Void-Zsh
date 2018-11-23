@@ -19,9 +19,6 @@ fi
 brew install fzf ripgrep
 $(brew --prefix)/opt/fzf/install
 
-echo "--------------------"
-echo "  Fonts Settings"
-echo ""
 source $BVZSH/install_font.sh
 
 echo "--------------------"

@@ -2,9 +2,12 @@ echo "--------------------"
 echo "  Fonts Settings"
 echo ""
 
-echo "0) None Install Fonts."
-echo "1) Only Necessary Fonts(Will install Hack Nerd Font)."
-echo "2) All Fonts Install(Nerd Fonts)."
+options()
+{
+    echo "0) None Install Fonts."
+    echo "1) Only Necessary Fonts(Will install Hack Nerd Font)."
+    echo "2) All Fonts Install(Nerd Fonts)."
+}
 
 font_install()
 {
@@ -18,12 +21,14 @@ font_install()
             [1]*)
                 echo "Install Hack Nerd Fonts."
                 necessary
+                break
                 ;;
             [2]*)
                 echo "All Fonts Install."
                 all
         esac
         echo "Please answer again."
+        options
     done
 }
 
@@ -44,4 +49,5 @@ all()
     cd nerd-fonts && ./install.sh
     cd ..
 }
+options
 font_install

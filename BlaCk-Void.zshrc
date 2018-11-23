@@ -522,7 +522,7 @@ font-update()
     echo "Fonts update"
     if [ -d "$BVZSH/nerd-fonts" ]
     then
-        echo "Nerd Fonts is not installed."
+        echo "Nerd Fonts is not installed.\n"
         while true; do
             read -p "Do you Install Nerd Fonts? [Y/N]" ans
             case $ans in
