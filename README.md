@@ -23,7 +23,7 @@ Tested on Kubuntu 18.04
 ## Feature
 * Preview
 
-![Zsh](https://i.pinimg.com/originals/88/b4/db/88b4dbbd42b2c75afe2f3b9a27fc3747.png)
+![Zsh](https://i.imgur.com/043POEf.png)
 
 ### Terminal Image Viewer
 ![img-zsh](https://i.pinimg.com/originals/1c/7c/c4/1c7cc4e4f88376d6900f7c420baf6d50.png)
