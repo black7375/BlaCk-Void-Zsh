@@ -61,10 +61,10 @@ alias prettyping='$BVZSH/prettyping'
 
 ip-info()
 {
-    ip-address=$1
+    ip_address=$1
     while [ "$#" -gt 0 ];
     do
-      case $1 in
+      case $ip_address in
         -h* | --help*)
         echo "Command: ip-info IP_ADDRESS\n"
         echo "Default: your ip address"
@@ -85,7 +85,7 @@ ip-info()
     done
 
     # change Paris to your default location
-    curl ipinfo.io/$1
+    curl ipinfo.io/$ip_address
 }
 
 #Weather

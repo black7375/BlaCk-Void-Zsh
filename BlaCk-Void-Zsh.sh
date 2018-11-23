@@ -12,6 +12,7 @@ sudo pip3 install thefuck
 curl -L git.io/antigen > $BVZSH/antigen.zsh
 git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/hhighlighter
 wget -P $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping
+chmod +x prettyping
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then
   export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
