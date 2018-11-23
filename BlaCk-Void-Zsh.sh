@@ -11,7 +11,7 @@ sudo apt-get install zsh zshdb autojump powerline curl python3-dev python3-pip s
 sudo pip3 install thefuck
 curl -L git.io/antigen > $BVZSH/antigen.zsh
 git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/hhighlighter
-wget -P $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping 
+wget -P $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then
   export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
@@ -22,7 +22,7 @@ $(brew --prefix)/opt/fzf/install
 echo "--------------------"
 echo "  Fonts Settings"
 echo ""
-git clone https://github.com/ryanoasis/nerd-fonts.git $BVZSH/nert-fonts
+git clone https://github.com/ryanoasis/nerd-fonts.git $BVZSH/nerd-fonts
 cd nerd-fonts && ./install.sh
 cd ..
 
@@ -45,7 +45,7 @@ then
     echo "Now Backup.."
     cp -v $zshenv $zshenv.bak
 else
-    echo "$zshrc not found."
+    echo "$zshenv not found."
 fi
 
 sudo chsh -s /usr/bin/zsh # chsh $USER -s $(which zsh);
