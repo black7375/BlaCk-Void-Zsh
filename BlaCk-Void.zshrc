@@ -520,5 +520,23 @@ font-update()
 {
     echo "\n--------------------"
     echo "Fonts update"
-    cd $BVZSH/nerd-fonts && git pull && sudo ./install.sh
+    if [ -d "$BVZSH/nerd-fonts" ]
+    then
+        echo "Nerd Fonts is not installed."
+        while true; do
+            read -p "Do you Install Nerd Fonts? [Y/N]" ans
+            case $ans in
+                [Yy]*)
+                    source $BVZSH/install_font.sh
+                    return
+                    ;;
+                [Nn]*)
+                    echo "Don't Install Fonts."
+                    return
+            esac
+            echo "Please answer again."
+        done
+    fi
+
+    cd $BVZSH/nerd-fonts && git pull && ./install.sh
 }
