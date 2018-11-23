@@ -1,4 +1,4 @@
- 
+
 # BlaCk Void Zsh
 
 Awesome Zsh Setting.
@@ -33,7 +33,7 @@ You can use with command `img`
 Useage:  
 `img FILE_NAME TIME`(TIME default 2s)
 
-img Feature  
+`img` Feature  
 Supported: Konsole, Xterm, Urxvt, Terminology, Yakuake, Terminal.app  
 Unsupported: Terminator, Hyper, Tilix, gnome terminal, Guake, LXterminal, Putty, Alacritty  
 
