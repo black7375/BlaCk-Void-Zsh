@@ -82,16 +82,12 @@ if   [[ "$OSTYPE" == "linux-gnu" ]]; then
   ##Deb Package
   elif cat /etc/*release | grep ^NAME    | grep Ubuntu ; then
     deb_install
-  fi
   elif cat /etc/*release | grep ^NAME    | grep Debian ; then
     deb_install
-  fi
   elif cat /etc/*release | grep ^NAME    | grep Mint   ; then
     deb_install
-  fi
   elif cat /etc/*release | grep ^NAME    | grep Knoppix; then
     deb_install
-  fi
   elif cat /etc/*release | grep ^ID_LIKE | grep debian ; then
     deb_install
 
@@ -110,10 +106,10 @@ if   [[ "$OSTYPE" == "linux-gnu" ]]; then
      exit 1;
   fi
   set_brew
-elif [[ "$OSTYPE" == "darwin"* ]]; then
+elif [[ "$OSTYPE" == "darwin"*  ]]; then
   set_brew
   mac_install
-elif [[ "$OSTYPE" == "FreeBSD" ]]; then
+elif [[ "$OSTYPE" == "FreeBSD"* ]]; then
   bsd_install
 else
   echo "OS NOT DETECTED, couldn't install packages."
