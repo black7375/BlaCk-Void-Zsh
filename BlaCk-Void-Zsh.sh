@@ -62,9 +62,9 @@ set_brew()
 etc_install()
 {
   curl -L git.io/antigen > $BVZSH/antigen.zsh
-  git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/hhighlighter
-  wget -P $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping
+  curl -L $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > $BVZSH/prettyping
   chmod +x prettyping
+  git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/hhighlighter
   source $BVZSH/install_font.sh
 }
 
@@ -110,6 +110,8 @@ elif [[ "$OSTYPE" == "darwin"*  ]]; then
   set_brew
   mac_install
 elif [[ "$OSTYPE" == "FreeBSD"* ]]; then
+  bsd_install
+elif uname -a | grep FreeBSD ; then
   bsd_install
 else
   echo "OS NOT DETECTED, couldn't install packages."
