@@ -53,9 +53,15 @@ history-restore()
 alias tar-compress-gz='tar -zcvf'
 alias tar-extract-gz='tar -zxvf'
 alias map='telnet mapscii.me'
-alias url-short='curl -s http://tinyurl.com/api-create.php?url='
 alias prettyping='$BVZSH/prettyping'
 
+#URL Short
+url-short()
+{
+    curl -s http://tinyurl.com/api-create.php?url\=$1
+}
+
+#IP Info
 ip-info()
 {
     ip_address=$1
@@ -397,7 +403,7 @@ POWERLEVEL9K_KUBERNETES_ICON=$'\U2388'            # ⎈
 POWERLEVEL9K_LARAVEL_ICON=$'\uE73f '              # 
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'     # 
 POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=' '       #   or   '\uF105'  or '\uF12D' 
-POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$'\uE0B1'  # 
+POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$' \uE0B1' # 
 POWERLEVEL9K_LINUX_ICON=$'\uF17C '                # 
 POWERLEVEL9K_LINUX_ARCH_ICON=$'\uF303'            # 
 POWERLEVEL9K_LINUX_CENTOS_ICON=$'\uF304'          # 
@@ -539,8 +545,6 @@ zsh-update()
     antigen update
     rm ~/.antigen_system_lastupdate ~/.antigen_plugin_lastupdate
     cd $BVZSH/hhighlighter && git pull
-    brew update
-    brew upgrade fzf ripgrep
 }
 font-update()
 {
