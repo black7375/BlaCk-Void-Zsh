@@ -22,10 +22,8 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-##-------------------------Custom set
+##-------------------------Custom set-------------------------
 source /etc/zsh_command_not_found
-alias tar-compress-gz='tar -zcvf'
-alias tar-extract-gz='tar -zxvf'
 setopt nonomatch
 setopt interactive_comments
 setopt correct
@@ -39,8 +37,7 @@ setopt HIST_SAVE_NO_DUPS
 
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 source /usr/share/autojump/autojump.zsh
-
-#. /usr/share/powerline/bindings/zsh/powerline.zsh
+source /usr/share/powerline/bindings/zsh/powerline.zsh
 
 #Histoy
 history-clear()
@@ -98,7 +95,7 @@ weather()
       case $1 in
         -h* | --help*)
         echo "-------------------------"
-         echo "    Terminal Weather"
+        echo "    Terminal Weather"
         echo "-------------------------\n"
         echo "Command: weather"
         echo "or"
@@ -258,7 +255,7 @@ source $BVZSH/fzf-set.zsh
 ##-------------------------Hhighlighter set
 source $BVZSH/hhighlighter/h.sh
 
-##-------------------------Antigen set
+##-------------------------Antigen set-------------------------
 source $BVZSH/antigen.zsh
 
 ## Load the oh-my-zsh's library.
@@ -512,7 +509,7 @@ zsh-update()
 
     echo "\n--------------------"
     echo "Plugins update"
-        antigen selfupdate
+    antigen selfupdate
     antigen update
     rm ~/.antigen_system_lastupdate ~/.antigen_plugin_lastupdate
     cd $BVZSH/hhighlighter && git pull
