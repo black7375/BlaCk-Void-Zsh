@@ -111,7 +111,7 @@ elif [[ "$OSTYPE" == "darwin"*  ]]; then
   mac_install
 elif [[ "$OSTYPE" == "FreeBSD"* ]]; then
   bsd_install
-elif uname -a | grep FreeBSD ; then
+elif uname -a | grep FreeBSD      ; then
   bsd_install
 else
   echo "OS NOT DETECTED, couldn't install packages."
@@ -136,14 +136,14 @@ fi
 zshenv=~/.zshenv
 if [ -e $zshenv ]
 then
-    echo "$zshenv found."
-    echo "Now Backup.."
-    cp -v $zshenv $zshenv.bak
+  echo "$zshenv found."
+  echo "Now Backup.."
+  cp -v $zshenv $zshenv.bak
 else
-    echo "$zshenv not found."
+  echo "$zshenv not found."
 fi
 
-sudo chsh -s /usr/bin/zsh # chsh $USER -s $(which zsh);
+sudo chsh -s $(which zsh)
 
 echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
 echo "[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh" >> $zshrc
