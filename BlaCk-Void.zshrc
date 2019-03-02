@@ -276,7 +276,7 @@ antigen bundle pip
 antigen bundle sudo
 antigen bundle thefuck
 antigen bundle tmux
-antigen bundle tmuxinator/urltools
+antigen bundle tmuxinator
 antigen bundle urltools
 
 ## Bundles form the custom repo.
