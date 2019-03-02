@@ -146,7 +146,6 @@ fi
 sudo chsh -s $(which zsh)
 
 echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
-echo "[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh" >> $zshrc
 echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
 #cp -v BlaCk-Void.zshrc  $file
 echo "Please relogin session or restart terminal"

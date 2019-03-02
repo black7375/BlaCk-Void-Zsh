@@ -270,15 +270,14 @@ antigen use oh-my-zsh
 ## Bundles from the default repo.
 antigen bundle autojump
 antigen bundle command-not-found
+antigen bundle fzf
 antigen bundle git
-antigen bundle lein
 antigen bundle pip
 antigen bundle sudo
 antigen bundle thefuck
 antigen bundle tmux
-antigen bundle tmuxinator
+antigen bundle tmuxinator/urltools
 antigen bundle urltools
-antigen bundle z
 
 ## Bundles form the custom repo.
 antigen bundle chrissicool/zsh-256color
