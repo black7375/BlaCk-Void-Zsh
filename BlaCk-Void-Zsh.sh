@@ -9,10 +9,10 @@ echo ""
 echo "--------------------"
 echo "  Downloads"
 echo ""
-ARH_PACKAGE_NAME="zsh zshdb autojump powerline curl shellcheck git fzf ripgrep thefuck w3m ack"
-DEB_PACKAGE_NAME="zsh zshdb autojump powerline curl shellcheck git w3m-img ack"
-YUM_PACKAGE_NAME="zsh autojump powerline curl shellcheck git w3m-img ack"
-MAC_PACKAGE_NAME="zsh zshdb autojump curl python shellcheck git socat coreutils w3m ack"
+ARH_PACKAGE_NAME="zsh zshdb autojump powerline curl git ruby-irb fzf ripgrep thefuck w3m ack"
+DEB_PACKAGE_NAME="zsh zshdb autojump powerline curl git w3m-img ack"
+YUM_PACKAGE_NAME="zsh autojump powerline curl git w3m-img ack"
+MAC_PACKAGE_NAME="zsh zshdb autojump curl python git socat coreutils w3m ack"
 BSD_PACKAGE_NAME="zsh autojump py36-powerline-status curl git fzf ripgrep thefuck w3m-img p5-ack"
 
 arh_install()
@@ -27,13 +27,13 @@ deb_install()
 }
 yum_install()
 {
-  sudo yum check-update
+  #sudo yum check-update ##BUG: Return from Fedora??
   sudo yum install -y $YUM_PACKAGE_NAME
 }
 mac_install()
 {
   sudo brew update
-  sudo brew install -y $MAC_PACKAGE_NAME
+  sudo brew install $MAC_PACKAGE_NAME
   sudo pip install powerline-status
 }
 bsd_install()
@@ -50,20 +50,20 @@ set_brew()
       sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
       if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then
-        export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+        export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin/"
       fi
     elif [[ "$OSTYPE" == "darwin"* ]]; then
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
   fi
-  brew install -y fzf ripgrep thefuck
+  brew install fzf ripgrep thefuck
   $(brew --prefix)/opt/fzf/install
 }
 etc_install()
 {
   curl -L git.io/antigen > $BVZSH/antigen.zsh
   curl -L $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > $BVZSH/prettyping
-  chmod +x prettyping
+  chmod +x $BVZSH/prettyping
   git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/hhighlighter
   source $BVZSH/install_font.sh
 }
