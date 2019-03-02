@@ -25,6 +25,7 @@ Awesome Zsh Setting.
       -  [[#internet-tools][Internet Tools.]]
       -  [[#terminal-image-viewer][Terminal Image Viewer.]]
       -  [[#weather][Weather.]]
+      -  [[#map][Map.]]
   -  [[#2-install][2. Install.]]
     -  [[#21-supported-platforms][2.1 Supported Platforms.]]
     -  [[#22-others][2.2 Others.]]
@@ -36,8 +37,8 @@ Awesome Zsh Setting.
 * 1. Feature.
 ** 1.1 Powerful View.
 *** Prompt.
-The prompt consists of two lines.
-#+HTML: <br>
+[[https://user-images.githubusercontent.com/25581533/53680999-40fec200-3d26-11e9-8ca5-5c3723e6acdf.png]]
+The prompt consists of two lines.\\
 The upper line is for displaying information, and the lower line is for writing commands.
 
 - *Upper Line*
@@ -51,6 +52,10 @@ The upper line is for displaying information, and the lower line is for writing 
 *** Git.
 The interaction with Git is easy compared to the file manager.
 
+| [[https://user-images.githubusercontent.com/25581533/53680863-67236280-3d24-11e9-826b-ae88fc345177.png]] | [[https://user-images.githubusercontent.com/25581533/53680866-6ab6e980-3d24-11e9-8ad1-3cd6b087ee36.png]] | [[https://user-images.githubusercontent.com/25581533/53680870-6c80ad00-3d24-11e9-8a1e-0171231299d9.png]] |
+|------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------|
+| [[https://user-images.githubusercontent.com/25581533/53680872-6ee30700-3d24-11e9-9e77-36707397151a.png]] | [[https://user-images.githubusercontent.com/25581533/53680874-74d8e800-3d24-11e9-804d-9f2eb16c370f.png]] | [[https://user-images.githubusercontent.com/25581533/53680876-76a2ab80-3d24-11e9-8d72-56c85a3e8bf2.png]] |
+
 In turn
 
 *Source - Add any file - Modify file* \\
@@ -58,19 +63,24 @@ In turn
 
 ** 1.2 Easy Command Input.
 *** Auto Pair.
+[[https://user-images.githubusercontent.com/25581533/53681046-f29df300-3d26-11e9-8299-cdf4d189fa1d.png]]
 Match parentheses, quotes, etc.
 
 *** Fix.
+[[https://user-images.githubusercontent.com/25581533/53681092-96879e80-3d27-11e9-80ca-73bc56150ec9.png]]
 If you can't find the command, suggest a correction.\\
 If the execution is not done properly, just typing '=fuck='. It will suggest.
 
 *** Display Info.
+[[https://user-images.githubusercontent.com/25581533/53681099-b4ed9a00-3d27-11e9-9388-cde276b64686.png]]
 Commands that can be abbreviated are indicated by a =Alias tip=.\\
 If you press '<TAB>' while typing command, it is recommended to divide by category.
 
+|[[https://user-images.githubusercontent.com/25581533/53681069-3db80600-3d27-11e9-8e6c-89f8cb71bd96.png]]|[[https://user-images.githubusercontent.com/25581533/53681119-0564f780-3d28-11e9-9afd-35c7e0e03044.png]]|
 You can search history by pressing the *up(↑) arrow* key.
 
 *** Integration with [[https://github.com/junegunn/fzf][Fzf]].
+[[https://user-images.githubusercontent.com/25581533/53681129-334a3c00-3d28-11e9-97b1-b0cd56aac3af.png]]
 - *Ctrl+t*: File, Directory select.(Multiple selecting use <TAB>)
 - *Ctrl+r*: History select.
 - *Alt+c*: Directory select.
@@ -98,6 +108,7 @@ Very simple to use git.
 - =gclean=: git clean
 
 *** Etc.
+[[https://user-images.githubusercontent.com/25581533/53681139-4ceb8380-3d28-11e9-8e92-9549302afdc0.png]]
 - =bookmark [mark]=:Bookmark to [mark].
 - =jump [mark]=:Move to [mark].
 - =showmarks [mark]=:Show [mark]'s directory.
@@ -107,10 +118,12 @@ Very simple to use git.
 
 ** 1.3 Terminal Utility.
 *** Internet Tools.
+[[https://user-images.githubusercontent.com/25581533/53681148-6ee50600-3d28-11e9-909c-674b0b359ebb.png]]
 - =prettyping=: Show pretty ping.
 - =ip-info=: Show ip info.
 
 *** Terminal Image Viewer.
+[[https://user-images.githubusercontent.com/25581533/53681154-80c6a900-3d28-11e9-8510-385e49f173f2.png]]
 Show image like preview.\\
 You can use with command =img=
 
@@ -126,10 +139,16 @@ for unsupported Terminals\\
 use [[https://github.com/radare/tiv][tiv]] or [[https://www.nongnu.org/fbi-improved/][fim]]
 
 *** Weather.
+[[https://user-images.githubusercontent.com/25581533/53681166-a6ec4900-3d28-11e9-80d3-a010cba7fa83.png]]
 *Useage*:\\
 =weather= or =weather LOCALE LANGUAGE(option)=
 
 *Default Language*: Your system's language
+
+*** Map.
+[[https://user-images.githubusercontent.com/25581533/53681169-abb0fd00-3d28-11e9-9cf1-85bf29227ab2.png]]
+*Useage*:\\
+=map=
 
 * 2. Install.
 ** 2.1 Supported Platforms.
@@ -162,15 +181,11 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   + [[https://beyondgrep.com/][ack]](option for [[https://github.com/paoloantinori/hhighlighter][h]]) | TODO: ack code port to ripgrep.
 
 - Install
-  + Git Clone  
-    #+BEGIN_SRC shell
-    git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh && cd ~/.zsh
-    #+END_SRC
+  + Git Clone\\
+    =git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh && cd ~/.zsh=
 
-  + antigen  
-    #+BEGIN_SRC shell
-    curl -L git.io/antigen > antigen.zsh
-    #+END_SRC
+  + antigen\\
+    =curl -L git.io/antigen > antigen.zsh=
 
   + nerdfont(powerline support font)  
     #+BEGIN_SRC shell
