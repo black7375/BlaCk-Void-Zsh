@@ -1,0 +1,272 @@
+
+#+TITLE:BlaCk Void Zsh
+
+Awesome Zsh Setting.
+
+[[https://i.imgur.com/043POEf.png]]
+
+*[[https://black7375.tistory.com/59][Korean Docs]]*
+** Table of Contents
+:PROPERTIES:
+:TOC:      this
+:END:
+  -  [[#1-feature][1. Feature.]]
+    -  [[#11-powerful-view][1.1 Powerful View.]]
+      -  [[#prompt][Prompt.]]
+      -  [[#git][Git.]]
+    -  [[#12-easy-command-input][1.2 Easy Command Input.]]
+      -  [[#auto-pair][Auto Pair.]]
+      -  [[#fix][Fix.]]
+      -  [[#display-info][Display Info.]]
+      -  [[#integration-with-httpsgithubcomjunegunnfzffzf][Integration with Fzf.]]
+      -  [[#git][Git.]]
+      -  [[#etc][Etc.]]
+    -  [[#13-terminal-utility][1.3 Terminal Utility.]]
+      -  [[#internet-tools][Internet Tools.]]
+      -  [[#terminal-image-viewer][Terminal Image Viewer.]]
+      -  [[#weather][Weather.]]
+    -  [[#14-install][1.4 Install.]]
+      -  [[#supported-platforms][Supported Platforms.]]
+      -  [[#others][Others.]]
+      -  [[#update][Update.]]
+    -  [[#15-info][1.5 Info.]]
+      -  [[#theme][Theme.]]
+      -  [[#plugins][Plugins.]]
+
+* 1. Feature.
+** 1.1 Powerful View.
+*** Prompt.
+The prompt consists of two lines.
+The upper line is for displaying information, and the lower line is for writing commands.
+
+- *Upper Line*
+  Left: account info, root user, using ssh, directory lotation, write permission, git info
+  Right: result status, background job, command execution time, history, zsh load time
+
+- *Lower Line*
+  Syntax highlight, Auto Suggestion
+  When auto suggestion comes up, you can complete with *right(→) arrow* key.
+
+*** Git.
+The interaction with Git is easy compared to the file manager.
+
+In turn
+*/Source - Add any file - Modify file/*
+*/Staging - Commit - Push/*
+
+** 1.2 Easy Command Input.
+*** Auto Pair.
+Match parentheses, quotes, etc.
+
+*** Fix.
+If you can't find the command, suggest a correction.
+If the execution is not done properly, just typing '=fuck='. It will suggest.
+
+*** Display Info.
+Commands that can be abbreviated are indicated by a =Alias tip=.
+If you press '<TAB>' while typing command, it is recommended to divide by category.
+You can search history by pressing the *up(↑) arrow* key.
+
+*** Integration with [[https://github.com/junegunn/fzf][Fzf]].
+- *Ctrl+t*: File, Directory select.(Multiple selecting use <TAB>)
+- *Ctrl+r*: History select.
+- *Alt+c*: Directory select.
+- * =Command **= + <TAB>*: Select after =vi **= as input.
+- ssh, telnet, kill, unset, export..etc with integration.
+
+Please refer to [[https://github.com/junegunn/fzf#key-bindings-for-command-line][fzf]] for more information.
+
+*** Git.
+Very simple to use git.
+- =c=: commit
+- =a=: add
+- =p=: push
+- =u=: pull
+- =r=: remote
+- =s=: status
+
+*Git X Fzf*
+- =ga=: git add
+- =glo=: git log
+- =gi=: gitignore
+- =gd=: git diff
+- =gcf=: git checkout
+- =gss=: git stash
+- =gclean=: git clean
+
+*** Etc.
+- =bookmark [mark]=:Bookmark to [mark].
+- =jump [mark]=:Move to [mark].
+- =showmarks [mark]=:Show [mark]'s directory.
+- =deletemark [mark]=:Delete [mark].
+- =cd <dots>=: Move to the upper directory by the number of <dots>.
+- =j [keyword]=: Move to [keyword] similar directory.
+
+** 1.3 Terminal Utility.
+*** Internet Tools.
+- =prettyping=: Show pretty ping.
+- =ip-info=: Show ip info.
+
+*** Terminal Image Viewer.
+Show image like preview.  
+You can use with command =img=
+
+*Useage*:  
+=img FILE_NAME TIME=
+/(TIME default 2s)/
+
+=img= Feature
+*Supported*: Konsole, Xterm, Urxvt, Terminology, Yakuake, Terminal.app
+*Unsupported*: Terminator, Hyper, Tilix, gnome terminal, Guake, LXterminal, Putty, Alacritty  
+
+for unsupported Terminals  
+use [tiv](https://github.com/radare/tiv) or [fim](https://www.nongnu.org/fbi-improved/)
+
+*** Weather.
+*Useage*:
+=weather=
+or  
+=weather LOCALE LANGUAGE(option)=
+
+/Default Language: Your system's language/
+
+** 1.4 Install.
+*** Supported Platforms.
+- Linux
+Debin-based(ubuntu, debian, mint ..), RPM-based(Fedora, CentOS, Redhat..), Pacman-based(Arch, Manjaro ..)
+
+- Others
+Mac, FreeBSD-based
+
+- Requirements
+  + bash
+
+- Install
+#+BEGIN_SRC shell
+git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
+bash ~/.zsh/BlaCk-Void-Zsh.sh
+#+END_SRC
+
+When you want to use with awesome tmux, Check [[https://github.com/black7375/BlaCk-Void-Tmux/][BlaCk-Void-Tmux]]
+
+*** Others.
+- Requirements
+  + [[https://www.zsh.org/][zsh]]
+  + [[https://github.com/junegunn/fzf][fzf]][integrated]
+  + [[https://github.com/BurntSushi/ripgrep][ripgrep]]
+  + [[https://github.com/powerline/powerline][powerline]]
+  + [[https://github.com/ryanoasis/nerd-fonts][powerline support font]](will explain it in the paragraph below.)
+  + [[http://w3m.sourceforge.net][w3m-img]](option for Terminal Image View)
+  + [[https://github.com/wting/autojump][Autojump]](option for =j=)
+  + [[https://beyondgrep.com/][ack]](option for [[https://github.com/paoloantinori/hhighlighter][h]]) | TODO: ack code port to ripgrep.
+
+- Install
+  + Git Clone  
+    #+BEGIN_SRC shell
+    git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh && cd ~/.zsh
+    #+END_SRC
+
+  + antigen  
+    #+BEGIN_SRC shell
+    curl -L git.io/antigen > antigen.zsh
+    #+END_SRC
+
+  + nerdfont(powerline support font)  
+    #+BEGIN_SRC shell
+    git clone https://github.com/ryanoasis/nerd-fonts.git
+    cd nerd-fonts && ./install.sh
+    cd ..
+    #+END_SRC
+
+  + Add to .zshrc  
+    Source File[Recommend]  
+    #+BEGIN_SRC shell
+    echo "source BlaCk-Void.zshrc" >> ~/.zshrc
+    #+END_SRC
+
+    or Link
+    #+BEGIN_SRC shell
+    ln -svf BlaCk-Void.zshrc ~/.zshrc
+    #+END_SRC
+
+    or Copy(Can't `zsh-update`)
+    #+BEGIN_SRC shell
+    cp -v BlaCk-Void.zshrc  ~/.zshrc
+    #+END_SRC
+
+  + Zsh Shell Set  
+    #+BEGIN_SRC shell
+    sudo chsh -s /usr/bin/zsh
+    #+END_SRC
+
+    or
+    #+BEGIN_SRC shell
+    sudo chsh -s $(which zsh)
+    #+END_SRC
+
+*** Update.
+=zsh-update=: BVZSH, plugin manger, plugins update.
+=font-update=: Nerdfont Update
+
+** 1.5 Info.
+*** Theme.
+- [[https://github.com/bhilburn/powerlevel9k][Powerlevel9k]]
+
+*** Plugins.
+*Plugin Manager*
+- [[https://github.com/zsh-users/antigen][Antigen]]
+
+*Default Repo ([[https://github.com/robbyrussell/oh-my-zsh][robbyrussell's oh-my-zsh]]).*
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/autojumpp][Autojump]]:
+  Enables [[https://github.com/wting/autojump][Autojump]] if installed with homebrew, macports or debian/ubuntu package.
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/command-not-found][Command Not Found]]:
+  This plugin uses the command-not-found package for zsh to provide suggested packages to be installed if a command cannot be found.
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/fzf][FZF]]:
+  This plugin enables junegunn's fzf fuzzy auto-completion and key bindings.
+- [[https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git][Git]]:
+  Adds a lot of git aliases and functions for pulling for dealing with the current branch.
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/pip][Pip]]:
+  pip - completion plugin for the pip command.
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/sudo][Sudo]]:
+  ESC twice: Puts sudo in front of the current command, or the last one if the command line is empty.
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/thefuck][Thefuck]]:
+  [[https://github.com/nvbn/thefuck][The Fuck]] plugin — magnificent app which corrects your previous console command.
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/tmux][Tmux]]
+  Provides aliases for [[https://github.com/tmux/tmux][Tmux]].
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/tmuxinator][Tmuxinator]]:
+  Completions for [[https://github.com/achiu/terminitor][tmuxinator]].
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/urltools][Urltools]]:
+  Provides two aliases to URL-encode(=urlencode=) and URL-decode(=urldecode=) strings.
+
+*Custom Repo*
+- [[https://github.com/chrissicool/zsh-256color][Zsh 256 Color]]:
+  This ZSH plugin enhances the terminal environment with 256 colors.
+- [[https://github.com/djui/alias-tips][Alias Tips]]:
+  Help remembering those shell aliases and Git aliases you once defined.
+- [[https://github.com/zsh-users/zsh-autosuggestions][Zsh Autosuggestions]]:
+  [[https://fishshell.com/][Fish]]-like fast/unobtrusive autosuggestions for zsh.
+- [[https://github.com/hlissner/zsh-autopair][Zsh Autopair]]:
+  A simple plugin that auto-closes, deletes and skips over matching delimiters in zsh intelligently
+- [[https://github.com/unixorn/autoupdate-antigen.zshplugin][Autoupdate Antigen]]:
+  Set up easy auto updating, both of antigen and the bundles loaded in your configuration.
+- [[https://github.com/zsh-users/zsh-completions][Zsh Completions]]:
+  Additional completion definitions for Zsh.
+- [[https://github.com/b4b4r07/enhancd][Enhancd]]:
+  A next-generation cd command with an interactive filter.
+- [[https://github.com/zdharma/fast-syntax-highlighting][Fast Syntax Highlighting]]:
+  Feature rich syntax highlighting for Zsh.
+- [[https://github.com/wfxr/forgit][Forgit]]:
+  Forgit is a utility tool for git taking advantage of fuzzy finder fzf.
+- [[https://github.com/ytet5uy4/fzf-widgets][Fzf Widgets]]:
+  ZLE widgets of fzf.
+- [[https://github.com/seletskiy/zsh-git-smart-commands][Zsh Git Smart Commands]]:
+  Wrappers for common git commands so they can be used in aliases very efficiently.
+- [[https://github.com/smallhadroncollider-deprecated/antigen-git-store][Git Store]]:
+  Antigen/zsh script to store Git's current working directory.
+- [[https://github.com/zsh-users/zsh-history-substring-search][Zsh History Substring Search]]:
+  [[https://fishshell.com/][Fish]]-like history search feature.
+- [[https://github.com/changyuheng/zsh-interactive-cd][Zsh Interactive Cd]]:
+  Press tab for completion as usual with fzf.
+- [[https://github.com/peterhurford/up.zsh][up]]:
+  Move to the upper directory by the number of <dots>.
+
