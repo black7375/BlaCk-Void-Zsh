@@ -18,20 +18,20 @@ Awesome Zsh Setting.
       -  [[#auto-pair][Auto Pair.]]
       -  [[#fix][Fix.]]
       -  [[#display-info][Display Info.]]
-      -  [[#integration-with-fzf][Integration with Fzf.]]
+      -  [[#integration-with-httpsgithubcomjunegunnfzffzf][Integration with Fzf.]]
       -  [[#git][Git.]]
       -  [[#etc][Etc.]]
     -  [[#13-terminal-utility][1.3 Terminal Utility.]]
       -  [[#internet-tools][Internet Tools.]]
       -  [[#terminal-image-viewer][Terminal Image Viewer.]]
       -  [[#weather][Weather.]]
-    -  [[#14-install][1.4 Install.]]
-      -  [[#supported-platforms][Supported Platforms.]]
-      -  [[#others][Others.]]
-      -  [[#update][Update.]]
-    -  [[#15-info][1.5 Info.]]
-      -  [[#theme][Theme.]]
-      -  [[#plugins][Plugins.]]
+  -  [[#2-install][2. Install.]]
+    -  [[#21-supported-platforms][2.1 Supported Platforms.]]
+    -  [[#22-others][2.2 Others.]]
+    -  [[#23-update][2.3 Update.]]
+  -  [[#3-info][3. Info.]]
+    -  [[#31-theme][3.1 Theme.]]
+    -  [[#32-plugins][3.2 Plugins.]]
 
 * 1. Feature.
 ** 1.1 Powerful View.
@@ -41,24 +41,19 @@ The prompt consists of two lines.
 The upper line is for displaying information, and the lower line is for writing commands.
 
 - *Upper Line*
-  #+HTML: <br>
-  Left: account info, root user, using ssh, directory lotation, write permission, git info
-  #+HTML: <br>
-  Right: result status, background job, command execution time, history, zsh load time
+  + *Left*: account info, root user, using ssh, directory lotation, write permission, git info
+  + *Right*: result status, background job, command execution time, history, zsh load time
 
 - *Lower Line*
-  #+HTML: <br>
-  Syntax highlight, Auto Suggestion
-  #+HTML: <br>
-  When auto suggestion comes up, you can complete with *right(→) arrow* key.
+  + Syntax highlight, Auto Suggestion.
+  + When auto suggestion comes up, you can complete with *right(→) arrow* key.
 
 *** Git.
 The interaction with Git is easy compared to the file manager.
 
 In turn
-#+HTML: <br>
-*Source - Add any file - Modify file/
-#+HTML: <br>
+
+*Source - Add any file - Modify file* \\
 *Staging - Commit - Push*
 
 ** 1.2 Easy Command Input.
@@ -66,22 +61,20 @@ In turn
 Match parentheses, quotes, etc.
 
 *** Fix.
-If you can't find the command, suggest a correction.
-#+HTML: <br>
+If you can't find the command, suggest a correction.\\
 If the execution is not done properly, just typing '=fuck='. It will suggest.
 
 *** Display Info.
-Commands that can be abbreviated are indicated by a =Alias tip=.
-#+HTML: <br>
+Commands that can be abbreviated are indicated by a =Alias tip=.\\
 If you press '<TAB>' while typing command, it is recommended to divide by category.
-#+HTML: <br>
+
 You can search history by pressing the *up(↑) arrow* key.
 
 *** Integration with [[https://github.com/junegunn/fzf][Fzf]].
 - *Ctrl+t*: File, Directory select.(Multiple selecting use <TAB>)
 - *Ctrl+r*: History select.
 - *Alt+c*: Directory select.
-- * =Command **= + <TAB>*: Select after =vi **= as input.
+- =Command **= *+<TAB>*: Select after =vi **= as input.
 - =ssh=, =telnet=, =kill=, =unset=, =export=..etc with integration.
 
 Please refer to [[https://github.com/junegunn/fzf#key-bindings-for-command-line][fzf]] for more information.
@@ -118,34 +111,28 @@ Very simple to use git.
 - =ip-info=: Show ip info.
 
 *** Terminal Image Viewer.
-Show image like preview.  
-#+HTML: <br>
+Show image like preview.\\
 You can use with command =img=
 
 *Useage*:  
-=img FILE_NAME TIME=
-#+HTML: <br>
-/*(TIME default 2s)*/
+=img FILE_NAME TIME=\\
+*(TIME default 2s)*
 
 =img= Feature
-#+HTML: <br>
-*Supported*: Konsole, Xterm, Urxvt, Terminology, Yakuake, Terminal.app
-#+HTML: <br>
-*Unsupported*: Terminator, Hyper, Tilix, gnome terminal, Guake, LXterminal, Putty, Alacritty  
+- *Supported*: Konsole, Xterm, Urxvt, Terminology, Yakuake, Terminal.app
+- *Unsupported*: Terminator, Hyper, Tilix, gnome terminal, Guake, LXterminal, Putty, Alacritty  
 
-for unsupported Terminals  
-#+HTML: <br>
+for unsupported Terminals\\
 use [[https://github.com/radare/tiv][tiv]] or [[https://www.nongnu.org/fbi-improved/][fim]]
 
 *** Weather.
-*Useage*:
-#+HTML: <br>
+*Useage*:\\
 =weather= or =weather LOCALE LANGUAGE(option)=
 
-/*Default Language*: Your system's language/
+*Default Language*: Your system's language
 
-** 1.4 Install.
-*** Supported Platforms.
+* 2. Install.
+** 2.1 Supported Platforms.
 - Linux
 Debin-based(ubuntu, debian, mint ..), RPM-based(Fedora, CentOS, Redhat..), Pacman-based(Arch, Manjaro ..)
 
@@ -163,7 +150,7 @@ bash ~/.zsh/BlaCk-Void-Zsh.sh
 
 When you want to use with awesome tmux, Check [[https://github.com/black7375/BlaCk-Void-Tmux/][BlaCk-Void-Tmux]]
 
-*** Others.
+** 2.2 Others.
 - Requirements
   + [[https://www.zsh.org/][zsh]]
   + [[https://github.com/junegunn/fzf][fzf]][integrated]
@@ -192,41 +179,32 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
     cd ..
     #+END_SRC
 
-  + Add to .zshrc  
-    Source File[Recommend]  
-    #+BEGIN_SRC shell
-    echo "source BlaCk-Void.zshrc" >> ~/.zshrc
-    #+END_SRC
+  + Add to .zshrc
+    
+    Source File[Recommend]\\
+    =echo "source BlaCk-Void.zshrc" >> ~/.zshrc=
 
-    or Link
-    #+BEGIN_SRC shell
-    ln -svf BlaCk-Void.zshrc ~/.zshrc
-    #+END_SRC
+    or Link\\
+    =ln -svf BlaCk-Void.zshrc ~/.zshrc=
 
-    or Copy(Can't `zsh-update`)
-    #+BEGIN_SRC shell
-    cp -v BlaCk-Void.zshrc  ~/.zshrc
-    #+END_SRC
+    or Copy(Can't `zsh-update`)\\
+    =cp -v BlaCk-Void.zshrc  ~/.zshrc=
 
-  + Zsh Shell Set  
-    #+BEGIN_SRC shell
-    sudo chsh -s /usr/bin/zsh
-    #+END_SRC
+  + Zsh Shell Set\\
+    =sudo chsh -s /usr/bin/zsh=
 
-    or
-    #+BEGIN_SRC shell
-    sudo chsh -s $(which zsh)
-    #+END_SRC
+    or\\
+    =sudo chsh -s $(which zsh)=
 
-*** Update.
-=zsh-update=: BVZSH, plugin manger, plugins update.
-=font-update=: Nerdfont Update.
+** 2.3 Update.
+=zsh-update=: BVZSH, plugin manger, plugins update.\\
+=font-update=: Nerdfont Update
 
-** 1.5 Info.
-*** Theme.
+* 3. Info.
+** 3.1 Theme.
 - [[https://github.com/bhilburn/powerlevel9k][Powerlevel9k]]
 
-*** Plugins.
+** 3.2 Plugins.
 *Plugin Manager*
 - [[https://github.com/zsh-users/antigen][Antigen]]
 
