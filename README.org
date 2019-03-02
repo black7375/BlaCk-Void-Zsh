@@ -18,7 +18,7 @@ Awesome Zsh Setting.
       -  [[#auto-pair][Auto Pair.]]
       -  [[#fix][Fix.]]
       -  [[#display-info][Display Info.]]
-      -  [[#integration-with-httpsgithubcomjunegunnfzffzf][Integration with Fzf.]]
+      -  [[#integration-with-fzf][Integration with Fzf.]]
       -  [[#git][Git.]]
       -  [[#etc][Etc.]]
     -  [[#13-terminal-utility][1.3 Terminal Utility.]]
@@ -37,22 +37,29 @@ Awesome Zsh Setting.
 ** 1.1 Powerful View.
 *** Prompt.
 The prompt consists of two lines.
+#+HTML: <br>
 The upper line is for displaying information, and the lower line is for writing commands.
 
 - *Upper Line*
+  #+HTML: <br>
   Left: account info, root user, using ssh, directory lotation, write permission, git info
+  #+HTML: <br>
   Right: result status, background job, command execution time, history, zsh load time
 
 - *Lower Line*
+  #+HTML: <br>
   Syntax highlight, Auto Suggestion
+  #+HTML: <br>
   When auto suggestion comes up, you can complete with *right(→) arrow* key.
 
 *** Git.
 The interaction with Git is easy compared to the file manager.
 
 In turn
-*/Source - Add any file - Modify file/*
-*/Staging - Commit - Push/*
+#+HTML: <br>
+*Source - Add any file - Modify file/
+#+HTML: <br>
+*Staging - Commit - Push*
 
 ** 1.2 Easy Command Input.
 *** Auto Pair.
@@ -60,11 +67,14 @@ Match parentheses, quotes, etc.
 
 *** Fix.
 If you can't find the command, suggest a correction.
+#+HTML: <br>
 If the execution is not done properly, just typing '=fuck='. It will suggest.
 
 *** Display Info.
 Commands that can be abbreviated are indicated by a =Alias tip=.
+#+HTML: <br>
 If you press '<TAB>' while typing command, it is recommended to divide by category.
+#+HTML: <br>
 You can search history by pressing the *up(↑) arrow* key.
 
 *** Integration with [[https://github.com/junegunn/fzf][Fzf]].
@@ -72,7 +82,7 @@ You can search history by pressing the *up(↑) arrow* key.
 - *Ctrl+r*: History select.
 - *Alt+c*: Directory select.
 - * =Command **= + <TAB>*: Select after =vi **= as input.
-- ssh, telnet, kill, unset, export..etc with integration.
+- =ssh=, =telnet=, =kill=, =unset=, =export=..etc with integration.
 
 Please refer to [[https://github.com/junegunn/fzf#key-bindings-for-command-line][fzf]] for more information.
 
@@ -109,26 +119,30 @@ Very simple to use git.
 
 *** Terminal Image Viewer.
 Show image like preview.  
+#+HTML: <br>
 You can use with command =img=
 
 *Useage*:  
 =img FILE_NAME TIME=
-/(TIME default 2s)/
+#+HTML: <br>
+/*(TIME default 2s)*/
 
 =img= Feature
+#+HTML: <br>
 *Supported*: Konsole, Xterm, Urxvt, Terminology, Yakuake, Terminal.app
+#+HTML: <br>
 *Unsupported*: Terminator, Hyper, Tilix, gnome terminal, Guake, LXterminal, Putty, Alacritty  
 
 for unsupported Terminals  
-use [tiv](https://github.com/radare/tiv) or [fim](https://www.nongnu.org/fbi-improved/)
+#+HTML: <br>
+use [[https://github.com/radare/tiv][tiv]] or [[https://www.nongnu.org/fbi-improved/][fim]]
 
 *** Weather.
 *Useage*:
-=weather=
-or  
-=weather LOCALE LANGUAGE(option)=
+#+HTML: <br>
+=weather= or =weather LOCALE LANGUAGE(option)=
 
-/Default Language: Your system's language/
+/*Default Language*: Your system's language/
 
 ** 1.4 Install.
 *** Supported Platforms.
@@ -206,7 +220,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 
 *** Update.
 =zsh-update=: BVZSH, plugin manger, plugins update.
-=font-update=: Nerdfont Update
+=font-update=: Nerdfont Update.
 
 ** 1.5 Info.
 *** Theme.
