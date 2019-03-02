@@ -291,13 +291,11 @@ antigen bundle b4b4r07/enhancd
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle wfxr/forgit
 antigen bundle ytet5uy4/fzf-widgets
-antigen bundle andrewferrier/fzf-z
 antigen bundle seletskiy/zsh-git-smart-commands
 antigen bundle smallhadroncollider/antigen-git-store
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle changyuheng/zsh-interactive-cd
 #antigen bundle zsh-users/zsh-syntax-highlighting ##fast-syntax-highlighting is better!!
-antigen bundle supercrabtree/k
 antigen bundle peterhurford/up.zsh
 antigen bundle jocelynmallon/zshmarks
 
@@ -328,6 +326,43 @@ export ZSH_PLUGINS_ALIAS_TIPS_FORCE=0
 #-----enhancd
 ENHANCD_FILTER=fzf:fzy:peco
 export ENHANCD_FILTER
+
+#-----fzf-widgets
+# Map widgets to key
+bindkey '^@'  fzf-select-widget
+bindkey '^@.' fzf-edit-dotfiles
+bindkey '^@c' fzf-change-directory
+bindkey '^@n' fzf-change-named-directory
+bindkey '^@f' fzf-edit-files
+bindkey '^@k' fzf-kill-processes
+bindkey '^@s' fzf-exec-ssh
+bindkey '^\'  fzf-change-recent-directory
+bindkey '^r'  fzf-insert-history
+bindkey '^xf' fzf-insert-files
+bindkey '^xd' fzf-insert-directory
+bindkey '^xn' fzf-insert-named-directory
+
+## Git
+bindkey '^@g'  fzf-select-git-widget
+bindkey '^@ga' fzf-git-add-files
+bindkey '^@gc' fzf-git-change-repository
+
+# GitHub
+bindkey '^@h'  fzf-select-github-widget
+bindkey '^@hs' fzf-github-show-issue
+bindkey '^@hc' fzf-github-close-issue
+
+## Docker
+bindkey '^@d'  fzf-select-docker-widget
+bindkey '^@dc' fzf-docker-remove-containers
+bindkey '^@di' fzf-docker-remove-images
+bindkey '^@dv' fzf-docker-remove-volumes
+
+# Enable Exact-match by fzf-insert-history
+FZF_WIDGET_OPTS[insert-history]='--exact'
+
+# Start fzf in a tmux pane
+FZF_WIDGET_TMUX=1
 
 #-----zsh-git-smart-commands
 alias c='git-smart-commit'
