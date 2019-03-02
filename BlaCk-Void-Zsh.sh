@@ -44,7 +44,7 @@ bsd_install()
 
 set_brew()
 {
-  if [ -x "$(command -v brew)" ]; then
+  if ! [ -x "$(command -v brew)" ]; then
     echo "Now, Install Brew." >&2
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
       sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
