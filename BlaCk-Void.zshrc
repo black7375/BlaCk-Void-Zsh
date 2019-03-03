@@ -1,4 +1,3 @@
-export TERM="xterm-256color"
 export BVZSH=$( cd "$(dirname "$0")" ; pwd )
 ##-------------------------From bashrc-------------------------
 # enable color support of ls and also add handy aliases
@@ -302,13 +301,14 @@ antigen bundle jocelynmallon/zshmarks
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 
 ## Load the theme.
-case ${TERM} in
-xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
+theme-powerline()
+{
     source /usr/share/powerline/bindings/zsh/powerline.zsh
     antigen theme bhilburn/powerlevel9k powerlevel9k
     #POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
- ;;
-*)
+}
+theme-simple()
+{
     antigen bundle sindresorhus/pure
 
     ##PROMPT
@@ -316,6 +316,18 @@ xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
     PROMPT='%}%(?.%F{171}.%F{160}${prompt_pure_state[prompt]}%F{171})${prompt_pure_state[prompt]}%f '
     ##RPROMPT
     RPROMPT='%(1j.[%j] .)% ${(j.|.)pipestatus}'
+}
+
+case ${TERM} in
+xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
+    export TERM="xterm-256color"
+    if [ $(tput colors) -ge "256" ]; then
+        theme-powerline
+    else
+        theme-simple
+ ;;
+*)
+    theme-simple()
 ;;
 esac
 
