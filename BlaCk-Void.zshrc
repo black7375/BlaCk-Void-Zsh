@@ -315,11 +315,7 @@ xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
     PURE_CMD_MAX_EXEC_TIME=2
     PROMPT='%}%(?.%F{171}.%F{160}${prompt_pure_state[prompt]}%F{171})${prompt_pure_state[prompt]}%f '
     ##RPROMPT
-    precmd_pipestatus()
-    {
-        RPROMPT='%(1j.[%j] .)% ${(j.|.)pipestatus}'
-    }
-    add-zsh-hook precmd precmd_pipestatus 
+    RPROMPT='%(1j.[%j] .)% ${(j.|.)pipestatus}'
 ;;
 esac
 
