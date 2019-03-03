@@ -37,7 +37,6 @@ setopt HIST_SAVE_NO_DUPS
 
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 source /usr/share/autojump/autojump.zsh
-source /usr/share/powerline/bindings/zsh/powerline.zsh
 
 #Histoy
 history-clear()
@@ -282,6 +281,7 @@ antigen bundle urltools
 ## Bundles form the custom repo.
 antigen bundle chrissicool/zsh-256color
 antigen bundle djui/alias-tips
+antigen bundle mafredri/zsh-async
 #antigen bundle hchbaw/auto-fu.zsh ##crash with fzf..
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle hlissner/zsh-autopair
@@ -302,8 +302,26 @@ antigen bundle jocelynmallon/zshmarks
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 
 ## Load the theme.
-antigen theme bhilburn/powerlevel9k powerlevel9k
-#POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
+case ${TERM} in
+xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
+    source /usr/share/powerline/bindings/zsh/powerline.zsh
+    antigen theme bhilburn/powerlevel9k powerlevel9k
+    #POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
+ ;;
+*)
+    antigen bundle sindresorhus/pure
+
+    ##PROMPT
+    PURE_CMD_MAX_EXEC_TIME=2
+    PROMPT='%}%(?.%F{171}.%F{160}${prompt_pure_state[prompt]}%F{171})${prompt_pure_state[prompt]}%f '
+    ##RPROMPT
+    precmd_pipestatus()
+    {
+        RPROMPT='%(1j.[%j] .)% ${(j.|.)pipestatus}'
+    }
+    add-zsh-hook precmd precmd_pipestatus 
+;;
+esac
 
 ## Tell Antigen that you're done.
 antigen apply
@@ -517,7 +535,7 @@ POWERLEVEL9K_DIR_HOME_BACKGROUND='039'                #blue
 POWERLEVEL9K_DIR_HOME_FOREGROUND='000'                #alpha
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='039'      #blue
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='000'      #alpha
-POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND='196'  #red
+POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND='160'  #red
 POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND='226'  #yellow
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='000'               #alpha
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='040'               #green or'165' #purple
@@ -531,13 +549,13 @@ POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='000'         #alpha
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='226'         #yellow
 POWERLEVEL9K_STATUS_OK_BACKGROUND='000'               #alpha
 POWERLEVEL9K_STATUS_OK_FOREGROUND='040'               #green
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND='196'            #red
+POWERLEVEL9K_STATUS_ERROR_BACKGROUND='160'            #red
 POWERLEVEL9K_STATUS_ERROR_FOREGROUND='226'            #yellow
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='196'  #red
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='160'  #red
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='226'  #yellow
 POWERLEVEL9K_HISTORY_BACKGROUND='244'                 #gray
 POWERLEVEL9K_HISTORY_FOREGROUND='000'                 #alpha
-POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND='196'           #red
+POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND='160'           #red
 POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND='226'           #yellow
 POWERLEVEL9K_LOAD_WARNING_BACKGROUND='226'            #yellow
 POWERLEVEL9K_LOAD_WARNING_FOREGROUND='000'            #alpha
