@@ -325,9 +325,10 @@ xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
         theme-powerline
     else
         theme-simple
+    fi
  ;;
 *)
-    theme-simple()
+    theme-simple
 ;;
 esac
 
