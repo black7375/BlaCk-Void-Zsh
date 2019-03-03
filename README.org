@@ -33,6 +33,7 @@ Awesome Zsh Setting.
   -  [[#3-info][3. Info.]]
     -  [[#31-theme][3.1 Theme.]]
     -  [[#32-plugins][3.2 Plugins.]]
+    -  [[#33-my-terminal-environment][3.3 My Terminal Environment.]]
 
 * 1. Feature.
 ** 1.1 Powerful View.
@@ -42,12 +43,25 @@ The prompt consists of two lines.\\
 The upper line is for displaying information, and the lower line is for writing commands.
 
 - *Upper Line*
-  + *Left*: account info, root user, using ssh, directory lotation, write permission, git info
+  + *Left*: account info, root user, using ssh, directory lotation, write permission, vcs info
   + *Right*: result status, background job, command execution time, history, zsh load time
 
 - *Lower Line*
   + Syntax highlight, Auto Suggestion.
   + When auto suggestion comes up, you can complete with *right(→) arrow* key.
+
+*[Experimental] Simple Theme* - =dev= branch
+[[https://user-images.githubusercontent.com/25581533/53695695-200b9f00-3e02-11e9-995c-e68a5ac61290.png]]
+When not support xterm, Activate.
+
+- *Upper Line*
+  + directory lotation, vcs info, account info, command execution time
+
+- *Lower Line*
+  + *Left*: prompt conditional , writing commands
+    + Syntax highlight, Auto Suggestion.
+    + When auto suggestion comes up, you can complete with *right(→) arrow* key.
+  + *Right*: background job, result status
 
 *** Git.
 The interaction with Git is easy compared to the file manager.
@@ -74,7 +88,7 @@ If the execution is not done properly, just typing '=fuck='. It will suggest.
 *** Display Info.
 [[https://user-images.githubusercontent.com/25581533/53681099-b4ed9a00-3d27-11e9-9388-cde276b64686.png]]
 Commands that can be abbreviated are indicated by a =Alias tip=.\\
-If you press '<TAB>' while typing command, it is recommended to divide by category.
+If you press '*<TAB>*' while typing command, it is recommended to divide by category.
 
 |[[https://user-images.githubusercontent.com/25581533/53681069-3db80600-3d27-11e9-8e6c-89f8cb71bd96.png]]|[[https://user-images.githubusercontent.com/25581533/53681119-0564f780-3d28-11e9-9afd-35c7e0e03044.png]]|
 You can search history by pressing the *up(↑) arrow* key.
@@ -152,16 +166,16 @@ use [[https://github.com/radare/tiv][tiv]] or [[https://www.nongnu.org/fbi-impro
 
 * 2. Install.
 ** 2.1 Supported Platforms.
-- Linux
+- *Linux*
 Debin-based(ubuntu, debian, mint ..), RPM-based(Fedora, CentOS, Redhat..), Pacman-based(Arch, Manjaro ..)
 
-- Others
+- *Others*
 Mac, FreeBSD-based
 
-- Requirements
+- *Requirements*
   + bash
 
-- Install
+- *Install*
 #+BEGIN_SRC shell
 git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
 bash ~/.zsh/BlaCk-Void-Zsh.sh
@@ -170,7 +184,7 @@ bash ~/.zsh/BlaCk-Void-Zsh.sh
 When you want to use with awesome tmux, Check [[https://github.com/black7375/BlaCk-Void-Tmux/][BlaCk-Void-Tmux]]
 
 ** 2.2 Others.
-- Requirements
+- *Requirements*
   + [[https://www.zsh.org/][zsh]]
   + [[https://github.com/junegunn/fzf][fzf]][integrated]
   + [[https://github.com/BurntSushi/ripgrep][ripgrep]]
@@ -180,7 +194,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   + [[https://github.com/wting/autojump][Autojump]](option for =j=)
   + [[https://beyondgrep.com/][ack]](option for [[https://github.com/paoloantinori/hhighlighter][h]]) | TODO: ack code port to ripgrep.
 
-- Install
+- *Install*
   + Git Clone\\
     =git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh && cd ~/.zsh=
 
@@ -277,3 +291,8 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 - [[https://github.com/peterhurford/up.zsh][up]]:
   Move to the upper directory by the number of <dots>.
 
+** 3.3 My Terminal Environment.
+- *OS*: Kubuntu 18.10
+- *Terminal*: Konsole
+- *Font*: Hack Nerd Font
+- *Color Scheme*: Breeze
