@@ -180,6 +180,7 @@ Mac, FreeBSD-based
 git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
 bash ~/.zsh/BlaCk-Void-Zsh.sh
 #+END_SRC
+Then, terminal font set to one of [[https://github.com/ryanoasis/nerd-fonts][Nerd Fonts]] && restart.
 
 When you want to use with awesome tmux, Check [[https://github.com/black7375/BlaCk-Void-Tmux/][BlaCk-Void-Tmux]]
 
@@ -187,7 +188,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 - *Requirements*
   + [[https://www.zsh.org/][zsh]]
   + [[https://github.com/junegunn/fzf][fzf]][integrated]
-  + [[https://github.com/BurntSushi/ripgrep][ripgrep]]
+  + [[https://github.com/BurntSushi/ripgrep][ripgrep]][fzf's filter]
   + [[https://github.com/powerline/powerline][powerline]]
   + [[https://github.com/ryanoasis/nerd-fonts][powerline support font]](will explain it in the paragraph below.)
   + [[http://w3m.sourceforge.net][w3m-img]](option for Terminal Image View)
@@ -224,6 +225,9 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 
     or\\
     =sudo chsh -s $(which zsh)=
+
+  + Terminal set\\
+  Terminal font set to one of [[https://github.com/ryanoasis/nerd-fonts][Nerd Fonts]] && restart.
 
 ** 2.3 Update.
 =zsh-update=: BVZSH, plugin manger, plugins update.\\
