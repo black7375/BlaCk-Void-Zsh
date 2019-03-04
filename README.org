@@ -208,6 +208,8 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
     cd nerd-fonts && ./install.sh
     cd ..
     #+END_SRC
+    or\\
+    Install font from [[https://github.com/ryanoasis/nerd-fonts][Nerd Fonts]].
 
   + Add to .zshrc
     
@@ -236,6 +238,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 * 3. Info.
 ** 3.1 Theme.
 - [[https://github.com/bhilburn/powerlevel9k][Powerlevel9k]]
+- [[https://github.com/sindresorhus/pure][Pure]](simple theme)
 
 ** 3.2 Plugins.
 *Plugin Manager*
