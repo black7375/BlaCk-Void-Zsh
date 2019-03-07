@@ -180,7 +180,7 @@ Mac, FreeBSD-based
 git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
 bash ~/.zsh/BlaCk-Void-Zsh.sh
 #+END_SRC
-Then, terminal font set to one of [[https://github.com/ryanoasis/nerd-fonts][Nerd Fonts]] && restart.
+Then, *terminal font* set to one of *[[https://github.com/ryanoasis/nerd-fonts][Nerd Fonts]]* (font install's =1= option is =hack nerd font=) && restart.
 
 When you want to use with awesome tmux, Check [[https://github.com/black7375/BlaCk-Void-Tmux/][BlaCk-Void-Tmux]]
 
@@ -229,7 +229,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
     =sudo chsh -s $(which zsh)=
 
   + Terminal set\\
-  Terminal font set to one of [[https://github.com/ryanoasis/nerd-fonts][Nerd Fonts]] && restart.
+  *Terminal font* set to one of *[[https://github.com/ryanoasis/nerd-fonts][Nerd Fonts]]* && restart.
 
 ** 2.3 Update.
 =zsh-update=: BVZSH, plugin manger, plugins update.\\
@@ -237,8 +237,9 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 
 * 3. Info.
 ** 3.1 Theme.
-- [[https://github.com/bhilburn/powerlevel9k][Powerlevel9k]]
-- [[https://github.com/sindresorhus/pure][Pure]](simple theme)
+- [[https://github.com/bhilburn/powerlevel9k][Powerlevel9k]](will Deprecated)
+- [[https://github.com/romkatv/powerlevel10k][Powerlevel10k]](Really Fast and 100% replaceable, =dev= branch)
+- [[https://github.com/sindresorhus/pure][Pure]](simple theme, =dev= branch)
 
 ** 3.2 Plugins.
 *Plugin Manager*
