@@ -298,13 +298,11 @@ antigen bundle changyuheng/zsh-interactive-cd
 antigen bundle peterhurford/up.zsh
 antigen bundle jocelynmallon/zshmarks
 
-POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
-
 ## Load the theme.
 theme-powerline()
 {
     source /usr/share/powerline/bindings/zsh/powerline.zsh
-    antigen theme bhilburn/powerlevel9k powerlevel9k
+    antigen theme romkatv/powerlevel10k
     #POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
 }
 theme-simple()
