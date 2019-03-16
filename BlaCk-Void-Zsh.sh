@@ -12,7 +12,7 @@ echo ""
 ARH_PACKAGE_NAME="zsh zshdb autojump powerline curl git ruby-irb fzf ripgrep thefuck w3m ack"
 DEB_PACKAGE_NAME="zsh zshdb autojump powerline curl git w3m-img ack"
 YUM_PACKAGE_NAME="zsh autojump powerline curl git w3m-img ack"
-MAC_PACKAGE_NAME="zsh zshdb autojump curl python git socat coreutils w3m ack"
+MAC_PACKAGE_NAME="zsh zshdb autojump curl python git socat w3m ack"
 BSD_PACKAGE_NAME="zsh autojump py36-powerline-status curl git fzf ripgrep thefuck w3m-img p5-ack"
 
 arh_install()
@@ -32,9 +32,13 @@ yum_install()
 }
 mac_install()
 {
-  sudo brew update
-  sudo brew install $MAC_PACKAGE_NAME
-  sudo pip install powerline-status
+  brew update
+  brew install $MAC_PACKAGE_NAME
+
+  if ! [ -x "$(command -v pip)" ]; then
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py | sudo python get-pip.py
+  fi
+  sudo pip3 install powerline-status
 }
 bsd_install()
 {
@@ -54,6 +58,7 @@ set_brew()
       fi
     elif [[ "$OSTYPE" == "darwin"* ]]; then
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
     fi
   fi
   brew install fzf ripgrep thefuck

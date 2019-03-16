@@ -50,7 +50,10 @@ necessary()
     sudo curl -fLo "Hack Italic Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete.ttf
     sudo curl -fLo "Hack Regular Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
     sudo chmod 644 Hack*
-    fc-cache -f -v
+    
+    if ![[ "$OSTYPE" == "darwin"*  ]] ; then
+      fc-cache -f -v
+    fi
     cd $BVZSH
 }
 
