@@ -299,36 +299,88 @@ antigen bundle peterhurford/up.zsh
 antigen bundle jocelynmallon/zshmarks
 
 ## Load the theme.
-theme-powerline()
+_theme-powerline()
 {
     source /usr/share/powerline/bindings/zsh/powerline.zsh
     antigen theme romkatv/powerlevel10k
     #POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
+    prompt_powerlevel9k_setup
+
+    export BVZSH_THEME='powerline'
 }
-theme-simple()
+_theme-simple()
 {
+    prompt_powerlevel9k_teardown
     antigen bundle sindresorhus/pure
+    autoload -U promptinit; promptinit
 
     ##PROMPT
     PURE_CMD_MAX_EXEC_TIME=2
     PROMPT='%}%(?.%F{171}.%F{160}${prompt_pure_state[prompt]}%F{171})${prompt_pure_state[prompt]}%f '
     ##RPROMPT
     RPROMPT='%(1j.[%j] .)% ${(j.|.)pipestatus}'
+
+    prompt_pure_setup "$@"
+
+    export BVZSH_THEME='simple'
+}
+_theme-auto()
+{
+    case ${TERM} in
+    xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
+        export TERM="xterm-256color"
+        if [ $(tput colors) -ge "256" ]; then
+            _theme-powerline
+        else
+            _theme-simple
+        fi
+    ;;
+    *)
+        _theme-simple
+    ;;
+    esac
+
+    export BVZSH_THEME='auto'
 }
 
-case ${TERM} in
-xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
-    export TERM="xterm-256color"
-    if [ $(tput colors) -ge "256" ]; then
-        theme-powerline
-    else
-        theme-simple
-    fi
- ;;
-*)
-    theme-simple
-;;
-esac
+zsh-theme()
+{
+    local theme_set=$1
+    case $theme_set in
+    -h* | --help*)
+        echo "--------------------"
+        echo "  BlaCk-Zsh Theme"
+        echo "--------------------\n"
+        echo "Command: zsh-theme THEME_NAME\n"
+        echo "Default: auto"
+        echo "Options: auto powerline simple"
+        return
+    ;;
+
+    'auto')
+        _theme-auto
+    ;;
+
+    'powerline')
+        _theme-powerline
+    ;;
+
+    'simple')
+        _theme-simple
+    ;;
+
+    *)
+        echo "This theme is not available."
+        return 1
+    ;;
+    esac
+}
+
+if [ -z "$BVZSH_THEME" ] ; then
+    export BVZSH_THEME='auto'
+fi
+
+zsh-theme $BVZSH_THEME
 
 ## Tell Antigen that you're done.
 antigen apply
