@@ -327,15 +327,17 @@ antigen bundle jocelynmallon/zshmarks
 ## Load the theme.
 _theme-powerline()
 {
+    export BVZSH_THEME='powerline'
+
     source /usr/share/powerline/bindings/zsh/powerline.zsh
     antigen theme romkatv/powerlevel10k
     #POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
     prompt_powerlevel9k_setup
-
-    export BVZSH_THEME='powerline'
 }
 _theme-simple()
 {
+    export BVZSH_THEME='simple'
+
     prompt_powerlevel9k_teardown
     antigen bundle mafredri/zsh-async
     antigen bundle sindresorhus/pure
@@ -348,11 +350,11 @@ _theme-simple()
     RPROMPT='%(1j.[%j] .)% ${(j.|.)pipestatus}'
 
     prompt_pure_setup "$@"
-
-    export BVZSH_THEME='simple'
 }
 _theme-auto()
 {
+    export BVZSH_THEME='auto'
+
     case ${TERM} in
     xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
         export TERM="xterm-256color"
@@ -366,8 +368,6 @@ _theme-auto()
         _theme-simple
     ;;
     esac
-
-    export BVZSH_THEME='auto'
 }
 
 zsh-theme()
