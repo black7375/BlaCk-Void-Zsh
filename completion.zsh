@@ -71,10 +71,10 @@ fi
 
 # command for process lists, the local web server details and host completion
 zstyle ':completion:*:urls'                         local 'www' '/var/www/' 'public_html'
-  
+
 # caching
-[ -d $ZSHDIR/cache ] && zstyle ':completion:*'      use-cache yes && \
-  zstyle ':completion::complete:*'                  cache-path $ZSHDIR/cache/
+[ -d $BVZSH/cache ] && zstyle ':completion:*'       use-cache yes && \
+  zstyle ':completion::complete:*'                  cache-path $BVZSH/cache/
 
 # host completion /* add brackets as vim can't parse zsh's complex cmdlines 8-) {{{ */
 [ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
