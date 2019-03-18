@@ -1,4 +1,3 @@
-export TERM="xterm-256color"
 export BVZSH=$( cd "$(dirname "$0")" ; pwd )
 ##-------------------------From bashrc-------------------------
 # enable color support of ls and also add handy aliases
@@ -37,7 +36,6 @@ setopt HIST_SAVE_NO_DUPS
 
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 source /usr/share/autojump/autojump.zsh
-source /usr/share/powerline/bindings/zsh/powerline.zsh
 
 #Histoy
 history-clear()
@@ -282,6 +280,7 @@ antigen bundle urltools
 ## Bundles form the custom repo.
 antigen bundle chrissicool/zsh-256color
 antigen bundle djui/alias-tips
+antigen bundle mafredri/zsh-async
 #antigen bundle hchbaw/auto-fu.zsh ##crash with fzf..
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle hlissner/zsh-autopair
@@ -299,11 +298,90 @@ antigen bundle changyuheng/zsh-interactive-cd
 antigen bundle peterhurford/up.zsh
 antigen bundle jocelynmallon/zshmarks
 
-POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
-
 ## Load the theme.
-antigen theme bhilburn/powerlevel9k powerlevel9k
-#POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
+_theme-powerline()
+{
+    source /usr/share/powerline/bindings/zsh/powerline.zsh
+    antigen theme romkatv/powerlevel10k
+    #POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
+    prompt_powerlevel9k_setup
+
+    export BVZSH_THEME='powerline'
+}
+_theme-simple()
+{
+    prompt_powerlevel9k_teardown
+    antigen bundle mafredri/zsh-async
+    antigen bundle sindresorhus/pure
+    autoload -U promptinit; promptinit
+
+    ##PROMPT
+    PURE_CMD_MAX_EXEC_TIME=2
+    PROMPT='%}%(?.%F{171}.%F{160}${prompt_pure_state[prompt]}%F{171})${prompt_pure_state[prompt]}%f '
+    ##RPROMPT
+    RPROMPT='%(1j.[%j] .)% ${(j.|.)pipestatus}'
+
+    prompt_pure_setup "$@"
+
+    export BVZSH_THEME='simple'
+}
+_theme-auto()
+{
+    case ${TERM} in
+    xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
+        export TERM="xterm-256color"
+        if [ $(tput colors) -ge "256" ]; then
+            _theme-powerline
+        else
+            _theme-simple
+        fi
+    ;;
+    *)
+        _theme-simple
+    ;;
+    esac
+
+    export BVZSH_THEME='auto'
+}
+
+zsh-theme()
+{
+    local theme_set=$1
+    case $theme_set in
+    -h* | --help*)
+        echo "--------------------"
+        echo "  BlaCk-Zsh Theme"
+        echo "--------------------\n"
+        echo "Command: zsh-theme THEME_NAME\n"
+        echo "Default: auto"
+        echo "Options: auto powerline simple"
+        return
+    ;;
+
+    'auto')
+        _theme-auto
+    ;;
+
+    'powerline')
+        _theme-powerline
+    ;;
+
+    'simple')
+        _theme-simple
+    ;;
+
+    *)
+        echo "This theme is not available."
+        return 1
+    ;;
+    esac
+}
+
+if [ -z "$BVZSH_THEME" ] ; then
+    export BVZSH_THEME='auto'
+fi
+
+zsh-theme $BVZSH_THEME
 
 ## Tell Antigen that you're done.
 antigen apply
@@ -457,7 +535,7 @@ POWERLEVEL9K_LINUX_OPENSUSE_ICON=$'\uF314'        # 
 POWERLEVEL9K_LINUX_SABAYON_ICON=$'\uF317'         # 
 POWERLEVEL9K_LINUX_SLACKWARE_ICON=$'\uF319'       # 
 POWERLEVEL9K_LINUX_UBUNTU_ICON=$'\uF31B'          # 
-POWERLEVEL9K_LOAD_ICON=$'\uF524 '                 #  or L           or $'\uF140 '  or '\uF080 ' 
+POWERLEVEL9K_LOAD_ICON=$'\uF524'                  #  or L           or $'\uF140 '  or '\uF080 ' 
 POWERLEVEL9K_LOCK_ICON=$'\uF023'                  #  or '\uE0A2' 
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"    #   or '\u256D'$'\U2500' ╭─
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "    #   or '\u251C'$'\U2500' ├─ or '\u2570'$'\U2500 '  ╰─
@@ -486,7 +564,7 @@ POWERLEVEL9K_TIME_ICON=$'\uF017 '                 # 
 POWERLEVEL9K_TODO_ICON=$'\uF046 '                 #  or '\uF133' 
 POWERLEVEL9K_VCS_BOOKMARK_ICON=$'\uF461 '         #  or '\uF02E'  or '\uF097'  or '\uF08D'  or $'\uF223'  or ☿
 POWERLEVEL9K_VCS_BRANCH_ICON=$'\uF126 '           #  or '\uE702'  or 
-POWERLEVEL9K_VCS_COMMIT_ICON="-o-"                #   or '\uE729' 
+POWERLEVEL9K_VCS_COMMIT_ICON='\uE729'             #  or "-o-"
 POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=$'\uF171 '    #  or '\uF172 '  or '\uE703' 
 POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uF113 '       #  or '\uF09B '  or '\uF092 ' 
 POWERLEVEL9K_VCS_GIT_GITLAB_ICON=$'\uF296 '       # 
@@ -517,7 +595,7 @@ POWERLEVEL9K_DIR_HOME_BACKGROUND='039'                #blue
 POWERLEVEL9K_DIR_HOME_FOREGROUND='000'                #alpha
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='039'      #blue
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='000'      #alpha
-POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND='196'  #red
+POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND='160'  #red
 POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND='226'  #yellow
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='000'               #alpha
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='040'               #green or'165' #purple
@@ -531,13 +609,13 @@ POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='000'         #alpha
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='226'         #yellow
 POWERLEVEL9K_STATUS_OK_BACKGROUND='000'               #alpha
 POWERLEVEL9K_STATUS_OK_FOREGROUND='040'               #green
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND='196'            #red
+POWERLEVEL9K_STATUS_ERROR_BACKGROUND='160'            #red
 POWERLEVEL9K_STATUS_ERROR_FOREGROUND='226'            #yellow
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='196'  #red
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='160'  #red
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='226'  #yellow
 POWERLEVEL9K_HISTORY_BACKGROUND='244'                 #gray
 POWERLEVEL9K_HISTORY_FOREGROUND='000'                 #alpha
-POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND='196'           #red
+POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND='160'           #red
 POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND='226'           #yellow
 POWERLEVEL9K_LOAD_WARNING_BACKGROUND='226'            #yellow
 POWERLEVEL9K_LOAD_WARNING_FOREGROUND='000'            #alpha
