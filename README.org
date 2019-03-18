@@ -38,6 +38,7 @@ Awesome Zsh Setting.
 * 1. Feature.
 ** 1.1 Powerful View.
 *** Prompt.
+*Powerline Theme*
 [[https://user-images.githubusercontent.com/25581533/53680999-40fec200-3d26-11e9-8ca5-5c3723e6acdf.png]]
 The prompt consists of two lines.\\
 The upper line is for displaying information, and the lower line is for writing commands.
@@ -50,9 +51,8 @@ The upper line is for displaying information, and the lower line is for writing 
   + Syntax highlight, Auto Suggestion.
   + When auto suggestion comes up, you can complete with *right(→) arrow* key.
 
-*[Experimental] Simple Theme* - =dev= branch
-[[https://user-images.githubusercontent.com/25581533/53695695-200b9f00-3e02-11e9-995c-e68a5ac61290.png]]
-When not support xterm, Activate.
+*Simple Theme*
+[[https://user-images.githubusercontent.com/25581533/54552718-18e4b380-49f4-11e9-8a5f-fb088065b567.png]]
 
 - *Upper Line*
   + directory lotation, vcs info, account info, command execution time
@@ -62,6 +62,12 @@ When not support xterm, Activate.
     + Syntax highlight, Auto Suggestion.
     + When auto suggestion comes up, you can complete with *right(→) arrow* key.
   + *Right*: background job, result status
+
+*How to switch?*
+- =zsh-theme THEME_NAME=
+- =THEME_NAME= list: auto, powerline, simple
+  + auto: Default is powerline. \\
+    When not support xterm or 256 color, simple theme Activate.
 
 *** Git.
 The interaction with Git is easy compared to the file manager.
@@ -237,9 +243,8 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 
 * 3. Info.
 ** 3.1 Theme.
-- [[https://github.com/bhilburn/powerlevel9k][Powerlevel9k]](will Deprecated)
-- [[https://github.com/romkatv/powerlevel10k][Powerlevel10k]](Really Fast and 100% replaceable, =dev= branch)
-- [[https://github.com/sindresorhus/pure][Pure]](simple theme, =dev= branch)
+- [[https://github.com/romkatv/powerlevel10k][Powerlevel10k]](powerline theme, Really Fast and 100% replaceable [[https://github.com/bhilburn/powerlevel9k][Powerlevel9k]])
+- [[https://github.com/sindresorhus/pure][Pure]](simple theme)
 
 ** 3.2 Plugins.
 *Plugin Manager*
