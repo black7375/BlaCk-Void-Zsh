@@ -311,6 +311,7 @@ _theme-powerline()
 _theme-simple()
 {
     prompt_powerlevel9k_teardown
+    antigen bundle mafredri/zsh-async
     antigen bundle sindresorhus/pure
     autoload -U promptinit; promptinit
 
