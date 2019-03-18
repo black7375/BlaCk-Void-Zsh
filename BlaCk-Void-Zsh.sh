@@ -130,28 +130,29 @@ echo "--------------------"
 echo "  Apply Settings"
 echo ""
 zshrc=~/.zshrc
-if [ -e $zshrc ]
-then
-  echo "$zshrc found."
-  echo "Now Backup.."
-  cp -v $zshrc $zshrc.bak
-else
-  echo "$zshrc not found."
-fi
 zshenv=~/.zshenv
-if [ -e $zshenv ]
-then
-  echo "$zshenv found."
-  echo "Now Backup.."
-  cp -v $zshenv $zshenv.bak
-else
-  echo "$zshenv not found."
-fi
+zlogin=~/.zlogin
+
+set_file()
+{
+  local file=$1
+  if [ -e $file ]; then
+    echo "$file found."
+    echo "Now Backup.."
+    cp -v $file $file.bak
+  else
+    echo "$file not found."
+  fi
+}
+set_file $zshrc
+set_file $zshenv
+set_file $zlogin
 
 sudo chsh -s $(which zsh)
 
 echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
 echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
+echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
 #cp -v BlaCk-Void.zshrc  $file
 echo "Please relogin session or restart terminal"
 echo "The End!!"
