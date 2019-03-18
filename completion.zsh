@@ -73,6 +73,8 @@ fi
 zstyle ':completion:*:urls'                         local 'www' '/var/www/' 'public_html'
 
 # caching
+zstyle ':completion:*' accept-exact '*(N)'
+
 [ -d $BVZSH/cache ] && zstyle ':completion:*'       use-cache yes && \
   zstyle ':completion::complete:*'                  cache-path $BVZSH/cache/
 
