@@ -40,3 +40,11 @@ fi
 if [ -d "/snap/bin" ] ; then
     export PATH="$PATH:/snap/bin"
 fi
+
+if [ -d "/usr/sbin" ] ; then
+    export PATH="$PATH:/usr/sbin"
+fi
+
+if [ -d "/usr/local/bin" ] ; then
+    export PATH="$PATH:/usr/local/bin"
+fi
