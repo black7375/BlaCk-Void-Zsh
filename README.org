@@ -63,9 +63,9 @@ The upper line is for displaying information, and the lower line is for writing 
     + When auto suggestion comes up, you can complete with *right(→) arrow* key.
   + *Right*: background job, result status
 
-*How to switch?*
+*[Experimental]How to switch?*
 - =zsh-theme THEME_NAME=
-- =THEME_NAME= list: auto, powerline, simple
+- =THEME_NAME= list: =auto=, =powerline=, =simple=
   + auto: Default is powerline. \\
     When not support xterm or 256 color, simple theme Activate.
 
@@ -173,7 +173,7 @@ use [[https://github.com/radare/tiv][tiv]] or [[https://www.nongnu.org/fbi-impro
 * 2. Install.
 ** 2.1 Supported Platforms.
 - *Linux*
-Debin-based(ubuntu, debian, mint ..), RPM-based(Fedora, CentOS, Redhat..), Pacman-based(Arch, Manjaro ..)
+Debin-based(Ubuntu, Debian, Mint, ..), RPM-based(Fedora, CentOS, Redhat, ..), Pacman-based(Arch, Manjaro, Antergos, ..)
 
 - *Others*
 Mac, FreeBSD-based
