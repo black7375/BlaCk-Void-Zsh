@@ -352,7 +352,9 @@ _theme-powerline()
     export BVZSH_THEME='powerline'
     _unload-theme
 
-    source /usr/share/powerline/bindings/zsh/powerline.zsh
+    if ! [ -x "$(command -v powerline)" ] ; then
+      source $BVZSH/zsh/powerline.zsh
+    fi
     zplugin load romkatv/powerlevel10k
     #POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
 }
