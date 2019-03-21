@@ -48,7 +48,6 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 ##-------------------------Custom set-------------------------
-source /etc/zsh_command_not_found
 setopt nonomatch
 setopt interactive_comments
 setopt correct
@@ -61,7 +60,6 @@ setopt SHARE_HISTORY
 setopt HIST_SAVE_NO_DUPS
 
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
-source /usr/share/autojump/autojump.zsh
 
 #Histoy
 history-clear()
@@ -325,7 +323,6 @@ zplugin light mafredri/zsh-async
 #zplugin light hchbaw/auto-fu.zsh ##crash with fzf..
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light hlissner/zsh-autopair
-zplugin light unixorn/autoupdate-antigen.zshplugin
 zplugin light zsh-users/zsh-completions
 zplugin light b4b4r07/enhancd
 zplugin light zdharma/fast-syntax-highlighting
