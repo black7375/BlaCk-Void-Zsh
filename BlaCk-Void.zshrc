@@ -361,7 +361,6 @@ _theme-simple()
     export BVZSH_THEME='simple'
     _unload-theme
 
-    zplugin light mafredri/zsh-async
     zplugin load  sindresorhus/pure
     autoload -U promptinit; promptinit
 
@@ -428,11 +427,8 @@ zsh-theme()
 if [ -z "$BVZSH_THEME" ] ; then
     export BVZSH_THEME='auto'
 fi
-
 zsh-theme $BVZSH_THEME
 
-## Tell Antigen that you're done.
-antigen apply
 
 ##-------------------------Plugin Set
 #-----thefuck
