@@ -288,7 +288,18 @@ source $BVZSH/hhighlighter/h.sh
 ##-------------------------Zplugin set-------------------------
 ZPLGIN_BIN=~/.zplugin/bin/zplugin.zsh
 if ! [ -e $ZPLGIN_BIN ]; then
+  echo "\n--------------------"
+  echo "Change Plugin Manager!!"
+  echo "--------------------"
+
+  echo "\n--------------------"
+  echo "Install Zplugin"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+
+  echo "\n--------------------"
+  echo "Remove Antigen"
+  rm -rfv $BVZSH/antigen.zsh
+  rm -rfv ~/.antigen
 fi
 
 source $ZPLGIN_BIN
