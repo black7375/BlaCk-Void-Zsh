@@ -429,7 +429,6 @@ if [ -z "$BVZSH_THEME" ] ; then
 fi
 zsh-theme $BVZSH_THEME
 
-
 ##-------------------------Plugin Set
 #-----thefuck
 eval "$(thefuck --alias)"
