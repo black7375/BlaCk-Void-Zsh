@@ -304,7 +304,6 @@ _theme-powerline()
     source /usr/share/powerline/bindings/zsh/powerline.zsh
     antigen theme romkatv/powerlevel10k
     #POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
-    prompt_powerlevel9k_setup
 
     export BVZSH_THEME='powerline'
 }
