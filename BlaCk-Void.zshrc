@@ -285,61 +285,76 @@ source $BVZSH/fzf-set.zsh
 ##-------------------------Hhighlighter set
 source $BVZSH/hhighlighter/h.sh
 
-##-------------------------Antigen set-------------------------
-source $BVZSH/antigen.zsh
+##-------------------------Zplugin set-------------------------
+ZPLGIN_BIN=~/.zplugin/bin/zplugin.zsh
+if ! [ -e $ZPLGIN_BIN ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+fi
 
-## Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+source $ZPLGIN_BIN
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
 
-## Bundles from the default repo.
-antigen bundle autojump
-antigen bundle command-not-found
-antigen bundle fzf
-antigen bundle git
-antigen bundle pip
-antigen bundle sudo
-antigen bundle thefuck
-antigen bundle tmux
-antigen bundle tmuxinator
-antigen bundle urltools
+## Bundles from the oh-my-zsh.
+zplugin snippet OMZ::plugins/autojump/autojump.plugin.zsh
+zplugin snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
+zplugin snippet OMZ::plugins/fzf/fzf.plugin.zsh
+zplugin snippet OMZ::plugins/git/git.plugin.zsh
+zplugin snippet OMZ::plugins/pip/pip.plugin.zsh
+zplugin snippet OMZ::plugins/sudo/sudo.plugin.zsh
+zplugin snippet OMZ::plugins/thefuck/thefuck.plugin.zsh
+zplugin snippet OMZ::plugins/tmux/tmux.plugin.zsh
+zplugin snippet OMZ::plugins/tmuxinator/tmuxinator.plugin.zsh
+zplugin snippet OMZ::plugins/urltools/urltools.plugin.zsh
 
 ## Bundles form the custom repo.
-antigen bundle chrissicool/zsh-256color
-antigen bundle djui/alias-tips
-antigen bundle mafredri/zsh-async
-#antigen bundle hchbaw/auto-fu.zsh ##crash with fzf..
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle hlissner/zsh-autopair
-antigen bundle unixorn/autoupdate-antigen.zshplugin
-antigen bundle zsh-users/zsh-completions
-antigen bundle b4b4r07/enhancd
-antigen bundle zdharma/fast-syntax-highlighting
-antigen bundle wfxr/forgit
-antigen bundle ytet5uy4/fzf-widgets
-antigen bundle seletskiy/zsh-git-smart-commands
-antigen bundle smallhadroncollider/antigen-git-store
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle changyuheng/zsh-interactive-cd
-#antigen bundle zsh-users/zsh-syntax-highlighting ##fast-syntax-highlighting is better!!
-antigen bundle peterhurford/up.zsh
-antigen bundle jocelynmallon/zshmarks
+zplugin light chrissicool/zsh-256color
+zplugin light djui/alias-tips
+zplugin light mafredri/zsh-async
+#zplugin light hchbaw/auto-fu.zsh ##crash with fzf..
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light hlissner/zsh-autopair
+zplugin light unixorn/autoupdate-antigen.zshplugin
+zplugin light zsh-users/zsh-completions
+zplugin light b4b4r07/enhancd
+zplugin light zdharma/fast-syntax-highlighting
+zplugin light wfxr/forgit
+zplugin light ytet5uy4/fzf-widgets
+zplugin light seletskiy/zsh-git-smart-commands
+zplugin light smallhadroncollider/antigen-git-store
+zplugin light zsh-users/zsh-history-substring-search
+zplugin light changyuheng/zsh-interactive-cd
+#zplugin light zsh-users/zsh-syntax-highlighting ##fast-syntax-highlighting is better!!
+zplugin light peterhurford/up.zsh
+zplugin light jocelynmallon/zshmarks
 
 ## Load the theme.
+_unload-theme()
+{
+    if [[ $BVZSH_THEME -eq 'powerline' ]]; then
+      zplugin unload sindresorhus/pure
+    fi
+    if [[ $BVZSH_THEME -eq 'simple' ]]; then
+      prompt_powerlevel9k_teardown
+      zplugin unload romkatv/powerlevel10k
+    fi
+}
 _theme-powerline()
 {
     export BVZSH_THEME='powerline'
+    _unload-theme
 
     source /usr/share/powerline/bindings/zsh/powerline.zsh
-    antigen theme romkatv/powerlevel10k
+    zplugin load romkatv/powerlevel10k
     #POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
-
-    export BVZSH_THEME='powerline'
 }
 _theme-simple()
 {
-    prompt_powerlevel9k_teardown
-    antigen bundle mafredri/zsh-async
-    antigen bundle sindresorhus/pure
+    export BVZSH_THEME='simple'
+    _unload-theme
+
+    zplugin light mafredri/zsh-async
+    zplugin load  sindresorhus/pure
     autoload -U promptinit; promptinit
 
     ##PROMPT
@@ -349,8 +364,6 @@ _theme-simple()
     RPROMPT='%(1j.[%j] .)% ${(j.|.)pipestatus}'
 
     prompt_pure_setup "$@"
-    
-    export BVZSH_THEME='simple'
 }
 _theme-auto()
 {
@@ -367,7 +380,7 @@ _theme-auto()
         _theme-simple
     ;;
     esac
-    
+
     export BVZSH_THEME='auto'
 }
 
@@ -680,10 +693,9 @@ zsh-update()
 
     echo "\n--------------------"
     echo "Plugins update"
-    antigen selfupdate
-    antigen update
-    rm ~/.antigen_system_lastupdate ~/.antigen_plugin_lastupdate
-    cd $BVZSH/hhighlighter && git pull
+    zplugin self-update
+    zplugin update
+    git pull $BVZSH/hhighlighter
 }
 font-update()
 {

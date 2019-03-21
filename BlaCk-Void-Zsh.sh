@@ -66,7 +66,7 @@ set_brew()
 }
 etc_install()
 {
-  curl -L git.io/antigen > $BVZSH/antigen.zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
   curl -L $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > $BVZSH/prettyping
   chmod +x $BVZSH/prettyping
   git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/hhighlighter
