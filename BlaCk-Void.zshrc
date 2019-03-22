@@ -344,7 +344,6 @@ _unload-theme()
     fi
     if [[ $BVZSH_THEME -eq 'simple' ]]; then
       prompt_powerlevel9k_teardown
-      zplugin unload romkatv/powerlevel10k
     fi
 }
 _theme-powerline()
@@ -352,10 +351,15 @@ _theme-powerline()
     export BVZSH_THEME='powerline'
     _unload-theme
 
-    if ! [ -x "$(command -v powerline)" ] ; then
-      source $BVZSH/zsh/powerline.zsh
+    if [ -x "$(command -v powerline)" ] ; then
+      source $BVZSH/powerline.zsh
     fi
-    zplugin load romkatv/powerlevel10k
+    if [ "$(zplugin loaded powerlevel10k | rg romkatv |
+          sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "romkatv/powerlevel10k" ] ; then
+      prompt_powerlevel9k_setup
+    else
+      zplugin load romkatv/powerlevel10k
+    fi
     #POWERLEVEL9K_MODE='nerdfont-complete' ##Now I USE Custom Icon Setting
 }
 _theme-simple()
