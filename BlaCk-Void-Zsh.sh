@@ -142,6 +142,7 @@ set_file()
     cp -v $file $file.bak
   else
     echo "$file not found."
+    touch $file
   fi
 }
 set_file $zshrc
