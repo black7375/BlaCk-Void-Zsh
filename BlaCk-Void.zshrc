@@ -467,7 +467,7 @@ export ENHANCD_FILTER
 
 #-----fzf-widgets
 # Map widgets to key
-export DOT_BASE_DIR=$HOME
+export DOT_BASE_DIR=$BVZSH
 bindkey '^fw' fzf-select-widget
 bindkey '^f.' fzf-edit-dotfiles
 bindkey '^fc' fzf-change-directory
