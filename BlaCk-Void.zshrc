@@ -353,8 +353,10 @@ _theme-powerline()
     export BVZSH_THEME='powerline'
     _unload-theme
 
-    if [ -x "$(command -v powerline)" ] ; then
-      source $BVZSH/powerline.zsh
+    if [ -x "$(command -v powerline)" ] &&
+       ! [ "$(zplugin loaded powerline-binding | rg black7375 |
+          sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "black7375/powerline-binding *" ] ; then
+      zplugin light black7375/powerline-binding
     fi
     if [ "$(zplugin loaded powerlevel10k | rg romkatv |
           sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "romkatv/powerlevel10k" ] ; then
