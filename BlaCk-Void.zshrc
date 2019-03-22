@@ -365,12 +365,19 @@ _theme-simple()
 
     zplugin load  sindresorhus/pure
     autoload -U promptinit; promptinit
-
+r
     ##PROMPT
     PURE_CMD_MAX_EXEC_TIME=2
     PROMPT='%}%(?.%F{171}.%F{160}${prompt_pure_state[prompt]}%F{171})${prompt_pure_state[prompt]}%f '
     ##RPROMPT
-    RPROMPT='%(1j.[%j] .)% ${(j.|.)pipestatus}'
+    precmd_pipestatus()
+    {
+        RPROMPT='%(1j.[%j] .)% ${(j.|.)pipestatus}'
+        if [[ ${(j.|.)pipestatus} = 0 ]]; then
+            RPROMPT='%(1j.[%j] .)'
+        fi
+    }
+    add-zsh-hook precmd precmd_pipestatus
 
     prompt_pure_setup "$@"
 }
