@@ -339,10 +339,12 @@ zplugin light jocelynmallon/zshmarks
 ## Load the theme.
 _unload-theme()
 {
-    if [[ $BVZSH_THEME -eq 'powerline' ]]; then
+    if [[ $BVZSH_THEME -eq 'powerline' && "$(zplugin loaded pure | rg sindresorhus |
+          sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "sindresorhus/pure" ]]; then
       zplugin unload sindresorhus/pure
     fi
-    if [[ $BVZSH_THEME -eq 'simple' ]]; then
+    if [[ $BVZSH_THEME -eq 'simple' && "$(zplugin loaded powerlevel10k | rg romkatv |
+          sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "romkatv/powerlevel10k" ]]; then
       prompt_powerlevel9k_teardown
     fi
 }
