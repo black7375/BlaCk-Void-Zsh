@@ -154,6 +154,10 @@ sudo chsh -s $(which zsh)
 echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
 echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
 echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
+zcompile $BVZSH/BlaCk-Void.zshrc
+zcompile $BVZSH/fzf-set.zsh
+zcompile $BVZSH/completion.zsh
+
 #cp -v BlaCk-Void.zshrc  $file
 echo "Please relogin session or restart terminal"
 echo "The End!!"

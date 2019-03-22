@@ -710,6 +710,9 @@ zsh-update()
     echo "\n--------------------"
     echo "Setting files update"
     cd $BVZSH && git pull
+    zcompile $BVZSH/BlaCk-Void.zshrc
+    zcompile $BVZSH/fzf-set.zsh
+    zcompile $BVZSH/completion.zsh
 
     echo "\n--------------------"
     echo "Plugins update"
