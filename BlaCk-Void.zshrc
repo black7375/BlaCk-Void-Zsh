@@ -340,11 +340,11 @@ zplugin light jocelynmallon/zshmarks
 _unload-theme()
 {
     if [[ $BVZSH_THEME -eq 'powerline' && "$(zplugin loaded pure | rg sindresorhus |
-          sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "sindresorhus/pure" ]]; then
+          sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "sindresorhus/pure" ]]; then
       zplugin unload sindresorhus/pure
     fi
     if [[ $BVZSH_THEME -eq 'simple' && "$(zplugin loaded powerlevel10k | rg romkatv |
-          sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "romkatv/powerlevel10k" ]]; then
+          sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "romkatv/powerlevel10k" ]]; then
       prompt_powerlevel9k_teardown
     fi
 }
@@ -355,11 +355,11 @@ _theme-powerline()
 
     if [ -x "$(command -v powerline)" ] &&
        ! [ "$(zplugin loaded powerline-binding | rg black7375 |
-          sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "black7375/powerline-binding *" ] ; then
+          sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "black7375/powerline-binding *" ] ; then
       zplugin light black7375/powerline-binding
     fi
     if [ "$(zplugin loaded powerlevel10k | rg romkatv |
-          sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "romkatv/powerlevel10k" ] ; then
+          sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "romkatv/powerlevel10k" ] ; then
       prompt_powerlevel9k_setup
     else
       zplugin load romkatv/powerlevel10k
