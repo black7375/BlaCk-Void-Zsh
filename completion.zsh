@@ -1,6 +1,6 @@
 #Useful Completion @finnurtorfa/zsh(https://github.com/finnurtorfa/zsh)
 # Add zsh-completions to $fpath.
-fpath=("${0:h}/external/src" $fpath)
+fpath=("${0:h}/external/src" $ZPLG_FPATH_BEFORE $fpath )
 
 # Load and initialize the completion system ignoring insecure directories with a
 # cache time of 20 hours, so it should almost always regenerate the first time a
