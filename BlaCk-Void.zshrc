@@ -52,6 +52,9 @@ setopt nonomatch
 setopt interactive_comments
 setopt correct
 setopt noclobber
+[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+HISTSIZE=1000000
+SAVEHIST=$HISTSIZE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
