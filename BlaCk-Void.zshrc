@@ -521,30 +521,65 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
-##-------------------------PowerLevel9k Set-------------------------
-##-----Prompt Set
+##-------------------------PowerLevel10k Set-------------------------
+##-------------------------Theme Doc
+## Prompt Elements
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
+# POWERLEVEL9K_PROMPT_ON_NEWLINE POWERLEVEL9K_PROMPT_ADD_NEWLINE POWERLEVEL9K_RPROMPT_ON_NEWLINE
+
 ## System Status Segments
-#background_jobs battery context dir dir_writable disk_usage history host ip vpn_ip public_ip load os_icon ram root_indicator status swap time user vi_mode ssh
+# background_jobs battery context dir dir_writable disk_usage history
+# host ip vpn_ip public_ip load os_icon ram root_indicator status swap
+# time user vi_mode ssh
 
 ## Development Environment Segments
-#vcs
+# vcs
 
 ## Language Segments
-#GO: go_version
-#Javascript: node_version nodeenv nvm
-#PHP: php_version symfony2tests symfony2_version
-#Python: virtualenv anaconda pyenv
-#Ruby: chruby rbenv rspec_stats rvm
-#Rust: rust_version
-#Swift: swift_version
+# GO         => go_version
+# Javascript => node_version nodeenv nvm
+# PHP        => php_version symfony2tests symfony2_version
+# Python     => virtualenv anaconda pyenv
+# Ruby       => chruby rbenv rspec_stats rvm
+# Rust       => rust_version
+# Swift      => swift_version
 
 ## Cloud Segments
-#AWS: aws aws_en_env
-#Other: docker_machine kubecontext
+# AWS        => aws aws_en_env
+# Other      => docker_machine kubecontext
 
 ## Other Segments
-#custom_commmand command_execution_time todo detect_virt newline
+# custom_commmand command_execution_time todo detect_virt newline
 
+## Zsh Segments codes.
+# %F => color dict
+# %f => reset color
+# %~ => current path
+# %* => time
+# %n => username
+# %m => shortname host
+# %(?..) => prompt conditional - %(condition.true.false)
+
+## Terminal codes
+# \e7   => save cursor position
+# \e[2A => move cursor 2 lines up
+# \e[1G => go to position 1 in terminal
+# \e8   => restore cursor position
+# \e[K  => clears everything after the cursor on the current line
+# \e[2K => clear everything on the current line
+
+## Icons
+# get_icon_names => show icons.
+# Setting => POWERLEVEL9K_{ICONNAME}_ICON
+
+## Color
+# for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
+# getColorCode background
+# getColorCode foreground
+# Setting => POWERLEVEL9K_{ELEMENT}_FOREGROUND POWERLEVEL9K_{ELEMENT}_BACKGROUND
+
+##-------------------------Theme Set
+##-----Prompt Set
 ## Prompt
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context root_indicator dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time history load)
@@ -552,10 +587,9 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_tim
 ## Double-Lined Prompt
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
 
 ##-----Icon Set
-#get_icon_names
 POWERLEVEL9K_ANDROID_ICON=$'\uF17B '              #   or  '\uE70E'  
 POWERLEVEL9K_APPLE_ICON=$'\uF179 '                # 
 POWERLEVEL9K_AWS_ICON=$'\uF1B3 '                  #  or  '\uF270 ' 
@@ -647,10 +681,6 @@ POWERLEVEL9K_VPN_ICON="(vpn)"
 POWERLEVEL9K_WINDOWS_ICON=$'\uF17a '              #  or '\uF17A' 
 
 ##-----Color Set
-#for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
-#getColorCode background
-#getColorCode foreground
-
 POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND='226'          #yellow
 POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND='000'          #alpha
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='039'             #blue
