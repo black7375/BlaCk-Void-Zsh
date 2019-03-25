@@ -241,7 +241,7 @@ _simple-nerd()
   ##-----Icon Set
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_ICON=$'\u3002'       # 。 or '\uF013' 
   typeset -g POWERLEVEL9K_CARRIAGE_RETURN_ICON=''
-  typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON=''               #  '\uF252 ' 
+  typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON=' '              #  '\uF252 ' 
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\u3000'     # 　or 
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=''
   typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=''
