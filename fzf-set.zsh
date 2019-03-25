@@ -322,7 +322,9 @@ ftpane()
 }
 # In tmux.conf
 # bind-key 0 run "tmux split-window -l 12 'bash -ci ftpane'"
-tmux bind-key 0 run "tmux split-window -l 12 'zsh -ci ftpane'"
+if [[ -x "$(command -v _zsh_tmux_plugin_run)" ]]; then
+  tmux bind-key 0 run "tmux split-window -l 12 'zsh -ci ftpane'"
+fi
 
 ##-----Completion
 #hg
