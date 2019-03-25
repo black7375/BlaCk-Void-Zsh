@@ -349,22 +349,9 @@ else
   source $BVZSH/BlaCk-Void.ztheme
 fi
 
-_unload-theme()
-{
-    if [[ $BVZSH_THEME -eq 'powerline' && "$(zplugin loaded pure | rg sindresorhus |
-          sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "sindresorhus/pure" ]]; then
-      zplugin unload sindresorhus/pure
-    fi
-    if [[ $BVZSH_THEME -eq 'simple' && "$(zplugin loaded powerlevel10k | rg romkatv |
-          sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "romkatv/powerlevel10k" ]]; then
-      prompt_powerlevel9k_teardown
-    fi
-}
 _theme-powerline()
 {
     export BVZSH_THEME='powerline'
-    #_unload-theme
-
     if [ -x "$(command -v powerline)" ] &&
        ! [ "$(zplugin loaded powerline-binding | rg black7375 |
           sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "black7375/powerline-binding *" ] ; then
@@ -375,7 +362,6 @@ _theme-powerline()
 _theme-simple()
 {
     export BVZSH_THEME='simple'
-    #_unload-theme
     _simple-nerd
 }
 _theme-auto()
