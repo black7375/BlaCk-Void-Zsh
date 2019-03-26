@@ -283,9 +283,6 @@ compdef __tmux-sessions tm
 ##-------------------------FZF set
 source $BVZSH/fzf-set.zsh
 
-##-------------------------Hhighlighter set
-source $BVZSH/hhighlighter/h.sh
-
 ##-------------------------Zplugin set-------------------------
 ZPLGIN_BIN=~/.zplugin/bin/zplugin.zsh
 if ! [ -e $ZPLGIN_BIN ]; then
