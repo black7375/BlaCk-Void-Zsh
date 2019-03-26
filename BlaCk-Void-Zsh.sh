@@ -69,7 +69,6 @@ etc_install()
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
   curl -L $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > $BVZSH/prettyping
   chmod +x $BVZSH/prettyping
-  git clone https://github.com/paoloantinori/hhighlighter.git $BVZSH/hhighlighter
   source $BVZSH/install_font.sh
 }
 
