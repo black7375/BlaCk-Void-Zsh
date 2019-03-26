@@ -308,66 +308,39 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
 ##----- Bundles from the oh-my-zsh.
-##@MuhmdRaouf
-ZSH="$HOME/.zplugin/plugins/robbyrussell---oh-my-zsh/"
-# OMZ things to source
-local _ZSHRC_OMZ_SOURCES=(
-  # Libs
-  lib/compfix.zsh
-  lib/termsupport.zsh
-
-  # Plugins
-  plugins/autojump/autojump.plugin.zsh
-  plugins/command-not-found/command-not-found.plugin.zsh
-  plugins/fzf/fzf.plugin.zsh
-  plugins/git/git.plugin.zsh
-  plugins/pip/pip.plugin.zsh
-  plugins/sudo/sudo.plugin.zsh
-  plugins/thefuck/thefuck.plugin.zsh
-  plugins/tmux/tmux.plugin.zsh
-  plugins/tmuxinator/tmuxinator.plugin.zsh
-  plugins/urltools/urltools.plugin.zsh
-)
-
-zplugin ice wait"0" from"gh" pick"lib/git.zsh" nocompletions blockf \
-  atload'!local f; for f in ${_ZSHRC_OMZ_SOURCES}; do source $f; done' \
-  compile"(${(j.|.)_ZSHRC_OMZ_SOURCES})" lucid
-zplugin light robbyrussell/oh-my-zsh
+OMZ='https://github.com/robbyrussell/oh-my-zsh/tree/master'
+zplugin snippet $OMZ/lib/compfix.zsh
+zplugin snippet $OMZ/lib/termsupport.zsh
+zplugin snippet $OMZ/plugins/autojump/autojump.plugin.zsh
+zplugin snippet $OMZ/plugins/command-not-found/command-not-found.plugin.zsh
+zplugin snippet $OMZ/plugins/fzf/fzf.plugin.zsh
+zplugin snippet $OMZ/plugins/git/git.plugin.zsh
+zplugin snippet $OMZ/plugins/pip/pip.plugin.zsh
+zplugin snippet $OMZ/plugins/sudo/sudo.plugin.zsh
+zplugin snippet $OMZ/plugins/thefuck/thefuck.plugin.zsh
+zplugin snippet $OMZ/plugins/tmux/tmux.plugin.zsh
+zplugin snippet $OMZ/plugins/tmuxinator/tmuxinator.plugin.zsh
+zplugin snippet $OMZ/plugins/urltools/urltools.plugin.zsh
 
 ##----- Bundles form the custom repo.
-zplugin ice wait"0" lucid
 zplugin light chrissicool/zsh-256color
-zplugin ice wait"0" lucid
 zplugin light mafredri/zsh-async
-#zplugin ice wate"1" lucid
 #zplugin light hchbaw/auto-fu.zsh ##crash with fzf..
-zplugin ice wait"0" atload"_zsh_autosuggest_start" lucid
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light hlissner/zsh-autopair
-zplugin ice wait"0" lucid
 zplugin light zsh-users/zsh-completions
-zplugin ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
 
-zplugin ice wait"1" lucid
 zplugin light djui/alias-tips
-zplugin ice wait"1" lucid
 zplugin light b4b4r07/enhancd
-zplugin ice wait"1" lucid
 zplugin light wfxr/forgit
-zplugin ice wait"1" lucid
 zplugin light ytet5uy4/fzf-widgets
-zplugin ice wait"1" lucid
 zplugin light seletskiy/zsh-git-smart-commands
-zplugin ice wait"1" lucid
 zplugin light zsh-users/zsh-history-substring-search
-zplugin ice wait"1" lucid
 zplugin light changyuheng/zsh-interactive-cd
-zplugin ice wait"1" lucid
 zplugin light peterhurford/up.zsh
-zplugin ice wait"1" lucid
 zplugin light jocelynmallon/zshmarks
-zplugin ice wait"1" pick"h.sh" lucid
+zplugin ice pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
 if [[ -e $BVZSH/hhighlighter ]]; then
   rm -rfv $BVZSH/hhighlighter
