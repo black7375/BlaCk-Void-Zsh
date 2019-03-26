@@ -349,33 +349,32 @@ zplugin light zsh-users/zsh-completions
 zplugin ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
 
-zplugin ice waite"1" lucid
+zplugin ice wait"1" lucid
 zplugin light djui/alias-tips
-zplugin ice waite"1" lucid
+zplugin ice wait"1" lucid
 zplugin light b4b4r07/enhancd
-zplugin ice waite"1" lucid
+zplugin ice wait"1" lucid
 zplugin light wfxr/forgit
-zplugin ice waite"1" lucid
+zplugin ice wait"1" lucid
 zplugin light ytet5uy4/fzf-widgets
-zplugin ice waite"1" lucid
+zplugin ice wait"1" lucid
 zplugin light seletskiy/zsh-git-smart-commands
-zplugin ice waite"1" lucid
+zplugin ice wait"1" lucid
 zplugin light zsh-users/zsh-history-substring-search
-zplugin ice waite"1" lucid
+zplugin ice wait"1" lucid
 zplugin light changyuheng/zsh-interactive-cd
-zplugin ice waite"1" lucid
+zplugin ice wait"1" lucid
 zplugin light peterhurford/up.zsh
-zplugin ice waite"1" lucid
+zplugin ice wait"1" lucid
 zplugin light jocelynmallon/zshmarks
 zplugin ice wait"1" pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
-if [ -e $BVZSH/hhighlighter ]; then
+if [[ -e $BVZSH/hhighlighter ]]; then
   rm -rfv $BVZSH/hhighlighter
 fi
 
 ##-------------------------Theme Set
 ## Load the theme.
-compile"{functions/*,powerlevel10k.zsh-theme}"
 zplugin light romkatv/powerlevel10k
 local ztheme=~/.ztheme
 if [ -e $ztheme ]; then
