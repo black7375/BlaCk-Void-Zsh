@@ -519,6 +519,7 @@ zsh-update()
     echo "Setting files update"
     cd $BVZSH && git pull
     zcompile $BVZSH/BlaCk-Void.zshrc
+    zcompile $BVZSH/BlaCk-Void.ztheme
     zcompile $BVZSH/fzf-set.zsh
     zcompile $BVZSH/completion.zsh
 

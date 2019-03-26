@@ -155,6 +155,7 @@ echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
 echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
 echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
 zcompile $BVZSH/BlaCk-Void.zshrc
+zcompile $BVZSH/BlaCk-Void.ztheme
 zcompile $BVZSH/fzf-set.zsh
 zcompile $BVZSH/completion.zsh
 
