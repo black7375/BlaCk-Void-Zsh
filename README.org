@@ -52,7 +52,7 @@ The upper line is for displaying information, and the lower line is for writing 
   + When auto suggestion comes up, you can complete with *right(→) arrow* key.
 
 *Simple Theme*
-[[https://user-images.githubusercontent.com/25581533/54965511-339ac780-4fb4-11e9-8bc4-6ee4173f4b8c.png]]
+[[https://user-images.githubusercontent.com/25581533/54966572-06e8af00-4fb8-11e9-97d5-23890c3b5046.png]]
 
 - *Upper Line*
   + directory lotation, vcs info, command execution time
