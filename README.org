@@ -66,7 +66,7 @@ The upper line is for displaying information, and the lower line is for writing 
 *[Experimental]How to cutomize or switch?*
 - Copy file to your home.
   + =cp $BVZSH/BlaCk-Void.ztheme ~/.ztheme= && Customize!!
-- =export BVZSH_THEME='THEME MODE'=
+- =export= BVZSH_THEME='THEME MODE'
   + Restrictions: Work only in =~/.ztheme=
 - =THEME MODE= list: =auto=, =powerline=, =simple=
   + auto: Default is powerline. \\
