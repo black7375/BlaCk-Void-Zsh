@@ -186,7 +186,7 @@ _powerline-nerd()
   typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND='000'               #alpha
   typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND='040'               #green or'165' #purple
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='000'           #alpha
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='036'           #cyan
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='040'           #green
   typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='000'            #alpha
   typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='208'            #orange
   typeset -g POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='040'          #green
