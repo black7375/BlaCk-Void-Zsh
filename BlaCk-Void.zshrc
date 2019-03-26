@@ -524,7 +524,6 @@ zsh-update()
     echo "Plugins update"
     zplugin self-update
     zplugin update
-    git pull $BVZSH/hhighlighter
 }
 font-update()
 {
