@@ -210,11 +210,10 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   + Git Clone\\
     =git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh && cd ~/.zsh=
 
-  + antigen - =master= branch\\
-    =curl -L git.io/antigen > antigen.zsh=
-
-  + zplugin - =dev= branch(replace antigen)\\
-    =sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"=
+  + zplugin(replace antigen)
+    #+BEGIN_SRC shell
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+    #+END_SRC
 
   + nerdfont(powerline support font)  
     #+BEGIN_SRC shell
