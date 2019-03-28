@@ -48,6 +48,9 @@ export BVZSH_THEME='simple'
 # \e[K  => clears everything after the cursor on the current line
 # \e[2K => clear everything on the current line
 
+## ETC Prompt Expansion
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+
 ## Icons
 # get_icon_names => show icons.
 # Setting => POWERLEVEL9K_{ICONNAME}_ICON
