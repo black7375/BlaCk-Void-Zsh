@@ -219,7 +219,21 @@ _simple-nerd()
   # to change everything else.
   ##-----Prompt Set
   ## Prompt
-  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
+  # init
+  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator command_execution_time)
+  if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+          $EUID -eq 0 ]]; then
+    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
+  fi
+  left_prompt() {
+    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator command_execution_time)
+    # not connected ssh, root user
+    if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+            $EUID -eq 0 ]]; then
+      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
+    fi
+  }
+  add-zsh-hook precmd left_prompt
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs status)
 
   ## Double-Lined Prompt
@@ -234,6 +248,7 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 
   ## Other Prompt
+  typeset -g POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=false
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
   typeset -g POWERLEVEL9K_STATUS_OK=false
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
@@ -241,6 +256,7 @@ _simple-nerd()
   ##-----Icon Set
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_ICON=$'\u3002'       # 。 or '\uF013' 
   typeset -g POWERLEVEL9K_CARRIAGE_RETURN_ICON=''
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE=' %n@%m'
   typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON=' '              #  '\uF252 ' 
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\u3000'     # 　or 
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=''
