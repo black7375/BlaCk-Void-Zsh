@@ -270,7 +270,7 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_LOCK_ICON=$' \uF023'                 #  or '\uE0A2' 
   typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=' '
   typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=''
-  typeset -g POWERLEVEL9K_ROOT_ICON=$' $\uF09C'                #  or '\uF0e7'   or '\uF292'   or '\uE614 ' 
+  typeset -g POWERLEVEL9K_ROOT_ICON=$' \uF09C'                 #  or '\uF0e7'   or '\uF292'   or '\uE614 ' 
   typeset -g POWERLEVEL9K_VCS_BOOKMARK_ICON=$'\uF461 '         #  or '\uF02E'  or '\uF097'  or '\uF08D'  or $'\uF223'  or ☿
   typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=' \uF126'            #  or '\uE702'  or 
   typeset -g POWERLEVEL9K_VCS_COMMIT_ICON=$'\uE729'            #  or "-o-" or '@'
