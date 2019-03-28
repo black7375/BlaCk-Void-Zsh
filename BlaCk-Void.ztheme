@@ -293,7 +293,7 @@ _simple-nerd()
 
   ##-----Color Set
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_BACKGROUND='000'         #alpha
-  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_FOREGROUND='247'        #light grey
+  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_FOREGROUND='247'         #light grey
   typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='000'             #alpha
   typeset -g POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='039'             #blue
   typeset -g POWERLEVEL9K_DIR_HOME_BACKGROUND='000'                #alpha
