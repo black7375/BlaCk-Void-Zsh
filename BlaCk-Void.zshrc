@@ -62,6 +62,9 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt SHARE_HISTORY
 setopt HIST_SAVE_NO_DUPS
 
+# eliminates duplicates in *paths
+typeset -gU cdpath fpath path
+
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 #Histoy

@@ -18,7 +18,7 @@ Awesome Zsh Setting.
       -  [[#auto-pair][Auto Pair.]]
       -  [[#fix][Fix.]]
       -  [[#display-info][Display Info.]]
-      -  [[#integration-with-httpsgithubcomjunegunnfzffzf][Integration with Fzf.]]
+      -  [[#integration-with-fzf][Integration with Fzf.]]
       -  [[#git][Git.]]
       -  [[#etc][Etc.]]
     -  [[#13-terminal-utility][1.3 Terminal Utility.]]
@@ -63,9 +63,9 @@ The upper line is for displaying information, and the lower line is for writing 
     + When auto suggestion comes up, you can complete with *right(→) arrow* key.
   + *Right*: background job, result status
 
-*How to switch?*
+*[Experimental]How to switch?*
 - =zsh-theme THEME_NAME=
-- =THEME_NAME= list: auto, powerline, simple
+- =THEME_NAME= list: =auto=, =powerline=, =simple=
   + auto: Default is powerline. \\
     When not support xterm or 256 color, simple theme Activate.
 
@@ -173,7 +173,7 @@ use [[https://github.com/radare/tiv][tiv]] or [[https://www.nongnu.org/fbi-impro
 * 2. Install.
 ** 2.1 Supported Platforms.
 - *Linux*
-Debin-based(ubuntu, debian, mint ..), RPM-based(Fedora, CentOS, Redhat..), Pacman-based(Arch, Manjaro ..)
+Debin-based(Ubuntu, Debian, Mint, ..), RPM-based(Fedora, CentOS, Redhat, ..), Pacman-based(Arch, Manjaro, Antergos, ..)
 
 - *Others*
 Mac, FreeBSD-based
@@ -205,8 +205,11 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   + Git Clone\\
     =git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh && cd ~/.zsh=
 
-  + antigen\\
+  + antigen - =master= branch\\
     =curl -L git.io/antigen > antigen.zsh=
+
+  + zplugin - =dev= branch(replace antigen)\\
+    =sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"=
 
   + nerdfont(powerline support font)  
     #+BEGIN_SRC shell
@@ -248,7 +251,8 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 
 ** 3.2 Plugins.
 *Plugin Manager*
-- [[https://github.com/zsh-users/antigen][Antigen]]
+- [[https://github.com/zsh-users/antigen][Antigen]] - will Deprecated.
+- [[https://github.com/zdharma/zplugin][Zplugin]] - =dev=
 
 *Default Repo ([[https://github.com/robbyrussell/oh-my-zsh][robbyrussell's oh-my-zsh]]).*
 - [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/autojumpp][Autojump]]:
@@ -281,7 +285,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   [[https://fishshell.com/][Fish]]-like fast/unobtrusive autosuggestions for zsh.
 - [[https://github.com/hlissner/zsh-autopair][Zsh Autopair]]:
   A simple plugin that auto-closes, deletes and skips over matching delimiters in zsh intelligently
-- [[https://github.com/unixorn/autoupdate-antigen.zshplugin][Autoupdate Antigen]]:
+- [[https://github.com/unixorn/autoupdate-antigen.zshplugin][Autoupdate Antigen]]: - remove at =dev=
   Set up easy auto updating, both of antigen and the bundles loaded in your configuration.
 - [[https://github.com/zsh-users/zsh-completions][Zsh Completions]]:
   Additional completion definitions for Zsh.
