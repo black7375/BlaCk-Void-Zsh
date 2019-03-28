@@ -1,4 +1,7 @@
 ##-------------------------PowerLevel10k Set-------------------------
+##-------------------------Theme Mode
+export BVZSH_THEME='auto'
+
 ##-------------------------Theme Doc
 ## Prompt Elements
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
@@ -44,6 +47,9 @@
 # \e8   => restore cursor position
 # \e[K  => clears everything after the cursor on the current line
 # \e[2K => clear everything on the current line
+
+## ETC Prompt Expansion
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 
 ## Icons
 # get_icon_names => show icons.
@@ -219,7 +225,21 @@ _simple-nerd()
   # to change everything else.
   ##-----Prompt Set
   ## Prompt
-  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
+  # init
+  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator command_execution_time)
+  if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+          $EUID -eq 0 ]]; then
+    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
+  fi
+  _left_prompt() {
+    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator command_execution_time)
+    # not connected ssh, root user
+    if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+            $EUID -eq 0 ]]; then
+      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
+    fi
+  }
+  add-zsh-hook precmd _left_prompt
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs status)
 
   ## Double-Lined Prompt
@@ -234,6 +254,7 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 
   ## Other Prompt
+  typeset -g POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=false
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
   typeset -g POWERLEVEL9K_STATUS_OK=false
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
@@ -241,6 +262,7 @@ _simple-nerd()
   ##-----Icon Set
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_ICON=$'\u3002'       # 。 or '\uF013' 
   typeset -g POWERLEVEL9K_CARRIAGE_RETURN_ICON=''
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE=' %n@%m'
   typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON=' '              #  '\uF252 ' 
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\u3000'     # 　or 
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=''
@@ -248,7 +270,7 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_LOCK_ICON=$' \uF023'                 #  or '\uE0A2' 
   typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=' '
   typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=''
-  typeset -g POWERLEVEL9K_ROOT_ICON=$' $\uF09C'                #  or '\uF0e7'   or '\uF292'   or '\uE614 ' 
+  typeset -g POWERLEVEL9K_ROOT_ICON=$' \uF09C'                 #  or '\uF0e7'   or '\uF292'   or '\uE614 ' 
   typeset -g POWERLEVEL9K_VCS_BOOKMARK_ICON=$'\uF461 '         #  or '\uF02E'  or '\uF097'  or '\uF08D'  or $'\uF223'  or ☿
   typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=' \uF126'            #  or '\uE702'  or 
   typeset -g POWERLEVEL9K_VCS_COMMIT_ICON=$'\uE729'            #  or "-o-" or '@'
@@ -270,6 +292,8 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS=''
 
   ##-----Color Set
+  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_BACKGROUND='000'         #alpha
+  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_FOREGROUND='247'         #light grey
   typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='000'             #alpha
   typeset -g POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='039'             #blue
   typeset -g POWERLEVEL9K_DIR_HOME_BACKGROUND='000'                #alpha
@@ -278,17 +302,18 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='039'      #blue
   typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND='247'               #light grey or '040' green or'165' #purple
   typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND='000'               #alpha
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='036'           #cyan
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='247'           #light grey
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='000'           #alpha
   typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='208'            #orange
   typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='000'            #alpha
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_UNTRACKEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED}_UNTRACKEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_UNTRACKEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_MODIFIED_FOREGROUND
   typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_UNSTAGEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_MODIFIED_FOREGROUND
   typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_STAGEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_MODIFIED_FOREGROUND
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_INCOMING_CHANGESFORMAT_FOREGROUND='036'
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_OUTGOING_CHANGESFORMAT_FOREGROUND='036'
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_STASHFORMAT_FOREGROUND='036'
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_ACTIONFORMAT_FOREGROUND='160'
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_INCOMING_CHANGESFORMAT_FOREGROUND='036' #cyan
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_OUTGOING_CHANGESFORMAT_FOREGROUND='036' #cyan
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_STASHFORMAT_FOREGROUND='036'            #cyan
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_ACTIONFORMAT_FOREGROUND='160'           #red
   typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND='000'  #alpha
   typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND='226'  #yellow
   typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND='000'  #alpha
@@ -303,5 +328,3 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND='000'            #alpha
   typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND='247'            #light grey
 }
-
-export BVZSH_THEME='auto'
