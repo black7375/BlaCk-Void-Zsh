@@ -52,10 +52,10 @@ The upper line is for displaying information, and the lower line is for writing 
   + When auto suggestion comes up, you can complete with *right(→) arrow* key.
 
 *Simple Theme*
-[[https://user-images.githubusercontent.com/25581533/54966741-a148f280-4fb8-11e9-938d-2e849d9ca75a.png]]
+[[https://user-images.githubusercontent.com/25581533/55165124-306c2b00-51b0-11e9-9871-9ee998ed5bbd.png]]
 
 - *Upper Line*
-  + directory lotation, vcs info, command execution time
+  + directory lotation, vcs info, account info, write permission, root user, command execution time
 
 - *Lower Line*
   + *Left*: prompt conditional , writing commands
@@ -71,6 +71,8 @@ The upper line is for displaying information, and the lower line is for writing 
 - =THEME MODE= list: =auto=, =powerline=, =simple=
   + auto: Default is powerline. \\
     When not support xterm or 256 color, simple theme Activate.
+- FAQ: Why do not you support =zsh-theme= anymore? || Can not change during use? \\
+  This isn't supported by [[https://github.com/romkatv/powerlevel10k#i-am-getting-an-error-zsh-bad-math-expression-operand-expected-at-end-of-string][powerlevel10k]].
 
 *** Git.
 The interaction with Git is easy compared to the file manager.
