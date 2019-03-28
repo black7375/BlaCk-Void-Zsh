@@ -1,6 +1,6 @@
 ##-------------------------PowerLevel10k Set-------------------------
 ##-------------------------Theme Mode
-export BVZSH_THEME='simple'
+export BVZSH_THEME='auto'
 
 ##-------------------------Theme Doc
 ## Prompt Elements
