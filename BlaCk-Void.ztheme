@@ -228,7 +228,7 @@ _simple-nerd()
           $EUID -eq 0 ]]; then
     typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
   fi
-  left_prompt() {
+  _left_prompt() {
     typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator command_execution_time)
     # not connected ssh, root user
     if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
@@ -236,7 +236,7 @@ _simple-nerd()
       typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
     fi
   }
-  add-zsh-hook precmd left_prompt
+  add-zsh-hook precmd _left_prompt
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs status)
 
   ## Double-Lined Prompt
