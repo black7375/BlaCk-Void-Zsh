@@ -1,6 +1,6 @@
 ##-------------------------PowerLevel10k Set-------------------------
 ##-------------------------Theme Mode
-export BVZSH_THEME='auto'
+export BVZSH_THEME='simple'
 
 ##-------------------------Theme Doc
 ## Prompt Elements
@@ -289,6 +289,8 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS=''
 
   ##-----Color Set
+  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_BACKGROUND='000'	     #alpha
+  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_FOREGROUND='247'	     #light grey
   typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='000'             #alpha
   typeset -g POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='039'             #blue
   typeset -g POWERLEVEL9K_DIR_HOME_BACKGROUND='000'                #alpha
