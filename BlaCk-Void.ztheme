@@ -1,4 +1,7 @@
 ##-------------------------PowerLevel10k Set-------------------------
+##-------------------------Theme Mode
+export BVZSH_THEME='auto'
+
 ##-------------------------Theme Doc
 ## Prompt Elements
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
@@ -319,5 +322,3 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND='000'            #alpha
   typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND='247'            #light grey
 }
-
-export BVZSH_THEME='auto'
