@@ -2,6 +2,12 @@
 ##-------------------------Theme Mode
 # Theme Mode: auto powerline simple
 export BVZSH_THEME='auto'
+# Color Mode: auto fixed flex
+export BVZSH_COLOR='auto'
+# Icon  Mode: auto nerd powerline unicode ascii
+export BVZSH_ICON='auto'
+# Line  Mode: 1 2
+export BVZSH_LINE='2'
 
 ##-------------------------Theme Doc
 ## Prompt Elements
