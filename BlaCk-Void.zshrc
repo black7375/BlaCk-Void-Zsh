@@ -308,19 +308,28 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
 ##----- Bundles from the oh-my-zsh.
-OMZ='https://github.com/robbyrussell/oh-my-zsh/tree/master'
-zplugin snippet $OMZ/lib/compfix.zsh
-zplugin snippet $OMZ/lib/termsupport.zsh
-zplugin snippet $OMZ/plugins/autojump/autojump.plugin.zsh
-zplugin snippet $OMZ/plugins/command-not-found/command-not-found.plugin.zsh
-zplugin snippet $OMZ/plugins/fzf/fzf.plugin.zsh
-zplugin snippet $OMZ/plugins/git/git.plugin.zsh
-zplugin snippet $OMZ/plugins/pip/pip.plugin.zsh
-zplugin snippet $OMZ/plugins/sudo/sudo.plugin.zsh
-zplugin snippet $OMZ/plugins/thefuck/thefuck.plugin.zsh
-zplugin snippet $OMZ/plugins/tmux/tmux.plugin.zsh
-zplugin snippet $OMZ/plugins/tmuxinator/tmuxinator.plugin.zsh
-zplugin snippet $OMZ/plugins/urltools/urltools.plugin.zsh
+# https://github.com/zdharma/zplugin/issues/119
+ZSH="$HOME/.zplugin/plugins/robbyrussell---oh-my-zsh/"
+local _ZSHRC_OMZ_SOURCES=(
+  # Libs
+  lib/compfix.zsh
+  lib/termsupport.zsh
+
+  # Plugins
+  plugins/autojump/autojump.plugin.zsh
+  plugins/command-not-found/command-not-found.plugin.zsh
+  plugins/fzf/fzf.plugin.zsh
+  plugins/git/git.plugin.zsh
+  plugins/pip/pip.plugin.zsh
+  plugins/sudo/sudo.plugin.zsh
+  plugins/thefuck/thefuck.plugin.zsh
+  plugins/tmux/tmux.plugin.zsh
+  plugins/tmuxinator/tmuxinator.plugin.zsh
+  plugins/urltools/urltools.plugin.zsh
+)
+zplugin ice atload'!local f; for f in ${_ZSHRC_OMZ_SOURCES}; do source $f; done' \
+  compile"(${(j.|.)_ZSHRC_OMZ_SOURCES})" lucid
+zplugin light robbyrussell/oh-my-zsh
 
 ##----- Bundles form the custom repo.
 zplugin light chrissicool/zsh-256color
