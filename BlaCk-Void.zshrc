@@ -318,9 +318,12 @@ zplugin snippet $OMZ/plugins/git/git.plugin.zsh
 zplugin snippet $OMZ/plugins/pip/pip.plugin.zsh
 zplugin snippet $OMZ/plugins/sudo/sudo.plugin.zsh
 zplugin snippet $OMZ/plugins/thefuck/thefuck.plugin.zsh
-zplugin snippet $OMZ/plugins/tmux/tmux.plugin.zsh
-zplugin snippet $OMZ/plugins/tmuxinator/tmuxinator.plugin.zsh
 zplugin snippet $OMZ/plugins/urltools/urltools.plugin.zsh
+
+if [ -x "$(command -v tmux)" ]; then
+  zplugin snippet $OMZ/plugins/tmux/tmux.plugin.zsh
+  zplugin snippet $OMZ/plugins/tmuxinator/tmuxinator.plugin.zsh
+fi
 
 ##----- Bundles form the custom repo.
 zplugin light chrissicool/zsh-256color
@@ -433,7 +436,9 @@ zsh-theme $BVZSH_THEME
 eval "$(thefuck --alias)"
 
 #-----Tmuxinator
-tmux set-window-option -g pane-base-index 1
+if [ -x "$(command -v tmux)" ]; then
+  tmux set-window-option -g pane-base-index 1
+fi
 
 #-----alias-tip
 export ZSH_PLUGINS_ALIAS_TIPS_FORCE=0
