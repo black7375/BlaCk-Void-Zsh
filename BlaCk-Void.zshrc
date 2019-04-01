@@ -323,18 +323,19 @@ local _ZSHRC_OMZ_SOURCES=(
   plugins/pip/pip.plugin.zsh
   plugins/sudo/sudo.plugin.zsh
   plugins/thefuck/thefuck.plugin.zsh
-  plugins/tmux/tmux.plugin.zsh
-  plugins/tmuxinator/tmuxinator.plugin.zsh
   plugins/urltools/urltools.plugin.zsh
 )
+if [ -x "$(command -v tmux)" ]; then
+  _ZSHRC_OMZ_SOURCES=(
+    $_ZSHRC_OMZ_SOURCES
+    plugins/tmux/tmux.plugin.zsh
+    plugins/tmuxinator/tmuxinator.plugin.zsh
+  )
+fi
+
 zplugin ice atload'!local f; for f in ${_ZSHRC_OMZ_SOURCES}; do source $f; done' \
   compile"(${(j.|.)_ZSHRC_OMZ_SOURCES})" lucid
 zplugin light robbyrussell/oh-my-zsh
-
-if [ -x "$(command -v tmux)" ]; then
-  zplugin snippet $OMZ/plugins/tmux/tmux.plugin.zsh
-  zplugin snippet $OMZ/plugins/tmuxinator/tmuxinator.plugin.zsh
-fi
 
 ##----- Bundles form the custom repo.
 zplugin light chrissicool/zsh-256color
