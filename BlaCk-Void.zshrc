@@ -331,6 +331,11 @@ zplugin ice atload'!local f; for f in ${_ZSHRC_OMZ_SOURCES}; do source $f; done'
   compile"(${(j.|.)_ZSHRC_OMZ_SOURCES})" lucid
 zplugin light robbyrussell/oh-my-zsh
 
+if [ -x "$(command -v tmux)" ]; then
+  zplugin snippet $OMZ/plugins/tmux/tmux.plugin.zsh
+  zplugin snippet $OMZ/plugins/tmuxinator/tmuxinator.plugin.zsh
+fi
+
 ##----- Bundles form the custom repo.
 zplugin light chrissicool/zsh-256color
 zplugin light mafredri/zsh-async
@@ -442,7 +447,9 @@ zsh-theme $BVZSH_THEME
 eval "$(thefuck --alias)"
 
 #-----Tmuxinator
-tmux set-window-option -g pane-base-index 1
+if [ -x "$(command -v tmux)" ]; then
+  tmux set-window-option -g pane-base-index 1
+fi
 
 #-----alias-tip
 export ZSH_PLUGINS_ALIAS_TIPS_FORCE=0
