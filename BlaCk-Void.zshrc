@@ -310,7 +310,7 @@ autoload -Uz _zplugin
 ##----- Bundles from the oh-my-zsh.
 # https://github.com/zdharma/zplugin/issues/119
 ZSH="$HOME/.zplugin/plugins/robbyrussell---oh-my-zsh/"
-local _ZSHRC_OMZ_SOURCES=(
+local _OMZ_SOURCES=(
   # Libs
   lib/compfix.zsh
   lib/git.zsh
@@ -327,16 +327,16 @@ local _ZSHRC_OMZ_SOURCES=(
   plugins/urltools/urltools.plugin.zsh
 )
 if [ -x "$(command -v tmux)" ]; then
-  _ZSHRC_OMZ_SOURCES=(
-    $_ZSHRC_OMZ_SOURCES
+  _OMZ_SOURCES=(
+    $_OMZ_SOURCES
     plugins/tmux/tmux.plugin.zsh
     plugins/tmuxinator/tmuxinator.plugin.zsh
   )
 fi
 
 zplugin ice pick"lib/git.zsh" nocompletions blockf \
-  atload'!local f; for f in ${_ZSHRC_OMZ_SOURCES}; do source $f; done' \
-  compile"(${(j.|.)_ZSHRC_OMZ_SOURCES})" lucid
+  atload'!local f; for f in ${_OMZ_SOURCES}; do source $f; done' \
+  compile"(${(j.|.)_OMZ_SOURCES})" lucid
 zplugin light robbyrussell/oh-my-zsh
 
 ##----- Bundles form the custom repo.
@@ -393,6 +393,7 @@ fi
 ##-------------------------Theme Set
 ## Load the theme.
 zplugin light romkatv/powerlevel10k
+
 local ztheme=~/.ztheme
 if [ -e $ztheme ]; then
   source $ztheme
@@ -434,7 +435,7 @@ _theme-auto()
     export BVZSH_THEME='auto'
 }
 
-zsh-theme()
+_zsh-theme()
 {
     local theme_set=$1
     case $theme_set in
@@ -470,7 +471,7 @@ zsh-theme()
 if [ -z "$BVZSH_THEME" ] ; then
     export BVZSH_THEME='auto'
 fi
-zsh-theme $BVZSH_THEME
+_zsh-theme $BVZSH_THEME
 
 ##-------------------------Plugin Set
 #-----thefuck
