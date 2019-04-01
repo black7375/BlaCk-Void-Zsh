@@ -366,6 +366,30 @@ fi
 zplugin ice as"completion" blockf
 zplugin snippet https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh
 
+_OMZ_LIB=~/.zplugin/snippets/https--github.com--robbyrussell--oh-my-zsh--tree--master--lib/
+if [[ -e $_OMZ_LIB ]]; then
+  rm -rfv $_OMZ_LIB/compfix.zsh $_OMZ_LIB/termsupport.zsh
+  if [[ "$( find $_OMZ_LIB -mindepth 1 -maxdepth 1 | wc -l )" -eq 0  ]]; then
+    rm -rfv $_OMZ_LIB
+  fi
+fi
+_OMZ_PLUGIN=~/.zplugin/snippets/https--github.com--robbyrussell--oh-my-zsh--tree--master--plugins
+_OMZ_PLUGIN_LIST=(
+  $_OMZ_PLUGIN--autojump
+  $_OMZ_PLUGIN--command-not-found
+  $_OMZ_PLUGIN--fzf
+  $_OMZ_PLUGIN--git
+  $_OMZ_PLUGIN--pip
+  $_OMZ_PLUGIN--sudo
+  $_OMZ_PLUGIN--thefuck
+  $_OMZ_PLUGIN--urltools
+  $_OMZ_PLUGIN--tmux
+  $_OMZ_PLUGIN--tmuxinator
+)
+if [[ -e $_OMZ_PLUGIN--autojump ]]; then
+  rm -rfv $_OMZ_PLUGIN_LIST
+fi
+
 ##-------------------------Theme Set
 ## Load the theme.
 zplugin light romkatv/powerlevel10k
