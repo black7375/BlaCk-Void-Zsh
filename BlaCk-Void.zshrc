@@ -313,6 +313,7 @@ ZSH="$HOME/.zplugin/plugins/robbyrussell---oh-my-zsh/"
 local _ZSHRC_OMZ_SOURCES=(
   # Libs
   lib/compfix.zsh
+  lib/git.zsh
   lib/termsupport.zsh
 
   # Plugins
@@ -333,7 +334,8 @@ if [ -x "$(command -v tmux)" ]; then
   )
 fi
 
-zplugin ice atload'!local f; for f in ${_ZSHRC_OMZ_SOURCES}; do source $f; done' \
+zplugin ice pick"lib/git.zsh" nocompletions blockf \
+  atload'!local f; for f in ${_ZSHRC_OMZ_SOURCES}; do source $f; done' \
   compile"(${(j.|.)_ZSHRC_OMZ_SOURCES})" lucid
 zplugin light robbyrussell/oh-my-zsh
 
@@ -360,6 +362,8 @@ zplugin light paoloantinori/hhighlighter
 if [[ -e $BVZSH/hhighlighter ]]; then
   rm -rfv $BVZSH/hhighlighter
 fi
+
+zplugin snippet https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh
 
 ##-------------------------Theme Set
 ## Load the theme.
