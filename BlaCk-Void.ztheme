@@ -1,13 +1,11 @@
 ##-------------------------PowerLevel10k Set-------------------------
 ##-------------------------Theme Mode
-# Theme Mode: auto powerline simple
+# Theme Mode: auto powerline simple | TODO: powerline-single simple-single
 export BVZSH_THEME='auto'
-# Color Mode: auto fixed flex
-export BVZSH_COLOR='auto'
-# Icon  Mode: auto nerd powerline unicode ascii
-export BVZSH_ICON='auto'
-# Line  Mode: 1 2
-export BVZSH_LINE='2'
+# TODO: Color Mode: auto fixed flex
+#       export BVZSH_COLOR='auto'
+# TODO: Icon  Mode: auto nerd powerline unicode ascii
+#       export BVZSH_ICON='auto'
 
 ##-------------------------Theme Doc
 ## Prompt Elements
