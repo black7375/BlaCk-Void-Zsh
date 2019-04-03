@@ -135,13 +135,17 @@ zlogin=~/.zlogin
 set_file()
 {
   local file=$1
+  echo "-------"
+  echo "Set $file !!\n"
   if [ -e $file ]; then
     echo "$file found."
     echo "Now Backup.."
     cp -v $file $file.bak
+    echo "\n"
   else
     echo "$file not found."
     touch $file
+    echo "$file is created\n"
   fi
 }
 set_file $zshrc
