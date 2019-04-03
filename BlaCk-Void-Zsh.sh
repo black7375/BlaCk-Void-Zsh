@@ -126,8 +126,12 @@ etc_install
 source $BVZSH/install_font.sh
 
 echo "--------------------"
-echo "  Apply Settings"
-echo ""
+echo "  Apply Settings\n"
+echo "-------"
+echo "Zcompile ZSH Files"
+zsh -i -c 'zcompile $BVZSH/BlaCk-Void.zshrc $BVZSH/BlaCk-Void.ztheme \
+  $BVZSH/fzf-set.zsh $BVZSH/completion.zsh && exit'
+
 zshrc=~/.zshrc
 zshenv=~/.zshenv
 zlogin=~/.zlogin
@@ -141,7 +145,7 @@ set_file()
     echo "$file found."
     echo "Now Backup.."
     cp -v $file $file.bak
-    echo "\n"
+    echo ""
   else
     echo "$file not found."
     touch $file
@@ -162,7 +166,6 @@ echo "ZSH as the default shell(need sudo permission)"
 sudo chsh -s $(which zsh)
 
 echo "Please relogin session or restart terminal"
-echo "The End!!"
-echo ""
+echo "The End!!\n"
 echo "command: zsh-help"
 echo "for BlaCk-Void Zsh update"
