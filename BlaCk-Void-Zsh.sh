@@ -152,6 +152,8 @@ set_file $zshrc
 set_file $zshenv
 set_file $zlogin
 
+echo "-------"
+echo "ZSH as the default shell(need sudo permission)"
 sudo chsh -s $(which zsh)
 
 echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
