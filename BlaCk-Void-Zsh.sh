@@ -152,15 +152,15 @@ set_file $zshrc
 set_file $zshenv
 set_file $zlogin
 
+echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
+echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
+echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
+#cp -v BlaCk-Void.zshrc  $file
+
 echo "-------"
 echo "ZSH as the default shell(need sudo permission)"
 sudo chsh -s $(which zsh)
 
-echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
-echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
-echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
-
-#cp -v BlaCk-Void.zshrc  $file
 echo "Please relogin session or restart terminal"
 echo "The End!!"
 echo ""
