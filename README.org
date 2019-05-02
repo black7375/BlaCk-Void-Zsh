@@ -124,6 +124,8 @@ Very simple to use git.
 - =s=: status
 
 *Git X Fzf*
+[[https://user-images.githubusercontent.com/25581533/57051067-a0436900-6cba-11e9-93bb-df84b795d0b2.png]]
+`glo` screenshot.
 - =ga=: git add
 - =glo=: git log
 - =gi=: gitignore
