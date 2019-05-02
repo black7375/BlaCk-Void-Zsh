@@ -275,7 +275,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 - [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/tmux][Tmux]]
   Provides aliases for [[https://github.com/tmux/tmux][Tmux]].
 - [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/tmuxinator][Tmuxinator]]:
-  Completions for [[https://github.com/achiu/terminitor][tmuxinator]].
+  Completions for [[https://github.com/tmuxinator/tmuxinator][tmuxinator]].
 - [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/urltools][Urltools]]:
   Provides two aliases to URL-encode(=urlencode=) and URL-decode(=urldecode=) strings.
 
