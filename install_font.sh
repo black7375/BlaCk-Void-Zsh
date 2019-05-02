@@ -11,21 +11,24 @@ options()
 
 font_install()
 {
-    while true; do
+    while [[ -z "$BVZSH_FONT" ]]; do
         read -p "$* [0/1/2]: " ans
         case $ans in
             [0]*)
                 echo "Don't Install Fonts."
+                BVZSH_FONT=0
                 break
                 ;;
             [1]*)
                 echo "Install Hack Nerd Fonts."
                 necessary
+                BVZSH_FONT=1
                 break
                 ;;
             [2]*)
                 echo "All Fonts Install."
                 all
+                BVZSH_FONT=2
         esac
         echo "Please answer again."
         options
