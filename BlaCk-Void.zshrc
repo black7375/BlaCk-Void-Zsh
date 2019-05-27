@@ -334,9 +334,8 @@ if [ -x "$(command -v tmux)" ]; then
   )
 fi
 
-zplugin ice pick"lib/git.zsh" nocompletions blockf \
-  atload'!local f; for f in ${_OMZ_SOURCES}; do source $f; done' \
-  compile"(${(j.|.)_OMZ_SOURCES})" lucid
+zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
+  multisrc"${_OMZ_SOURCES}" compile"(${(j.|.)_OMZ_SOURCES})"
 zplugin light robbyrussell/oh-my-zsh
 
 ##----- Bundles form the custom repo.
