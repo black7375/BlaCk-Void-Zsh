@@ -306,6 +306,11 @@ fi
 source $ZPLGIN_BIN
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
+autoload compinit
+autoload -Uz cdr
+autoload -Uz chpwd_recent_dirs
+compinit
+zplugin cdreplay -q
 
 ##----- Bundles from the oh-my-zsh.
 # https://github.com/zdharma/zplugin/issues/119
