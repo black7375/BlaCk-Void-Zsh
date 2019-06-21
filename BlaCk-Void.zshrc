@@ -347,20 +347,34 @@ zplugin light robbyrussell/oh-my-zsh
 zplugin light chrissicool/zsh-256color
 zplugin light mafredri/zsh-async
 #zplugin light hchbaw/auto-fu.zsh ##crash with fzf..
+#zplugin ice wait"1" atload'_zsh_autosuggest_start' lucid
 zplugin light zsh-users/zsh-autosuggestions
+#zplugin ice wait"1"
 zplugin light hlissner/zsh-autopair
+#zplugin ice wait"1"
 zplugin light zsh-users/zsh-completions
+#zplugin ice wait"1" atload'_zsh_highlight' lucid
 zplugin light zdharma/fast-syntax-highlighting
 
+#zplugin ice wait"2" lucid
 zplugin light djui/alias-tips
+#zplugin ice wait"2" lucid
 zplugin light b4b4r07/enhancd
+#zplugin ice wait"2" lucid
 zplugin light wfxr/forgit
+#zplugin ice wait"2" lucid
 zplugin light ytet5uy4/fzf-widgets
+#zplugin ice wait"0" lucid
 zplugin light seletskiy/zsh-git-smart-commands
+#zplugin ice wait"2" lucid
 zplugin light zsh-users/zsh-history-substring-search
+#zplugin ice wait"2" lucid
 zplugin light changyuheng/zsh-interactive-cd
+#zplugin ice wait"2" lucid
 zplugin light peterhurford/up.zsh
+#zplugin ice wait"2" lucid
 zplugin light jocelynmallon/zshmarks
+#zplugin ice wait"2" pick"h.sh" lucid
 zplugin ice pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
 if [[ -e $BVZSH/hhighlighter ]]; then
