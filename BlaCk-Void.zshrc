@@ -380,6 +380,8 @@ zplugin light paoloantinori/hhighlighter
 if [[ -e $BVZSH/hhighlighter ]]; then
   rm -rfv $BVZSH/hhighlighter
 fi
+#zplugin ice wait"2" from"gl" as"program" pick"tldr" lucid
+zplugin light pepa65/tldr-bash-client
 
 zplugin ice as"completion" blockf
 zplugin snippet https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh
