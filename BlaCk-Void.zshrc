@@ -168,21 +168,6 @@ source $BVZSH/fzf-set.zsh
 
 ##-------------------------Zplugin set-------------------------
 ZPLGIN_BIN=~/.zplugin/bin/zplugin.zsh
-if ! [ -e $ZPLGIN_BIN ]; then
-  echo "\n--------------------"
-  echo "Change Plugin Manager!!"
-  echo "--------------------"
-
-  echo "\n--------------------"
-  echo "Install Zplugin"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-
-  echo "\n--------------------"
-  echo "Remove Antigen"
-  rm -rfv $BVZSH/antigen.zsh
-  rm -rfv ~/.antigen
-fi
-
 source $ZPLGIN_BIN
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
@@ -260,36 +245,9 @@ zplugin light jocelynmallon/zshmarks
 #zplugin ice wait"2" pick"h.sh" lucid
 zplugin ice pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
-if [[ -e $BVZSH/hhighlighter ]]; then
-  rm -rfv $BVZSH/hhighlighter
-fi
 #zplugin ice wait"2" from"gl" as"program" pick"tldr" lucid
 zplugin ice from"gl" as"program" pick"tldr" lucid
 zplugin light pepa65/tldr-bash-client
-
-_OMZ_LIB=~/.zplugin/snippets/https--github.com--robbyrussell--oh-my-zsh--tree--master--lib/
-if [[ -e $_OMZ_LIB ]]; then
-  rm -rfv $_OMZ_LIB/compfix.zsh $_OMZ_LIB/termsupport.zsh
-  if [[ "$( find $_OMZ_LIB -mindepth 1 -maxdepth 1 | wc -l )" -eq 0  ]]; then
-    rm -rfv $_OMZ_LIB
-  fi
-fi
-_OMZ_PLUGIN=~/.zplugin/snippets/https--github.com--robbyrussell--oh-my-zsh--tree--master--plugins
-_OMZ_PLUGIN_LIST=(
-  $_OMZ_PLUGIN--autojump
-  $_OMZ_PLUGIN--command-not-found
-  $_OMZ_PLUGIN--fzf
-  $_OMZ_PLUGIN--git
-  $_OMZ_PLUGIN--pip
-  $_OMZ_PLUGIN--sudo
-  $_OMZ_PLUGIN--thefuck
-  $_OMZ_PLUGIN--urltools
-  $_OMZ_PLUGIN--tmux
-  $_OMZ_PLUGIN--tmuxinator
-)
-if [[ -e $_OMZ_PLUGIN--autojump ]]; then
-  rm -rfv $_OMZ_PLUGIN_LIST
-fi
 
 ##-------------------------Theme Set
 ## Load the theme.
