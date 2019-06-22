@@ -83,6 +83,17 @@ alias tar-extract-gz='tar -zxvf'
 alias map='telnet mapscii.me'
 alias prettyping='$BVZSH/prettyping'
 
+#Apple Terminal New Tab
+if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]
+then
+  function chpwd {
+    printf '\e]7;%s\a' "file://$HOSTNAME${PWD// /%20}"
+  }
+
+  chpwd
+fi
+
+
 #URL Short
 url-short()
 {
