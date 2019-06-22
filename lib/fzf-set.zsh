@@ -9,15 +9,13 @@ export FZF_DEFAULT_OPTS="
 #hl: red, fg+: white, bg+: gray(or 244), hl+: green
 #info: yellow, pointer: red, marker: white, spinner: yellow
 
-builtin bind -x '"\C-x1": _fzf_select_dir'
-builtin bind '"\C-t": "\C-x1\e^\er"'
+bindkey '^t' _fzf_select_dir
 
-builtin set -o histexpand;
-builtin bind -x '"\C-x1": _fzf_history';
-builtin bind '"\C-r": "\C-x1\e^\er"'
+set -o histexpand;
+bindkey '^r' _fzf_history
 
-builtin bind -x '"\C-x2": _fzf_readline';
-builtin bind '"\C-x1": "\C-x2\C-x3"'
+zle     -N    _fzf_readline
+bindkey '^x1' _fzf_readline
 
 alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr% C(auto)%an" "$@"'
 local _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
