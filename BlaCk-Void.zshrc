@@ -60,7 +60,7 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt SHARE_HISTORY
-setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
 
 # eliminates duplicates in *paths
 typeset -gU cdpath fpath path
