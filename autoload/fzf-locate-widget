@@ -1,0 +1,6 @@
+# ALT-I - Paste the selected entry from locate output into the command line
+local selected
+if selected=$(locate / | fzf -q "$LBUFFER"); then
+    LBUFFER=$selected
+fi
+zle redisplay

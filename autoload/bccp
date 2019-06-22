@@ -1,0 +1,18 @@
+# Uninstall or open the webpage for the selected application
+# using brew list as input source (all brew cask installed applications)
+# and display a info quickview window for the currently marked application
+# mnemonic [B]rew [C]ask [C]lean [P]lugin
+local token
+token=$(brew cask list | fzf-tmux --query="$1" +m --preview 'brew cask info {}')
+
+if [ "x$token" != "x" ]
+then
+    echo "(U)ninstall or open the (h)omepage of $token"
+    read input
+    if [ $input = "u" ] || [ $input = "U" ]; then
+        brew cask uninstall $token
+    fi
+    if [ $input = "h" ] || [ $token = "h" ]; then
+        brew cask home $token
+    fi
+fi

@@ -1,0 +1,7 @@
+# fshow_preview - git commit browser with previews
+glNoGraph |
+    fzf --no-sort --reverse --tiebreak=index --no-multi \
+        --ansi --preview="$_viewGitLogLine" \
+        --header "enter to view, alt-y to copy hash" \
+        --bind "enter:execute:$_viewGitLogLine   | less -R" \
+        --bind "alt-y:execute:$_gitLogLineToHash | xclip"

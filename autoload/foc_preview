@@ -1,0 +1,6 @@
+# fcoc_preview - checkout git commit with previews
+local commit
+commit=$( glNoGraph |
+              fzf --no-sort --reverse --tiebreak=index --no-multi \
+                  --ansi --preview="$_viewGitLogLine" ) &&
+    git checkout $(echo "$commit" | sed "s/ .*//")

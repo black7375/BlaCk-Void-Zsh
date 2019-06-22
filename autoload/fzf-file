@@ -1,0 +1,1 @@
+fzf-tmux --height 40% --reverse --preview 'file {}' --preview-window down:1
