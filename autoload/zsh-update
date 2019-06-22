@@ -5,10 +5,12 @@ echo "--------------------\n"
 echo "\n--------------------"
 echo "Setting files update"
 cd $BVZSH && git pull
+zcompile $BVZSH/BlaCk-Void.zlogin
+zcompile $BVZSH/BlaCk-Void.zshenv
 zcompile $BVZSH/BlaCk-Void.zshrc
 zcompile $BVZSH/BlaCk-Void.ztheme
-zcompile $BVZSH/fzf-set.zsh
-zcompile $BVZSH/completion.zsh
+zcompile $BVZSH/autoload/*
+zcompile $BVZSH/lib/*
 
 echo "\n--------------------"
 echo "Plugins update"
