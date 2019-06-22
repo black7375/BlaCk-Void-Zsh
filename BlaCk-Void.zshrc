@@ -364,6 +364,9 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin light hlissner/zsh-autopair
 #zplugin ice wait"1"
 zplugin light zsh-users/zsh-completions
+#zplugin ice as"completion" blockf
+#zplugin ice wait"1"
+zplugin light black7375/zsh-git-completion
 #zplugin ice wait"1" atload'_zsh_highlight' lucid
 zplugin light zdharma/fast-syntax-highlighting
 
@@ -394,9 +397,6 @@ fi
 #zplugin ice wait"2" from"gl" as"program" pick"tldr" lucid
 zplugin ice from"gl" as"program" pick"tldr" lucid
 zplugin light pepa65/tldr-bash-client
-
-zplugin ice as"completion" blockf
-zplugin snippet https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh
 
 _OMZ_LIB=~/.zplugin/snippets/https--github.com--robbyrussell--oh-my-zsh--tree--master--lib/
 if [[ -e $_OMZ_LIB ]]; then
