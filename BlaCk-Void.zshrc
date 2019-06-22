@@ -93,7 +93,7 @@ then
 fi
 
 ##-------------------------Completion set
-source $BVZSH/completion.zsh
+source $BVZSH/lib/completion.zsh
 
 # Complete words from tmux pane(s) {{{1
 # Source: http://blog.plenz.com/2012-01/zsh-complete-words-from-tmux-pane.html
@@ -164,7 +164,7 @@ function __tmux-sessions() {
 compdef __tmux-sessions tm
 
 ##-------------------------FZF set
-source $BVZSH/fzf-set.zsh
+source $BVZSH/lib/fzf-set.zsh
 
 ##-------------------------Zplugin set-------------------------
 ZPLGIN_BIN=~/.zplugin/bin/zplugin.zsh
