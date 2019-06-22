@@ -36,7 +36,7 @@ zstyle ':completion:*:history-words'                remove-all-dups yes         
 zstyle ':completion:*:history-words'                stop yes                            #
 zstyle ':completion:*'                              matcher-list 'm:{a-z}={A-Z}'        # match uppercase from lowercase
 zstyle ':completion:*:matches'                      group 'yes'                         # separate matches into groups
-zstyle ':completion:*'                              group-name ''
+zstyle ':completion:*'                              group-name ''                       # group results by category
 if [[ -z "$NOMENU" ]] ; then
   zstyle ':completion:*'                            menu select=2                       # if there are more than 5 options allow selecting from a menu
 else
