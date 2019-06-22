@@ -67,15 +67,14 @@ typeset -gU cdpath fpath path
 
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
-#Histoy
-history-clear()
-{
-    mv ~/.zsh_histoy ~/.zsh_histoy.bak
-}
-history-restore()
-{
-    mv ~/.zsh_histoy.bak ~/.zsh_histoy
-}
+BVFPATH=${BVZSH}/autoload
+fpath+="${BVFPATH}"
+if [[ -d "$BVFPATH" ]]; then
+    for func in $BVFPATH/*; do
+        autoload -Uz ${func:t}
+    done
+fi
+unset BVFPATH
 
 #Alias
 alias tar-compress-gz='tar -zcvf'
@@ -92,136 +91,6 @@ then
 
   chpwd
 fi
-
-
-#URL Short
-url-short()
-{
-    curl -s http://tinyurl.com/api-create.php?url\=$1
-}
-
-#IP Info
-ip-info()
-{
-    ip_address=$1
-    while [ "$#" -gt 0 ];
-    do
-      case $ip_address in
-        -h* | --help*)
-        echo "Command: ip-info IP_ADDRESS\n"
-        echo "Default: your ip address"
-        echo "Option -s or --simple"
-        echo "==>Print only Your address"
-        return
-        ;;
-
-        -s* | --simple*)
-        curl ipinfo.io/ip
-        return
-        ;;
-
-        *)
-        shift
-        ;;
-      esac
-    done
-
-    # change Paris to your default location
-    curl ipinfo.io/$ip_address
-}
-
-#Weather
-weather()
-{
-    locale=$1
-    lang=${2:-${LANG%_*}}
-    while [ "$#" -gt 0 ];
-    do
-      case $1 in
-        -h* | --help*)
-        echo "-------------------------"
-        echo "    Terminal Weather"
-        echo "-------------------------\n"
-        echo "Command: weather"
-        echo "or"
-        echo "Command: weather LOCALE LANGUAGE(option)\n"
-        echo "Default LANGUAGE: SYSYEM_LANGUAGE"
-        echo "-------------------------\n"
-        curl wttr.in/:help
-        return
-        ;;
-
-        *)
-        shift
-        ;;
-      esac
-    done
-
-    # change Paris to your default location
-    curl -H "Accept-Language: $lang" wttr.in/$locale
-}
-
-#Terminal image viewer based @z3bra
-img()
-{
-    echo "-------------------------"
-    echo "  Terminal Image Viewer"
-    echo "-------------------------\n"
-    echo "Default: show during 2s."
-    echo "command: img IMAGE_NAME SHOW_TIME"
-
-    WARNING="\n**Warning!!**"
-    NONEXIST="File $1 does not exist.\n"
-
-    if [ ! -f "$1" ] || [ -z "$1"  ]
-    then
-        echo $WARNING
-        echo $NONEXIST
-        return 1
-    fi
-
-    W3MIMGDISPLAY="/usr/lib/w3m/w3mimgdisplay"
-    FILENAME=$1
-    FONTH=15 #15 # Size of one terminal row
-    FONTW=8 #8  # Size of one terminal column
-    COLUMNS=`tput cols`
-    LINES=`tput lines`
-
-    if [ ! -f "$W3MIMGDISPLAY" ]
-    then
-        echo "\nRequire 'w3m-img' !!"
-        return 1
-    fi
-
-    read width height <<< `echo -e "5;$FILENAME" | $W3MIMGDISPLAY`
-
-    max_width=$(($FONTW * $COLUMNS))
-    max_height=$(($FONTH * $(($LINES - 2)))) # substract one line for prompt
-
-    if test $width -gt $max_width
-    then
-        height=$(($height * $max_width / $width))
-        width=$max_width
-    fi
-    if test $height -gt $max_height
-    then
-        width=$(($width * $max_height / $height))
-        height=$max_height
-    fi
-    erase="6;1;0;$(( FONTW*COLUMNS ));$(( FONTH*LINES ))\n3;"
-    w3m_command="0;1;0;0;$width;$height;;;;;$FILENAME\n4;\n3;"
-
-    tput cup $(($height/$FONTH)) 0
-    echo -e $erase | $W3MIMGDISPLAY
-    echo -e $w3m_command|$W3MIMGDISPLAY
-
-    if [ -n "$2"  ]
-    then
-        sleep $2
-    else
-        sleep 2
-    fi
-}
 
 ##-------------------------Completion set
 source $BVZSH/completion.zsh
@@ -433,73 +302,6 @@ else
   source $BVZSH/BlaCk-Void.ztheme
 fi
 
-_theme-powerline()
-{
-    export BVZSH_THEME='powerline'
-    if [ -x "$(command -v powerline)" ] &&
-       ! [ "$(zplugin loaded powerline-binding | rg black7375 |
-          sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "black7375/powerline-binding *" ] ; then
-      zplugin light black7375/powerline-binding
-    fi
-    _powerline-nerd
-}
-_theme-simple()
-{
-    export BVZSH_THEME='simple'
-    _simple-nerd
-}
-_theme-auto()
-{
-    case ${TERM} in
-    xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
-        export TERM="xterm-256color"
-        if [ $(tput colors) -ge "256" ]; then
-            _theme-powerline
-        else
-            _theme-simple
-        fi
-    ;;
-    *)
-        _theme-simple
-    ;;
-    esac
-
-    export BVZSH_THEME='auto'
-}
-
-_zsh-theme()
-{
-    local theme_set=$1
-    case $theme_set in
-    -h* | --help*)
-        echo "--------------------"
-        echo "  BlaCk-Zsh Theme"
-        echo "--------------------\n"
-        echo "Command: zsh-theme THEME_NAME\n"
-        echo "Default: auto"
-        echo "Options: auto powerline simple"
-        return
-    ;;
-
-    'auto')
-        _theme-auto
-    ;;
-
-    'powerline')
-        _theme-powerline
-    ;;
-
-    'simple')
-        _theme-simple
-    ;;
-
-    *)
-        echo "This theme is not available."
-        return 1
-    ;;
-    esac
-}
-
 if [ -z "$BVZSH_THEME" ] ; then
     export BVZSH_THEME='auto'
 fi
@@ -578,56 +380,3 @@ bindkey '^[[B' history-substring-search-down
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-
-##-------------------------Other System Configs-------------------------
-zsh-help()
-{
-    echo "--------------------"
-    echo "  BlaCk-Zsh Help"
-    echo "--------------------\n"
-    echo "command: zsh-update -> zsh update"
-    echo "command: font-update -> NerdFont update"
-}
-zsh-update()
-{
-    echo "--------------------"
-    echo "  BlaCk-Zsh Update"
-    echo "--------------------\n"
-
-    echo "\n--------------------"
-    echo "Setting files update"
-    cd $BVZSH && git pull
-    zcompile $BVZSH/BlaCk-Void.zshrc
-    zcompile $BVZSH/BlaCk-Void.ztheme
-    zcompile $BVZSH/fzf-set.zsh
-    zcompile $BVZSH/completion.zsh
-
-    echo "\n--------------------"
-    echo "Plugins update"
-    zplugin self-update
-    zplugin update
-}
-font-update()
-{
-    echo "\n--------------------"
-    echo "Fonts update"
-    if [ -d "$BVZSH/nerd-fonts" ]
-    then
-        echo "Nerd Fonts is not installed.\n"
-        while true; do
-            read -p "Do you Install Nerd Fonts? [Y/N]" ans
-            case $ans in
-                [Yy]*)
-                    source $BVZSH/install_font.sh
-                    return
-                    ;;
-                [Nn]*)
-                    echo "Don't Install Fonts."
-                    return
-            esac
-            echo "Please answer again."
-        done
-    fi
-
-    cd $BVZSH/nerd-fonts && git pull && ./install.sh
-}

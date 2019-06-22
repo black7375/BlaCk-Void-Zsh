@@ -1,0 +1,5 @@
+echo "--------------------"
+echo "  BlaCk-Zsh Help"
+echo "--------------------\n"
+echo "command: zsh-update -> zsh update"
+echo "command: font-update -> NerdFont update"

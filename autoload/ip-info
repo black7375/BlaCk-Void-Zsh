@@ -1,0 +1,25 @@
+ip_address=$1
+while [ "$#" -gt 0 ];
+do
+    case $ip_address in
+        -h* | --help*)
+            echo "Command: ip-info IP_ADDRESS\n"
+            echo "Default: your ip address"
+            echo "Option -s or --simple"
+            echo "==>Print only Your address"
+            return
+            ;;
+
+        -s* | --simple*)
+            curl ipinfo.io/ip
+            return
+            ;;
+
+        *)
+            shift
+            ;;
+    esac
+done
+
+# change Paris to your default location
+curl ipinfo.io/$ip_address

@@ -1,0 +1,29 @@
+local theme_set=$1
+case $theme_set in
+    -h* | --help*)
+        echo "--------------------"
+        echo "  BlaCk-Zsh Theme"
+        echo "--------------------\n"
+        echo "Command: zsh-theme THEME_NAME\n"
+        echo "Default: auto"
+        echo "Options: auto powerline simple"
+        return
+        ;;
+
+    'auto')
+        _theme-auto
+        ;;
+
+    'powerline')
+        _theme-powerline
+        ;;
+
+    'simple')
+        _theme-simple
+        ;;
+
+    *)
+        echo "This theme is not available."
+        return 1
+        ;;
+esac
