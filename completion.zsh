@@ -7,7 +7,7 @@ fpath=("${0:h}/external/src" $ZPLG_FPATH_BEFORE $fpath )
 # shell is opened each day.
 autoload -Uz compinit && compinit
 autoload -Uz bashcompinit && bashcompinit
-zmodload  zsh/complist
+zmodload -i zsh/complist
 _comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
 if (( $#_comp_files )); then
   compinit -i -C
