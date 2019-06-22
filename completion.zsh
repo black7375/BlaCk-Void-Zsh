@@ -16,6 +16,10 @@ else
 fi
 unset _comp_files
 
+setopt auto_list
+setopt auto_menu
+setopt always_to_end
+
 ## completion system
 zstyle ':completion:*:approximate:'                 max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )' # allow one error for every three characters typed in approximate completer
 zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'              # don't complete backup files as executables
