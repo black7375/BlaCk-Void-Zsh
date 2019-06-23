@@ -130,8 +130,7 @@ echo "  Apply Settings\n"
 echo "-------"
 echo "Zcompile ZSH Files"
 zsh -i -c 'zcompile $BVZSH/BlaCk-Void.zlogin $BVZSH/BlaCk-Void.zshenv\
-  $BVZSH/BlaCk-Void.zshrc $BVZSH/BlaCk-Void.ztheme \
-  $BVZSH/autoload/* $BVZSH/lib/* && exit'
+  $BVZSH/BlaCk-Void.zshrc $BVZSH/BlaCk-Void.ztheme && exit'
 
 zshrc=~/.zshrc
 zshenv=~/.zshenv
