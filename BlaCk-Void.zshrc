@@ -46,7 +46,8 @@ if [ -x "$(command -v tmux)" ]; then
 fi
 
 zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
-        multisrc"${_OMZ_SOURCES}" compile"(${(j.|.)_OMZ_SOURCES})"
+        multisrc"${_OMZ_SOURCES}" compile"(${(j.|.)_OMZ_SOURCES})" \
+        atinit"_zpcompinit_custom; zpcdreplay"
 zplugin light robbyrussell/oh-my-zsh
 
 ##----- Bundles form the custom repo.
@@ -89,9 +90,11 @@ zplugin light jocelynmallon/zshmarks
 zplugin ice pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
 #zplugin ice wait"2" from"gl" as"program" pick"tldr" lucid
-zplugin ice from"gl" as"program" pick"tldr" \
-        atinit"_zpcompinit_custom; zpcdreplay"
+zplugin ice from"gl" as"program" pick"tldr"
 zplugin light pepa65/tldr-bash-client
+
+_zpcompinit_custom
+zplugin cdreplay -q
 
 ##-------------------------Theme Set
 local ztheme=~/.ztheme
