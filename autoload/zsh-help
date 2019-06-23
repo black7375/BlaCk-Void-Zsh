@@ -1,5 +1,19 @@
 echo "--------------------"
 echo "  BlaCk-Zsh Help"
 echo "--------------------\n"
-echo "command: zsh-update -> zsh update"
-echo "command: font-update -> NerdFont update"
+
+echo "   System Utils"
+echo "--------------------"
+echo "command: zsh-help         -> help message"
+echo "command: zsh-update       -> update config files, plugin, clean files"
+echo "command: font-update      -> nerdFont update\n"
+
+echo "command: history-clear    -> history backup"
+echo "command: history-restore  -> history restore\n"
+
+echo "     Utility"
+echo "--------------------"
+echo "command: img              -> show image with terminal"
+echo "command: ip-info          -> show IP information"
+echo "command: url-short        -> make url short"
+echo "command: weather          -> show weather"
