@@ -127,7 +127,7 @@ source $BVZSH/install_font.sh
 
 echo "--------------------"
 echo "  Apply Settings\n"
-echo "-------"
+#echo "-------"
 #echo "Zcompile ZSH Files"
 #zsh -i -c 'zcompile $BVZSH/BlaCk-Void.zlogin $BVZSH/BlaCk-Void.zshenv\
 #  $BVZSH/BlaCk-Void.zshrc $BVZSH/BlaCk-Void.ztheme && exit'
