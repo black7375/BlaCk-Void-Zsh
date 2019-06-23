@@ -10,6 +10,12 @@ if [[ -d "$BVFPATH" ]]; then
 fi
 unset BVFPATH
 
+# If not Interactively.
+case $- in
+    *i*);;
+    *) return 0;;
+esac
+
 ##-------------------------Zplugin set-------------------------
 ZPLGIN_BIN=~/.zplugin/bin/zplugin.zsh
 source $ZPLGIN_BIN
