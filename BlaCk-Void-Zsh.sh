@@ -162,6 +162,9 @@ echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
 echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
 #cp -v BlaCk-Void.zshrc  $file
 
+#Remove zplugin installer contents
+sed -i '/[zZ]plugin/d'  ~/.zshrc
+
 echo "-------"
 echo "ZSH as the default shell(need sudo permission)"
 sudo chsh -s $(which zsh)

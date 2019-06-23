@@ -27,6 +27,7 @@ if ! [ -e $ZPLGIN_BIN ]; then
     echo "\n--------------------"
     echo "Install Zplugin"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+    sed -i '/[zZ]plugin/d'  ~/.zshrc
 
     echo "\n--------------------"
     echo "Remove Antigen"
