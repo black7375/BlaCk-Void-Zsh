@@ -194,8 +194,8 @@ HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -231,13 +231,16 @@ typeset -gU cdpath fpath path
 
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
-#Alias
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# Alias
 alias tar-compress-gz='tar -zcvf'
 alias tar-extract-gz='tar -zxvf'
 alias map='telnet mapscii.me'
 alias prettyping='$BVZSH/prettyping'
 
-#Apple Terminal New Tab
+# Apple Terminal New Tab
 if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]
 then
   function chpwd {
