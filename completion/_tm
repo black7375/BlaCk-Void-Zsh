@@ -1,0 +1,9 @@
+#compdef __tmux-sessions tm
+
+__tmux-sessions()
+{
+    local expl
+    local -a sessions
+    sessions=( ${${(f)"$(command tmux list-sessions)"}/:[ $'\t']##/:} )
+    _describe -t sessions 'sessions' sessions "$@"
+}

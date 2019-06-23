@@ -1,0 +1,8 @@
+#compdef _tmux_completions tmux-open
+
+_tmux_completions()
+{
+    local -a sessions
+    sessions=($(tmux-ls))
+    compadd -a sessions
+}
