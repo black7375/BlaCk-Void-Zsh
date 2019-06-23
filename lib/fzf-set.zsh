@@ -9,11 +9,6 @@ export FZF_DEFAULT_OPTS="
 #hl: red, fg+: white, bg+: gray(or 244), hl+: green
 #info: yellow, pointer: red, marker: white, spinner: yellow
 
-bindkey '^t' _fzf_select_dir
-
-set -o histexpand;
-bindkey '^r' _fzf_history
-
 zle     -N    _fzf_readline
 bindkey '^x1' _fzf_readline
 
