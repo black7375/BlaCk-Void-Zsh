@@ -166,7 +166,7 @@ sed -i '/[zZ]plugin/d'  ~/.zshrc
 
 echo "-------"
 echo "ZSH as the default shell(need sudo permission)"
-sudo chsh -s $(which zsh)
+chsh -s $(which zsh)
 
 echo "Please relogin session or restart terminal"
 echo "The End!!\n"
