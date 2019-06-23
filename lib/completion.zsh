@@ -2,20 +2,6 @@
 # Add zsh-completions to $fpath.
 fpath=("${0:h}/external/src" $ZPLG_FPATH_BEFORE $fpath )
 
-# Load and initialize the completion system ignoring insecure directories with a
-# cache time of 20 hours, so it should almost always regenerate the first time a
-# shell is opened each day.
-autoload -Uz compinit && compinit
-autoload -Uz bashcompinit && bashcompinit
-zmodload -i zsh/complist
-_comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
-if (( $#_comp_files )); then
-  compinit -i -C
-else
-  compinit -i
-fi
-unset _comp_files
-
 setopt auto_list
 setopt auto_menu
 setopt always_to_end
