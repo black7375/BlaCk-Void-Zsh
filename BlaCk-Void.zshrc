@@ -53,7 +53,7 @@ fi
 
 zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
         multisrc"${_OMZ_SOURCES}" compile"(${(j.|.)_OMZ_SOURCES})" \
-        atinit"_zpcompinit_custom; zpcdreplay"
+        atinit"_zpcompinit-custom; zpcdreplay"
 zplugin light robbyrussell/oh-my-zsh
 
 ##----- Bundles form the custom repo.
@@ -99,7 +99,7 @@ zplugin light paoloantinori/hhighlighter
 zplugin ice from"gl" as"program" pick"tldr"
 zplugin light pepa65/tldr-bash-client
 
-_zpcompinit_custom
+_zpcompinit-custom
 zplugin cdreplay -q
 
 ##-------------------------Theme Set

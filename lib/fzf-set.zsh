@@ -9,8 +9,8 @@ export FZF_DEFAULT_OPTS="
 #hl: red, fg+: white, bg+: gray(or 244), hl+: green
 #info: yellow, pointer: red, marker: white, spinner: yellow
 
-zle     -N    _fzf_readline
-bindkey '^x1' _fzf_readline
+zle     -N    _fzf-readline
+bindkey '^x1' _fzf-readline
 
 alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr% C(auto)%an" "$@"'
 local _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
