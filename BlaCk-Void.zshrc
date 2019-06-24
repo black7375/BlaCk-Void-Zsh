@@ -10,7 +10,7 @@ if [[ -d "$BVFPATH" ]]; then
 fi
 unset BVFPATH
 
-if [[! -f ${BVZSH/*.zwc} ]]; then
+if [[ ! -f ${BVZSH}/BlaCk-Void.zshrc.zwc ]]; then
     zsh-compile &!
 fi
 
