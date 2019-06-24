@@ -10,6 +10,10 @@ if [[ -d "$BVFPATH" ]]; then
 fi
 unset BVFPATH
 
+if [[! -f ${BVZSH/*.zwc} ]]; then
+    zsh-compile &!
+fi
+
 # If not Interactively.
 case $- in
     *i*);;

@@ -6,6 +6,7 @@ echo "   System Utils"
 echo "--------------------"
 echo "command: zsh-help         -> help message"
 echo "command: zsh-update       -> update config files, plugin, clean files"
+echo "command: zsh-compile      -> BVZSH compile"
 echo "command: font-update      -> nerdFont update\n"
 
 echo "command: history-clear    -> history backup"

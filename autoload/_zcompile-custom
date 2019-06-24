@@ -1,0 +1,7 @@
+# @docwhat
+local file
+for file in "$@"; do
+    if [[ $file == *.zwc ]]; then continue; fi
+    print -P "%zcompile ${file}"
+    zcompile "$file"
+done

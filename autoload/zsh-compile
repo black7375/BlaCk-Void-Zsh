@@ -1,0 +1,16 @@
+# @docwhat
+echo "-------"
+echo "Zcompile ZSH Files"
+# Remove old compile files that may be stale
+rm -f ~/.*.zwc(N.)
+find \
+    ${BVZSH}(N/) \
+    -name '*.zwc' \
+    -print0 \
+    | xargs -0 rm
+
+# My stuff
+_zcompile-custom ~/.zshrc ~/.zshenv ~/.zlogin
+_zcompile-custom ${BVZSH}/*.{zshrc,zshenv,zlogin,ztheme}(N^/)
+_zcompile-custom ${BVZSH}/autoload/*(N^/)
+_zcompile-custom ${BVZSH}/lib/*(N^/)
