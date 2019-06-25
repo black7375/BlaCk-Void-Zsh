@@ -73,6 +73,8 @@ zplugin light zsh-users/zsh-completions
 zplugin light black7375/zsh-git-completion
 #zplugin ice wait"1" atload'_zsh_highlight' lucid
 zplugin light zdharma/fast-syntax-highlighting
+#zplugin ice wait"1"
+zplugin light black7375/zsh-lazyenv
 
 #zplugin ice wait"2" lucid
 zplugin light djui/alias-tips
@@ -116,13 +118,14 @@ fi
 _zsh-theme $BVZSH_THEME
 
 ##-------------------------Plugin Set
-#-----thefuck
-eval "$(thefuck --alias)"
-
 #-----Tmuxinator
 if [ -x "$(command -v tmux)" ]; then
     tmux set-window-option -g pane-base-index 1
 fi
+
+#-----zsh-lazyenv
+ZSH_EVALCACHE_DIR=${BVZSH}/cache
+lazyenv-enabled
 
 #-----alias-tip
 export ZSH_PLUGINS_ALIAS_TIPS_FORCE=0
@@ -192,7 +195,7 @@ HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 ##-------------------------From bashrc-------------------------
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r ~/.dircolors && evalcache dircolors -b ~/.dircolors || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
@@ -232,7 +235,7 @@ typeset -gU cdpath fpath path
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval $(SHELL=/bin/sh lesspipe)
 
 # Alias
 alias tar-compress-gz='tar -zcvf'
