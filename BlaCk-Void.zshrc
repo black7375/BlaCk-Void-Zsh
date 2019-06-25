@@ -10,10 +10,6 @@ if [[ -d "$BVFPATH" ]]; then
 fi
 unset BVFPATH
 
-if [[ ! -f ${BVZSH}/BlaCk-Void.zshrc.zwc ]]; then
-    zsh-compile &!
-fi
-
 # If not Interactively.
 case $- in
     *i*);;
@@ -243,6 +239,7 @@ alias tar-compress-gz='tar -zcvf'
 alias tar-extract-gz='tar -zxvf'
 alias map='telnet mapscii.me'
 alias prettyping='$BVZSH/prettyping'
+alias rsync-ssh='rsync -avzhe ssh --progress'
 
 # Apple Terminal New Tab
 if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]

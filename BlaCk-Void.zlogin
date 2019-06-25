@@ -1,3 +1,8 @@
+# Auto zcompile
+if [[ ! -f ${BVZSH}/BlaCk-Void.zshrc.zwc ]]; then
+    zsh-compile &!
+fi
+
 # Execute code in the background to not affect the current session
 {
     # Compile zcompdump, if modified, to increase startup speed.
