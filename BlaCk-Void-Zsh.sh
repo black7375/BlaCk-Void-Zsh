@@ -61,7 +61,12 @@ set_brew()
       export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
     fi
   fi
-  brew install fzf ripgrep thefuck
+  {
+    brew install fzf ripgrep thefuck
+  } || {
+    brew vendor-install ruby
+    brew install fzf ripgrep thefuck
+  }
   $(brew --prefix)/opt/fzf/install
 }
 etc_install()
