@@ -134,9 +134,11 @@ source $BVZSH/install_font.sh
 echo "--------------------"
 echo "  Apply Settings\n"
 
+mkdir $BVZSH/cache
 zshrc=~/.zshrc
 zshenv=~/.zshenv
 zlogin=~/.zlogin
+zprofile=~/.zprofile
 
 set_file()
 {
@@ -161,6 +163,7 @@ set_file $zlogin
 echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
 echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
 echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
+cat ~/.profile                                | tee -a $zprofile
 #cp -v BlaCk-Void.zshrc  $file
 
 #Remove zplugin installer contents
