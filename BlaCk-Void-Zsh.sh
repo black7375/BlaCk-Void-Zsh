@@ -64,6 +64,7 @@ set_brew()
   {
     brew install fzf ripgrep thefuck
   } || {
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     brew vendor-install ruby
     brew install fzf ripgrep thefuck
   }
