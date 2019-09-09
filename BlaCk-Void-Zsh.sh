@@ -132,7 +132,8 @@ etc_install
 source $BVZSH/install_font.sh
 
 echo "--------------------"
-echo "  Apply Settings\n"
+echo "  Apply Settings"
+echo ""
 
 mkdir $BVZSH/cache
 zshrc=~/.zshrc
@@ -144,7 +145,8 @@ set_file()
 {
   local file=$1
   echo "-------"
-  echo "Set $file !!\n"
+  echo "Set $file !!"
+  echo ""
   if [ -e $file ]; then
     echo "$file found."
     echo "Now Backup.."
@@ -153,7 +155,8 @@ set_file()
   else
     echo "$file not found."
     touch $file
-    echo "$file is created\n"
+    echo "$file is created"
+    echo ""
   fi
 }
 set_file $zshrc
@@ -174,6 +177,8 @@ echo "ZSH as the default shell(need sudo permission)"
 chsh -s $(which zsh)
 
 echo "Please relogin session or restart terminal"
-echo "The End!!\n"
+echo "The End!!"
+echo ""
+
 echo "command: zsh-help"
 echo "for BlaCk-Void Zsh update"
