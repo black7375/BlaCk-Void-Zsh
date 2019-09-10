@@ -94,6 +94,8 @@ zplugin light changyuheng/zsh-interactive-cd
 zplugin light peterhurford/up.zsh
 #zplugin ice wait"2" lucid
 zplugin light jocelynmallon/zshmarks
+#zplugin ice wait"2" lucid
+zplugin light marzocchi/zsh-notify
 #zplugin ice wait"2" pick"h.sh" lucid
 zplugin ice pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
@@ -191,6 +193,10 @@ bindkey '^[[B' history-substring-search-down
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+
+#-----zsh-notify
+zstyle ':notify:*' error-title "Command failed (in #{time_elapsed} seconds)"
+zstyle ':notify:*' success-title "Command finished (in #{time_elapsed} seconds)"
 
 ##-------------------------From bashrc-------------------------
 # enable color support of ls and also add handy aliases
