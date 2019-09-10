@@ -129,9 +129,6 @@ fi
 ZSH_EVALCACHE_DIR=${BVZSH}/cache
 lazyenv-enabled
 
-#-----thefuck
-evalcache "$(thefuck --alias)"
-
 #-----alias-tip
 export ZSH_PLUGINS_ALIAS_TIPS_FORCE=0
 
