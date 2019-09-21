@@ -38,6 +38,7 @@ local _OMZ_SOURCES=(
     plugins/command-not-found/command-not-found.plugin.zsh
     plugins/fzf/fzf.plugin.zsh
     plugins/git/git.plugin.zsh
+    plugins/gitfast/gitfast.plugin.zsh
     plugins/pip/pip.plugin.zsh
     plugins/sudo/sudo.plugin.zsh
     plugins/thefuck/thefuck.plugin.zsh
@@ -70,7 +71,7 @@ zplugin light hlissner/zsh-autopair
 zplugin light zsh-users/zsh-completions
 #zplugin ice as"completion" blockf
 #zplugin ice wait"1"
-zplugin light black7375/zsh-git-completion
+#zplugin light black7375/zsh-git-completion
 #zplugin ice wait"1" atload'_zsh_highlight' lucid
 zplugin light zdharma/fast-syntax-highlighting
 #zplugin ice wait"1"
