@@ -1,5 +1,5 @@
 ##-------------------------Init------------------------
-export BVZSH=$( cd "$(dirname "$0")" ; pwd )
+export BVZSH=${0:a:h}
 
 BVFPATH=${BVZSH}/autoload
 fpath+="${BVFPATH}"
