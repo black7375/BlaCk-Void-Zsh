@@ -97,7 +97,6 @@ zplugin light jocelynmallon/zshmarks
 zplugin ice wait"2" lucid
 zplugin light marzocchi/zsh-notify
 zplugin ice wait"2" pick"h.sh" lucid
-#zplugin ice pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
 zplugin ice wait"2" from"gl" as"program" pick"tldr" lucid
 zplugin light pepa65/tldr-bash-client
