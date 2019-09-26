@@ -20,7 +20,9 @@ local _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=a
 zle     -N    fzf-locate-widget
 bindkey '\ei' fzf-locate-widget
 
-export FZF_TMUX=1
+if [ -x "$(command -v tmux)" ]; then
+    export FZF_TMUX=1
+fi
 #Directly executing the command (CTRL-X CTRL-R)
 zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
