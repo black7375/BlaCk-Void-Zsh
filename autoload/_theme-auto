@@ -3,12 +3,15 @@ case ${TERM} in
         export TERM="xterm-256color"
         if [ $(tput colors) -ge "256" ]; then
             _theme-powerline
+            _powerline-nerd
         else
             _theme-simple
+            _simple-nerd
         fi
         ;;
     *)
         _theme-simple
+        _simple-nerd
         ;;
 esac
 

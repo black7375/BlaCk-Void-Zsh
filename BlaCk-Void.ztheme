@@ -1,9 +1,11 @@
 ##-------------------------PowerLevel10k Set-------------------------
 ##-------------------------Theme Mode
-# Theme Mode: auto powerline simple | TODO: powerline-single simple-single
+# Theme Mode: auto powerline simple powerline-single simple-single | TODO: normal normal-single
 export BVZSH_THEME='auto'
+
 # Color Mode: auto fixed flex
 export BVZSH_COLOR='auto'
+
 # TODO: Icon  Mode: auto nerd powerline unicode ascii
 #       export BVZSH_ICON='auto'
 
@@ -302,6 +304,138 @@ _powerline-nerd()
   _powerline-color
 }
 
+_powerline-nerd-single()
+{
+  ##-----Prompt Set
+  ## Prompt
+  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context root_indicator dir dir_writable vcs)
+  if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+          $EUID -eq 0 ]]; then
+      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh root_indicator dir dir_writable vcs)
+  fi
+  _left_prompt() {
+    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context root_indicator dir dir_writable vcs)
+    # not connected ssh, root user
+    if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+            $EUID -eq 0 ]]; then
+      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh root_indicator dir dir_writable vcs)
+    fi
+  }
+  add-zsh-hook precmd _left_prompt
+  typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time history)
+
+  ## Double-Lined Prompt
+  typeset -g POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+  typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+  typeset -g POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+
+  ## Other Prompt
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
+  typeset -g POWERLEVEL9K_STATUS_OK=true
+
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=2
+
+  #typeset -g POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+  #typeset -g POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+  typeset -g POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
+  #typeset -g POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  \uE868  %d.%m.%y}"
+
+  ##-----Icon Set
+  typeset -g POWERLEVEL9K_ANDROID_ICON=$'\uF17B '              #   or  '\uE70E'  
+  typeset -g POWERLEVEL9K_APPLE_ICON=$'\uF179 '                # 
+  typeset -g POWERLEVEL9K_AWS_ICON=$'\uF1B3 '                  #  or  '\uF270 ' 
+  typeset -g POWERLEVEL9K_AWS_EB_ICON=$'\uF1BD  '              #   or  '\uE7AD'  
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_ICON=$'\uF013 '      # 
+  typeset -g POWERLEVEL9K_BATTERY_ICON=$'\uF241 '              #  or  '\uF240 ' 
+  typeset -g POWERLEVEL9K_CARRIAGE_RETURN_ICON=$'\u21B5'       # ↵
+  typeset -g POWERLEVEL9K_DATE_ICON=$'\uF073 '                 # 
+  typeset -g POWERLEVEL9K_DISK_ICON=$'\uF0A0 '                 # 
+  typeset -g POWERLEVEL9K_DROPBOX_ICON=$'\UF16B'               # 
+  typeset -g POWERLEVEL9K_ETC_ICON=                            # or '\uF013' 
+  typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON="Due"            #    or  '\uF252 ' 
+  typeset -g POWERLEVEL9K_FAIL_ICON=$'\u2718'                  # ✘  or  '\uF00D' 
+  typeset -g POWERLEVEL9K_FOLDER_ICON=                         # or '\uF07B '   or  '\uF115' 
+  typeset -g POWERLEVEL9K_FREEBSD_ICON=$'\uF30C '              # 
+  typeset -g POWERLEVEL9K_GO_ICON=$'\uE724'                    #  or  '\uE626' 
+  typeset -g POWERLEVEL9K_HOME_ICON=                           # or '\uF015' 
+  typeset -g POWERLEVEL9K_HOME_SUB_ICON=                       # or '\uF07C' 
+  typeset -g POWERLEVEL9K_JAVA_ICON=$'\U2615'                  # ☕︎
+  typeset -g POWERLEVEL9K_KUBERNETES_ICON=$'\U2388'            # ⎈
+  typeset -g POWERLEVEL9K_LARAVEL_ICON=$'\uE73f '              # 
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'     # 
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=' '       #   or   '\uF105'  or '\uF12D' 
+  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$' \uE0B1' # 
+  typeset -g POWERLEVEL9K_LINUX_ICON=$'\uF17C '                # 
+  typeset -g POWERLEVEL9K_LINUX_ARCH_ICON=$'\uF303'            # 
+  typeset -g POWERLEVEL9K_LINUX_CENTOS_ICON=$'\uF304'          # 
+  typeset -g POWERLEVEL9K_LINUX_COREOS_ICON=$'\uF305'          # 
+  typeset -g POWERLEVEL9K_LINUX_DEBIAN_ICON=$'\uF306'          # 
+  typeset -g POWERLEVEL9K_LINUX_ELEMENTARY_ICON=$'\uF309'      # 
+  typeset -g POWERLEVEL9K_LINUX_FEDORA_ICON=$'\uF30A'          # 
+  typeset -g POWERLEVEL9K_LINUX_GENTOO_ICON=$'\uF30D'          # 
+  typeset -g POWERLEVEL9K_LINUX_MAGEIA_ICON=$'\uF310'          # 
+  typeset -g POWERLEVEL9K_LINUX_MINT_ICON=$'\uF30E'            # 
+  typeset -g POWERLEVEL9K_LINUX_NIXOS_ICON=$'\uF313'           # 
+  typeset -g POWERLEVEL9K_LINUX_MANJARO_ICON=$'\uF312'         # 
+  typeset -g POWERLEVEL9K_LINUX_DEVUAN_ICON=$'\uF307'          # 
+  typeset -g POWERLEVEL9K_LINUX_ALPINE_ICON=$'\uF300'          # 
+  typeset -g POWERLEVEL9K_LINUX_AOSC_ICON=$'\uF301'            # 
+  typeset -g POWERLEVEL9K_LINUX_OPENSUSE_ICON=$'\uF314'        # 
+  typeset -g POWERLEVEL9K_LINUX_SABAYON_ICON=$'\uF317'         # 
+  typeset -g POWERLEVEL9K_LINUX_SLACKWARE_ICON=$'\uF319'       # 
+  typeset -g POWERLEVEL9K_LINUX_UBUNTU_ICON=$'\uF31B'          # 
+  typeset -g POWERLEVEL9K_LOAD_ICON=$'\uF524'                  #  or L           or $'\uF140 '  or '\uF080 ' 
+  typeset -g POWERLEVEL9K_LOCK_ICON=$'\uF023'                  #  or '\uE0A2' 
+  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"    #   or '\u256D'$'\U2500' ╭─
+  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "    #   or '\u251C'$'\U2500' ├─ or '\u2570'$'\U2500 '  ╰─
+  typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='\u251C'$'\U2500' # ├─
+  typeset -g POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX='\u251C'$'\U2500'  # ├─
+  typeset -g POWERLEVEL9K_NETWORK_ICON=$'\uF012 '              #  or $'\uF1fe '  or '\uF1EB' 
+  typeset -g POWERLEVEL9K_NODE_ICON='\uE617 '                  #  or'\uE24F' ⬢
+  typeset -g POWERLEVEL9K_OK_ICON=$'\u2714'                    # ✔ or $'\uF00c ' 
+  typeset -g POWERLEVEL9K_PUBLIC_IP_ICON=$'\uF080 '            #  or $'\uF469'  or '\UF0AC' 
+  typeset -g POWERLEVEL9K_PYTHON_ICON=$'\uF81F'                #  or '\uE73C ' # 
+  typeset -g POWERLEVEL9K_RAM_ICON=$'\uF2db '                  #  or $'\uF0e4 ' 
+  typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B2'    # 
+  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=$'\uE0B3' # 
+  typeset -g POWERLEVEL9K_ROOT_ICON="\uF0e7 Root"              #   or '\uF292'   or '\uE614 ' 
+  typeset -g POWERLEVEL9K_RUBY_ICON=$'\uF219 '                 #  or '\uE791'  or $'\uE739' 
+  typeset -g POWERLEVEL9K_RUST_ICON=$'\uE7a8'                  # 
+  typeset -g POWERLEVEL9K_SERVER_ICON=$'\uF233 '               #  or '\uF473'  or '\uF0AE ' 
+  typeset -g POWERLEVEL9K_SSH_ICON="(ssh)"                     #    or 'uf120'  or '\uE795'  or '\uF489'  # 
+  typeset -g POWERLEVEL9K_SUDO_ICON=$'\uF09C'                  # 
+  typeset -g POWERLEVEL9K_SUNOS_ICON=$'\uF185 '                # 
+  typeset -g POWERLEVEL9K_SWAP_ICON=$'\uF464'                  #  or '\uF0C7 '  or '\uF109 ' 
+  typeset -g POWERLEVEL9K_SWIFT_ICON=$'\uE755'                 # 
+  typeset -g POWERLEVEL9K_SYMFONY_ICON=$'\uE757'               # 
+  typeset -g POWERLEVEL9K_TEST_ICON=$'\uE29A '                 #  or '\uF188' 
+  typeset -g POWERLEVEL9K_TIME_ICON=$'\uF017 '                 # 
+  typeset -g POWERLEVEL9K_TODO_ICON=$'\uF046 '                 #  or '\uF133' 
+  typeset -g POWERLEVEL9K_VCS_BOOKMARK_ICON=$'\uF461 '         #  or '\uF02E'  or '\uF097'  or '\uF08D'  or $'\uF223'  or ☿
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=$'\uF126 '           #  or '\uE702'  or 
+  typeset -g POWERLEVEL9K_VCS_COMMIT_ICON='\uE729'             #  or "-o-" or '@'
+  typeset -g POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=$'\uF171 '    #  or '\uF172 '  or '\uE703' 
+  typeset -g POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uF113 '       #  or '\uF09B '  or '\uF092 ' 
+  typeset -g POWERLEVEL9K_VCS_GIT_GITLAB_ICON=$'\uF296 '       # 
+  typeset -g POWERLEVEL9K_VCS_GIT_ICON=$'\uF1D3 '              #  or '\uF1D2' 
+  typeset -g POWERLEVEL9K_VCS_HG_ICON=$'\uF223 '               #  or 
+  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\uF063'  #  or '\uF01a'  or '\uF0AB'  or '\ud727'  or '\u21E3' ⇣ or '\u2193' ↓
+  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\uF062'  #  or '\uF01b'  or '\uF0AA'  or '\uE726'  or '\u21E1' ⇡ or '\u2191' ↑
+  typeset -g POWERLEVEL9K_VCS_REMOTE_BRANCH_ICON=$'\uF061 '    #  or '\uF18e'  or '\uF0A9'  or '\uE725'  or '\u21DD' ⇝ or '\u2192' → or '\uE728 ' 
+  typeset -g POWERLEVEL9K_VCS_STAGED_ICON=$'\uF067'            # ✚ or '\uF055'  or '\uF0FE' 
+  typeset -g POWERLEVEL9K_VCS_STASH_ICON=$'\uF01C'             #  or '\uF192'  or ⍟
+  typeset -g POWERLEVEL9K_VCS_SVN_ICON=$'\uE72D '              #  or'\uE268' 
+  typeset -g POWERLEVEL9K_VCS_TAG_ICON=$'\uF02c '              #  or '\uF02B ' 
+  typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\u25CF'          # ● or '\uF111'  or '\uF06A'  or '\uF12A'  or '\uF071' 
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uF128'         #  or '\uF059'  '\uF29C'  or '\u00B1' ?
+  typeset -g POWERLEVEL9K_VPN_ICON="(vpn)"
+  typeset -g POWERLEVEL9K_WINDOWS_ICON=$'\uF17a '              #  or '\uF17A' 
+
+  ##-----Color Set
+  _powerline-color
+}
+
 _simple-nerd()
 {
   # Original location: https://github.com/romkatv/dotfiles-public/blob/master/.purepower.
@@ -372,6 +506,83 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_VCS_TAG_ICON=$'\uF02C '              #  or '\uF02B ' 
   typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\b\uFF01'        # ！ or '\u25CF' ● or '\uF111'  or '\uF06A'  or '\uF12A'  or '\uF071' 
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\b\uFF1F'       # ？ or '\uF128'  or '\uF059'  '\uF29C'  or '\u00B1' ?
+  typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_LEFT_SEGMENTS=''
+  typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS=''
+
+  ##-----Color Set
+  _simple-color
+}
+
+_simple-nerd-single()
+{
+  # Original location: https://github.com/romkatv/dotfiles-public/blob/master/.purepower.
+  # If you copy this file, keep the link to the original and this sentence intact; you are encouraged
+  # to change everything else.
+  ##-----Prompt Set
+  ## Prompt
+  # init
+    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+    if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+                $EUID -eq 0 ]]; then
+        typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir)
+    fi
+    _left_prompt() {
+        typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+        # not connected ssh, root user
+        if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+                    $EUID -eq 0 ]]; then
+            typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir)
+        fi
+    }
+    add-zsh-hook precmd _left_prompt
+    typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(dir_writable root_indicator command_execution_time background_jobs status vcs)
+
+  ## Double-Lined Prompt
+  vi_insert=$'\u276F' #❯
+  vi_cmd=$'\u276E'    #❮
+
+  local p="\${\${\${KEYMAP:-0}:#vicmd}:+${${vi_insert//\\/\\\\}//\}/\\\}}}"
+  p+="\${\${\$((!\${#\${KEYMAP:-0}:#vicmd})):#0}:+${${vi_cmd//\\/\\\\}//\}/\\\}}}"
+  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%(?.%F{171}${p}%f.%F{160}${p}%f) "
+  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=$'\n'
+  typeset -g POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+  typeset -g POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+
+  ## Other Prompt
+  typeset -g POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=false
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
+  typeset -g POWERLEVEL9K_STATUS_OK=false
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
+
+  ##-----Icon Set
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_ICON=$'\u3002'       # 。 or '\uF013' 
+  typeset -g POWERLEVEL9K_CARRIAGE_RETURN_ICON=''
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m '
+  typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON=''               #  '\uF252 ' 
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=''            #  or '\u3000'　
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=$POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX
+  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=''
+  typeset -g POWERLEVEL9K_LOCK_ICON=$'\uF023 '                 #  or '\uE0A2' 
+  typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
+  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=' '
+  typeset -g POWERLEVEL9K_ROOT_ICON=$'\uF09C '                 #  or '\uF0e7'   or '\uF292'   or '\uE614 ' 
+  typeset -g POWERLEVEL9K_VCS_BOOKMARK_ICON=$'\uF461 '         #  or '\uF02E'  or '\uF097'  or '\uF08D'  or $'\uF223'  or ☿
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=' \uF126'            #  or '\uE702'  or 
+  typeset -g POWERLEVEL9K_VCS_COMMIT_ICON=$'\uE729'            #  or "-o-" or '@'
+  typeset -g POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=''            # '\uF171 '  or '\uF172 '  or '\uE703' 
+  typeset -g POWERLEVEL9K_VCS_GIT_GITHUB_ICON=''               # '\uF113 '  or '\uF09B '  or '\uF092 ' 
+  typeset -g POWERLEVEL9K_VCS_GIT_GITLAB_ICON=''               # '\uF296 ' 
+  typeset -g POWERLEVEL9K_VCS_GIT_ICON=''                      # '\uF1D3 '  or '\uF1D2' 
+  typeset -g POWERLEVEL9K_VCS_HG_ICON=''                       # '\uF223 '  or 
+  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\u21E3'  # ⇣ or '\uF063 '  or '\uF01a'  or '\uF0AB'  or '\ud727'  or '\u2193' ↓
+  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\u21E1'  # ⇡ or '\uF062 '  or '\uF01b'  or '\uF0AA'  or '\uE726'  or '\u2191' ↑
+  typeset -g POWERLEVEL9K_VCS_REMOTE_BRANCH_ICON=$'\u21DD'     # ⇝ or '\uF061 '  or '\uF18e'  or '\uF0A9'  or '\uE725'  or '\u2192' → or '\uE728 ' 
+  typeset -g POWERLEVEL9K_VCS_STAGED_ICON=$'\uFF0B'            # ＋ or '\uF067' ✚ or '\uF055'  or '\uF0FE' 
+  typeset -g POWERLEVEL9K_VCS_STASH_ICON=$'\uFF0A'             # ＊ or '\uF01C'  or '\uF192'  or ⍟
+  typeset -g POWERLEVEL9K_VCS_SVN_ICON=''                      # '\uE72D '  or'\uE268' 
+  typeset -g POWERLEVEL9K_VCS_TAG_ICON=$'\uF02C '              #  or '\uF02B ' 
+  typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uFF01'          # ！ or '\u25CF' ● or '\uF111'  or '\uF06A'  or '\uF12A'  or '\uF071' 
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uFF1F'         # ？ or '\uF128'  or '\uF059'  '\uF29C'  or '\u00B1' ?
   typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_LEFT_SEGMENTS=''
   typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS=''
 
