@@ -124,7 +124,7 @@ if [ -x "$(command -v tmux)" ]; then
 fi
 
 #-----zsh-lazyenv
-ZSH_EVALCACHE_DIR=${BVZSH}/cache
+export ZSH_EVALCACHE_DIR=${BVZSH}/cache
 lazyenv-enabled
 
 #-----alias-tip
@@ -223,6 +223,7 @@ setopt nonomatch
 setopt interactive_comments
 setopt correct
 setopt noclobber
+setopt complete_aliases
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
