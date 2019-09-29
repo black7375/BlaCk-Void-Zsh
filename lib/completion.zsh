@@ -39,6 +39,7 @@ zstyle ':completion:*:warnings'                     format $'%{\e[0;31m%}No matc
 zstyle ':completion:*:*:zcompile:*'                 ignored-patterns '(*~|*.zwc)'       # define files to ignore for zcompile
 zstyle ':completion:correct:'                       prompt 'correct to: %e'             #
 zstyle ':completion::(^approximate*):*:functions'   ignored-patterns '_*'               # Ignore completion functions for commands you don't have:
+zstyle ':completion::complete:*'                    gain-privileges 1                   # enabling autocompletion of privileged environments in privileged commands
 
 # complete manual by their section
 zstyle ':completion:*:manuals'                      separate-sections true
