@@ -1,6 +1,6 @@
 #Useful Completion @finnurtorfa/zsh(https://github.com/finnurtorfa/zsh)
 # Add zsh-completions to $fpath.
-fpath=("${0:h}/external/src" $ZPLG_FPATH_BEFORE $fpath )
+fpath=("${BVZSH}/completion" $ZPLG_FPATH_BEFORE $fpath )
 
 setopt auto_list
 setopt auto_menu
