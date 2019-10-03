@@ -1,0 +1,7 @@
+# not connected ssh, root user
+if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+            $EUID -eq 0 ]]; then
+    _icon-nerd
+else
+    _icon-powerline
+fi
