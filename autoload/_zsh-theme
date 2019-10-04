@@ -25,12 +25,10 @@ case $theme_set in
         ;;
 
     'simple')
-        _theme-simple
         _simple-nerd
         ;;
 
-    'simple')
-        _theme-simple
+    'simple-single')
         _simple-nerd-single
         ;;
 
