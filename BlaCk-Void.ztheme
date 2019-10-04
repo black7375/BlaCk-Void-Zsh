@@ -205,7 +205,7 @@ _icon-powerline()
   vcs_staged=$'\uFF0B'            # ＋ or '\u2795' ➕ or '+'
   vcs_stash=$'\uFF0A'             # ＊ or '*'
   vcs_unstaged=$'\u25CF'          # ●  or '\uFF01' ！ or '!' or '\u00B1' ± or '+-'
-  vcs_untracked=$'\u2753'         # ❓ or '?'
+  vcs_untracked=$'\uFF1F'         # ？ or '\u2753' ❓ or '?'
   vpn="(vpn)"
 }
 
@@ -459,10 +459,10 @@ _powerline-nerd-single()
   ## Prompt
   # init
   _left_prompt() {
-      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context root_indicator dir dir_writable vcs)
+      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator dir dir_writable vcs)
       if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
                   $EUID -eq 0 ]]; then
-          typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh root_indicator dir dir_writable vcs)
+          typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator dir dir_writable vcs)
       fi
   }
   _left_prompt && add-zsh-hook precmd _left_prompt
@@ -500,6 +500,10 @@ _powerline-nerd-single()
 
 
   ##-----Icon Set
+  ## Replace Icons
+  root=${root%\ root}
+
+  ## Load Icons
   _powerline-icon
 
 

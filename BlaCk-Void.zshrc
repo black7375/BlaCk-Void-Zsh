@@ -55,16 +55,16 @@ _alias-tip-setting() {
   export ZSH_PLUGINS_ALIAS_TIPS_FORCE=0
 }
 
+_enhancd-setting() {
+  export ENHANCD_FILTER=fzf:fzy:peco
+}
+
 _zsh-history-substring-search-setting() {
   bindkey '^[[A' history-substring-search-up
   bindkey '^[[B' history-substring-search-down
   bindkey "$terminfo[kcuu1]" history-substring-search-up
   bindkey "$terminfo[kcud1]" history-substring-search-down
   HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-}
-
-_enhancd-setting() {
-  export ENHANCD_FILTER=fzf:fzy:peco
 }
 
 _fzf-widgets-setting() {
@@ -175,15 +175,13 @@ zplugin ice wait"0b" lucid
 zplugin light hlissner/zsh-autopair
 zplugin ice wait"0b" blockf lucid
 zplugin light zsh-users/zsh-completions
-zplugin ice wait"0c" lucid
-zplugin light changyuheng/zsh-interactive-cd
+zplugin ice wait"0c" atload"_enhancd-setting" lucid
+zplugin light b4b4r07/enhancd
 zplugin ice wait"0c" lucid
 zplugin light zsh-users/zsh-history-substring-search
 
 zplugin ice wait"1a" atload"_alias-tip-setting" lucid
 zplugin light djui/alias-tips
-zplugin ice wait"1a" atload"_enhancd-setting" lucid
-zplugin light b4b4r07/enhancd
 zplugin ice wait"1b" lucid
 zplugin light wfxr/forgit
 zplugin ice wait"1b" atload"_fzf-widgets-setting" lucid
@@ -195,6 +193,8 @@ zplugin ice wait"2" lucid
 zplugin light peterhurford/up.zsh
 zplugin ice wait"2" lucid
 zplugin light jocelynmallon/zshmarks
+zplugin ice wait"2" lucid
+zplugin light changyuheng/zsh-interactive-cd
 zplugin ice wait"2" atload"_zsh-notify-setting" lucid
 zplugin light marzocchi/zsh-notify
 zplugin ice wait"2" atload"_zsh-lazyenv-setting" lucid
