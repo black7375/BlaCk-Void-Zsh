@@ -29,10 +29,6 @@ if [ -d "$HOME/.cargo/bin" ] ; then
     alias exa-tree='exa --long --tree'
 fi
 
-if [ -d "$HOME/.local/bin" ] ; then
-    export PATH="$PATH:$HOME/.local/bin"
-fi
-
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then
     export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 fi
