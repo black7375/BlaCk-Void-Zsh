@@ -7,7 +7,7 @@ export BVZSH_THEME='auto'
 export BVZSH_COLOR='auto'
 
 # TODO: Icon  Mode: auto nerd powerline | TODO: emoji unicode ascii
-export BVZSH_ICON='powerline'
+export BVZSH_ICON='auto'
 
 ##-------------------------Theme Doc
 ## Prompt Elements
@@ -452,23 +452,30 @@ _powerline-nerd()
   _powerline-color
 }
 
+
+_left-prompt-set()
+{
+    local _full_segments=$1
+    local _normal_segments=$2
+
+    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=${(P)_full_segments}
+
+    # not connected ssh, root user
+    if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+                $EUID -eq 0 ]]; then
+        typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=${(P)_normal_segments}
+    fi
+}
 _powerline-nerd-single()
 {
   ##-----Prompt Set
   ## Prompt
-  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context root_indicator dir dir_writable vcs)
-  if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
-          $EUID -eq 0 ]]; then
-      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh root_indicator dir dir_writable vcs)
-  fi
+  full=(ssh context root_indicator dir dir_writable vcs)
+  normal=(ssh root_indicator dir dir_writable vcs)
   _left_prompt() {
-    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context root_indicator dir dir_writable vcs)
-    # not connected ssh, root user
-    if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
-            $EUID -eq 0 ]]; then
-      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh root_indicator dir dir_writable vcs)
-    fi
+    _left-prompt-set full normal
   }
+  _left_prompt
   add-zsh-hook precmd _left_prompt
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time history)
 
@@ -519,11 +526,6 @@ _simple-nerd()
   ##-----Prompt Set
   ## Prompt
   # init
-  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator command_execution_time)
-  if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
-          $EUID -eq 0 ]]; then
-    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
-  fi
   _left_prompt() {
     typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator command_execution_time)
     # not connected ssh, root user
@@ -532,6 +534,7 @@ _simple-nerd()
       typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
     fi
   }
+  _left_prompt
   add-zsh-hook precmd _left_prompt
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs status)
 
@@ -602,11 +605,6 @@ _simple-nerd-single()
   ##-----Prompt Set
   ## Prompt
   # init
-    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
-    if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
-                $EUID -eq 0 ]]; then
-        typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir)
-    fi
     _left_prompt() {
         typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
         # not connected ssh, root user
@@ -615,6 +613,7 @@ _simple-nerd-single()
             typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir)
         fi
     }
+    _left_prompt
     add-zsh-hook precmd _left_prompt
     typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(dir_writable root_indicator command_execution_time background_jobs status vcs)
 
