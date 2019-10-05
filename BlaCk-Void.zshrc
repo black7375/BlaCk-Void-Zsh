@@ -44,6 +44,9 @@ fi
 
 ##---------- Bundles from the oh-my-zsh.
 _OMZ_SETTING() {
+  #-----Thefuck
+  eval "$(thefuck --alias)"
+
   #-----Tmuxinator
   if [[ $TMUX_ENABLE ]]; then
       tmux set-window-option -g pane-base-index 1
@@ -65,6 +68,15 @@ _zsh-history-substring-search-setting() {
   bindkey "$terminfo[kcuu1]" history-substring-search-up
   bindkey "$terminfo[kcud1]" history-substring-search-down
   HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+}
+
+_zsh-git-smart-commands-setting() {
+  alias c='git-smart-commit'
+  alias a='git-smart-add'
+  alias p='git-smart-push seletskiy'
+  alias u='git-smart-pull'
+  alias r='git-smart-remote'
+  alias s='git status'
 }
 
 _fzf-widgets-setting() {
@@ -108,15 +120,6 @@ _fzf-widgets-setting() {
   fi
 }
 
-_zsh-git-smart-commands-setting() {
-  alias c='git-smart-commit'
-  alias a='git-smart-add'
-  alias p='git-smart-push seletskiy'
-  alias u='git-smart-pull'
-  alias r='git-smart-remote'
-  alias s='git status'
-}
-
 _zsh-notify-setting() {
   zstyle ':notify:*' error-title "Command failed (in #{time_elapsed} seconds)"
   zstyle ':notify:*' success-title "Command finished (in #{time_elapsed} seconds)"
@@ -134,6 +137,7 @@ ZSH="$HOME/.zplugin/plugins/robbyrussell---oh-my-zsh/"
 local _OMZ_SOURCES=(
     # Libs
     lib/compfix.zsh
+    lib/directories.zsh
     lib/git.zsh
     lib/termsupport.zsh
 
@@ -177,18 +181,18 @@ zplugin ice wait"0b" blockf lucid
 zplugin light zsh-users/zsh-completions
 zplugin ice wait"0c" atload"_enhancd-setting" lucid
 zplugin light b4b4r07/enhancd
-zplugin ice wait"0c" lucid
+zplugin ice wait"0c" atload"_zsh-history-substring-search-setting" lucid
 zplugin light zsh-users/zsh-history-substring-search
 
 zplugin ice wait"1a" atload"_alias-tip-setting" lucid
 zplugin light djui/alias-tips
-zplugin ice wait"1b" lucid
-zplugin light wfxr/forgit
+zplugin ice wait"1b" atload"_zsh-git-smart-commands-setting" blockf lucid
+zplugin light seletskiy/zsh-git-smart-commands
 zplugin ice wait"1b" atload"_fzf-widgets-setting" lucid
 zplugin light ytet5uy4/fzf-widgets
 
-zplugin ice wait"2" atload"_zsh-git-smart-commands-setting" blockf lucid
-zplugin light seletskiy/zsh-git-smart-commands
+zplugin ice wait"2" lucid
+zplugin light wfxr/forgit
 zplugin ice wait"2" lucid
 zplugin light peterhurford/up.zsh
 zplugin ice wait"2" lucid
