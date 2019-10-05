@@ -9,66 +9,13 @@ export BVZSH_COLOR='auto'
 # TODO: Icon  Mode: auto nerd powerline | TODO: emoji unicode ascii
 export BVZSH_ICON='auto'
 
-##-------------------------Theme Doc
-## Prompt Elements
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
-# POWERLEVEL9K_PROMPT_ON_NEWLINE POWERLEVEL9K_PROMPT_ADD_NEWLINE POWERLEVEL9K_RPROMPT_ON_NEWLINE
-
-## System Status Segments
-# background_jobs battery context dir dir_writable disk_usage history
-# host ip vpn_ip public_ip load os_icon ram root_indicator status swap
-# time user vi_mode ssh
-
-## Development Environment Segments
-# vcs
-
-## Language Segments
-# GO         => go_version
-# Javascript => node_version nodeenv nvm
-# PHP        => php_version symfony2tests symfony2_version
-# Python     => virtualenv anaconda pyenv
-# Ruby       => chruby rbenv rspec_stats rvm
-# Rust       => rust_version
-# Swift      => swift_version
-
-## Cloud Segments
-# AWS        => aws aws_en_env
-# Other      => docker_machine kubecontext
-
-## Other Segments
-# custom_commmand command_execution_time todo detect_virt newline
-
-## Zsh Segments codes.
-# %F => color dict
-# %f => reset color
-# %~ => current path
-# %* => time
-# %n => username
-# %m => shortname host
-# %(?..) => prompt conditional - %(condition.true.false)
-
-## Terminal codes
-# \e7   => save cursor position
-# \e[2A => move cursor 2 lines up
-# \e[1G => go to position 1 in terminal
-# \e8   => restore cursor position
-# \e[K  => clears everything after the cursor on the current line
-# \e[2K => clear everything on the current line
-
-## ETC Prompt Expansion
-# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
-
-## Icons
-# get_icon_names => show icons.
-# Setting => POWERLEVEL9K_{ICONNAME}_ICON
-
+##-------------------------Color Set
 ## Color
 # for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
 # getColorCode background
 # getColorCode foreground
 # Setting => POWERLEVEL9K_{ELEMENT}_FOREGROUND POWERLEVEL9K_{ELEMENT}_BACKGROUND
 
-##-------------------------Color Set
 _color-flex()
 {
   black='000'
@@ -184,6 +131,10 @@ _simple-color()
 }
 
 ##-------------------------Icon Set
+## Icons
+# get_icon_names => show icons.
+# Setting => POWERLEVEL9K_{ICONNAME}_ICON
+
 _icon-powerline()
 {
   background_jobs=$'\u3002'       # 。
@@ -405,6 +356,53 @@ _simple-icon()
 }
 
 ##-------------------------Theme Set
+## Prompt Elements
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
+# POWERLEVEL9K_PROMPT_ON_NEWLINE POWERLEVEL9K_PROMPT_ADD_NEWLINE POWERLEVEL9K_RPROMPT_ON_NEWLINE
+
+## System Status Segments
+# background_jobs battery context dir dir_writable disk_usage history
+# host ip vpn_ip public_ip load os_icon ram root_indicator status swap
+# time user vi_mode ssh
+
+## Development Environment Segments
+# vcs
+
+## Language Segments
+# GO         => go_version
+# Javascript => node_version nodeenv nvm
+# PHP        => php_version symfony2tests symfony2_version
+# Python     => virtualenv anaconda pyenv
+# Ruby       => chruby rbenv rspec_stats rvm
+# Rust       => rust_version
+# Swift      => swift_version
+
+## Cloud Segments
+# AWS        => aws aws_en_env
+# Other      => docker_machine kubecontext
+
+## Other Segments
+# custom_commmand command_execution_time todo detect_virt newline
+
+## Zsh Segments codes.
+# %F => color dict
+# %f => reset color
+# %~ => current path
+# %* => time
+# %n => username
+# %m => shortname host
+# %(?..) => prompt conditional - %(condition.true.false)
+
+## Terminal codes
+# \e7   => save cursor position
+# \e[2A => move cursor 2 lines up
+# \e[1G => go to position 1 in terminal
+# \e8   => restore cursor position
+# \e[K  => clears everything after the cursor on the current line
+# \e[2K => clear everything on the current line
+
+## ETC Prompt Expansion
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 
 _powerline-nerd()
 {
