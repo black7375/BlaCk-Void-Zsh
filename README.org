@@ -260,14 +260,27 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 - [[https://github.com/zdharma/zplugin][Zplugin]]
 
 *Default Repo ([[https://github.com/robbyrussell/oh-my-zsh][robbyrussell's oh-my-zsh]]).*
+
+*Lib*
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/lib/compfix.zsh][Compfix]]:
+  Handle completions insecurities.
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/lib/directories.zsh][Directories]]:
+  Changing/making/removing directory.
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/lib/git.zsh][Git]]:
+  Git fuctions.
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/lib/termsupport][Termsupport]]:
+  Set terminal window and tab/icon titles.
+*Plugin*
 - [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/autojumpp][Autojump]]:
   Enables [[https://github.com/wting/autojump][Autojump]] if installed with homebrew, macports or debian/ubuntu package.
 - [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/command-not-found][Command Not Found]]:
   This plugin uses the command-not-found package for zsh to provide suggested packages to be installed if a command cannot be found.
 - [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/fzf][FZF]]:
   This plugin enables junegunn's fzf fuzzy auto-completion and key bindings.
-- [[https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git][Git]]:
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git][Git]]:
   Adds a lot of git aliases and functions for pulling for dealing with the current branch.
+- [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/gitfast][Gitfast]]:
+  This plugin adds completion for Git, using the zsh completion from git.git folks, which is much faster than the official one from zsh.
 - [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/pip][Pip]]:
   pip - completion plugin for the pip command.
 - [[https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/sudo][Sudo]]:
@@ -286,12 +299,12 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   This ZSH plugin enhances the terminal environment with 256 colors.
 - [[https://github.com/djui/alias-tips][Alias Tips]]:
   Help remembering those shell aliases and Git aliases you once defined.
+- [[https://github.com/mafredri/zsh-async][Zsh Async]]:
+  Because your terminal should be able to perform tasks asynchronously without external tools!
 - [[https://github.com/zsh-users/zsh-autosuggestions][Zsh Autosuggestions]]:
   [[https://fishshell.com/][Fish]]-like fast/unobtrusive autosuggestions for zsh.
 - [[https://github.com/hlissner/zsh-autopair][Zsh Autopair]]:
   A simple plugin that auto-closes, deletes and skips over matching delimiters in zsh intelligently
-- [[https://github.com/unixorn/autoupdate-antigen.zshplugin][Autoupdate Antigen]]: - remove at =dev=
-  Set up easy auto updating, both of antigen and the bundles loaded in your configuration.
 - [[https://github.com/zsh-users/zsh-completions][Zsh Completions]]:
   Additional completion definitions for Zsh.
 - [[https://github.com/b4b4r07/enhancd][Enhancd]]:
@@ -304,12 +317,20 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   ZLE widgets of fzf.
 - [[https://github.com/seletskiy/zsh-git-smart-commands][Zsh Git Smart Commands]]:
   Wrappers for common git commands so they can be used in aliases very efficiently.
-- [[https://github.com/smallhadroncollider-deprecated/antigen-git-store][Git Store]]:
-  Antigen/zsh script to store Git's current working directory.
+- [[https://github.com/paoloantinori/hhighlighter][h]]:
+  A command line tool to highlight terms
 - [[https://github.com/zsh-users/zsh-history-substring-search][Zsh History Substring Search]]:
   [[https://fishshell.com/][Fish]]-like history search feature.
 - [[https://github.com/changyuheng/zsh-interactive-cd][Zsh Interactive Cd]]:
   Press tab for completion as usual with fzf.
+- [[https://github.com/black7375/zsh-lazyenv][Zsh Lazyenv]]:
+  Environments for lazy load commands and speed up start up time of zsh.
+- [[https://github.com/jocelynmallon/zshmarks][Zsh Marks]]:
+  A port of Bashmarks (simple bookmarking plugin by Todd Werth) for oh-my-zsh 
+- [[https://github.com/marzocchi/zsh-notify][Zsh Notify]]:
+  Desktop notifications for long-running commands in zsh. 
+- [[https://gitlab.com/pepa65/tldr-bash-client][TLDR Bash Client]]:
+  Bash client for tldr: community driven man-by-example http://tldr.sh
 - [[https://github.com/peterhurford/up.zsh][up]]:
   Move to the upper directory by the number of <dots>.
 
