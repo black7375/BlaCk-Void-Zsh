@@ -47,10 +47,6 @@ _OMZ_SETTING() {
   #-----Thefuck
   eval "$(thefuck --alias)"
 
-  #-----Tmuxinator
-  if [[ $TMUX_ENABLE ]]; then
-      tmux set-window-option -g pane-base-index 1
-  fi
 }
 
 ##---------- Bundles form the custom repo.
