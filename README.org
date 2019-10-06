@@ -93,8 +93,8 @@ In turn
 *Source - Add any file - Modify file* \\
 *Staging - Commit - Push*
 
-*More Features*: [[https://github.com/black7375/BlaCk-Void-Zsh/wiki/Features][Wiki:Features]]
 ** 1.2 Easy Command Input.
+*More Features*: [[https://github.com/black7375/BlaCk-Void-Zsh/wiki/Features][Wiki:Features]]
 *** Auto Pair.
 [[https://user-images.githubusercontent.com/25581533/53681046-f29df300-3d26-11e9-8299-cdf4d189fa1d.png]]
 Match parentheses, quotes, etc.
