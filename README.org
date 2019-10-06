@@ -37,6 +37,7 @@ Awesome Zsh Setting.
 
 * 1. Feature.
 ** 1.1 Powerful View.
+*More Theme, More Information*: [[https://github.com/black7375/BlaCk-Void-Zsh/wiki/Customize][Wiki:Customize]]
 *** Prompt.
 *Powerline Theme*
 [[https://user-images.githubusercontent.com/25581533/53680999-40fec200-3d26-11e9-8ca5-5c3723e6acdf.png]]
@@ -64,14 +65,20 @@ The upper line is for displaying information, and the lower line is for writing 
   + *Right*: background job, result status
 
 *[Experimental]How to cutomize or switch?*
-- Copy file to your home.
+- *Copy* file to your *home*.
   + =cp $BVZSH/BlaCk-Void.ztheme ~/.ztheme= && Customize!!
 - =export= BVZSH_THEME='THEME MODE'
   + Restrictions: Work only in =~/.ztheme=
-- =THEME MODE= list: =auto=, =powerline=, =simple=
-  + auto: Default is powerline. \\
-    When not support xterm or 256 color, simple theme Activate.
-- FAQ: Why do not you support =zsh-theme= anymore? || Can not change during use? \\
+- =THEME MODE= list: =auto=, =powerline=, =simple=, =powerline-single=, =simple-single=
+  + =auto=: Default is =powerline=. \\
+    When not support xterm or 256 color, =simple= theme Activate.
+- =COLOR MODE= list: =auto=, =flex=, =fixed=
+  + =auto=: Deafault is =fixed=. \\
+    When not support xterm or 256 color, =flex= color Activate.
+- =Icon MODE= list: =auto=, =nerd=, =powerline=
+  + =auto=: Deafault is =nerd=. \\
+    When ssh or root, =powerline= icon Activate.
+- *FAQ*: Why do not you support =zsh-theme= anymore? || Can not change during use? \\
   This isn't supported by [[https://github.com/romkatv/powerlevel10k#i-am-getting-an-error-zsh-bad-math-expression-operand-expected-at-end-of-string][powerlevel10k]].
 
 *** Git.
@@ -86,6 +93,7 @@ In turn
 *Source - Add any file - Modify file* \\
 *Staging - Commit - Push*
 
+*More Features*: [[https://github.com/black7375/BlaCk-Void-Zsh/wiki/Features][Wiki:Features]]
 ** 1.2 Easy Command Input.
 *** Auto Pair.
 [[https://user-images.githubusercontent.com/25581533/53681046-f29df300-3d26-11e9-8299-cdf4d189fa1d.png]]
@@ -125,7 +133,7 @@ Very simple to use git.
 
 *Git X Fzf*
 [[https://user-images.githubusercontent.com/25581533/57051067-a0436900-6cba-11e9-93bb-df84b795d0b2.png]]
-`glo` screenshot.
+=glo= screenshot.
 - =ga=: git add
 - =glo=: git log
 - =gi=: gitignore
@@ -329,8 +337,8 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   A port of Bashmarks (simple bookmarking plugin by Todd Werth) for oh-my-zsh 
 - [[https://github.com/marzocchi/zsh-notify][Zsh Notify]]:
   Desktop notifications for long-running commands in zsh. 
-- [[https://gitlab.com/pepa65/tldr-bash-client][TLDR Bash Client]]:
-  Bash client for tldr: community driven man-by-example http://tldr.sh
+- [[https://github.com/raylee/tldr][TLDR]]:
+  Simplified and community-driven man pages http://tldr-pages.github.io/
 - [[https://github.com/peterhurford/up.zsh][up]]:
   Move to the upper directory by the number of <dots>.
 
