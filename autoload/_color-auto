@@ -2,17 +2,14 @@ case ${TERM} in
     xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
         export TERM="xterm-256color"
         if [ $(tput colors) -ge "256" ]; then
-            _theme-powerline
-            _powerline-nerd
+            _color-fixed
         else
-            _theme-simple
-            _simple-nerd
+            _color-flex
         fi
         ;;
     *)
-        _theme-simple
-        _simple-nerd
+        _color-flex
         ;;
 esac
 
-export BVZSH_THEME='auto'
+export BVZSH_COLOR='auto'

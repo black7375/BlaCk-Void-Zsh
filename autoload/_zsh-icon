@@ -1,0 +1,29 @@
+local theme_set=$1
+case $theme_set in
+    -h* | --help*)
+        echo "--------------------"
+        echo "  BlaCk-Zsh ICON"
+        echo "--------------------\n"
+        echo "Command: zsh-icon ICON_NAME\n"
+        echo "Default: auto"
+        echo "Options: auto nerd powerline"
+        return
+        ;;
+
+    'auto')
+        _icon-auto
+        ;;
+
+    'nerd')
+        _icon-nerd
+        ;;
+
+    'powerline')
+        _icon-powerline
+        ;;
+
+    *)
+        echo "This icon is not available."
+        return 1
+        ;;
+esac

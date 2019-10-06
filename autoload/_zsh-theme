@@ -16,10 +16,20 @@ case $theme_set in
 
     'powerline')
         _theme-powerline
+        _powerline-nerd
+        ;;
+
+    'powerline-single')
+        _theme-powerline
+        _powerline-nerd-single
         ;;
 
     'simple')
-        _theme-simple
+        _simple-nerd
+        ;;
+
+    'simple-single')
+        _simple-nerd-single
         ;;
 
     *)

@@ -4,4 +4,3 @@ if [ -x "$(command -v powerline)" ] &&
           sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "black7375/powerline-binding *" ] ; then
     zplugin light black7375/powerline-binding
 fi
-_powerline-nerd

@@ -1,0 +1,29 @@
+local color_set=$1
+case $color_set in
+    -h* | --help*)
+        echo "--------------------"
+        echo "  BlaCk-Zsh Color"
+        echo "--------------------\n"
+        echo "Command: zsh-theme COLOR_MODE\n"
+        echo "Default: auto"
+        echo "Options: auto flex fixed"
+        return
+        ;;
+
+    'auto')
+        _color-auto
+        ;;
+
+    'flex')
+        _color-flex
+        ;;
+
+    'fixed')
+        _color-fixed
+        ;;
+
+    *)
+        echo "This color is not available."
+        return 1
+        ;;
+esac

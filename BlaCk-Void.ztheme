@@ -1,13 +1,361 @@
 ##-------------------------PowerLevel10k Set-------------------------
 ##-------------------------Theme Mode
-# Theme Mode: auto powerline simple | TODO: powerline-single simple-single
+# Theme Mode: auto powerline simple powerline-single simple-single | TODO: normal normal-single
 export BVZSH_THEME='auto'
-# TODO: Color Mode: auto fixed flex
-#       export BVZSH_COLOR='auto'
-# TODO: Icon  Mode: auto nerd powerline unicode ascii
-#       export BVZSH_ICON='auto'
 
-##-------------------------Theme Doc
+# Color Mode: auto fixed flex
+export BVZSH_COLOR='auto'
+
+# TODO: Icon  Mode: auto nerd powerline | TODO: emoji unicode ascii
+export BVZSH_ICON='auto'
+
+##-------------------------Color Set
+## Color
+# for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
+# getColorCode background
+# getColorCode foreground
+# Setting => POWERLEVEL9K_{ELEMENT}_FOREGROUND POWERLEVEL9K_{ELEMENT}_BACKGROUND
+
+_color-flex()
+{
+  black='000'
+  red='001'
+  green='002'
+  yellow='011'   # original: 003
+  blue='004'
+  magenta='005'
+  cyan='006'
+  white='007'
+
+  orange='003'
+  grey='008'
+  light_grey='008'
+}
+
+_color-fixed()
+{
+  black='000'
+  red='160'
+  green='040'
+  yellow='226'
+  blue='039'
+  magenta='165' # or '171'
+  cyan='036'
+  white='007'
+
+  orange='208'
+  grey='244'
+  light_grey='247'
+}
+_zsh-color $BVZSH_COLOR
+
+
+_powerline-color()
+{
+  typeset -g POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND=$yellow
+  typeset -g POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND=$black
+  typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$blue
+  typeset -g POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=$black
+  typeset -g POWERLEVEL9K_DIR_HOME_BACKGROUND=$blue
+  typeset -g POWERLEVEL9K_DIR_HOME_FOREGROUND=$black
+  typeset -g POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=$blue
+  typeset -g POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=$black
+  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND=$red
+  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND=$yellow
+  typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=$black
+  typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND=$green
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=$black
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=$green
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=$black
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=$orange
+  typeset -g POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND=$green
+  typeset -g POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND=$orange
+  typeset -g POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND=$black
+
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=$yellow
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=$black
+  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=$green
+  typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=$red
+  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=$yellow
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=$red
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$yellow
+  typeset -g POWERLEVEL9K_HISTORY_BACKGROUND=$grey
+  typeset -g POWERLEVEL9K_HISTORY_FOREGROUND=$black
+  typeset -g POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND=$red
+  typeset -g POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND=$yellow
+  typeset -g POWERLEVEL9K_LOAD_WARNING_BACKGROUND=$yellow
+  typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND=$black
+  typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND=$green
+  typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=$black
+}
+
+_simple-color()
+{
+  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_FOREGROUND=$light_grey
+  typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=$blue
+  typeset -g POWERLEVEL9K_DIR_HOME_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_DIR_HOME_FOREGROUND=$blue
+  typeset -g POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=$blue
+  typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=$light_grey #or $green or $magenta
+  typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=$light_grey
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=$orange
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED}_UNTRACKEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_UNTRACKEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_MODIFIED_FOREGROUND
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_UNSTAGEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_MODIFIED_FOREGROUND
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_STAGEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_MODIFIED_FOREGROUND
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_INCOMING_CHANGESFORMAT_FOREGROUND=$cyan
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_OUTGOING_CHANGESFORMAT_FOREGROUND=$cyan
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_STASHFORMAT_FOREGROUND=$cyan
+  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_ACTIONFORMAT_FOREGROUND=$red
+  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND=$yellow
+  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_VISUAL_IDENTIFIER_COLOR=$yellow
+  typeset -g POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND=$yellow
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$orange
+
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=$light_grey
+  typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=$black
+  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=$light_grey
+}
+
+##-------------------------Icon Set
+## Icons
+# get_icon_names => show icons.
+# Setting => POWERLEVEL9K_{ICONNAME}_ICON
+
+_icon-powerline()
+{
+  background_jobs=$'\u3002'       # 。
+  carriage_return=$'\u21B5'       # ↵
+  execution_time="Due"
+  fail=$'\u2718'                  # ✘
+  kubernetes=$'\u2388'            # ⎈
+  load='L'
+  lock=$'\uE0A2'                  # 
+  ok=$'\u2714'                    # ✔
+  root="\u26A1 root"              # ⚡ or #
+  ssh="(ssh)"
+  vcs_bookmark=$'\u263F'          # ☿
+  vcs_branch=$'\uE0A0'            # 
+  vcs_commit='\u27A6'             # ➦  or '-O-' or '@'
+  vcs_incoming_changes=$'\u21E3'  # ⇣  or '\u2193' ↓
+  vcs_outgoing_changes=$'\u21E1'  # ⇡  or '\u2191' ↑
+  vcs_remote_branch=$'\u21DD'     # ⇝  or '\u2192' →
+  vcs_staged=$'\uFF0B'            # ＋ or '\u2795' ➕ or '+'
+  vcs_stash=$'\uFF0A'             # ＊ or '*'
+  vcs_unstaged=$'\u25CF'          # ●  or '\uFF01' ！ or '!' or '\u00B1' ± or '+-'
+  vcs_untracked=$'\uFF1F'         # ？ or '\u2753' ❓ or '?'
+  vpn="(vpn)"
+}
+
+_icon-nerd()
+{
+  android=$'\uF17B '              #   or  '\uE70E'  
+  apple=$'\uF179 '                # 
+  aws=$'\uF1B3 '                  #  or  '\uF270 ' 
+  aws_eb=$'\uF1BD  '              #   or  '\uE7AD'  
+  background_jobs=$'\uF013 '      #  or   '\u3002' 。
+  battery=$'\uF241 '              #  or  '\uF240 ' 
+  carriage_return=$'\u21B5'       # ↵
+  date=$'\uF073 '                 # 
+  disk=$'\uF0A0 '                 # 
+  dropbox=$'\UF16B'               # 
+  etc=''                          # or '\uF013' 
+  execution_time="Due"            #    or  '\uF252 ' 
+  fail=$'\u2718'                  # ✘  or  '\uF00D' 
+  folder=''                       # or '\uF07B '   or  '\uF115' 
+  freebsd=$'\uF30C '              # 
+  go=$'\uE724'                    #  or  '\uE626' 
+  home=                           # or '\uF015' 
+  home_sub=                       # or '\uF07C' 
+  java=$'\u2615'                  # ☕︎
+  kubernetes=$'\u2388'            # ⎈
+  laravel=$'\uE73F '              # 
+  linux=$'\uF17C '                # 
+  linux_alpine=$'\uF300'          # 
+  linux_aosc=$'\uF301'            # 
+  linux_arch=$'\uF303'            # 
+  linux_centos=$'\uF304'          # 
+  linux_coreos=$'\uF305'          # 
+  linux_debian=$'\uF306'          # 
+  linux_devuan=$'\uF307'          # 
+  linux_elementary=$'\uF309'      # 
+  linux_fedora=$'\uF30A'          # 
+  linux_gentoo=$'\uF30D'          # 
+  linux_mageia=$'\uF310'          # 
+  linux_manjaro=$'\uF312'         # 
+  linux_mint=$'\uF30E'            # 
+  linux_nixos=$'\uF313'           # 
+  linux_opensuse=$'\uF314'        # 
+  linux_sabayon=$'\uF317'         # 
+  linux_slackware=$'\uF319'       # 
+  linux_ubuntu=$'\uF31B'          # 
+  load=$'\uF524'                  #  or 'L' or $'\uF140 '  or '\uF080 ' 
+  lock=$'\uF023'                  #  or '\uE0A2' 
+  network=$'\uF012 '              #  or $'\uF1FE '  or '\uF1EB' 
+  node='\uE617 '                  #  or'\uE24F' ⬢
+  ok=$'\u2714'                    # ✔ or $'\uF00C ' 
+  public_ip=$'\uF080 '            #  or $'\uF469'  or '\uF0AC' 
+  python=$'\uF81F'                #  or '\uE73C ' # 
+  ram=$'\uF2DB '                  #  or $'\uF0E4 ' 
+  root="\uF0E7 root"              #   or '\u26A1'  or '\uF09C'  or '\uF292'   or '\uE614 '  or '#'
+  ruby=$'\uF219 '                 #  or '\uE791'  or $'\uE739' 
+  rust=$'\uE7A8'                  # 
+  server=$'\uF233 '               #  or '\uF473'  or '\uF0AE ' 
+  ssh="(ssh)"                     #    or '\uF120'  or '\uE795'  or '\uF489'  # 
+  sudo=$'\uF09C'                  # 
+  sunos=$'\uF185 '                # 
+  swap=$'\uF464'                  #  or '\uF0C7 '  or '\uF109 ' 
+  swift=$'\uE755'                 # 
+  symfony=$'\uE757'               # 
+  test=$'\uE29A '                 #  or '\uF188' 
+  time=$'\uF017 '                 # 
+  todo=$'\uF046 '                 #  or '\uF133' 
+  vcs_bookmark=$'\uF461 '         #  or '\uF02E'  or '\uF097'  or '\uF08D'  or $'\uF223'  or '\u263F' ☿
+  vcs_branch=$'\uF126 '           #  or '\uE702'  or '\uE0A0' 
+  vcs_commit='\uE729'             #  or "-o-" or '\u27A6' ➦ or '@'
+  vcs_git=$'\uF1D3 '              #  or '\uF1D2' 
+  vcs_git_bitbucket=$'\uF171 '    #  or '\uF172 '  or '\uE703' 
+  vcs_git_github=$'\uF113 '       #  or '\uF09B '  or '\uF092 ' 
+  vcs_git_gitlab=$'\uF296 '       # 
+  vcs_hg=$'\uF223 '               #  or 
+  vcs_incoming_changes=$'\uF063'  #  or '\uF01A'  or '\uF0AB'  or '\uD727'  or '\u21E3' ⇣ or '\u2193' ↓
+  vcs_outgoing_changes=$'\uF062'  #  or '\uF01B'  or '\uF0AA'  or '\uE726'  or '\u21E1' ⇡ or '\u2191' ↑
+  vcs_remote_branch=$'\uF061 '    #  or '\uF18E'  or '\uF0A9'  or '\uE725'  or '\u21DD' ⇝ or '\u2192' → or '\uE728 ' 
+  vcs_staged=$'\uF067'            # ✚ or '\uF055'  or '\uF0FE'  or '\uF067' ✚ or '\uFF0B' ＋ or '\u2795' ➕ or '+'
+  vcs_stash=$'\uF01C'             #  or '\uF192'  or '\u235F' ⍟ or '\uFF0A' ＊ or '*'
+  vcs_svn=$'\uE72D '              #  or'\uE268' 
+  vcs_tag=$'\uF02C '              #  or '\uF02B ' 
+  vcs_unstaged=$'\u25CF'          # ● or '\uF111'  or '\uF06A'  or '\uF12A'  or '\uF071'  or '\uFF01' ！ or '!' or '\u00B1' ± or '+-'
+  vcs_untracked=$'\uF128'         #  or '\uF059'  '\uF29C'  or '\uFF1F' ？  or '\u2753' ❓ or '?'
+  vpn="(vpn)"
+  windows=$'\uF17A '              #  or '\uF17A' 
+}
+_zsh-icon $BVZSH_ICON
+
+_powerline-icon()
+{
+  typeset -g POWERLEVEL9K_ANDROID_ICON=$android
+  typeset -g POWERLEVEL9K_APPLE_ICON=$apple
+  typeset -g POWERLEVEL9K_AWS_ICON=$aws
+  typeset -g POWERLEVEL9K_AWS_EB_ICON=$aws_eb
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_ICON=$background_jobs
+  typeset -g POWERLEVEL9K_BATTERY_ICON=$battery
+  typeset -g POWERLEVEL9K_CARRIAGE_RETURN_ICON=$carriage_return
+  typeset -g POWERLEVEL9K_DATE_ICON=$date
+  typeset -g POWERLEVEL9K_DISK_ICON=$disk
+  typeset -g POWERLEVEL9K_DROPBOX_ICON=$dropbox
+  typeset -g POWERLEVEL9K_ETC_ICON=$etc
+  typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON=$execution_time
+  typeset -g POWERLEVEL9K_FAIL_ICON=$fail
+  typeset -g POWERLEVEL9K_FOLDER_ICON=$folder
+  typeset -g POWERLEVEL9K_FREEBSD_ICON=$freebsd
+  typeset -g POWERLEVEL9K_GO_ICON=$go
+  typeset -g POWERLEVEL9K_HOME_ICON=$home
+  typeset -g POWERLEVEL9K_HOME_SUB_ICON=$home_sub
+  typeset -g POWERLEVEL9K_JAVA_ICON=$java
+  typeset -g POWERLEVEL9K_KUBERNETES_ICON=$kubernetes
+  typeset -g POWERLEVEL9K_LARAVEL_ICON=$laravel
+  typeset -g POWERLEVEL9K_LINUX_ICON=$linux
+  typeset -g POWERLEVEL9K_LINUX_ALPINE_ICON=$linux_alpine
+  typeset -g POWERLEVEL9K_LINUX_AOSC_ICON=$linux_aosc
+  typeset -g POWERLEVEL9K_LINUX_ARCH_ICON=$linux_arch
+  typeset -g POWERLEVEL9K_LINUX_CENTOS_ICON=$linux_centos
+  typeset -g POWERLEVEL9K_LINUX_COREOS_ICON=$linux_coreos
+  typeset -g POWERLEVEL9K_LINUX_DEBIAN_ICON=$linux_debian
+  typeset -g POWERLEVEL9K_LINUX_DEVUAN_ICON=$linux_devuan
+  typeset -g POWERLEVEL9K_LINUX_ELEMENTARY_ICON=$linux_elementary
+  typeset -g POWERLEVEL9K_LINUX_FEDORA_ICON=$linux_fedora
+  typeset -g POWERLEVEL9K_LINUX_GENTOO_ICON=$linux_gentoo
+  typeset -g POWERLEVEL9K_LINUX_MAGEIA_ICON=$linux_mageia
+  typeset -g POWERLEVEL9K_LINUX_MANJARO_ICON=$linux_manjaro
+  typeset -g POWERLEVEL9K_LINUX_MINT_ICON=$linux_mint
+  typeset -g POWERLEVEL9K_LINUX_NIXOS_ICON=$linux_nixos
+  typeset -g POWERLEVEL9K_LINUX_OPENSUSE_ICON=$linux_opensuse
+  typeset -g POWERLEVEL9K_LINUX_SABAYON_ICON=$linux_sabayon
+  typeset -g POWERLEVEL9K_LINUX_SLACKWARE_ICON=$linux_slackware
+  typeset -g POWERLEVEL9K_LINUX_UBUNTU_ICON=$linux_ubuntu
+  typeset -g POWERLEVEL9K_LOAD_ICON=$load
+  typeset -g POWERLEVEL9K_LOCK_ICON=$lock
+  typeset -g POWERLEVEL9K_NETWORK_ICON=$network
+  typeset -g POWERLEVEL9K_NODE_ICON=$node
+  typeset -g POWERLEVEL9K_OK_ICON=$ok
+  typeset -g POWERLEVEL9K_PUBLIC_IP_ICON=$public_ip
+  typeset -g POWERLEVEL9K_PYTHON_ICON=$python
+  typeset -g POWERLEVEL9K_RAM_ICON=$ram
+  typeset -g POWERLEVEL9K_ROOT_ICON=$root
+  typeset -g POWERLEVEL9K_RUBY_ICON=$ruby
+  typeset -g POWERLEVEL9K_RUST_ICON=$rust
+  typeset -g POWERLEVEL9K_SERVER_ICON=$server
+  typeset -g POWERLEVEL9K_SSH_ICON=$ssh
+  typeset -g POWERLEVEL9K_SUDO_ICON=$sudo
+  typeset -g POWERLEVEL9K_SUNOS_ICON=$sunos
+  typeset -g POWERLEVEL9K_SWAP_ICON=$swap
+  typeset -g POWERLEVEL9K_SWIFT_ICON=$swift
+  typeset -g POWERLEVEL9K_SYMFONY_ICON=$symfony
+  typeset -g POWERLEVEL9K_TEST_ICON=$test
+  typeset -g POWERLEVEL9K_TIME_ICON=$time
+  typeset -g POWERLEVEL9K_TODO_ICON=$todo
+  typeset -g POWERLEVEL9K_VCS_BOOKMARK_ICON=$vcs_bookmark
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=$vcs_branch
+  typeset -g POWERLEVEL9K_VCS_COMMIT_ICON=$vcs_commit
+  typeset -g POWERLEVEL9K_VCS_GIT_ICON=$vcs_git
+  typeset -g POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=$vcs_git_bitbucket
+  typeset -g POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$vcs_git_github
+  typeset -g POWERLEVEL9K_VCS_GIT_GITLAB_ICON=$vcs_git_gitlab
+  typeset -g POWERLEVEL9K_VCS_HG_ICON=$vcs_hg
+  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$vcs_incoming_changes
+  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$vcs_outgoing_changes
+  typeset -g POWERLEVEL9K_VCS_REMOTE_BRANCH_ICON=$vcs_remote_branch
+  typeset -g POWERLEVEL9K_VCS_STAGED_ICON=$vcs_staged
+  typeset -g POWERLEVEL9K_VCS_STASH_ICON=$vcs_stash
+  typeset -g POWERLEVEL9K_VCS_SVN_ICON=$vcs_svn
+  typeset -g POWERLEVEL9K_VCS_TAG_ICON=$vcs_tag
+  typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON=$vcs_unstaged
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=$vcs_untracked
+  typeset -g POWERLEVEL9K_VPN_ICON=$vpn
+  typeset -g POWERLEVEL9K_WINDOWS_ICON=$windows
+}
+
+_simple-icon()
+{
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_ICON=$background_jobs
+  typeset -g POWERLEVEL9K_CARRIAGE_RETURN_ICON=$carriage_return
+  typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON=$execution_time
+  typeset -g POWERLEVEL9K_LOCK_ICON=$lock
+  typeset -g POWERLEVEL9K_ROOT_ICON=$root
+  typeset -g POWERLEVEL9K_VCS_BOOKMARK_ICON=$vcs_bookmark
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=$vcs_branch
+  typeset -g POWERLEVEL9K_VCS_COMMIT_ICON=$vcs_commit
+  typeset -g POWERLEVEL9K_VCS_GIT_ICON=$vcs_git
+  typeset -g POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=$vcs_git_bitbucket
+  typeset -g POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$vcs_git_github
+  typeset -g POWERLEVEL9K_VCS_GIT_GITLAB_ICON=$vcs_git_gitlab
+  typeset -g POWERLEVEL9K_VCS_HG_ICON=$vcs_hg
+  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$vcs_incoming_changes
+  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$vcs_outgoing_changes
+  typeset -g POWERLEVEL9K_VCS_REMOTE_BRANCH_ICON=$vcs_remote_branch
+  typeset -g POWERLEVEL9K_VCS_STAGED_ICON=$vcs_staged
+  typeset -g POWERLEVEL9K_VCS_STASH_ICON=$vcs_tag
+  typeset -g POWERLEVEL9K_VCS_SVN_ICON=$vcs_svn
+  typeset -g POWERLEVEL9K_VCS_TAG_ICON=$vcs_tag
+  typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON=$vcs_unstaged
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=$vcs_untracked
+}
+
+##-------------------------Theme Set
 ## Prompt Elements
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
 # POWERLEVEL9K_PROMPT_ON_NEWLINE POWERLEVEL9K_PROMPT_ADD_NEWLINE POWERLEVEL9K_RPROMPT_ON_NEWLINE
@@ -56,18 +404,6 @@ export BVZSH_THEME='auto'
 ## ETC Prompt Expansion
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 
-## Icons
-# get_icon_names => show icons.
-# Setting => POWERLEVEL9K_{ICONNAME}_ICON
-
-## Color
-# for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
-# getColorCode background
-# getColorCode foreground
-# Setting => POWERLEVEL9K_{ELEMENT}_FOREGROUND POWERLEVEL9K_{ELEMENT}_BACKGROUND
-
-##-------------------------Theme Set
-
 _powerline-nerd()
 {
   ##-----Prompt Set
@@ -92,135 +428,85 @@ _powerline-nerd()
   typeset -g POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
   #typeset -g POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  \uE868  %d.%m.%y}"
 
-  ##-----Icon Set
-  typeset -g POWERLEVEL9K_ANDROID_ICON=$'\uF17B '              #   or  '\uE70E'  
-  typeset -g POWERLEVEL9K_APPLE_ICON=$'\uF179 '                # 
-  typeset -g POWERLEVEL9K_AWS_ICON=$'\uF1B3 '                  #  or  '\uF270 ' 
-  typeset -g POWERLEVEL9K_AWS_EB_ICON=$'\uF1BD  '              #   or  '\uE7AD'  
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_ICON=$'\uF013 '      # 
-  typeset -g POWERLEVEL9K_BATTERY_ICON=$'\uF241 '              #  or  '\uF240 ' 
-  typeset -g POWERLEVEL9K_CARRIAGE_RETURN_ICON=$'\u21B5'       # ↵
-  typeset -g POWERLEVEL9K_DATE_ICON=$'\uF073 '                 # 
-  typeset -g POWERLEVEL9K_DISK_ICON=$'\uF0A0 '                 # 
-  typeset -g POWERLEVEL9K_DROPBOX_ICON=$'\UF16B'               # 
-  typeset -g POWERLEVEL9K_ETC_ICON=                            # or '\uF013' 
-  typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON="Due"            #    or  '\uF252 ' 
-  typeset -g POWERLEVEL9K_FAIL_ICON=$'\u2718'                  # ✘  or  '\uF00D' 
-  typeset -g POWERLEVEL9K_FOLDER_ICON=                         # or '\uF07B '   or  '\uF115' 
-  typeset -g POWERLEVEL9K_FREEBSD_ICON=$'\uF30C '              # 
-  typeset -g POWERLEVEL9K_GO_ICON=$'\uE724'                    #  or  '\uE626' 
-  typeset -g POWERLEVEL9K_HOME_ICON=                           # or '\uF015' 
-  typeset -g POWERLEVEL9K_HOME_SUB_ICON=                       # or '\uF07C' 
-  typeset -g POWERLEVEL9K_JAVA_ICON=$'\U2615'                  # ☕︎
-  typeset -g POWERLEVEL9K_KUBERNETES_ICON=$'\U2388'            # ⎈
-  typeset -g POWERLEVEL9K_LARAVEL_ICON=$'\uE73f '              # 
-  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'     # 
-  typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=' '       #   or   '\uF105'  or '\uF12D' 
-  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$' \uE0B1' # 
-  typeset -g POWERLEVEL9K_LINUX_ICON=$'\uF17C '                # 
-  typeset -g POWERLEVEL9K_LINUX_ARCH_ICON=$'\uF303'            # 
-  typeset -g POWERLEVEL9K_LINUX_CENTOS_ICON=$'\uF304'          # 
-  typeset -g POWERLEVEL9K_LINUX_COREOS_ICON=$'\uF305'          # 
-  typeset -g POWERLEVEL9K_LINUX_DEBIAN_ICON=$'\uF306'          # 
-  typeset -g POWERLEVEL9K_LINUX_ELEMENTARY_ICON=$'\uF309'      # 
-  typeset -g POWERLEVEL9K_LINUX_FEDORA_ICON=$'\uF30A'          # 
-  typeset -g POWERLEVEL9K_LINUX_GENTOO_ICON=$'\uF30D'          # 
-  typeset -g POWERLEVEL9K_LINUX_MAGEIA_ICON=$'\uF310'          # 
-  typeset -g POWERLEVEL9K_LINUX_MINT_ICON=$'\uF30E'            # 
-  typeset -g POWERLEVEL9K_LINUX_NIXOS_ICON=$'\uF313'           # 
-  typeset -g POWERLEVEL9K_LINUX_MANJARO_ICON=$'\uF312'         # 
-  typeset -g POWERLEVEL9K_LINUX_DEVUAN_ICON=$'\uF307'          # 
-  typeset -g POWERLEVEL9K_LINUX_ALPINE_ICON=$'\uF300'          # 
-  typeset -g POWERLEVEL9K_LINUX_AOSC_ICON=$'\uF301'            # 
-  typeset -g POWERLEVEL9K_LINUX_OPENSUSE_ICON=$'\uF314'        # 
-  typeset -g POWERLEVEL9K_LINUX_SABAYON_ICON=$'\uF317'         # 
-  typeset -g POWERLEVEL9K_LINUX_SLACKWARE_ICON=$'\uF319'       # 
-  typeset -g POWERLEVEL9K_LINUX_UBUNTU_ICON=$'\uF31B'          # 
-  typeset -g POWERLEVEL9K_LOAD_ICON=$'\uF524'                  #  or L           or $'\uF140 '  or '\uF080 ' 
-  typeset -g POWERLEVEL9K_LOCK_ICON=$'\uF023'                  #  or '\uE0A2' 
+  ## Segment
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'     #  or '\uE0B4'  or '\uE0B8'  or '\uE0BC'  or '\uE0C0' 
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=' '       #   or '\uF105'  or '\uF12D' 
+  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$' \uE0B1' #  or '\uE0B5'  or '\uE0B9'  or '\uE0BD'  or '\uE0C1' 
   typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"    #   or '\u256D'$'\U2500' ╭─
   typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "    #   or '\u251C'$'\U2500' ├─ or '\u2570'$'\U2500 '  ╰─
   typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='\u251C'$'\U2500' # ├─
   typeset -g POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX='\u251C'$'\U2500'  # ├─
-  typeset -g POWERLEVEL9K_NETWORK_ICON=$'\uF012 '              #  or $'\uF1fe '  or '\uF1EB' 
-  typeset -g POWERLEVEL9K_NODE_ICON='\uE617 '                  #  or'\uE24F' ⬢
-  typeset -g POWERLEVEL9K_OK_ICON=$'\u2714'                    # ✔ or $'\uF00c ' 
-  typeset -g POWERLEVEL9K_PUBLIC_IP_ICON=$'\uF080 '            #  or $'\uF469'  or '\UF0AC' 
-  typeset -g POWERLEVEL9K_PYTHON_ICON=$'\uF81F'                #  or '\uE73C ' # 
-  typeset -g POWERLEVEL9K_RAM_ICON=$'\uF2db '                  #  or $'\uF0e4 ' 
-  typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B2'    # 
-  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=$'\uE0B3' # 
-  typeset -g POWERLEVEL9K_ROOT_ICON="\uF0e7 Root"              #   or '\uF292'   or '\uE614 ' 
-  typeset -g POWERLEVEL9K_RUBY_ICON=$'\uF219 '                 #  or '\uE791'  or $'\uE739' 
-  typeset -g POWERLEVEL9K_RUST_ICON=$'\uE7a8'                  # 
-  typeset -g POWERLEVEL9K_SERVER_ICON=$'\uF233 '               #  or '\uF473'  or '\uF0AE ' 
-  typeset -g POWERLEVEL9K_SSH_ICON="(ssh)"                     #    or 'uf120'  or '\uE795'  or '\uF489'  # 
-  typeset -g POWERLEVEL9K_SUDO_ICON=$'\uF09C'                  # 
-  typeset -g POWERLEVEL9K_SUNOS_ICON=$'\uF185 '                # 
-  typeset -g POWERLEVEL9K_SWAP_ICON=$'\uF464'                  #  or '\uF0C7 '  or '\uF109 ' 
-  typeset -g POWERLEVEL9K_SWIFT_ICON=$'\uE755'                 # 
-  typeset -g POWERLEVEL9K_SYMFONY_ICON=$'\uE757'               # 
-  typeset -g POWERLEVEL9K_TEST_ICON=$'\uE29A '                 #  or '\uF188' 
-  typeset -g POWERLEVEL9K_TIME_ICON=$'\uF017 '                 # 
-  typeset -g POWERLEVEL9K_TODO_ICON=$'\uF046 '                 #  or '\uF133' 
-  typeset -g POWERLEVEL9K_VCS_BOOKMARK_ICON=$'\uF461 '         #  or '\uF02E'  or '\uF097'  or '\uF08D'  or $'\uF223'  or ☿
-  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=$'\uF126 '           #  or '\uE702'  or 
-  typeset -g POWERLEVEL9K_VCS_COMMIT_ICON='\uE729'             #  or "-o-" or '@'
-  typeset -g POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=$'\uF171 '    #  or '\uF172 '  or '\uE703' 
-  typeset -g POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uF113 '       #  or '\uF09B '  or '\uF092 ' 
-  typeset -g POWERLEVEL9K_VCS_GIT_GITLAB_ICON=$'\uF296 '       # 
-  typeset -g POWERLEVEL9K_VCS_GIT_ICON=$'\uF1D3 '              #  or '\uF1D2' 
-  typeset -g POWERLEVEL9K_VCS_HG_ICON=$'\uF223 '               #  or 
-  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\uF063'  #  or '\uF01a'  or '\uF0AB'  or '\ud727'  or '\u21E3' ⇣ or '\u2193' ↓
-  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\uF062'  #  or '\uF01b'  or '\uF0AA'  or '\uE726'  or '\u21E1' ⇡ or '\u2191' ↑
-  typeset -g POWERLEVEL9K_VCS_REMOTE_BRANCH_ICON=$'\uF061 '    #  or '\uF18e'  or '\uF0A9'  or '\uE725'  or '\u21DD' ⇝ or '\u2192' → or '\uE728 ' 
-  typeset -g POWERLEVEL9K_VCS_STAGED_ICON=$'\uF067'            # ✚ or '\uF055'  or '\uF0FE' 
-  typeset -g POWERLEVEL9K_VCS_STASH_ICON=$'\uF01C'             #  or '\uF192'  or ⍟
-  typeset -g POWERLEVEL9K_VCS_SVN_ICON=$'\uE72D '              #  or'\uE268' 
-  typeset -g POWERLEVEL9K_VCS_TAG_ICON=$'\uF02c '              #  or '\uF02B ' 
-  typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\u25CF'          # ● or '\uF111'  or '\uF06A'  or '\uF12A'  or '\uF071' 
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uF128'         #  or '\uF059'  '\uF29C'  or '\u00B1' ?
-  typeset -g POWERLEVEL9K_VPN_ICON="(vpn)"
-  typeset -g POWERLEVEL9K_WINDOWS_ICON=$'\uF17a '              #  or '\uF17A' 
+  typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B2'    #  or '\uE0B6'  or '\uE0BA'  or '\uE0BE'  or '\uE0C2' 
+  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=$'\uE0B3' #  or '\uE0B7'  or '\uE0BB'  or '\uE0BF'  or '\uE0C3' 
+  ## Etc: '\uE0C4' , '\uE0C5' , '\uE0C6' , '\uE0C7' , '\uE0C8' , '\uE0CA' , '\uE0CC' , '\uE0CD'
+  #       '\uE0CE' , '\uE0CF' , '\uE0D0' , '\uE0D1' , '\uE0D2' , '\uE0D4' 
 
-##-----Color Set
-  typeset -g POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND='226'          #yellow
-  typeset -g POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND='000'          #alpha
-  typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='039'             #blue
-  typeset -g POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='000'             #alpha
-  typeset -g POWERLEVEL9K_DIR_HOME_BACKGROUND='039'                #blue
-  typeset -g POWERLEVEL9K_DIR_HOME_FOREGROUND='000'                #alpha
-  typeset -g POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='039'      #blue
-  typeset -g POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='000'      #alpha
-  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND='160'  #red
-  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND='226'  #yellow
-  typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND='000'               #alpha
-  typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND='040'               #green or'165' #purple
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='000'           #alpha
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='040'           #green
-  typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='000'            #alpha
-  typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='208'            #orange
-  typeset -g POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='040'          #green
-  typeset -g POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='000'          #alpha
-  typeset -g POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='208'          #orange
-  typeset -g POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='000'          #alpha
 
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='226'         #yellow
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='000'         #alpha
-  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND='000'               #alpha
-  typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND='040'               #green
-  typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND='160'            #red
-  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND='226'            #yellow
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='160'  #red
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='226'  #yellow
-  typeset -g POWERLEVEL9K_HISTORY_BACKGROUND='244'                 #gray
-  typeset -g POWERLEVEL9K_HISTORY_FOREGROUND='000'                 #alpha
-  typeset -g POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND='160'           #red
-  typeset -g POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND='226'           #yellow
-  typeset -g POWERLEVEL9K_LOAD_WARNING_BACKGROUND='226'            #yellow
-  typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND='000'            #alpha
-  typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND='040'             #green
-  typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND='000'             #alpha
+  ##-----Icon Set
+  _powerline-icon
+
+
+  ##-----Color Set
+  _powerline-color
+}
+
+
+_powerline-nerd-single()
+{
+  ##-----Prompt Set
+  ## Prompt
+  # init
+  _left_prompt() {
+      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator dir dir_writable vcs)
+      if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+                  $EUID -eq 0 ]]; then
+          typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator dir dir_writable vcs)
+      fi
+  }
+  _left_prompt && add-zsh-hook precmd _left_prompt
+  typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time history)
+
+  ## Double-Lined Prompt
+  typeset -g POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+  typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+  typeset -g POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+
+  ## Other Prompt
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
+  typeset -g POWERLEVEL9K_STATUS_OK=true
+
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=2
+
+  #typeset -g POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+  #typeset -g POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+  typeset -g POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
+  #typeset -g POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  \uE868  %d.%m.%y}"
+
+  ## Segment
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'     #  or '\uE0B4'  or '\uE0B8'  or '\uE0BC'  or '\uE0C0' 
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=' '       #   or '\uF105'  or '\uF12D' 
+  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$' \uE0B1' #  or '\uE0B5'  or '\uE0B9'  or '\uE0BD'  or '\uE0C1' 
+  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"    #   or '\u256D'$'\U2500' ╭─
+  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "    #   or '\u251C'$'\U2500' ├─ or '\u2570'$'\U2500 '  ╰─
+  typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='\u251C'$'\U2500' # ├─
+  typeset -g POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX='\u251C'$'\U2500'  # ├─
+  typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B2'    #  or '\uE0B6'  or '\uE0BA'  or '\uE0BE'  or '\uE0C2' 
+  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=$'\uE0B3' #  or '\uE0B7'  or '\uE0BB'  or '\uE0BF'  or '\uE0C3' 
+  ## Etc: '\uE0C4' , '\uE0C5' , '\uE0C6' , '\uE0C7' , '\uE0C8' , '\uE0CA' , '\uE0CC' , '\uE0CD'
+  #       '\uE0CE' , '\uE0CF' , '\uE0D0' , '\uE0D1' , '\uE0D2' , '\uE0D4' 
+
+
+  ##-----Icon Set
+  ## Replace Icons
+  root=${root%\ root}
+
+  ## Load Icons
+  _powerline-icon
+
+
+  ##-----Color Set
+  _powerline-color
 }
 
 _simple-nerd()
@@ -231,11 +517,6 @@ _simple-nerd()
   ##-----Prompt Set
   ## Prompt
   # init
-  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator command_execution_time)
-  if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
-          $EUID -eq 0 ]]; then
-    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
-  fi
   _left_prompt() {
     typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator command_execution_time)
     # not connected ssh, root user
@@ -244,7 +525,7 @@ _simple-nerd()
       typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
     fi
   }
-  add-zsh-hook precmd _left_prompt
+  _left_prompt && add-zsh-hook precmd _left_prompt
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs status)
 
   ## Double-Lined Prompt
@@ -264,72 +545,122 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_STATUS_OK=false
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
 
-  ##-----Icon Set
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_ICON=$'\u3002'       # 。 or '\uF013' 
-  typeset -g POWERLEVEL9K_CARRIAGE_RETURN_ICON=''
+  ## Segment
   typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE=' %n@%m'
-  typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON=' '              #  '\uF252 ' 
-  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\u3000'     # 　or 
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\u3000'     # 　or (space)
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=''
   typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=''
-  typeset -g POWERLEVEL9K_LOCK_ICON=$' \uF023'                 #  or '\uE0A2' 
   typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=' '
   typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=''
-  typeset -g POWERLEVEL9K_ROOT_ICON=$' \uF09C'                 #  or '\uF0e7'   or '\uF292'   or '\uE614 ' 
-  typeset -g POWERLEVEL9K_VCS_BOOKMARK_ICON=$'\uF461 '         #  or '\uF02E'  or '\uF097'  or '\uF08D'  or $'\uF223'  or ☿
-  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=' \uF126'            #  or '\uE702'  or 
-  typeset -g POWERLEVEL9K_VCS_COMMIT_ICON=$'\uE729'            #  or "-o-" or '@'
-  typeset -g POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=''            # '\uF171 '  or '\uF172 '  or '\uE703' 
-  typeset -g POWERLEVEL9K_VCS_GIT_GITHUB_ICON=''               # '\uF113 '  or '\uF09B '  or '\uF092 ' 
-  typeset -g POWERLEVEL9K_VCS_GIT_GITLAB_ICON=''               # '\uF296 ' 
-  typeset -g POWERLEVEL9K_VCS_GIT_ICON=''                      # '\uF1D3 '  or '\uF1D2' 
-  typeset -g POWERLEVEL9K_VCS_HG_ICON=''                       # '\uF223 '  or 
-  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\u21E3'  # ⇣ or '\uF063 '  or '\uF01a'  or '\uF0AB'  or '\ud727'  or '\u2193' ↓
-  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\u21E1'  # ⇡ or '\uF062 '  or '\uF01b'  or '\uF0AA'  or '\uE726'  or '\u2191' ↑
-  typeset -g POWERLEVEL9K_VCS_REMOTE_BRANCH_ICON=$'\u21DD'     # ⇝ or '\uF061 '  or '\uF18e'  or '\uF0A9'  or '\uE725'  or '\u2192' → or '\uE728 ' 
-  typeset -g POWERLEVEL9K_VCS_STAGED_ICON=$'\b\uFF0B'          # ＋ or '\uF067' ✚ or '\uF055'  or '\uF0FE' 
-  typeset -g POWERLEVEL9K_VCS_STASH_ICON=$'\b\uFF0A'           # ＊ or '\uF01C'  or '\uF192'  or ⍟
-  typeset -g POWERLEVEL9K_VCS_SVN_ICON=''                      # '\uE72D '  or'\uE268' 
-  typeset -g POWERLEVEL9K_VCS_TAG_ICON=$'\uF02C '              #  or '\uF02B ' 
-  typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\b\uFF01'        # ！ or '\u25CF' ● or '\uF111'  or '\uF06A'  or '\uF12A'  or '\uF071' 
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\b\uFF1F'       # ？ or '\uF128'  or '\uF059'  '\uF29C'  or '\u00B1' ?
   typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_LEFT_SEGMENTS=''
   typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS=''
 
-  ##-----Color Set
-  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_BACKGROUND='000'         #alpha
-  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_FOREGROUND='247'         #light grey
-  typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='000'             #alpha
-  typeset -g POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='039'             #blue
-  typeset -g POWERLEVEL9K_DIR_HOME_BACKGROUND='000'                #alpha
-  typeset -g POWERLEVEL9K_DIR_HOME_FOREGROUND='039'                #blue
-  typeset -g POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='000'      #alpha
-  typeset -g POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='039'      #blue
-  typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND='247'               #light grey or '040' green or'165' #purple
-  typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND='000'               #alpha
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='247'           #light grey
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='000'           #alpha
-  typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='208'            #orange
-  typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='000'            #alpha
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED}_UNTRACKEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND
-  typeset -g POWERLEVEL9K_VCS_MODIFIED_UNTRACKEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_MODIFIED_FOREGROUND
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_UNSTAGEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_MODIFIED_FOREGROUND
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_STAGEDFORMAT_FOREGROUND=$POWERLEVEL9K_VCS_MODIFIED_FOREGROUND
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_INCOMING_CHANGESFORMAT_FOREGROUND='036' #cyan
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_OUTGOING_CHANGESFORMAT_FOREGROUND='036' #cyan
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_STASHFORMAT_FOREGROUND='036'            #cyan
-  typeset -g POWERLEVEL9K_VCS_{CLEAN,UNTRACKED,MODIFIED}_ACTIONFORMAT_FOREGROUND='160'           #red
-  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND='000'  #alpha
-  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND='226'  #yellow
-  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND='000'  #alpha
-  typeset -g POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_VISUAL_IDENTIFIER_COLOR='226' #yellow
-  typeset -g POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND='000'          #alpha
-  typeset -g POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND='226'          #yellow
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='000'  #alpha
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='208'  #orange
 
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='000'         #alpha
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='247'         #light grey
-  typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND='000'            #alpha
-  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND='247'            #light grey
+  ##-----Icon Set
+  ## Replace Icons
+  background_jobs=$'\u3002'       # 。
+  carriage_return=''
+  execution_time=' '
+  lock=" $lock"
+  root='\uF09C'                   # 
+  vcs_branch=" $vcs_branch"
+  vcs_git=''
+  vcs_git_bitbucket=''
+  vcs_git_github=''
+  vcs_git_gitlab=''
+  vcs_hg=''
+  vcs_incoming_changes=$'\u21E3'  # ⇣
+  vcs_outgoing_changes=$'\u21E1'  # ⇡
+  vcs_remote_branch=$'\u21DD'     # ⇝
+  vcs_staged=$'\b\uFF0B'          # ＋
+  vcs_stash=$'\b\uFF0A'           # ＊
+  vcs_svn=''
+  vcs_tag="$vcs_tag "
+  vcs_unstaged=$'\b\uFF01'        # ！
+  vcs_untracked=$'\b\uFF1F'       # ？
+
+  ## Load Icons
+  _simple-icon
+
+
+  ##-----Color Set
+  _simple-color
+}
+
+_simple-nerd-single()
+{
+  # Original location: https://github.com/romkatv/dotfiles-public/blob/master/.purepower.
+  # If you copy this file, keep the link to the original and this sentence intact; you are encouraged
+  # to change everything else.
+  ##-----Prompt Set
+  ## Prompt
+  # init
+    _left_prompt() {
+        typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+        # not connected ssh, root user
+        if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
+                    $EUID -eq 0 ]]; then
+            typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir)
+        fi
+    }
+    _left_prompt && add-zsh-hook precmd _left_prompt
+    typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(dir_writable root_indicator command_execution_time background_jobs status vcs)
+
+  ## Double-Lined Prompt
+  vi_insert=$'\u276F' #❯
+  vi_cmd=$'\u276E'    #❮
+
+  local p="\${\${\${KEYMAP:-0}:#vicmd}:+${${vi_insert//\\/\\\\}//\}/\\\}}}"
+  p+="\${\${\$((!\${#\${KEYMAP:-0}:#vicmd})):#0}:+${${vi_cmd//\\/\\\\}//\}/\\\}}}"
+  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%(?.%F{171}${p}%f.%F{160}${p}%f) "
+  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=$'\n'
+  typeset -g POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+  typeset -g POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+
+  ## Other Prompt
+  typeset -g POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=false
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
+  typeset -g POWERLEVEL9K_STATUS_OK=false
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
+
+  ## Segment
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m '
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=''　
+  typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=$POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX
+  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=''
+  typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
+  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=' '
+  typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_LEFT_SEGMENTS=''
+  typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS=''
+
+
+  ##-----Icon Set
+  ## Replace Icons
+  background_jobs=$'\u3002'       # 。
+  carriage_return=''
+  execution_time=' '
+  lock="$lock "
+  root='\uF09C '                  # 
+  vcs_branch=" $vcs_branch"
+  vcs_git=''
+  vcs_git_bitbucket=''
+  vcs_git_github=''
+  vcs_git_gitlab=''
+  vcs_hg=''
+  vcs_incoming_changes=$'\u21E3'  # ⇣
+  vcs_outgoing_changes=$'\u21E1'  # ⇡
+  vcs_remote_branch=$'\u21DD'     # ⇝
+  vcs_staged=$'\uFF0B'            # ＋
+  vcs_stash=$'\uFF0A'             # ＊
+  vcs_svn=''
+  vcs_tag="$vcs_tag "
+  vcs_unstaged=$'\uFF01'          # ！
+  vcs_untracked=$'\uFF1F'         # ？
+
+  ## Load Icons
+  _simple-icon
+
+
+  ##-----Color Set
+  _simple-color
 }

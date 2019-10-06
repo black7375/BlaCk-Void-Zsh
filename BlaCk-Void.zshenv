@@ -11,6 +11,14 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 
 # set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/Application" ] ; then
+    export PATH="$PATH:$HOME/Application"
+fi
+
+if [ -d "$HOME/Applications" ] ; then
+    export PATH="$PATH:$HOME/Applications"
+fi
+
 if [ -d "$HOME/bin" ] ; then
     export PATH="$PATH:$HOME/bin"
 fi
@@ -27,10 +35,6 @@ if [ -d "$HOME/.cargo/bin" ] ; then
     export PATH="$PATH:$HOME/.cargo/bin"
     alias exa-grid='exa --long --grid'
     alias exa-tree='exa --long --tree'
-fi
-
-if [ -d "$HOME/.local/bin" ] ; then
-    export PATH="$PATH:$HOME/.local/bin"
 fi
 
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then

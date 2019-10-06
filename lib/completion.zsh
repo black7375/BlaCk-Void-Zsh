@@ -1,6 +1,6 @@
 #Useful Completion @finnurtorfa/zsh(https://github.com/finnurtorfa/zsh)
 # Add zsh-completions to $fpath.
-fpath=("${0:h}/external/src" $ZPLG_FPATH_BEFORE $fpath )
+fpath=("${BVZSH}/completion" $ZPLG_FPATH_BEFORE $fpath )
 
 setopt auto_list
 setopt auto_menu
@@ -39,6 +39,7 @@ zstyle ':completion:*:warnings'                     format $'%{\e[0;31m%}No matc
 zstyle ':completion:*:*:zcompile:*'                 ignored-patterns '(*~|*.zwc)'       # define files to ignore for zcompile
 zstyle ':completion:correct:'                       prompt 'correct to: %e'             #
 zstyle ':completion::(^approximate*):*:functions'   ignored-patterns '_*'               # Ignore completion functions for commands you don't have:
+zstyle ':completion::complete:*'                    gain-privileges 1                   # enabling autocompletion of privileged environments in privileged commands
 
 # complete manual by their section
 zstyle ':completion:*:manuals'                      separate-sections true
