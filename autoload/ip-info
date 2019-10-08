@@ -23,3 +23,4 @@ done
 
 # change Paris to your default location
 curl ipinfo.io/$ip_address
+echo ""
