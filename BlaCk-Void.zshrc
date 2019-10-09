@@ -134,8 +134,8 @@ local _OMZ_SOURCES=(
     # Libs
     lib/compfix.zsh
     lib/directories.zsh
-    lib/git.zsh
     lib/functions.zsh
+    lib/git.zsh
     lib/termsupport.zsh
 
     # Plugins
