@@ -36,6 +36,10 @@ Awesome Zsh Setting.
     -  [[#33-my-terminal-environment][3.3 My Terminal Environment.]]
 
 * 1. Feature.
+*[[https://black7375.tumblr.com/post/188158544989][Sample Video]]*
+
+[[https://black7375.tumblr.com/post/188158544989][https://user-images.githubusercontent.com/25581533/66270473-11e99980-e88f-11e9-83ac-3838bc0d6a56.png]]
+
 ** 1.1 Powerful View.
 *More Theme, More Information*: [[https://github.com/black7375/BlaCk-Void-Zsh/wiki/Customize][Wiki:Customize]]
 *** Prompt.
