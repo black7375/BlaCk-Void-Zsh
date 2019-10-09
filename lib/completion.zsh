@@ -6,6 +6,13 @@ setopt auto_list
 setopt auto_menu
 setopt always_to_end
 
+# caching
+zstyle ':completion:*' accept-exact '*(N)'
+
+[ -d $BVZSH/cache ] && zstyle ':completion:*'       use-cache yes && \
+  zstyle ':completion::complete:*'                  cache-path $BVZSH/cache/
+
+
 ## completion system
 zstyle ':completion:*:approximate:'                 max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )' # allow one error for every three characters typed in approximate completer
 zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'              # don't complete backup files as executables
@@ -104,12 +111,6 @@ fi
 
 # command for process lists, the local web server details and host completion
 zstyle ':completion:*:urls'                         local 'www' '/var/www/' 'public_html'
-
-# caching
-zstyle ':completion:*' accept-exact '*(N)'
-
-[ -d $BVZSH/cache ] && zstyle ':completion:*'       use-cache yes && \
-  zstyle ':completion::complete:*'                  cache-path $BVZSH/cache/
 
 # host completion /* add brackets as vim can't parse zsh's complex cmdlines 8-) {{{ */
 [ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
