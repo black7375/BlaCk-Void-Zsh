@@ -33,13 +33,13 @@ _zsh-unstall()
             [2]*)
                 echo "Back to the Bash, remove BVZSH..\n"
                 back-to-bash
-                zsh-clean
+                zsh-remove
                 BVZSH_UNINSTALL=2
                 break
                 ;;
             [3]*)
                 echo "Remove BVZSH..\n"
-                zsh-clean
+                zsh-remove
                 BVZSH_UNINSTALL=3
                 break
                 ;;
@@ -51,7 +51,7 @@ _zsh-unstall()
                 ;;
             [5]*)
                 echo "Remove BVZSH, back to the previous setting.."
-                zsh-clean
+                zsh-remove
                 restore-setting
                 BVZSH_UNINSTALL=5
         esac
@@ -73,7 +73,7 @@ remove-link()
     sed -i "/BlaCk-Void/d" $file
     echo ""
 }
-zsh-clean()
+zsh-remove()
 {
     echo "Remove links"
     remove-link ~/.zshrc
@@ -113,4 +113,4 @@ options
 _zsh-uninstall
 
 unset -f options _zsh-uninstall back-to-bash
-unset -f remove-link zsh-clean restore-file restore-setting
+unset -f remove-link zsh-remove restore-file restore-setting
