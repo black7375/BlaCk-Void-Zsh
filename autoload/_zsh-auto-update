@@ -64,6 +64,7 @@ _zsh-check-for-updates() {
             echo "Updating BVZSH..."
         fi
         git -C $BVZSH pull
+        zsh-compile
         date +%s >! ~/${BVZSH_SYSTEM_RECEIPT_F}
     fi
 }
