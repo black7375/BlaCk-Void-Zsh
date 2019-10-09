@@ -290,3 +290,6 @@ source $BVZSH/lib/completion.zsh
 
 #-----Fzf
 source $BVZSH/lib/fzf-set.zsh
+
+##-------------------------Autoupdate Check
+_zsh-auto-update
