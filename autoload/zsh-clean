@@ -1,0 +1,8 @@
+echo "-------"
+echo "Clear Zcompile Files"
+
+rm -fv ~/*.zwc
+rm -fv ${BVZSH}/*.zwc
+rm -fv ${BVZSH}/autoload/*.zwc
+rm -fv ${BVZSH}/completion/*.zwc
+rm -fv ${BVZSH}/lib/*.zwc
