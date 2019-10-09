@@ -1,0 +1,116 @@
+echo "--------------------"
+echo " BlaCk-Zsh Uninstall"
+echo "--------------------\n"
+
+echo "\n--------------------"
+echo ""
+
+options()
+{
+    echo "0) Cancle to uninstalling."
+    echo "1) Back to the Bash - Only change default shell."
+    echo "2) Back to the Bash - Remove BVZSH, change default shell."
+    echo "3) Back to the Zsh. - Only remove BVZSH."
+    echo "4) Back to the Zsh. - Only change to previous setting"
+    echo "5) Back to the Zsh. - Remove BVZSH, change to previous previous setting"
+}
+_zsh-unstall()
+{
+    while [[ -z "$BVZSH_UNINSTALL" ]]; do
+        read -p "$* [0/1/2]: " ans
+        case $ans in
+            [0]*)
+                echo "Unintall task cancled."
+                BVZSH_UNINSTALL=0
+                break
+                ;;
+            [1]*)
+                echo "Back to the Bash..\n"
+                back-to-bash
+                BVZSH_UNINSTALL=1
+                break
+                ;;
+            [2]*)
+                echo "Back to the Bash, remove BVZSH..\n"
+                back-to-bash
+                zsh-clean
+                BVZSH_UNINSTALL=2
+                break
+                ;;
+            [3]*)
+                echo "Remove BVZSH..\n"
+                zsh-clean
+                BVZSH_UNINSTALL=3
+                break
+                ;;
+            [4]*)
+                echo "Back to the previous setting.."
+                restore-setting
+                BVZSH_UNINSTALL=4
+                break
+                ;;
+            [5]*)
+                echo "Remove BVZSH, back to the previous setting.."
+                zsh-clean
+                restore-setting
+                BVZSH_UNINSTALL=5
+        esac
+        echo "Please answer again."
+        options
+    done
+}
+
+back-to-bash()
+{
+    echo "Bash as the default shell(need sudo permission)"
+    chsh -s $(which zsh)
+    echo ""
+}
+remove-link()
+{
+    local file=$1
+    echo "Remove link from $file"
+    sed -i "/BlaCk-Void/d" $file
+    echo ""
+}
+zsh-clean()
+{
+    echo "Remove links"
+    remove-link ~/.zshrc
+    remove-link ~/.zshenv
+    remove-link ~/.zlogin
+    echo ""
+
+    echo "Remove BVZSH Directories"
+    rm -rvf $BVZSH
+    rm -rvf ~/.zplugin
+    echo ""
+}
+restore-file()
+{
+    local file=$1
+    echo "Try to restore ${file}.bak"
+    if [[ -e ${file}.bak ]]; then
+        echo "$file found."
+        echo "Now Restore.."
+        mv -rv ${file}.bak $file
+        echo ""
+    else
+        echo "${file}.bak not found."
+        echo ""
+    fi
+}
+restore-setting()
+{
+    echo "Restore previous settings"
+    restore-file ~/.zshrc
+    restore-file ~/.zshenv
+    restore-file ~/.zlogin
+    echo""
+}
+
+options
+_zsh-uninstall
+
+unset -f options _zsh-uninstall back-to-bash
+unset -f remove-link zsh-clean restore-file restore-setting
