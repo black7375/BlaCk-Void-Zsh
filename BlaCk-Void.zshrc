@@ -38,7 +38,7 @@ fi
 _zsh-theme $BVZSH_THEME
 
 ##-------------------------Plugin Set
-if [ -x "$(command -v tmux)" ]; then
+if type tmux &>/dev/null; then
     export TMUX_ENABLE=true
 fi
 

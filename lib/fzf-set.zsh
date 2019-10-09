@@ -3,7 +3,7 @@
 export FZF_DEFAULT_OPTS="
     --color fg:-1,bg:-1,hl:196,fg+:254,bg+:239,hl+:040
     --color info:226,prompt:226,pointer:196,marker:254,spinner:226
-    --preview 'file {}' 
+    --preview 'file {}'
     --preview-window down:1
   "
 #hl: red, fg+: white, bg+: gray(or 244), hl+: green
@@ -20,7 +20,7 @@ local _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=a
 zle     -N    fzf-locate-widget
 bindkey '\ei' fzf-locate-widget
 
-if [ -x "$(command -v tmux)" ]; then
+if [[ $TMUX_ENABLE ]] then
     export FZF_TMUX=1
 fi
 #Directly executing the command (CTRL-X CTRL-R)
