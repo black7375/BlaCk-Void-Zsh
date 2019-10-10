@@ -266,7 +266,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 * 3. Info.
 ** 3.1 Theme.
 - [[https://github.com/romkatv/powerlevel10k][Powerlevel10k]](powerline theme, Really Fast and 100% replaceable [[https://github.com/bhilburn/powerlevel9k][Powerlevel9k]])
-  + Simple theme based on [https://github.com/robbyrussell/oh-my-zshom/romkatv/dotfiles-public/blob/master/.purepower][Purepower]], inspired by [[https://github.com/sindresorhus/pure][Pure]]
+  + Simple theme based on [[https://github.com/robbyrussell/oh-my-zshom/romkatv/dotfiles-public/blob/master/.purepower][Purepower]], inspired by [[https://github.com/sindresorhus/pure][Pure]]
 
 ** 3.2 Plugins.
 *Plugin Manager*
