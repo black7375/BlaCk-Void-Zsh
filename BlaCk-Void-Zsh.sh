@@ -9,11 +9,11 @@ echo ""
 echo "--------------------"
 echo "  Downloads"
 echo ""
-ARH_PACKAGE_NAME="zsh autojump powerline curl git ruby-irb fzf ripgrep thefuck w3m ack tmux"
-DEB_PACKAGE_NAME="zsh autojump powerline curl git w3m-img ack tmux"
-YUM_PACKAGE_NAME="zsh autojump powerline curl git w3m-img ack tmux"
-MAC_PACKAGE_NAME="zsh autojump curl python git socat w3m ack tmux"
-BSD_PACKAGE_NAME="zsh autojump py36-powerline-status curl git fzf ripgrep thefuck w3m-img p5-ack tmux"
+ARH_PACKAGE_NAME="zsh autojump powerline curl git ruby-irb fzf ripgrep thefuck w3m wmctrl ack tmux xdotool"
+DEB_PACKAGE_NAME="zsh autojump powerline curl git w3m-img wmctrl ack tmux xdotool"
+YUM_PACKAGE_NAME="zsh autojump powerline curl git w3m-img wmctrl ack tmux xdotool"
+MAC_PACKAGE_NAME="zsh autojump curl python git socat w3m wmctrl ack tmux xdotool"
+BSD_PACKAGE_NAME="zsh autojump py36-powerline-status curl git fzf ripgrep thefuck w3m-img xdotool p5-ack tmux xdotool"
 
 arh_install()
 {
