@@ -91,6 +91,10 @@ if   [[ "$OSTYPE" == "linux-gnu" ]]; then
 
   ##Deb Package
   elif cat /etc/*release | grep ^NAME    | grep Ubuntu ; then
+    ubuntu_ver=$(lsb_release -rs)
+    if [[ ${ubuntu_ver:0:2} -lt 18 ]]; then
+      DEB_PACKAGE_NAME=$( sed -e "s/ack/ack-grep/" <(echo $DEB_PACKAGE_NAME) )
+    fi
     deb_install
   elif cat /etc/*release | grep ^NAME    | grep Debian ; then
     deb_install
