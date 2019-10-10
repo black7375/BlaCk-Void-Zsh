@@ -219,6 +219,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   + [[http://w3m.sourceforge.net][w3m-img]](option for Terminal Image View)
   + [[https://github.com/wting/autojump][Autojump]](option for =j=)
   + [[https://beyondgrep.com/][ack]](option for [[https://github.com/paoloantinori/hhighlighter][h]]) | TODO: ack code port to ripgrep.
+  + [[https://github.com/jordansissel/xdotool][xdotool]], [[https://sites.google.com/site/tstyblo/wmctrl][wmctl]] (option for [[https://github.com/marzocchi/zsh-notify][Notification]])
 
 - *Install*
   + Git Clone\\
