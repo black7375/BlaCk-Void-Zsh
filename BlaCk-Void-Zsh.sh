@@ -174,7 +174,7 @@ cat ~/.profile                                | tee -a $zprofile
 #cp -v BlaCk-Void.zshrc  $file
 
 #Remove zplugin installer contents
-sed -i '/[zZ]plugin/d'  ~/.zshrc
+sed -i "/[zZ]plugin/d"  ~/.zshrc
 
 echo "-------"
 echo "ZSH as the default shell(need sudo permission)"
