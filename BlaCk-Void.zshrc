@@ -16,6 +16,11 @@ case $- in
     *) return 0;;
 esac
 
+# Instant Prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 ##-------------------------Zplugin set-------------------------
 ZPLGIN_BIN=~/.zplugin/bin/zplugin.zsh
 source $ZPLGIN_BIN
