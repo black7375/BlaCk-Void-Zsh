@@ -144,6 +144,7 @@ zshrc=~/.zshrc
 zshenv=~/.zshenv
 zlogin=~/.zlogin
 zprofile=~/.zprofile
+profile=~/.profile
 
 set_file()
 {
@@ -170,11 +171,16 @@ set_file $zlogin
 echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
 echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
 echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
-cat ~/.profile                                | tee -a $zprofile
-#cp -v BlaCk-Void.zshrc  $file
+if [ -e $profile ]; then
+    cat ~/.profile | tee -a $zprofile
+fi
 
 #Remove zplugin installer contents
-sed -i '/[zZ]plugin/d'  ~/.zshrc
+if [[ "$OSTYPE" == "darwin"*  ]]; then
+    sed -i '' "/[zZ]plugin/d" $zshrc
+else
+    sed -i    "/[zZ]plugin/d" $zshrc
+fi
 
 echo "-------"
 echo "ZSH as the default shell(need sudo permission)"
