@@ -144,6 +144,7 @@ zshrc=~/.zshrc
 zshenv=~/.zshenv
 zlogin=~/.zlogin
 zprofile=~/.zprofile
+profile=~/.profile
 
 set_file()
 {
@@ -170,7 +171,9 @@ set_file $zlogin
 echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
 echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
 echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
-cat ~/.profile                                | tee -a $zprofile
+if [ -e $profile ]; then
+    cat ~/.profile | tee -a $zprofile
+fi
 #cp -v BlaCk-Void.zshrc  $file
 
 #Remove zplugin installer contents
