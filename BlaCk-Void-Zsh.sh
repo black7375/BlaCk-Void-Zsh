@@ -174,13 +174,12 @@ echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
 if [ -e $profile ]; then
     cat ~/.profile | tee -a $zprofile
 fi
-#cp -v BlaCk-Void.zshrc  $file
 
 #Remove zplugin installer contents
 if [[ "$OSTYPE" == "darwin"*  ]]; then
-    sed -i '' "/[zZ]plugin/d" ~/.zshrc
+    sed -i '' "/[zZ]plugin/d" $zshrc
 else
-    sed -i    "/[zZ]plugin/d" ~/.zshrc
+    sed -i    "/[zZ]plugin/d" $zshrc
 fi
 
 echo "-------"
