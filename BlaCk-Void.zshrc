@@ -155,7 +155,6 @@ local _OMZ_SOURCES=(
     plugins/urltools/urltools.plugin.zsh
 )
 if [[ $TMUX_ENABLE ]]; then
-    export TMUX_ENABLE=true
     _OMZ_SOURCES=(
         $_OMZ_SOURCES
         plugins/tmux/tmux.plugin.zsh
