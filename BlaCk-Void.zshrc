@@ -47,6 +47,10 @@ if type tmux &>/dev/null; then
     export TMUX_ENABLE=true
 fi
 
+if type docker &>/dev/null; then
+    export DOCKER_ENABLE=true
+fi
+
 ##---------- Bundles from the oh-my-zsh.
 _OMZ_SETTING() {
   #-----Thefuck
@@ -159,6 +163,13 @@ if [[ $TMUX_ENABLE ]]; then
         $_OMZ_SOURCES
         plugins/tmux/tmux.plugin.zsh
         plugins/tmuxinator/tmuxinator.plugin.zsh
+    )
+fi
+if [[ $DOCKER_ENABLE ]]; then
+    _OMZ_SOURCES=(
+        $_OMZ_SOURCES
+        plugins/docker/_docker
+        plugins/docker-compose/docker-compose.plugin.zsh
     )
 fi
 
