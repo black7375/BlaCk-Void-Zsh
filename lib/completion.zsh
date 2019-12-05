@@ -124,6 +124,10 @@ if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
+# pip
+if type pip &>/dev/null; then
+    eval "`pip completion --zsh`"
+fi
 
 # Complete words from tmux pane(s) {{{1
 # Source: http://blog.plenz.com/2012-01/zsh-complete-words-from-tmux-pane.html
