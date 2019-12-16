@@ -181,6 +181,7 @@ zplugin light robbyrussell/oh-my-zsh
 ##---------- Bundles form the custom repo.
 zplugin light chrissicool/zsh-256color
 zplugin light mafredri/zsh-async
+zplugin ice depth"1"
 zplugin light romkatv/powerlevel10k
 
 zplugin ice wait"0a" atload"_zsh_highlight" lucid
