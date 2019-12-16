@@ -9,11 +9,12 @@ echo ""
 echo "--------------------"
 echo "  Downloads"
 echo ""
-ARH_PACKAGE_NAME="zsh autojump powerline curl git ruby-irb fzf ripgrep thefuck w3m wmctrl ack tmux xdotool"
-DEB_PACKAGE_NAME="zsh autojump powerline curl git w3m-img wmctrl ack tmux xdotool"
-YUM_PACKAGE_NAME="zsh autojump powerline curl git w3m-img wmctrl ack tmux xdotool"
-MAC_PACKAGE_NAME="zsh autojump curl python git socat w3m wmctrl ack tmux xdotool"
-BSD_PACKAGE_NAME="zsh autojump py36-powerline-status curl git fzf ripgrep thefuck w3m-img xdotool p5-ack tmux xdotool"
+ARH_PACKAGE_NAME="zsh powerline curl git ruby-irb fzf ripgrep thefuck w3m wmctrl ack tmux xdotool"
+DEB_PACKAGE_NAME="zsh powerline curl git w3m-img wmctrl ack tmux xdotool"
+YUM_PACKAGE_NAME="zsh powerline curl git w3m-img wmctrl ack tmux xdotool"
+MAC_PACKAGE_NAME="zsh curl python git socat w3m wmctrl ack tmux xdotool"
+BSD_PACKAGE_NAME="zsh py36-powerline-status curl git fzf ripgrep thefuck w3m-img xdotool p5-ack tmux xdotool"
+BRW_PACKAGE_NAME="autojump fzf ripgrep thefuck"
 
 arh_install()
 {
@@ -63,11 +64,11 @@ set_brew()
     fi
   fi
   {
-    brew install fzf ripgrep thefuck
+    brew install $BRW_PACKAGE_NAME
   } || {
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     brew vendor-install ruby
-    brew install fzf ripgrep thefuck
+    brew install $BRW_PACKAGE_NAME
   }
   $(brew --prefix)/opt/fzf/install
 }
