@@ -247,7 +247,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
     or Link\\
     =ln -svf BlaCk-Void.zshrc ~/.zshrc=
 
-    or Copy(Can't `zsh-update`)\\
+    or Copy(Can't =zsh-update=)\\
     =cp -v BlaCk-Void.zshrc  ~/.zshrc=
 
   + Zsh Shell Set\\
