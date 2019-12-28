@@ -220,6 +220,10 @@ zplugin light paoloantinori/hhighlighter
 zplugin ice wait"2" as"program" pick"tldr" lucid
 zplugin light raylee/tldr
 
+local zplugins=~/.zplugins
+if [ -e $zplugins ]; then
+    source $zplugins
+fi
 
 _zpcompinit-custom
 zplugin cdreplay -q
