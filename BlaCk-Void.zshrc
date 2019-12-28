@@ -55,7 +55,6 @@ fi
 _OMZ_SETTING() {
   #-----Thefuck
   eval "$(thefuck --alias)"
-
 }
 
 ##---------- Bundles form the custom repo.
