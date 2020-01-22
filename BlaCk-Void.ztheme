@@ -544,6 +544,7 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
   typeset -g POWERLEVEL9K_STATUS_OK=false
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
+  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=same-dir # off always
 
   ## Segment
   typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE=' %n@%m'
@@ -622,6 +623,7 @@ _simple-nerd-single()
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
   typeset -g POWERLEVEL9K_STATUS_OK=false
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
+  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=same-dir # off always
 
   ## Segment
   typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m '
