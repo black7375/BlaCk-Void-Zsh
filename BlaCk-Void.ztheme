@@ -404,12 +404,17 @@ _simple-icon()
 ## ETC Prompt Expansion
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 
+ENV_PROMPT_ELEMENTS=(direnv virtualenv anaconda pyenv goenv nodenv nvm nodeenv
+                     rbenv rvm fvm lauaenv jenv plenv kubecontext terrafrom
+                     aws aws_eb_env azure gcloud google_app_cred)
+
 _powerline-nerd()
 {
   ##-----Prompt Set
   ## Prompt
   typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context root_indicator dir dir_writable vcs)
-  typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time history load)
+  typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time
+                                                  $ENV_PROMPT_ELEMENTS history load)
 
   ## Double-Lined Prompt
   typeset -g POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -464,7 +469,8 @@ _powerline-nerd-single()
       fi
   }
   _left_prompt && add-zsh-hook precmd _left_prompt
-  typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time history)
+  typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time
+                                                  $ENV_PROMPT_ELEMENTS history)
 
   ## Double-Lined Prompt
   typeset -g POWERLEVEL9K_PROMPT_ON_NEWLINE=false
@@ -518,11 +524,13 @@ _simple-nerd()
   ## Prompt
   # init
   _left_prompt() {
-    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator command_execution_time)
+    typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator
+                                                   $ENV_PROMPT_ELEMENTS command_execution_time)
     # not connected ssh, root user
     if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
             $EUID -eq 0 ]]; then
-      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator command_execution_time)
+      typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator
+                                                     $ENV_PROMPT_ELEMENTS command_execution_time)
     fi
   }
   _left_prompt && add-zsh-hook precmd _left_prompt
