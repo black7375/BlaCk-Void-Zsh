@@ -10,7 +10,7 @@ zsh-compile
 echo "\n--------------------"
 echo "Plugins update"
 zplugin self-update
-zplugin update
+zplugin update --parallel
 
 # Antigen -> Zplugin
 ZPLGIN_BIN=~/.zplugin/bin/zplugin.zsh
@@ -21,8 +21,8 @@ if ! [ -e $ZPLGIN_BIN ]; then
 
     echo "\n--------------------"
     echo "Install Zplugin"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-    sed -i '/[zZ]plugin/d'  ~/.zshrc
+    mkdir ~/.zplugin
+    git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
 
     echo "\n--------------------"
     echo "Remove Antigen"
