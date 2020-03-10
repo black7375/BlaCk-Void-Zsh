@@ -270,7 +270,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 
 ** 3.2 Plugins.
 *Plugin Manager*
-- [[https://github.com/zdharma/zplugin][Zplugin]]
+- [[https://github.com/zdharma/zinit][zinit]](Old Name: Zplugin)
 
 *Default Repo ([[https://github.com/robbyrussell/oh-my-zsh][robbyrussell's oh-my-zsh]]).*
 

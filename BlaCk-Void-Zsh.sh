@@ -78,7 +78,8 @@ set_brew()
 }
 etc_install()
 {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+  mkdir ~/.zplugin
+  git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
   curl -L $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > $BVZSH/prettyping
   chmod +x $BVZSH/prettyping
   source $BVZSH/install_font.sh
