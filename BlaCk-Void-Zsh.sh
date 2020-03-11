@@ -190,13 +190,6 @@ if [ -e $profile ]; then
     cat ~/.profile | tee -a $zprofile
 fi
 
-#Remove zplugin installer contents
-if [[ "$OSTYPE" == "darwin"*  ]]; then
-    sed -i '' "/[zZ]plugin/d" $zshrc
-else
-    sed -i    "/[zZ]plugin/d" $zshrc
-fi
-
 echo "-------"
 echo "ZSH as the default shell(need sudo permission)"
 chsh -s $(which zsh)
