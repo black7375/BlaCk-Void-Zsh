@@ -9,6 +9,7 @@ zsh-compile
 
 echo "\n--------------------"
 echo "Plugins update"
+_zplugin-check-remote
 zplugin self-update
 zplugin update --parallel
 
