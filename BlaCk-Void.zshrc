@@ -22,8 +22,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ##-------------------------Zplugin set-------------------------
-ZPLGIN_BIN=~/.zplugin/bin/zplugin.zsh
-source $ZPLGIN_BIN
+ZPLUGIN_DIR=~/.zplugin/bin
+ZPLUGIN_BIN=${ZPLUGIN_DIR}/zplugin.zsh
+source $ZPLUGIN_BIN
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 autoload -Uz cdr
