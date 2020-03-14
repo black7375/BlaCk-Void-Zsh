@@ -14,8 +14,7 @@ zplugin self-update
 zplugin update --parallel
 
 # Antigen -> Zplugin
-ZPLGIN_BIN=~/.zplugin/bin/zplugin.zsh
-if ! [ -e $ZPLGIN_BIN ]; then
+if ! [ -e $ZPLUGIN_BIN ]; then
     echo "\n--------------------"
     echo "Change Plugin Manager!!"
     echo "--------------------"
