@@ -225,9 +225,10 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   + Git Clone\\
     =git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh && cd ~/.zsh=
 
-  + zplugin(replace antigen)
+  + zinit(replace antigen, old name: zplugin)
     #+BEGIN_SRC shell
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+    mkdir ~/.zplugin
+    git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
     #+END_SRC
 
   + nerdfont(powerline support font)  
@@ -270,7 +271,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 
 ** 3.2 Plugins.
 *Plugin Manager*
-- [[https://github.com/zdharma/zinit][zinit]](Old Name: Zplugin)
+- [[https://github.com/zdharma/zinit][Zinit]](Old Name: Zplugin)
 
 *Default Repo ([[https://github.com/robbyrussell/oh-my-zsh][robbyrussell's oh-my-zsh]]).*
 
