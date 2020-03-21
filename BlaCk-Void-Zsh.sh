@@ -126,11 +126,11 @@ if   [[ "$OSTYPE" == "linux-gnu" ]]; then
 
   else
     echo "OS NOT DETECTED, try to flexible mode.."
-    if   echo $RELEASE | grep $ARH_RELEASE > /dev/null 2&1; then
+    if   echo $RELEASE | grep $ARH_RELEASE > /dev/null 2>&1; then
       arh_install
-    elif echo $RELEASE | grep $DEB_RELEASE > /dev/null 2&1; then
+    elif echo $RELEASE | grep $DEB_RELEASE > /dev/null 2>&1; then
       deb_install
-    elif echo $RELEASE | grep $YUM_RELEASE > /dev/null 2&1; then
+    elif echo $RELEASE | grep $YUM_RELEASE > /dev/null 2>&1; then
       yum_install
     fi
   fi
