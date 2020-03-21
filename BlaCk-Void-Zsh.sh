@@ -10,7 +10,7 @@ echo "--------------------"
 echo "  Downloads"
 echo ""
 ARH_RELEASE="arch\|Manjaro\|Chakra"
-DEB_RELEASE="[Dd]ebian\|Knoppix"
+DEB_RELEASE="[Dd]ebian\|[Uu]buntu|[Mm]int|[Kk]noppix"
 YUM_RELEASE="rhel\|CentOS\|RED\|Fedora"
 
 ARH_PACKAGE_NAME="zsh powerline curl git ruby-irb fzf ripgrep thefuck w3m wmctrl ack tmux xdotool"
