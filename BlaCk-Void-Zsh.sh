@@ -89,48 +89,48 @@ if   [[ "$OSTYPE" == "linux-gnu" ]]; then
   RELEASE=$(cat /etc/*release)
 
   ##ARH Package
-  if   echo $RELEASE | grep ^NAME    | grep Manjaro; then
+  if   echo "$RELEASE" | grep ^NAME    | grep Manjaro; then
     arh_install
-  elif echo $RELEASE | grep ^NAME    | grep Chakra ; then
+  elif echo "$RELEASE" | grep ^NAME    | grep Chakra ; then
     arh_install
-  elif echo $RELEASE | grep ^ID      | grep arch   ; then
+  elif echo "$RELEASE" | grep ^ID      | grep arch   ; then
     arh_install
-  elif echo $RELEASE | grep ^ID_LIKE | grep arch   ; then
+  elif echo "$RELEASE" | grep ^ID_LIKE | grep arch   ; then
     arh_install
 
   ##Deb Package
-  elif echo $RELEASE | grep ^NAME    | grep Ubuntu ; then
+  elif echo "$RELEASE" | grep ^NAME    | grep Ubuntu ; then
     ubuntu_ver=$(lsb_release -rs)
     if [[ ${ubuntu_ver:0:2} -lt 18 ]]; then
       DEB_PACKAGE_NAME=$( sed -e "s/ack/ack-grep/" <(echo $DEB_PACKAGE_NAME) )
     fi
     deb_install
-  elif echo $RELEASE | grep ^NAME    | grep Debian ; then
+  elif echo "$RELEASE" | grep ^NAME    | grep Debian ; then
     deb_install
-  elif echo $RELEASE | grep ^NAME    | grep Mint   ; then
+  elif echo "$RELEASE" | grep ^NAME    | grep Mint   ; then
     deb_install
-  elif echo $RELEASE | grep ^NAME    | grep Knoppix; then
+  elif echo "$RELEASE" | grep ^NAME    | grep Knoppix; then
     deb_install
-  elif echo $RELEASE | grep ^ID_LIKE | grep debian ; then
+  elif echo "$RELEASE" | grep ^ID_LIKE | grep debian ; then
     deb_install
 
   ##Yum Package
-  elif echo $RELEASE | grep ^NAME    | grep CentOS ; then
+  elif echo "$RELEASE" | grep ^NAME    | grep CentOS ; then
     yum_install
-  elif echo $RELEASE | grep ^NAME    | grep Red    ; then
+  elif echo "$RELEASE" | grep ^NAME    | grep Red    ; then
     yum_install
-  elif echo $RELEASE | grep ^NAME    | grep Fedora ; then
+  elif echo "$RELEASE" | grep ^NAME    | grep Fedora ; then
     yum_install
-  elif echo $RELEASE | grep ^ID_LIKE | grep rhel   ; then
+  elif echo "$RELEASE" | grep ^ID_LIKE | grep rhel   ; then
     yum_install
 
   else
     echo "OS NOT DETECTED, try to flexible mode.."
-    if   echo $RELEASE | grep $ARH_RELEASE > /dev/null 2>&1; then
+    if   echo "$RELEASE" | grep $ARH_RELEASE > /dev/null 2>&1; then
       arh_install
-    elif echo $RELEASE | grep $DEB_RELEASE > /dev/null 2>&1; then
+    elif echo "$RELEASE" | grep $DEB_RELEASE > /dev/null 2>&1; then
       deb_install
-    elif echo $RELEASE | grep $YUM_RELEASE > /dev/null 2>&1; then
+    elif echo "$RELEASE" | grep $YUM_RELEASE > /dev/null 2>&1; then
       yum_install
     fi
   fi
