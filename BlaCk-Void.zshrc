@@ -58,7 +58,7 @@ _OMZ_SETTING() {
   eval "$(thefuck --alias)"
 }
 
-##---------- Bundles form the custom repo.
+##---------- Bundles from the custom repo.
 _alias-tip-setting() {
   export ZSH_PLUGINS_ALIAS_TIPS_FORCE=0
 }
@@ -178,7 +178,7 @@ zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
         atinit"_zpcompinit-custom; zpcdreplay" atload"_OMZ_SETTING" wait"1c"
 zplugin light robbyrussell/oh-my-zsh
 
-##---------- Bundles form the custom repo.
+##---------- Bundles from the custom repo.
 zplugin light chrissicool/zsh-256color
 zplugin light mafredri/zsh-async
 zplugin ice depth"1"
