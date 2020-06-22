@@ -5,7 +5,10 @@ Awesome Zsh Setting.
 
 [[https://i.imgur.com/043POEf.png]]
 
+*[[https://github.com/black7375/BlaCk-Void-Zsh/wiki/Error][Wiki:Error]]*
+
 *[[https://black7375.tistory.com/59][Korean Docs]]*
+
 ** Table of Contents
 :PROPERTIES:
 :TOC:      this
