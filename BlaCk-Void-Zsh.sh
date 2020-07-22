@@ -20,20 +20,27 @@ MAC_PACKAGE_NAME="zsh curl python git socat w3m wmctrl ack tmux xdotool"
 BSD_PACKAGE_NAME="zsh py36-powerline-status curl git fzf ripgrep thefuck w3m-img xdotool p5-ack tmux xdotool"
 BRW_PACKAGE_NAME="fzf ripgrep thefuck"
 
+if ! [ -x "$(command -v pacapt)" ]; then
+  echo "Universal Package Manager(icy/pacapt) Download && Install(need sudo permission)"
+  PACAPT="/usr/local/bin/pacapt"
+  sudo curl https://github.com/icy/pacapt/raw/ng/pacapt -Lo $PACAPT
+  sudo chmod 755 $PACAPT
+  sudo ln -sv $PACAPT /usr/local/bin/pacman || true
+fi
+sudo pacapt -Sy
+
+
 arh_install()
 {
-  sudo pacman -Sy
-  yes | sudo pacman -S $ARH_PACKAGE_NAME
+  yes | sudo pacapt -S $ARH_PACKAGE_NAME
 }
 deb_install()
 {
-  sudo apt-get update
-  sudo apt-get install -y $DEB_PACKAGE_NAME
+  yes | sudo pacapt -S $DEB_PACKAGE_NAME
 }
 yum_install()
 {
-  #sudo yum check-update ##BUG: Return from Fedora??
-  sudo yum install -y $YUM_PACKAGE_NAME
+  yes | sudo pacapt -S $YUM_PACKAGE_NAME
 }
 mac_install()
 {
@@ -48,8 +55,7 @@ mac_install()
 }
 bsd_install()
 {
-  sudo pkg update
-  sudo pkg install -y $BSD_PACKAGE_NAME
+  yes | sudo pacapt -S $BSD_PACKAGE_NAME
 }
 
 set_brew()
