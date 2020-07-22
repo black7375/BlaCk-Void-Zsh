@@ -187,7 +187,7 @@ echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
 echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
 echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
 if [ -e $profile ]; then
-    cat ~/.profile | tee -a $zprofile
+  cat ~/.profile | tee -a $zprofile
 fi
 
 echo "-------"
