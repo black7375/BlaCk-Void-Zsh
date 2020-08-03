@@ -126,10 +126,6 @@ _fzf-widgets-setting() {
 }
 
 _zsh-notify-setting() {
-  if [[ "$(< /proc/version)" == *@(Microsoft|microsoft|WSL)* ]]; then
-    export DISPLAY=$(ip route  | awk '/default via / {print $3; exit}' 2>/dev/null):0
-    export LIBGL_ALWAYS_INDIRECT=1
-  fi
   zstyle ':notify:*' error-title "Command failed (in #{time_elapsed} seconds)"
   zstyle ':notify:*' success-title "Command finished (in #{time_elapsed} seconds)"
 }
@@ -216,14 +212,16 @@ zplugin ice wait"2" lucid
 zplugin light jocelynmallon/zshmarks
 zplugin ice wait"2" lucid
 zplugin light changyuheng/zsh-interactive-cd
-zplugin ice wait"2" atload"_zsh-notify-setting" lucid
-zplugin light marzocchi/zsh-notify
 zplugin ice wait"2" atload"_zsh-lazyenv-setting" lucid
 zplugin light black7375/zsh-lazyenv
 zplugin ice wait"2" pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
 zplugin ice wait"2" as"program" pick"tldr" lucid
 zplugin light raylee/tldr
+if  [[ ! (( "$OSTYPE" == "linux-gnu" && $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') )) ]]; then
+  zplugin ice wait"2" atload"_zsh-notify-setting" lucid
+  zplugin light marzocchi/zsh-notify
+fi
 
 local zplugins=~/.zplugins
 if [ -e $zplugins ]; then
