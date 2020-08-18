@@ -148,7 +148,7 @@ local _OMZ_SOURCES=(
     lib/termsupport.zsh
 
     # Plugins
-    plugins/autojump/autojump.plugin.zsh
+##  plugins/autojump/autojump.plugin.zsh
     plugins/command-not-found/command-not-found.plugin.zsh
     plugins/fzf/fzf.plugin.zsh
     plugins/git/git.plugin.zsh
