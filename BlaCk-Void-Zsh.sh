@@ -20,15 +20,17 @@ MAC_PACKAGE_NAME="zsh curl python git socat w3m wmctrl ack tmux xdotool"
 BSD_PACKAGE_NAME="zsh py36-powerline-status curl git fzf ripgrep thefuck w3m-img xdotool p5-ack tmux xdotool"
 BRW_PACKAGE_NAME="fzf ripgrep thefuck"
 
-if ! [ -x "$(command -v pacapt)" ]; then
-  echo "Universal Package Manager(icy/pacapt) Download && Install(need sudo permission)"
-  PACAPT="/usr/local/bin/pacapt"
-  sudo curl https://github.com/icy/pacapt/raw/ng/pacapt -Lo $PACAPT
-  sudo chmod 755 $PACAPT
-  sudo ln -sv $PACAPT /usr/local/bin/pacman || true
-fi
-sudo pacapt -Sy
-
+pacapt_install()
+{
+  if ! [ -x "$(command -v pacapt)" ]; then
+    echo "Universal Package Manager(icy/pacapt) Download && Install(need sudo permission)"
+    PACAPT="/usr/local/bin/pacapt"
+    sudo curl https://github.com/icy/pacapt/raw/ng/pacapt -Lo $PACAPT
+    sudo chmod 755 $PACAPT
+    sudo ln -sv $PACAPT /usr/local/bin/pacman || true
+  fi
+  sudo pacapt -Sy
+}
 
 arh_install()
 {
@@ -93,6 +95,7 @@ etc_install()
 
 if   [[ "$OSTYPE" == "linux-gnu" ]]; then
   RELEASE=$(cat /etc/*release)
+  pacapt_install
 
   ##ARH Package
   if   echo "$RELEASE" | grep ^NAME    | grep Manjaro; then
@@ -145,8 +148,10 @@ elif [[ "$OSTYPE" == "darwin"*  ]]; then
   set_brew
   mac_install
 elif [[ "$OSTYPE" == "FreeBSD"* ]]; then
+  pacapt_install
   bsd_install
 elif uname -a | grep FreeBSD      ; then
+  pacapt_install
   bsd_install
 else
   echo "OS NOT DETECTED, couldn't install packages."
