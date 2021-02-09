@@ -184,7 +184,7 @@ zplugin light mafredri/zsh-async
 zplugin ice depth"1"
 zplugin light romkatv/powerlevel10k
 
-zplugin ice wait"0a" atload"_zsh_highlight" lucid
+zplugin ice wait"0a" atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" atload"_zsh_highlight" lucid
 zplugin light zdharma/fast-syntax-highlighting
 zplugin ice wait"0a" compile'{src/*.zsh,src/strategies/*}' atload"_zsh_autosuggest_start" lucid
 zplugin light zsh-users/zsh-autosuggestions
