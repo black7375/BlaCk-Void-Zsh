@@ -204,6 +204,8 @@ zplugin light seletskiy/zsh-git-smart-commands
 zplugin ice wait"1b" atload"_fzf-widgets-setting" lucid
 zplugin light ytet5uy4/fzf-widgets
 
+zplugin ice wait"2" as"completion" lucid
+zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 zplugin ice wait"2" lucid
 zplugin light wfxr/forgit
 zplugin ice wait"2" lucid
