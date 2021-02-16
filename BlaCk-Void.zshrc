@@ -1,6 +1,7 @@
 ##-------------------------Init------------------------
 export BVZSH=${0:a:h}
 
+source ${BVZSH}/lib/bootstrap.zsh
 BVFPATH=${BVZSH}/autoload
 fpath+="${BVFPATH}"
 if [[ -d "$BVFPATH" ]]; then
