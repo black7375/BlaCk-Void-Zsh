@@ -5,6 +5,7 @@ fpath=("${BVZSH}/completion" $ZPLG_FPATH_BEFORE $fpath )
 setopt auto_list
 setopt auto_menu
 setopt always_to_end
+setopt COMPLETE_ALIASES
 
 # caching
 zstyle ':completion:*' accept-exact '*(N)'
