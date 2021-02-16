@@ -45,7 +45,7 @@ yum_install()
 mac_install()
 {
   brew update
-  brew cask install xquartz
+  brew install xquartz
   brew install $MAC_PACKAGE_NAME
 
   if ! [ -x "$(command -v pip)" ]; then
