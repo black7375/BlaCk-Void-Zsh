@@ -1,4 +1,6 @@
 #!/bin/bash
+# shellcheck disable=SC1091
+# shellcheck source=./install_font.sh
 echo "----------------------------------------"
 echo "         BlaCk-Void Zsh Setup"
 echo "----------------------------------------"
@@ -34,21 +36,21 @@ pacapt_install()
 
 arh_install()
 {
-  yes | sudo pacapt -S $ARH_PACKAGE_NAME
+  yes | sudo pacapt -S "$ARH_PACKAGE_NAME"
 }
 deb_install()
 {
-  yes | sudo pacapt -S $DEB_PACKAGE_NAME
+  yes | sudo pacapt -S "$DEB_PACKAGE_NAME"
 }
 yum_install()
 {
-  yes | sudo pacapt -S $YUM_PACKAGE_NAME
+  yes | sudo pacapt -S "$YUM_PACKAGE_NAME"
 }
 mac_install()
 {
   brew update
   brew cask install xquartz
-  brew install $MAC_PACKAGE_NAME
+  brew install "$MAC_PACKAGE_NAME"
 
   if ! [ -x "$(command -v pip)" ]; then
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py | sudo python get-pip.py
@@ -57,7 +59,7 @@ mac_install()
 }
 bsd_install()
 {
-  yes | sudo pacapt -S $BSD_PACKAGE_NAME
+  yes | sudo pacapt -S "$BSD_PACKAGE_NAME"
 }
 
 set_brew()
@@ -72,25 +74,27 @@ set_brew()
       fi
     elif [[ "$OSTYPE" == "darwin"* ]]; then
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-      export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
+      local BREW_PREFIX
+      BREW_PREFIX=$(brew --prefix)
+      export PATH=${BREW_PREFIX}/bin:${BREW_PREFIX}/sbin:$PATH
     fi
   fi
   {
-    brew install $BRW_PACKAGE_NAME
+    brew install "$BRW_PACKAGE_NAME"
   } || {
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    eval '$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)'
     brew vendor-install ruby
-    brew install $BRW_PACKAGE_NAME
+    brew install "$BRW_PACKAGE_NAME"
   }
-  $(brew --prefix)/opt/fzf/install
+  "$(brew --prefix)"/opt/fzf/install
 }
 etc_install()
 {
   mkdir ~/.zplugin
   git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
-  curl -L $BVZSH https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > $BVZSH/prettyping
-  chmod +x $BVZSH/prettyping
-  source $BVZSH/install_font.sh
+  curl -L "$BVZSH" https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > "$BVZSH"/prettyping
+  chmod +x "$BVZSH"/prettyping
+  source "$BVZSH"/install_font.sh
 }
 
 if   [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -111,7 +115,7 @@ if   [[ "$OSTYPE" == "linux-gnu" ]]; then
   elif echo "$RELEASE" | grep ^NAME    | grep Ubuntu ; then
     ubuntu_ver=$(lsb_release -rs)
     if [[ ${ubuntu_ver:0:2} -lt 18 ]]; then
-      DEB_PACKAGE_NAME=$( sed -e "s/ack/ack-grep/" <(echo $DEB_PACKAGE_NAME) )
+      DEB_PACKAGE_NAME=$( sed -e "s/ack/ack-grep/" <(echo "$DEB_PACKAGE_NAME") )
     fi
     deb_install
   elif echo "$RELEASE" | grep ^NAME    | grep Debian ; then
@@ -135,11 +139,11 @@ if   [[ "$OSTYPE" == "linux-gnu" ]]; then
 
   else
     echo "OS NOT DETECTED, try to flexible mode.."
-    if   echo "$RELEASE" | grep $ARH_RELEASE > /dev/null 2>&1; then
+    if   echo "$RELEASE" | grep "$ARH_RELEASE" > /dev/null 2>&1; then
       arh_install
-    elif echo "$RELEASE" | grep $DEB_RELEASE > /dev/null 2>&1; then
+    elif echo "$RELEASE" | grep "$DEB_RELEASE" > /dev/null 2>&1; then
       deb_install
-    elif echo "$RELEASE" | grep $YUM_RELEASE > /dev/null 2>&1; then
+    elif echo "$RELEASE" | grep "$YUM_RELEASE" > /dev/null 2>&1; then
       yum_install
     fi
   fi
@@ -159,13 +163,13 @@ else
 fi
 
 etc_install
-source $BVZSH/install_font.sh
+source "$BVZSH"/install_font.sh
 
 echo "--------------------"
 echo "  Apply Settings"
 echo ""
 
-mkdir $BVZSH/cache
+mkdir "$BVZSH"/cache
 zshrc=~/.zshrc
 zshenv=~/.zshenv
 zlogin=~/.zlogin
@@ -178,14 +182,14 @@ set_file()
   echo "-------"
   echo "Set $file !!"
   echo ""
-  if [ -e $file ]; then
+  if [ -e "$file" ]; then
     echo "$file found."
     echo "Now Backup.."
-    cp -v $file $file.bak
+    cp -v "$file" "$file".bak
     echo ""
   else
     echo "$file not found."
-    touch $file
+    touch "$file"
     echo "$file is created"
     echo ""
   fi
@@ -198,12 +202,12 @@ echo "source $BVZSH/BlaCk-Void.zshrc"         >> $zshrc
 echo "source $BVZSH/BlaCk-Void.zshenv"        >> $zshenv
 echo "source $BVZSH/BlaCk-Void.zlogin"        >> $zlogin
 if [ -e $profile ]; then
-  cat ~/.profile | tee -a $zprofile
+  < $profile tee -a $zprofile
 fi
 
 echo "-------"
 echo "ZSH as the default shell(need sudo permission)"
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 echo "Please relogin session or restart terminal"
 echo "The End!!"
