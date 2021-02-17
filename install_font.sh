@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "--------------------"
 echo "  Fonts Settings"
 echo ""
@@ -12,7 +13,7 @@ options()
 font_install()
 {
     while [[ -z "$BVZSH_FONT" ]]; do
-        read -p "$* [0/1/2]: " ans
+        read -rp "$* [0/1/2]: " ans
         case $ans in
             [0]*)
                 echo "Don't Install Fonts."
@@ -47,7 +48,7 @@ necessary()
         echo "OS NOT DETECTED, couldn't install fonts."
         exit 1;
     fi
-    cd $fontDir
+    cd "$fontDir" || exit
     sudo curl -fLo "Hack Bold Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete.ttf
     sudo curl -fLo "Hack Bold Italic Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete.ttf
     sudo curl -fLo "Hack Italic Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete.ttf
@@ -57,14 +58,14 @@ necessary()
     if ! [[ "$OSTYPE" == "darwin"*  ]] ; then
       fc-cache -f -v
     fi
-    cd $BVZSH
+    cd "$BVZSH" || exit
 }
 
 all()
 {
-    git clone https://github.com/ryanoasis/nerd-fonts.git $BVZSH/nerd-fonts
+    git clone https://github.com/ryanoasis/nerd-fonts.git "$BVZSH"/nerd-fonts
     cd nerd-fonts && ./install.sh
     cd ..
 }
 options
-font_install
+font_install "$@"
