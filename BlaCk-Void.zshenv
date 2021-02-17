@@ -1,3 +1,6 @@
+# Unused vars don't check
+# shellcheck disable=SC2034,1090
+
 # https://blog.patshead.com/2011/04/improve-your-oh-my-zsh-startup-time-maybe.html
 skip_global_compinit=1
 
@@ -6,8 +9,9 @@ setopt noglobalrcs
 
 # https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zshenv
 # Ensure that a non-login, non-interactive shell has a defined environment.
-if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
+export ZDOTDIR=${ZDOTDIR:-$HOME}
+if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "$ZDOTDIR/.zprofile" ]]; then
+    source "$ZDOTDIR/.zprofile"
 fi
 
 # set PATH so it includes user's private bin if it exists

@@ -1,3 +1,6 @@
+# Disable for `&!` http://zsh.sourceforge.net/Doc/Release/Jobs-_0026-Signals.html
+# shellcheck disable=SC1009
+
 # Auto zcompile
 if [[ ! -f ${BVZSH}/BlaCk-Void.zshrc.zwc ]]; then
     zsh-compile &!
