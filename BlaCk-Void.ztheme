@@ -1,3 +1,6 @@
+# Unused vars don't check
+# shellcheck disable=SC2034
+
 ##-------------------------PowerLevel10k Set-------------------------
 ##-------------------------Theme Mode
 # Theme Mode: auto powerline simple powerline-single simple-single | TODO: normal normal-single
@@ -414,7 +417,7 @@ _powerline-nerd()
   ## Prompt
   typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context root_indicator dir dir_writable vcs)
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time
-                                                  $ENV_PROMPT_ELEMENTS history load)
+                                                  "${ENV_PROMPT_ELEMENTS[@]}" history load)
 
   ## Double-Lined Prompt
   typeset -g POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -482,7 +485,7 @@ _powerline-nerd-single()
   }
   _left_prompt && add-zsh-hook precmd _left_prompt
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time
-                                                  $ENV_PROMPT_ELEMENTS history)
+                                                  "${ENV_PROMPT_ELEMENTS[@]}" history)
 
   ## Double-Lined Prompt
   typeset -g POWERLEVEL9K_PROMPT_ON_NEWLINE=false
@@ -537,12 +540,12 @@ _simple-nerd()
   # init
   _left_prompt() {
     typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs context dir_writable root_indicator
-                                                   $ENV_PROMPT_ELEMENTS command_execution_time)
+                                                   "${ENV_PROMPT_ELEMENTS[@]}" command_execution_time)
     # not connected ssh, root user
     if ! [[ -n ${SSH_CLIENT-} || -n ${SSH_TTY-} ||
             $EUID -eq 0 ]]; then
       typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable root_indicator
-                                                     $ENV_PROMPT_ELEMENTS command_execution_time)
+                                                     "${ENV_PROMPT_ELEMENTS[@]}" command_execution_time)
     fi
   }
   _left_prompt && add-zsh-hook precmd _left_prompt
