@@ -193,6 +193,10 @@ zplugin ice wait"0b" lucid
 zplugin light hlissner/zsh-autopair
 zplugin ice wait"0b" blockf lucid
 zplugin light zsh-users/zsh-completions
+zplugin ice wait"0c" from"gh-r" as"program" lucid
+zplugin light junegunn/fzf-bin
+zplugin ice wait"0c" as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg" lucid
+zplugin light BurntSushi/ripgrep
 zplugin ice wait"0c" atload"_enhancd-setting" lucid
 zplugin light b4b4r07/enhancd
 zplugin ice wait"0c" atload"_zsh-history-substring-search-setting" lucid
