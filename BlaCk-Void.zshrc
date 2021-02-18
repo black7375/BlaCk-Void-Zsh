@@ -176,7 +176,7 @@ fi
 
 zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
         multisrc"${_OMZ_SOURCES}" compile"(${(j.|.)_OMZ_SOURCES})" \
-        atinit"_zpcompinit-custom; zpcdreplay" atload"_OMZ_SETTING" wait"1c"
+        atload"_OMZ_SETTING" wait"1c"
 zplugin light robbyrussell/oh-my-zsh
 
 ##---------- Bundles from the custom repo.
