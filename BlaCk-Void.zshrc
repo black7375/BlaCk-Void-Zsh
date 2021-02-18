@@ -1,13 +1,12 @@
-# shellcheck disable=SC1090,2034
 ##-------------------------Init------------------------
 export BVZSH=${0:a:h}
 
-source "${BVZSH}"/lib/bootstrap.zsh
-BVFPATH="$BVZSH"/autoload
-fpath+="$BVFPATH"
+source ${BVZSH}/lib/bootstrap.zsh
+BVFPATH=${BVZSH}/autoload
+fpath+="${BVFPATH}"
 if [[ -d "$BVFPATH" ]]; then
-    for func in "$BVFPATH"/*; do
-        autoload -Uz "${func:t}"
+    for func in $BVFPATH/*; do
+        autoload -Uz ${func:t}
     done
 fi
 unset BVFPATH
@@ -33,11 +32,11 @@ autoload -Uz cdr
 autoload -Uz chpwd_recent_dirs
 
 ##-------------------------Theme Set
-ztheme=~/.ztheme
+local ztheme=~/.ztheme
 if [ -e $ztheme ]; then
     source $ztheme
 else
-    source "$BVZSH"/BlaCk-Void.ztheme
+    source $BVZSH/BlaCk-Void.ztheme
 fi
 
 if [ -z "$BVZSH_THEME" ] ; then
@@ -72,8 +71,8 @@ _enhancd-setting() {
 _zsh-history-substring-search-setting() {
   bindkey '^[[A' history-substring-search-up
   bindkey '^[[B' history-substring-search-down
-  bindkey "${terminfo[kcuu1]}" history-substring-search-up
-  bindkey "${terminfo[kcud1]}" history-substring-search-down
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
   HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 }
 
@@ -96,7 +95,6 @@ _fzf-widgets-setting() {
   bindkey '^ff' fzf-edit-files
   bindkey '^fk' fzf-kill-processes
   bindkey '^fs' fzf-exec-ssh
-  #shellcheck disable=SC1003
   bindkey '^\'  fzf-change-recent-directory
   bindkey '^r'  fzf-insert-history
   bindkey '^xf' fzf-insert-files
@@ -142,7 +140,7 @@ _zsh-lazyenv-setting() {
 ##---------- Bundles from the oh-my-zsh.
 # https://github.com/zdharma/zplugin/issues/119
 ZSH="$HOME/.zplugin/plugins/robbyrussell---oh-my-zsh/"
-_OMZ_SOURCES=(
+local _OMZ_SOURCES=(
     # Libs
     lib/compfix.zsh
     lib/directories.zsh
@@ -163,21 +161,21 @@ _OMZ_SOURCES=(
 )
 if [[ $TMUX_ENABLE ]]; then
     _OMZ_SOURCES=(
-        "${_OMZ_SOURCES[@]}"
+        $_OMZ_SOURCES
         plugins/tmux/tmux.plugin.zsh
         plugins/tmuxinator/tmuxinator.plugin.zsh
     )
 fi
 if [[ $DOCKER_ENABLE ]]; then
     _OMZ_SOURCES=(
-        "${_OMZ_SOURCES[@]}"
+        $_OMZ_SOURCES
         plugins/docker/_docker
         plugins/docker-compose/docker-compose.plugin.zsh
     )
 fi
 
 zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
-        multisrc"${_OMZ_SOURCES[*]}" compile"(${(j.|.)_OMZ_SOURCES})" \
+        multisrc"${_OMZ_SOURCES}" compile"(${(j.|.)_OMZ_SOURCES})" \
         atinit"_zpcompinit-custom; zpcdreplay" atload"_OMZ_SETTING" wait"1c"
 zplugin light robbyrussell/oh-my-zsh
 
@@ -228,7 +226,7 @@ if  [[ ! (( "$OSTYPE" == "linux-gnu" && $(uname -r | sed -n 's/.*\( *Microsoft *
   zplugin light marzocchi/zsh-notify
 fi
 
-zplugins=~/.zplugins
+local zplugins=~/.zplugins
 if [ -e $zplugins ]; then
     source $zplugins
 fi
@@ -277,10 +275,10 @@ setopt INC_APPEND_HISTORY
 # eliminates duplicates in *paths
 typeset -gU cdpath fpath path
 
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source "$HOME"/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval $(SHELL=/bin/sh lesspipe)
 
 # Alias
 alias tar-compress-gz='tar -zcvf'
@@ -313,10 +311,10 @@ BVFPATH=${BVZSH}/completion
 fpath+="${BVFPATH}"
 unset BVFPATH
 
-source "$BVZSH"/lib/completion.zsh
+source $BVZSH/lib/completion.zsh
 
 #-----Fzf
-source "$BVZSH"/lib/fzf-set.zsh
+source $BVZSH/lib/fzf-set.zsh
 
 ##-------------------------Autoupdate Check
 _zsh-auto-update
