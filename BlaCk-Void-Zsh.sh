@@ -18,7 +18,7 @@ YUM_RELEASE="rhel\|CentOS\|RED\|Fedora"
 ARH_PACKAGE_NAME="zsh curl git w3m wmctrl ack tmux xdotool python-pip powerline"
 DEB_PACKAGE_NAME="zsh curl git w3m-img wmctrl ack tmux xdotool python3-pip powerline"
 YUM_PACKAGE_NAME="zsh curl git w3m-img wmctrl ack tmux xdotool python3-pip powerline"
-MAC_PACKAGE_NAME="zsh curl git socat w3m wmctrl ack tmux xdotool python3"
+MAC_PACKAGE_NAME="zsh curl git socat w3m wmctrl ack tmux xdotool python3  xquartz"
 BSD_PACKAGE_NAME="zsh curl git thefuck w3m-img xdotool p5-ack tmux xdotool py37-pip py37-powerline-status"
 PIP_PACKAGE_NAME="thefuck"
 
@@ -49,7 +49,6 @@ yum_install()
 mac_install()
 {
   brew update
-  brew cask install xquartz
   brew install "$MAC_PACKAGE_NAME"
 
   sudo pip3 install powerline-status
