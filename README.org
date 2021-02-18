@@ -215,8 +215,6 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 ** 2.2 Others.
 - *Requirements*
   + [[https://www.zsh.org/][zsh]]
-  + [[https://github.com/junegunn/fzf][fzf]][integrated]
-  + [[https://github.com/BurntSushi/ripgrep][ripgrep]][fzf's filter]
   + [[https://github.com/powerline/powerline][powerline]]
   + [[https://github.com/ryanoasis/nerd-fonts][powerline support font]](will explain it in the paragraph below.)
   + [[http://w3m.sourceforge.net][w3m-img]](option for Terminal Image View)
