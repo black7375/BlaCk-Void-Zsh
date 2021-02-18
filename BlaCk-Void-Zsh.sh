@@ -15,12 +15,12 @@ ARH_RELEASE="arch\|Manjaro\|Chakra"
 DEB_RELEASE="[Dd]ebian\|[Uu]buntu|[Mm]int|[Kk]noppix"
 YUM_RELEASE="rhel\|CentOS\|RED\|Fedora"
 
-ARH_PACKAGE_NAME="zsh powerline curl git ruby-irb fzf ripgrep thefuck w3m wmctrl ack tmux xdotool"
-DEB_PACKAGE_NAME="zsh powerline curl git w3m-img wmctrl ack tmux xdotool"
-YUM_PACKAGE_NAME="zsh powerline curl git w3m-img wmctrl ack tmux xdotool"
-MAC_PACKAGE_NAME="zsh curl python git socat w3m wmctrl ack tmux xdotool"
-BSD_PACKAGE_NAME="zsh py36-powerline-status curl git fzf ripgrep thefuck w3m-img xdotool p5-ack tmux xdotool"
-BRW_PACKAGE_NAME="fzf ripgrep thefuck"
+ARH_PACKAGE_NAME="zsh curl git w3m wmctrl ack tmux xdotool python-pip powerline"
+DEB_PACKAGE_NAME="zsh curl git w3m-img wmctrl ack tmux xdotool python3-pip powerline"
+YUM_PACKAGE_NAME="zsh curl git w3m-img wmctrl ack tmux xdotool python3-pip powerline"
+MAC_PACKAGE_NAME="zsh curl git socat w3m wmctrl ack tmux xdotool python3"
+BSD_PACKAGE_NAME="zsh curl git thefuck w3m-img xdotool p5-ack tmux xdotool py37-pip py37-powerline-status"
+PIP_PACKAGE_NAME="thefuck"
 
 pacapt_install()
 {
@@ -52,9 +52,6 @@ mac_install()
   brew cask install xquartz
   brew install "$MAC_PACKAGE_NAME"
 
-  if ! [ -x "$(command -v pip)" ]; then
-    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py | sudo python get-pip.py
-  fi
   sudo pip3 install powerline-status
 }
 bsd_install()
@@ -66,30 +63,27 @@ set_brew()
 {
   if ! [ -x "$(command -v brew)" ]; then
     echo "Now, Install Brew." >&2
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
-      if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then
-        export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin/"
-      fi
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-      local BREW_PREFIX
-      BREW_PREFIX=$(brew --prefix)
-      export PATH=${BREW_PREFIX}/bin:${BREW_PREFIX}/sbin:$PATH
-    fi
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    local BREW_PREFIX
+    BREW_PREFIX=$(brew --prefix)
+    export PATH=${BREW_PREFIX}/bin:${BREW_PREFIX}/sbin:$PATH
   fi
-  {
-    brew install "$BRW_PACKAGE_NAME"
-  } || {
-    eval '$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)'
-    brew vendor-install ruby
-    brew install "$BRW_PACKAGE_NAME"
-  }
-  "$(brew --prefix)"/opt/fzf/install
+
+  brew install "$BRW_PACKAGE_NAME"
+}
+
+pip_install()
+{
+  if ! [ -x "$(command -v pip3)" ]; then
+    curl https://bootstrap.pypa.io/get-pip.py | sudo python3
+  fi
+  sudo pip3 install "$PIP_PACKAGE_NAME"
 }
 etc_install()
 {
+  pip_install
+
   mkdir ~/.zplugin
   git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
   curl -L "$BVZSH" https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > "$BVZSH"/prettyping
@@ -147,7 +141,6 @@ if   [[ "$OSTYPE" == "linux-gnu" ]]; then
       yum_install
     fi
   fi
-  set_brew
 elif [[ "$OSTYPE" == "darwin"*  ]]; then
   set_brew
   mac_install
