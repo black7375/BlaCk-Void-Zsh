@@ -191,7 +191,7 @@ zplugin ice wait"0a" compile'{src/*.zsh,src/strategies/*}' atload"_zsh_autosugge
 zplugin light zsh-users/zsh-autosuggestions
 zplugin ice wait"0b" lucid
 zplugin light hlissner/zsh-autopair
-zplugin ice wait"0b" blockf lucid
+zplugin ice wait"0b" blockf atpull"zinit creinstall -q ." lucid
 zplugin light zsh-users/zsh-completions
 zplugin ice wait"0c" from"gh-r" as"program" lucid
 zplugin light junegunn/fzf-bin
@@ -233,7 +233,13 @@ fi
 local zplugins=~/.zplugins
 if [ -e $zplugins ]; then
     source $zplugins
+else
+    source $BVZSH/BlaCk-Void.zplugins
 fi
+if [ -z "$BVZSH_TOOLS" ] ; then
+    export BVZSH_TOOLS='true'
+fi
+_zsh-tools $BVZSH_TOOLS
 
 _zpcompinit-custom
 zplugin cdreplay -q

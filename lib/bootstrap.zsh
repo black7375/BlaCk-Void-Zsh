@@ -41,6 +41,33 @@ _zsh-theme() {
     esac
 }
 
+_zsh-tools() {
+    local tools_set=$1
+    case $tools_set in
+        -h* | --help*)
+            echo "--------------------"
+            echo "  BlaCk-Zsh Tools"
+            echo "--------------------\n"
+            echo "Command: zsh-theme THEME_NAME\n"
+            echo "Default: true"
+            echo "Options: false"
+            return
+            ;;
+
+        'true')
+            _tool-true
+            ;;
+
+        'false')
+            ;;
+
+        *)
+            echo "This option is not available."
+            return 1
+            ;;
+    esac
+}
+
 _zpcompinit-custom() {
     # https://gist.github.com/ctechols/ca1035271ad134841284
     # On slow systems, checking the cached .zcompdump file to see if it must be
