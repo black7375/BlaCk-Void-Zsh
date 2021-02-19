@@ -8,44 +8,59 @@ _tool-true {
     ##-------------------------File Utils
     # cd
     # zoxide
-    zplugin ice wait"2" as"program" from"gh-r" mv"zoxide* -> zoxide" lucid
+    zplugin ice wait"2" as"command" from"gh-r" lucid \
+            mv"zoxide* -> zoxide" atclone"zoxide init zsh > clrs.zsh" \
+            atpull"%atclone" pick"clrs.zsh" nocompile'!' atload"alias cd=z"
     zplugin light ajeetdsouza/zoxide
 
     # dir / ls
-    zplugin ice wait"2" atclone"dircolors -b LS_COLORS > clrs.zsh" \
-          atpull'%atclone' pick"clrs.zsh" nocompile'!' \
+    zplugin ice wait"2" atclone"dircolors -b LS_COLORS > clrs.zsh" lucid \
+          atpull"%atclone" pick"clrs.zsh" nocompile'!' \
           atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
     zplugin light trapd00r/LS_COLORS
 
-    zplugin ice wait"2" from"gh-r" as"program" mv"exa* -> exa" lucid
+    _exa-setting() {
+        alias ls="exa --color auto --icons"
+        alias tree="exa --color auto --icons --tree"
+    }
+    zplugin ice wait"2" as"command" from"gh-r" lucid \
+            mv"exa* -> exa" atload"_exa-setting"
     zplugin light ogham/exa
 
     # find
-    zplugin ice wait"2" from"gh-r" as"command" mv"fd* -> fd" pick"fd/fd" lucid
+    zplugin ice wait"2" as"command" from"gh-r" lucid \
+            mv"fd* -> fd" pick"fd/fd" atload"alias find=fd"
     zplugin light sharkdp/fd
 
     # grep
     # BurntSunshi/ripgrep
-    alias grep='rg' # BurntSunshi/ripgrep is already installed
+    alias grep="rg" # BurntSunshi/ripgrep is already installed
 
     ##-------------------------View Utils
     # cat
-    zplugin ice wait"2" as"command" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
+    zplugin ice wait"2" as"command" from"gh-r" lucid \
+            mv"bat* -> bat" pick"bat/bat" atload"alias cat=bat"
     zplugin light sharkdp/bat
 
     # cmp / diff
-    zplugin ice wait"2" as"command" from"gh-r" mv"delta* -> delta" pick"delta/delta" \
-          atload"git config --global core.pager "delta --dark""
+    _delta-setting() {
+        git config --global core.pager "delta --dark"
+        alias diff="delta"
+    }
+    zplugin ice wait"2" as"command" from"gh-r" lucid \
+            mv"delta* -> delta" pick"delta/delta" atload"_delta-setting"
     zplugin light dandavison/delta
 
     ##-------------------------Network Utils
     # ping
-    zplugin ice wait"2" as"command" pick"prettyping" lucid
+    zplugin ice wait"2" as"command" pick"prettyping" lucid \
+            atload"alias ping=prettyping"
     zplugin light denilsonsa/prettyping
 
     ##-------------------------Other Utils
     # man
-    zplugin ice wait"2" as"command" from"gh-r" mv"tldr* -> tldr" lucid
+    zplugin ice wait"2" as"command" from"gh-r" lucid \
+            mv"tldr* -> tldr" atclone"tldr --update" atload"alias man=tldr"
     zplugin light dbrgn/tealdeer
 
     # sudo
