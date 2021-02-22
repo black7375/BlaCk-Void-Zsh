@@ -193,7 +193,7 @@ zplugin ice wait"0b" lucid
 zplugin light hlissner/zsh-autopair
 zplugin ice wait"0b" blockf atpull"zinit creinstall -q ." lucid
 zplugin light zsh-users/zsh-completions
-zplugin ice wait"0c" from"gh-r" as"program" lucid
+zplugin ice wait"0c" as"command" from"gh-r" lucid
 zplugin light junegunn/fzf
 zplugin ice wait"0c" as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg" lucid
 zplugin light BurntSushi/ripgrep
