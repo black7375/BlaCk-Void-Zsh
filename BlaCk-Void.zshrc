@@ -294,7 +294,6 @@ typeset -gU cdpath fpath path
 alias tar-compress-gz='tar -zcvf'
 alias tar-extract-gz='tar -zxvf'
 alias map='telnet mapscii.me'
-alias prettyping='$BVZSH/prettyping'
 alias rsync-ssh='rsync -avzhe ssh --progress'
 alias ~='cd ~'
 alias /='cd /'
