@@ -59,8 +59,14 @@ _tool-true {
 
     ##-------------------------Other Utils
     # man
+    _tldr-setting() {
+        tldr --update
+        local comp="$(tldr 2>/dev/null --list)"
+        echo "complete -W \"$comp\" tldr" > init.zsh
+    }
     zplugin ice wait"2" as"command" from"gh-r" lucid \
-            mv"tldr* -> tldr" atclone"tldr --update" atload"alias man=tldr"
+            mv"tldr* -> tldr" atclone"_tldr-setting" pick"init.zsh" \
+            atpull"%atclone" atload"alias man=tldr"
     zplugin light dbrgn/tealdeer
 
     # sudo
