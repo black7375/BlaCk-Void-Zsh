@@ -64,14 +64,20 @@ _tool-true {
         local comp="$(tldr 2>/dev/null --list)"
         echo "complete -W \"$comp\" tldr" > init.zsh
     }
-    zplugin ice wait"2" as"command" from"gh-r" lucid \
-            mv"tldr* -> tldr" atclone"_tldr-setting" pick"init.zsh" \
-            atpull"%atclone" atload"alias man=tldr"
-    zplugin light dbrgn/tealdeer
-
-    # sudo
-    zplugin ice wait"2" as"program" pick"doas" make # TODO: PR for release
-    zplugin light slicer69/doas
+    case "$OSTYPE" in
+        linux*)
+            zplugin ice wait"2" as"command" from"gh-r" lucid \
+                    mv"tldr* -> tldr" atclone"_tldr-setting" pick"init.zsh" \
+                    atpull"%atclone" atload"alias man=tldr"
+            zplugin light dbrgn/tealdeer
+            ;;
+        *)
+            zplugin ice wait"2" as"command" lucid \
+                    atclone"_tldr-setting" pick"tldr" \
+                    atpull"%atclone" atload"alias man=tldr"
+            zplugin light pepa65/tldr-bash-client
+            ;;
+    esac
 }
 
 _tool-advanced {
@@ -101,6 +107,10 @@ _tool-advanced {
     ##-------------------------Other Utils
     # dmesg
     # polyverse/rmesg
+
+    # sudo
+    # zplugin ice wait"2" as"program" pick"doas" make lucid # TODO: PR for release
+    # zplugin light slicer69/doas
 }
 
 _tool-all {

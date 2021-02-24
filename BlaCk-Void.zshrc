@@ -223,8 +223,6 @@ zplugin ice wait"2" atload"_zsh-lazyenv-setting" lucid
 zplugin light black7375/zsh-lazyenv
 zplugin ice wait"2" pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
-zplugin ice wait"2" as"program" pick"tldr" lucid
-zplugin light raylee/tldr
 if  [[ ! (( "$OSTYPE" == "linux-gnu" && $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') )) ]]; then
   zplugin ice wait"2" atload"_zsh-notify-setting" lucid
   zplugin light marzocchi/zsh-notify
