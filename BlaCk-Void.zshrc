@@ -53,6 +53,13 @@ if type docker &>/dev/null; then
     export DOCKER_ENABLE=true
 fi
 
+if [[ -f "/mnt/c/WINDOWS/system32/wsl.exe" ]]; then
+  # We're in WSL, which defaults to umask 0 and causes issues with compaudit
+  umask 0022
+
+  export WSL_ENABLE=true
+fi
+
 ##---------- Bundles from the oh-my-zsh.
 _OMZ_SETTING() {
   #-----Thefuck
@@ -225,7 +232,8 @@ zplugin ice wait"2" pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
 zplugin ice wait"2" as"program" pick"tldr" lucid
 zplugin light raylee/tldr
-if  [[ ! (( "$OSTYPE" == "linux-gnu" && $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') )) ]]; then
+
+if [[ $WSL_ENABLE ]]; then
   zplugin ice wait"2" atload"_zsh-notify-setting" lucid
   zplugin light marzocchi/zsh-notify
 fi
