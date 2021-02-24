@@ -212,6 +212,12 @@ Then, *terminal font* set to one of *[[https://github.com/ryanoasis/nerd-fonts][
 
 When you want to use with awesome tmux, Check [[https://github.com/black7375/BlaCk-Void-Tmux/][BlaCk-Void-Tmux]]
 
+- **Beta Version**
+#+BEGIN_SRC shell
+git clone -b dev https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
+bash ~/.zsh/BlaCk-Void-Zsh.sh
+#+END_SRC
+
 ** 2.2 Others.
 - *Requirements*
   + [[https://www.zsh.org/][zsh]]
