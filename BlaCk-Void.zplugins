@@ -4,7 +4,7 @@ export BVZSH_TOOLS='true'
 
 # Tool List
 # https://github.com/black7375/BlaCk-Void-Zsh/issues/23
-_tool-true {
+_tool-true() {
     ##-------------------------File Utils
     # cd
     # zoxide
@@ -80,7 +80,7 @@ _tool-true {
     esac
 }
 
-_tool-advanced {
+_tool-advanced() {
     ##-------------------------File Utils
     # cp
     # zplugin ice wait"2" from"gitlab"
@@ -113,7 +113,7 @@ _tool-advanced {
     # zplugin light slicer69/doas
 }
 
-_tool-all {
+_tool-all() {
     ##-------------------------File Utils
     # du
     # Byron/dua-cli
