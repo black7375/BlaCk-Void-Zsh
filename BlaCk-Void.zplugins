@@ -15,8 +15,8 @@ _tool-true() {
 
     # dir / ls
     zplugin ice wait"2" atclone"dircolors -b LS_COLORS > init.zsh" lucid \
-          atpull"%atclone" pick"init.zsh" nocompile'!' \
-          atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+            atpull"%atclone" pick"init.zsh" nocompile'!' \
+            atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
     zplugin light trapd00r/LS_COLORS
 
     _exa-setting() {
