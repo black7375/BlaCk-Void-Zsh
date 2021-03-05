@@ -27,7 +27,7 @@ _tool-true() {
             mv"exa* -> exa" atload"_exa-setting"
     zplugin light ogham/exa
 
-    zplugin ice lucid wait"2" as"completion" lucid \
+    zplugin ice wait"2" as"completion" lucid \
             mv"completions.zsh -> _exa"
     zplugin snippet https://raw.githubusercontent.com/ogham/exa/master/completions/completions.zsh
 
@@ -36,7 +36,7 @@ _tool-true() {
             mv"fd* -> fd" pick"fd/fd" atload"alias find=fd"
     zplugin light sharkdp/fd
 
-    zplugin ice lucid wait"2" as"completion" lucid
+    zplugin ice wait"2" as"completion" lucid
     zplugin snippet https://raw.githubusercontent.com/sharkdp/fd/master/contrib/completion/_fd
 
     # grep
@@ -49,7 +49,7 @@ _tool-true() {
             mv"bat* -> bat" pick"bat/bat" atload"alias cat=bat"
     zplugin light sharkdp/bat
 
-    zplugin ice lucid wait"2" as"completion" lucid \
+    zplugin ice wait"2" as"completion" from"gh-r" lucid \
             mv"bat/autocomplete/bat.zsh -> _bat" pick"bat/autocomplete/_bat"
     zplugin light sharkdp/bat
 
@@ -62,7 +62,7 @@ _tool-true() {
             mv"delta* -> delta" pick"delta/delta" atload"_delta-setting"
     zplugin light dandavison/delta
 
-    zplugin ice lucid wait"2" as"completion" lucid \
+    zplugin ice wait"2" as"completion" lucid \
             mv"completion.zsh -> _delta"
     zplugin snippet https://raw.githubusercontent.com/dandavison/delta/master/etc/completion/completion.zsh
 
