@@ -9,13 +9,11 @@ _tool-true() {
     # cd
     # zoxide
     zplugin ice wait"2" as"command" from"gh-r" lucid \
-            mv"zoxide* -> zoxide" atclone"./zoxide init zsh > init.zsh" \
-            atpull"%atclone" src"init.zsh" nocompile'!'
+            mv"zoxide* -> zoxide" eval"./zoxide init zsh"
     zplugin light ajeetdsouza/zoxide
 
     # dir / ls
-    zplugin ice wait"2" atclone"dircolors -b LS_COLORS > init.zsh" lucid \
-            atpull"%atclone" pick"init.zsh" nocompile'!' \
+    zplugin ice wait"2" eval"dircolors -b LS_COLORS" lucid \
             atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
     zplugin light trapd00r/LS_COLORS
 

@@ -187,6 +187,7 @@ zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
 zplugin light robbyrussell/oh-my-zsh
 
 ##---------- Bundles from the custom repo.
+zplugin light NICHOLAS85/z-a-eval
 zplugin light chrissicool/zsh-256color
 zplugin light mafredri/zsh-async
 zplugin ice depth"1"
