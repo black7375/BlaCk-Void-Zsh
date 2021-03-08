@@ -19,6 +19,7 @@ _tool-true() {
 
     _exa-setting() {
         alias ls="exa --color auto --icons"
+        alias dir="exa --color auto --icons"
         alias tree="exa --color auto --icons --tree"
     }
     zplugin ice wait"2" as"command" from"gh-r" lucid \
@@ -52,8 +53,8 @@ _tool-true() {
 
     # cmp / diff
     _delta-setting() {
-        git config --global core.pager "delta --dark"
-        alias diff="delta"
+        git config --global core.pager "delta --dark --line-numbers --side-by-side --keep-plus-minus-markers"
+        alias diff="delta --dark --line-numbers --side-by-side --keep-plus-minus-markers"
     }
     zplugin ice wait"2" as"command" from"gh-r" lucid \
             mv"delta* -> delta" pick"delta/delta" atload"_delta-setting"
