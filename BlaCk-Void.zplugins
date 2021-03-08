@@ -33,11 +33,11 @@ _tool-true() {
 
     # find
     zplugin ice wait"2" as"command" from"gh-r" lucid \
+            atclone"cp -vf fd*/autocomplete/_fd _fd; \
+                    cp -vf fd*/fd.1 $ZPFX/man/man1" \
+            atpull"%atclone" \
             mv"fd* -> fd" pick"fd/fd" atload"alias find=fd"
     zplugin light sharkdp/fd
-
-    zplugin ice wait"2" as"completion" lucid
-    zplugin snippet https://raw.githubusercontent.com/sharkdp/fd/master/contrib/completion/_fd
 
     # grep
     # BurntSunshi/ripgrep
@@ -46,11 +46,10 @@ _tool-true() {
     ##-------------------------View Utils
     # cat
     zplugin ice wait"2" as"command" from"gh-r" lucid \
+            atclone"cp -vf bat*/autocomplete/bat.zsh _bat; \
+                    cp -vf bat*/bat.1 $ZPFX/man/man1" \
+            atpull"%atclone" \
             mv"bat* -> bat" pick"bat/bat" atload"alias cat=bat"
-    zplugin light sharkdp/bat
-
-    zplugin ice wait"2" as"completion" from"gh-r" lucid \
-            mv"bat/autocomplete/bat.zsh -> _bat" pick"bat/autocomplete/_bat"
     zplugin light sharkdp/bat
 
     # cmp / diff
