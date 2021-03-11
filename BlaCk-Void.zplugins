@@ -104,7 +104,17 @@ _tool-advanced() {
 
     ##-------------------------View Utils
     # more / less
-    # tigrawap/slit
+    _slit-setting() {
+        export PAGER="slit"
+        alias more="slit"
+        alias less="slit"
+    }
+    zplugin ice wait"2" as"command" from"gh-r" lucid \
+            mv"slit* -> slit" atload"_slit-setting"
+    zplugin light tigrawap/slit
+
+    # hexdump / xxd
+    # sharkdp/hexyl
 
 
     ##-------------------------Network Utils
@@ -129,9 +139,6 @@ _tool-all() {
     # Byron/dua-cli
 
     ##-------------------------View Utils
-    # hexdump / xxd
-    # sharkdp/hexyl
-
     # Log viewer
     # tstack/lnav
 
