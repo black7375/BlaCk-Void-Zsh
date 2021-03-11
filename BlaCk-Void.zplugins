@@ -9,7 +9,7 @@ _tool-true() {
     # cd
     # zoxide
     zplugin ice wait"2" as"command" from"gh-r" lucid \
-            mv"zoxide* -> zoxide" eval"./zoxide init zsh"
+            mv"zoxide* -> zoxide" eval"./zoxide init zsh" atload"alias cd=z"
     zplugin light ajeetdsouza/zoxide
 
     # dir / ls
@@ -19,8 +19,10 @@ _tool-true() {
 
     _exa-setting() {
         alias ls="exa --color auto --icons"
-        alias dir="exa --color auto --icons"
+        alias dir="exa --color auto --icons -F"
+        alias vdir="exa --color auto --icons -lbghHiS@ --git"
         alias tree="exa --color auto --icons --tree"
+        alias k="exa --color auto --icons -lbghHiS@ --git" # supercrabtree/k
     }
     zplugin ice wait"2" as"command" from"gh-r" lucid \
             mv"exa* -> exa" atload"_exa-setting"
