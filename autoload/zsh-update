@@ -12,6 +12,7 @@ echo "Plugins update"
 _zplugin-check-remote
 zplugin self-update
 zplugin update --parallel
+zplugin recache
 
 # Antigen -> Zplugin
 if ! [ -e $ZPLUGIN_BIN ]; then
