@@ -293,19 +293,26 @@ typeset -gU cdpath fpath path
 [ -x /usr/bin/lesspipe ] && eval $(SHELL=/bin/sh lesspipe)
 
 # Alias
-alias tar-compress-gz='tar -zcvf'
-alias tar-extract-gz='tar -zxvf'
-alias map='telnet mapscii.me'
-alias prettyping='$BVZSH/prettyping'
-alias rsync-ssh='rsync -avzhe ssh --progress'
-alias ~='cd ~'
-alias /='cd /'
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
+alias tar-compress-gz="tar -zcvf"
+alias tar-extract-gz="tar -zxvf"
+alias map="telnet mapscii.me"
+alias prettyping="$BVZSH/prettyping"
+alias rsync-ssh="rsync -avzhe ssh --progress"
+alias ~="cd ~"
+alias /="cd /"
+alias ..="cd .."
+alias ...="cd ../../../"
+alias ....="cd ../../../../"
+alias .....="cd ../../../../"
+alias rm="rm -i"                          # confirm before overwriting something
+alias cp="cp -i"
+alias mv="mv -i"
+alias df="df -h"                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias more=less
-alias bc='bc -l'
-alias sha1='openssl sha1'
+alias bc="bc -l"
+alias sha1="openssl sha1"
+alias open="xdg-open"
 
 # Apple Terminal New Tab
 if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]
