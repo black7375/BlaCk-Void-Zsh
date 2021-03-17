@@ -1,8 +1,8 @@
 # Unused vars don't check
 # shellcheck disable=SC2034
 
-##-------------------------PowerLevel10k Set-------------------------
-##-------------------------Theme Mode
+## == Powerlevel10k Set ========================================================
+## -- Theme Mode ---------------------------------------------------------------
 # Theme Mode: auto powerline simple powerline-single simple-single | TODO: normal normal-single
 export BVZSH_THEME='auto'
 
@@ -12,7 +12,7 @@ export BVZSH_COLOR='auto'
 # TODO: Icon  Mode: auto nerd powerline | TODO: emoji unicode ascii
 export BVZSH_ICON='auto'
 
-##-------------------------Color Set
+## -- Color Set ----------------------------------------------------------------
 ## Color
 # for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
 # getColorCode background
@@ -21,6 +21,7 @@ export BVZSH_ICON='auto'
 
 _color-flex()
 {
+## -- Original Color code based ----------------------------
   black='000'
   red='001'
   green='002'
@@ -30,6 +31,7 @@ _color-flex()
   cyan='006'
   white='007'
 
+## -- Custom Color code based ------------------------------
   orange='003'
   grey='008'
   light_grey='008'
@@ -37,6 +39,7 @@ _color-flex()
 
 _color-fixed()
 {
+## -- Original Color code based ----------------------------
   black='000'
   red='160'
   green='040'
@@ -46,6 +49,7 @@ _color-fixed()
   cyan='036'
   white='007'
 
+## -- Custom Color code based ------------------------------
   orange='208'
   grey='244'
   light_grey='247'
@@ -55,6 +59,7 @@ _zsh-color $BVZSH_COLOR
 
 _powerline-color()
 {
+## -- Left Indicators---------------------------------------
   typeset -g POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND=$yellow
   typeset -g POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND=$black
   typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$blue
@@ -76,6 +81,7 @@ _powerline-color()
   typeset -g POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND=$orange
   typeset -g POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND=$black
 
+## -- Right Indicators -------------------------------------
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=$yellow
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=$black
   typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=$black
@@ -96,6 +102,7 @@ _powerline-color()
 
 _simple-color()
 {
+## -- Left Indicators---------------------------------------
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_BACKGROUND=$black
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_FOREGROUND=$light_grey
   typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$black
@@ -127,13 +134,14 @@ _simple-color()
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=$black
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$orange
 
+## -- Right Indicators -------------------------------------
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=$black
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=$light_grey
   typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=$black
   typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=$light_grey
 }
 
-##-------------------------Icon Set
+## -- Icon Set -----------------------------------------------------------------
 ## Icons
 # get_icon_names => show icons.
 # Setting => POWERLEVEL9K_{ICONNAME}_ICON
@@ -358,7 +366,7 @@ _simple-icon()
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=$vcs_untracked
 }
 
-##-------------------------Theme Set
+## -- Theme Set ----------------------------------------------------------------
 ## Prompt Elements
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
 # POWERLEVEL9K_PROMPT_ON_NEWLINE POWERLEVEL9K_PROMPT_ADD_NEWLINE POWERLEVEL9K_RPROMPT_ON_NEWLINE
@@ -413,7 +421,7 @@ ENV_PROMPT_ELEMENTS=(direnv virtualenv anaconda pyenv goenv nodenv nvm nodeenv
 
 _powerline-nerd()
 {
-  ##-----Prompt Set
+## -- Prompts Set ------------------------------------------
   ## Prompt
   typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context root_indicator dir dir_writable vcs)
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time
@@ -462,18 +470,18 @@ _powerline-nerd()
   #       '\uE0CE' , '\uE0CF' , '\uE0D0' , '\uE0D1' , '\uE0D2' , '\uE0D4' 
 
 
-  ##-----Icon Set
+## -- Icon Set ---------------------------------------------
   _powerline-icon
 
 
-  ##-----Color Set
+## -- Color Set --------------------------------------------
   _powerline-color
 }
 
 
 _powerline-nerd-single()
 {
-  ##-----Prompt Set
+## -- Prompts Set ------------------------------------------
   ## Prompt
   # init
   _left_prompt() {
@@ -518,7 +526,7 @@ _powerline-nerd-single()
   #       '\uE0CE' , '\uE0CF' , '\uE0D0' , '\uE0D1' , '\uE0D2' , '\uE0D4' 
 
 
-  ##-----Icon Set
+## -- Icon Set ---------------------------------------------
   ## Replace Icons
   root=${root%\ root}
 
@@ -526,7 +534,7 @@ _powerline-nerd-single()
   _powerline-icon
 
 
-  ##-----Color Set
+## -- Color Set --------------------------------------------
   _powerline-color
 }
 
@@ -535,7 +543,8 @@ _simple-nerd()
   # Original location: https://github.com/romkatv/dotfiles-public/blob/master/.purepower.
   # If you copy this file, keep the link to the original and this sentence intact; you are encouraged
   # to change everything else.
-  ##-----Prompt Set
+
+## -- Prompts Set ------------------------------------------
   ## Prompt
   # init
   _left_prompt() {
@@ -580,7 +589,7 @@ _simple-nerd()
   typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS=''
 
 
-  ##-----Icon Set
+## -- Icon Set ---------------------------------------------
   ## Replace Icons
   background_jobs=$'\u3002'       # 。
   carriage_return=''
@@ -607,6 +616,7 @@ _simple-nerd()
   _simple-icon
 
 
+## -- Color Set --------------------------------------------
   ##-----Color Set
   _simple-color
 }
@@ -616,7 +626,8 @@ _simple-nerd-single()
   # Original location: https://github.com/romkatv/dotfiles-public/blob/master/.purepower.
   # If you copy this file, keep the link to the original and this sentence intact; you are encouraged
   # to change everything else.
-  ##-----Prompt Set
+
+## -- Prompts Set ------------------------------------------
   ## Prompt
   # init
     _left_prompt() {
@@ -659,7 +670,7 @@ _simple-nerd-single()
   typeset -g POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS=''
 
 
-  ##-----Icon Set
+## -- Icon Set ---------------------------------------------
   ## Replace Icons
   background_jobs=$'\u3002'       # 。
   carriage_return=''
@@ -686,6 +697,6 @@ _simple-nerd-single()
   _simple-icon
 
 
-  ##-----Color Set
+## -- Color Set --------------------------------------------
   _simple-color
 }
