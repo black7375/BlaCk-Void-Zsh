@@ -1,4 +1,4 @@
-##-------------------------Init------------------------
+## == Init =====================================================================
 export BVZSH=${0:a:h}
 
 source ${BVZSH}/lib/bootstrap.zsh
@@ -22,7 +22,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-##-------------------------Zplugin set-------------------------
+## == Zplugin Set ==============================================================
 ZPLUGIN_DIR=~/.zplugin/bin
 ZPLUGIN_BIN=${ZPLUGIN_DIR}/zplugin.zsh
 source $ZPLUGIN_BIN
@@ -31,7 +31,7 @@ autoload -Uz _zplugin
 autoload -Uz cdr
 autoload -Uz chpwd_recent_dirs
 
-##-------------------------Theme Set
+## -- Theme Set ----------------------------------------------------------------
 local ztheme=~/.ztheme
 if [ -e $ztheme ]; then
     source $ztheme
@@ -44,7 +44,7 @@ if [ -z "$BVZSH_THEME" ] ; then
 fi
 _zsh-theme $BVZSH_THEME
 
-##-------------------------Plugin Set
+## -- Plugin Set ---------------------------------------------------------------
 if type tmux &>/dev/null; then
     export TMUX_ENABLE=true
 fi
@@ -60,13 +60,12 @@ if [[ -f "/mnt/c/WINDOWS/system32/wsl.exe" ]]; then
   export WSL_ENABLE=true
 fi
 
-##---------- Bundles from the oh-my-zsh.
+## -- Bundles from the oh-my-zsh ---------------------------
 _OMZ_SETTING() {
-  #-----Thefuck
   eval "$(thefuck --alias)"
 }
 
-##---------- Bundles from the custom repo.
+## -- Bundles from the custom repo -------------------------
 _alias-tip-setting() {
   export ZSH_PLUGINS_ALIAS_TIPS_FORCE=0
 }
@@ -143,8 +142,8 @@ _zsh-lazyenv-setting() {
   lazyenv-enabled
 }
 
-##-------------------------Plugin Load
-##---------- Bundles from the oh-my-zsh.
+## -- Plugin Load --------------------------------------------------------------
+## -- Bundles from the oh-my-zsh ---------------------------
 # https://github.com/zdharma/zplugin/issues/119
 ZSH="$HOME/.zplugin/plugins/robbyrussell---oh-my-zsh/"
 local _OMZ_SOURCES=(
@@ -186,7 +185,7 @@ zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
         atload"_OMZ_SETTING" wait"1c"
 zplugin light robbyrussell/oh-my-zsh
 
-##---------- Bundles from the custom repo.
+## -- Bundles from the custom repo -------------------------
 zplugin light NICHOLAS85/z-a-eval
 zplugin light chrissicool/zsh-256color
 zplugin light mafredri/zsh-async
@@ -251,7 +250,7 @@ _zsh-tools $BVZSH_TOOLS
 _zpcompinit-custom
 zplugin cdreplay -q
 
-##-------------------------From bashrc-------------------------
+## == From bashrc ==============================================================
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && evalcache dircolors -b ~/.dircolors || eval "$(dircolors -b)"
@@ -273,7 +272,7 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-##-------------------------Custom set-------------------------
+## == Custom Set ===============================================================
 setopt nonomatch
 setopt interactive_comments
 setopt correct
@@ -298,18 +297,26 @@ typeset -gU cdpath fpath path
 [ -x /usr/bin/lesspipe ] && eval $(SHELL=/bin/sh lesspipe)
 
 # Alias
-alias tar-compress-gz='tar -zcvf'
-alias tar-extract-gz='tar -zxvf'
-alias map='telnet mapscii.me'
-alias rsync-ssh='rsync -avzhe ssh --progress'
-alias ~='cd ~'
-alias /='cd /'
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
+alias tar-compress-gz="tar -zcvf"
+alias tar-extract-gz="tar -zxvf"
+alias map="telnet mapscii.me"
+alias prettyping="$BVZSH/prettyping"
+alias rsync-ssh="rsync -avzhe ssh --progress"
+alias ~="cd ~"
+alias /="cd /"
+alias ..="cd .."
+alias ...="cd ../../../"
+alias ....="cd ../../../../"
+alias .....="cd ../../../../"
+alias rm="rm -i"                          # confirm before overwriting something
+alias cp="cp -i"
+alias mv="mv -i"
+alias df="df -h"                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias more=less
-alias bc='bc -l'
-alias sha1='openssl sha1'
+alias bc="bc -l"
+alias sha1="openssl sha1"
+alias open="xdg-open"
 
 # Apple Terminal New Tab
 if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]
@@ -321,16 +328,16 @@ then
   chpwd
 fi
 
-##-------------------------Library set
-#-----Completion
+## -- Library Set --------------------------------------------------------------
+## -- Completion -------------------------------------------
 BVFPATH=${BVZSH}/completion
 fpath+="${BVFPATH}"
 unset BVFPATH
 
 source $BVZSH/lib/completion.zsh
 
-#-----Fzf
+## -- fzf --------------------------------------------------
 source $BVZSH/lib/fzf-set.zsh
 
-##-------------------------Autoupdate Check
+## -- Autoupdate Check ---------------------------------------------------------
 _zsh-auto-update
