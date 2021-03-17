@@ -7,6 +7,10 @@ skip_global_compinit=1
 # http://disq.us/p/f55b78
 setopt noglobalrcs
 
+# 10ms for key sequences (Decrease key input delay)
+# https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+export KEYTIMEOUT=1
+
 # https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zshenv
 # Ensure that a non-login, non-interactive shell has a defined environment.
 export ZDOTDIR=${ZDOTDIR:-$HOME}
