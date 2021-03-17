@@ -1,6 +1,8 @@
 # Unused vars don't check
 # shellcheck disable=SC2034,1090
 
+## == Custom Values ============================================================
+## -- Performance Related ------------------------------------------------------
 # https://blog.patshead.com/2011/04/improve-your-oh-my-zsh-startup-time-maybe.html
 skip_global_compinit=1
 
@@ -11,13 +13,9 @@ setopt noglobalrcs
 # https://www.johnhawthorn.com/2012/09/vi-escape-delays/
 export KEYTIMEOUT=1
 
-# https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zshenv
-# Ensure that a non-login, non-interactive shell has a defined environment.
-export ZDOTDIR=${ZDOTDIR:-$HOME}
-if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "$ZDOTDIR/.zprofile" ]]; then
-    source "$ZDOTDIR/.zprofile"
-fi
+## -- Default Setup ------------------------------------------------------------
 
+## == Set Path =================================================================
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/Application" ] ; then
     export PATH="$PATH:$HOME/Application"
@@ -63,4 +61,12 @@ fi
 
 if [ -d "/usr/local/bin" ] ; then
     export PATH="$PATH:/usr/local/bin"
+fi
+
+## == Zprofile =================================================================
+# https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zshenv
+# Ensure that a non-login, non-interactive shell has a defined environment.
+export ZDOTDIR=${ZDOTDIR:-$HOME}
+if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "$ZDOTDIR/.zprofile" ]]; then
+    source "$ZDOTDIR/.zprofile"
 fi
