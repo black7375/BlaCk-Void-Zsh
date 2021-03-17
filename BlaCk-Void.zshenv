@@ -43,6 +43,16 @@ export PAGER=less
 export MANPAGER="$PAGER"
 
 ## == Set Path =================================================================
+## -- CDPATH ---------------------------------------------------------------------
+# on cd command offer dirs in home and one dir up.
+export cdpath+=("$HOME" "..")
+
+## -- FPATH ---------------------------------------------------------------------
+
+## -- MANPATH ---------------------------------------------------------------------
+export manpath+=(/usr/local/man /usr/share/man)
+
+## -- PATH ---------------------------------------------------------------------
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/Application" ] ; then
     export PATH="$PATH:$HOME/Application"
@@ -87,6 +97,13 @@ fi
 if [ -d "/usr/local/bin" ] ; then
     export PATH="$PATH:/usr/local/bin"
 fi
+
+## -- Cleanup --------------------------------------------------------------------
+# remove empty components to avoid '::' ending up + resulting in './' being in $PATH
+path=( "${path[@]:#}" )
+
+## eliminates duplicates in *paths
+typeset -gU cdpath fpath path
 
 ## == Zprofile =================================================================
 # https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zshenv
