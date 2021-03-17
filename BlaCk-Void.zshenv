@@ -3,6 +3,10 @@
 
 ## == Custom Values ============================================================
 ## -- Performance Related ------------------------------------------------------
+## Avoid loading global configuration
+# https://unix.stackexchange.com/questions/497050/case-insensitve-tab-completion-zsh-without-increasing-startup-time-significantly
+unsetopt GLOBAL_RCS
+
 # https://blog.patshead.com/2011/04/improve-your-oh-my-zsh-startup-time-maybe.html
 skip_global_compinit=1
 
@@ -13,7 +17,30 @@ setopt noglobalrcs
 # https://www.johnhawthorn.com/2012/09/vi-escape-delays/
 export KEYTIMEOUT=1
 
-## -- Default Setup ------------------------------------------------------------
+## -- Reserved Variables -------------------------------------------------------
+## XDG  Base Directory
+# https://specifications.freedesktop.org/basedir-spec/latest/
+# https://wiki.archlinux.org/index.php/XDG_Base_Directory
+## (( ${+*} )) = if variable is set don't set it anymore. or use [[ -z ${*} ]]
+(( ${+XDG_CONFIG_HOME} )) || export XDG_CONFIG_HOME="$HOME/.config"
+(( ${+XDG_CACHE_HOME}  )) || export XDG_CACHE_HOME="$HOME/.cache"
+(( ${+XDG_DATA_HOME}   )) || export XDG_DATA_HOME="$HOME/.local/share"
+
+## Other System
+(( ${+USER}     )) || export USER="$USERNAME"
+(( ${+HOSTNAME} )) || export HOSTNAME="$HOST"
+(( ${+LANG}     )) || export LANG="en_US.UTF-8"
+(( ${+LANGUAGE} )) || export LANGUAGE="$LANG"
+(( ${+LC_ALL}   )) || export LC_ALL="$LANG"
+
+## Common Apps
+# https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html#tag_08_01
+export EDITOR="vim"
+export VISUAL=$EDITOR
+export FCEDIT=$EDITOR
+export SYSTEMD_EDITOR=$EDITOR # for systemctl
+export PAGER=less
+export MANPAGER="$PAGER"
 
 ## == Set Path =================================================================
 # set PATH so it includes user's private bin if it exists
@@ -39,8 +66,6 @@ fi
 
 if [ -d "$HOME/.cargo/bin" ] ; then
     export PATH="$PATH:$HOME/.cargo/bin"
-    alias exa-grid='exa --long --grid'
-    alias exa-tree='exa --long --tree'
 fi
 
 if [ -d "$HOME/.yarn/bin" ] ; then
