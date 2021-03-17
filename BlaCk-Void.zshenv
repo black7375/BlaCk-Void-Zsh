@@ -55,47 +55,47 @@ export manpath+=(/usr/local/man /usr/share/man)
 ## -- PATH ---------------------------------------------------------------------
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/Application" ] ; then
-    export PATH="$PATH:$HOME/Application"
+  export PATH="$PATH:$HOME/Application"
 fi
 
 if [ -d "$HOME/Applications" ] ; then
-    export PATH="$PATH:$HOME/Applications"
+  export PATH="$PATH:$HOME/Applications"
 fi
 
 if [ -d "$HOME/bin" ] ; then
-    export PATH="$PATH:$HOME/bin"
+  export PATH="$PATH:$HOME/bin"
 fi
 
 if [ -d "$HOME/.bin" ] ; then
-    export PATH="$PATH:$HOME/.bin"
+  export PATH="$PATH:$HOME/.bin"
 fi
 
 if [ -d "$HOME/.local/bin" ] ; then
-    export PATH="$PATH:$HOME/.local/bin"
+  export PATH="$PATH:$HOME/.local/bin"
 fi
 
 if [ -d "$HOME/.cargo/bin" ] ; then
-    export PATH="$PATH:$HOME/.cargo/bin"
+  export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
 if [ -d "$HOME/.yarn/bin" ] ; then
-    export PATH="$PATH:$HOME/.yarn/bin"
+  export PATH="$PATH:$HOME/.yarn/bin"
 fi
 
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then
-    export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+  export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 fi
 
 if [ -d "/snap/bin" ] ; then
-    export PATH="$PATH:/snap/bin"
+  export PATH="$PATH:/snap/bin"
 fi
 
 if [ -d "/usr/sbin" ] ; then
-    export PATH="$PATH:/usr/sbin"
+  export PATH="$PATH:/usr/sbin"
 fi
 
 if [ -d "/usr/local/bin" ] ; then
-    export PATH="$PATH:/usr/local/bin"
+  export PATH="$PATH:/usr/local/bin"
 fi
 
 ## -- Cleanup --------------------------------------------------------------------
@@ -110,5 +110,5 @@ typeset -gU cdpath fpath path
 # Ensure that a non-login, non-interactive shell has a defined environment.
 export ZDOTDIR=${ZDOTDIR:-$HOME}
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "$ZDOTDIR/.zprofile" ]]; then
-    source "$ZDOTDIR/.zprofile"
+  source "$ZDOTDIR/.zprofile"
 fi
