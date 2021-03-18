@@ -45,12 +45,14 @@ export MANPAGER="$PAGER"
 ## == Set Path =================================================================
 ## -- CDPATH ---------------------------------------------------------------------
 # on cd command offer dirs in home and one dir up.
-export cdpath+=("$HOME" "..")
+cdpath+=("$HOME" "..")
+export cdpath
 
 ## -- FPATH ---------------------------------------------------------------------
 
 ## -- MANPATH ---------------------------------------------------------------------
-export manpath+=(/usr/local/man /usr/share/man)
+manpath+=(/usr/local/man /usr/share/man)
+export manpath
 
 ## -- PATH ---------------------------------------------------------------------
 # set PATH so it includes user's private bin if it exists
