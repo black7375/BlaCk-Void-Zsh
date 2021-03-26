@@ -89,7 +89,9 @@ etc_install()
   git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
   curl -L "$BVZSH" https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > "$BVZSH"/prettyping
   chmod +x "$BVZSH"/prettyping
-  source "$BVZSH"/install_font.sh
+  if ! [[ "$NO_FONT" == YES ]]; then
+    "$BVZSH"/install_font.sh
+  fi
 }
 
 if   [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -157,9 +159,6 @@ else
 fi
 
 etc_install
-if ! [[ "$NO_FONT" == YES ]]; then
-  $BVZSH"/install_font.sh
-fi
 
 if [[ "$PACAPT_INSTALLED" == false ]]; then
   sudo rm -rf "$PACAPT"
