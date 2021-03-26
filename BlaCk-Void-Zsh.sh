@@ -157,7 +157,10 @@ else
 fi
 
 etc_install
-echo "$@" | "$BVZSH"/install_font.sh
+if ! [[ "$NO_FONT" == YES ]]; then
+  $BVZSH"/install_font.sh
+fi
+
 if [[ "$PACAPT_INSTALLED" == false ]]; then
   sudo rm -rf "$PACAPT"
 fi
