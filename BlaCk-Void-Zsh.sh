@@ -204,9 +204,11 @@ if [ -e $profile ]; then
   < $profile tee -a $zprofile
 fi
 
-echo "-------"
-echo "ZSH as the default shell(need sudo permission)"
-chsh -s "$(which zsh)"
+if ! [[ "$NO_DEFAULT" == YES ]]; then
+  echo "-------"
+  echo "ZSH as the default shell(need sudo permission)"
+  chsh -s "$(which zsh)"
+fi
 
 echo "Please relogin session or restart terminal"
 echo "The End!!"
