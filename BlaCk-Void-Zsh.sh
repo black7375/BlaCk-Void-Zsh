@@ -22,14 +22,16 @@ MAC_PACKAGE_NAME="zsh curl git socat w3m wmctrl ack tmux xdotool python3  xquart
 BSD_PACKAGE_NAME="zsh curl git thefuck w3m-img xdotool p5-ack tmux xdotool py37-pip py37-powerline-status"
 PIP_PACKAGE_NAME="thefuck"
 
+PACAPT="/usr/local/bin/pacapt"
+PACAPT_INSTALLED=true
 pacapt_install()
 {
   if ! [ -x "$(command -v pacapt)" ]; then
     echo "Universal Package Manager(icy/pacapt) Download && Install(need sudo permission)"
-    PACAPT="/usr/local/bin/pacapt"
     sudo curl https://github.com/icy/pacapt/raw/ng/pacapt -Lo $PACAPT
     sudo chmod 755 $PACAPT
     sudo ln -sv $PACAPT /usr/local/bin/pacman || true
+    PACAPT_INSTALLED=false
   fi
   sudo pacapt -Sy
 }
@@ -156,6 +158,9 @@ fi
 
 etc_install
 source "$BVZSH"/install_font.sh
+if [[ "$PACAPT_INSTALLED" == false ]]; then
+  sudo rm -rf "$PACAPT"
+fi
 
 echo "--------------------"
 echo "  Apply Settings"
