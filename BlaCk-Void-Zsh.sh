@@ -15,47 +15,49 @@ ARH_RELEASE="arch\|Manjaro\|Chakra"
 DEB_RELEASE="[Dd]ebian\|[Uu]buntu|[Mm]int|[Kk]noppix"
 YUM_RELEASE="rhel\|CentOS\|RED\|Fedora"
 
-ARH_PACKAGE_NAME="zsh curl git w3m wmctrl ack tmux xdotool python-pip powerline"
-DEB_PACKAGE_NAME="zsh curl git w3m-img wmctrl ack tmux xdotool python3-pip powerline"
-YUM_PACKAGE_NAME="zsh curl git w3m-img wmctrl ack tmux xdotool python3-pip powerline"
-MAC_PACKAGE_NAME="zsh curl git socat w3m wmctrl ack tmux xdotool python3  xquartz"
-BSD_PACKAGE_NAME="zsh curl git thefuck w3m-img xdotool p5-ack tmux xdotool py37-pip py37-powerline-status"
-PIP_PACKAGE_NAME="thefuck"
+ARH_PACKAGE_NAME=(zsh curl git w3m wmctrl ack tmux xdotool python-pip powerline)
+DEB_PACKAGE_NAME=(zsh curl git w3m-img wmctrl ack tmux xdotool python3-pip powerline)
+YUM_PACKAGE_NAME=(zsh curl git w3m-img wmctrl ack tmux xdotool python3-pip powerline)
+MAC_PACKAGE_NAME=(zsh curl git socat w3m wmctrl ack tmux xdotool python3  xquartz)
+BSD_PACKAGE_NAME=(zsh curl git thefuck w3m-img xdotool p5-ack tmux xdotool py37-pip py37-powerline-status)
+PIP_PACKAGE_NAME=(thefuck)
 
+PACAPT="/usr/local/bin/pacapt"
+PACAPT_INSTALLED=true
 pacapt_install()
 {
   if ! [ -x "$(command -v pacapt)" ]; then
     echo "Universal Package Manager(icy/pacapt) Download && Install(need sudo permission)"
-    PACAPT="/usr/local/bin/pacapt"
     sudo curl https://github.com/icy/pacapt/raw/ng/pacapt -Lo $PACAPT
     sudo chmod 755 $PACAPT
     sudo ln -sv $PACAPT /usr/local/bin/pacman || true
+    PACAPT_INSTALLED=false
   fi
   sudo pacapt -Sy
 }
 
 arh_install()
 {
-  yes | sudo pacapt -S "$ARH_PACKAGE_NAME"
+  sudo pacapt -S --noconfirm  "${ARH_PACKAGE_NAME[@]}"
 }
 deb_install()
 {
-  yes | sudo pacapt -S "$DEB_PACKAGE_NAME"
+  sudo pacapt -S --noconfirm "${DEB_PACKAGE_NAME[@]}"
 }
 yum_install()
 {
-  yes | sudo pacapt -S "$YUM_PACKAGE_NAME"
+  sudo pacapt -S --noconfirm "${YUM_PACKAGE_NAME[@]}"
 }
 mac_install()
 {
   brew update
-  brew install "$MAC_PACKAGE_NAME"
+  brew install "${MAC_PACKAGE_NAME[@]}"
 
   sudo pip3 install powerline-status
 }
 bsd_install()
 {
-  yes | sudo pacapt -S "$BSD_PACKAGE_NAME"
+  pacapt -S --noconfirm "${BSD_PACKAGE_NAME[@]}"
 }
 
 set_brew()
@@ -69,7 +71,7 @@ set_brew()
     export PATH=${BREW_PREFIX}/bin:${BREW_PREFIX}/sbin:$PATH
   fi
 
-  brew install "$BRW_PACKAGE_NAME"
+  brew install "${BRW_PACKAGE_NAME[@]}"
 }
 
 pip_install()
@@ -77,7 +79,7 @@ pip_install()
   if ! [ -x "$(command -v pip3)" ]; then
     curl https://bootstrap.pypa.io/get-pip.py | sudo python3
   fi
-  sudo pip3 install "$PIP_PACKAGE_NAME"
+  sudo pip3 install "${PIP_PACKAGE_NAME[@]}"
 }
 etc_install()
 {
@@ -85,7 +87,9 @@ etc_install()
 
   mkdir ~/.zplugin
   git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
-  source "$BVZSH"/install_font.sh
+  if ! [[ "$NO_FONT" == YES ]]; then
+    "$BVZSH"/install_font.sh
+  fi
 }
 
 if   [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -153,7 +157,10 @@ else
 fi
 
 etc_install
-source "$BVZSH"/install_font.sh
+
+if [[ "$PACAPT_INSTALLED" == false ]]; then
+  sudo rm -rf "$PACAPT"
+fi
 
 echo "--------------------"
 echo "  Apply Settings"
@@ -195,9 +202,11 @@ if [ -e $profile ]; then
   < $profile tee -a $zprofile
 fi
 
-echo "-------"
-echo "ZSH as the default shell(need sudo permission)"
-chsh -s "$(which zsh)"
+if ! [[ "$NO_DEFAULT" == YES ]]; then
+  echo "-------"
+  echo "ZSH as the default shell(need sudo permission)"
+  chsh -s "$(which zsh)"
+fi
 
 echo "Please relogin session or restart terminal"
 echo "The End!!"
