@@ -14,7 +14,7 @@ options()
     echo "4) Back to the Zsh. - Only change to previous setting"
     echo "5) Back to the Zsh. - Remove BVZSH, change to previous previous setting"
 }
-_zsh-unstall()
+_zsh-uninstall()
 {
     while [[ -z "$BVZSH_UNINSTALL" ]]; do
         read -p "$* [0/1/2]: " ans

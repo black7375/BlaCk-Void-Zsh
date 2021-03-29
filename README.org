@@ -9,34 +9,44 @@ Awesome Zsh Setting.
 
 *[[https://black7375.tistory.com/59][Korean Docs]]*
 
-** Table of Contents
+
+*Notice!!* :goggles::test_tube::alembic:
+
+We are experimenting with a big change in [[https://github.com/black7375/BlaCk-Void-Zsh/issues/23][#23]].
+
+* Table of Contents
 :PROPERTIES:
-:TOC:      this
+:TOC:      :include all :depth 3 :ignore (this)
 :END:
-  -  [[#1-feature][1. Feature.]]
-    -  [[#11-powerful-view][1.1 Powerful View.]]
-      -  [[#prompt][Prompt.]]
-      -  [[#git][Git.]]
-    -  [[#12-easy-command-input][1.2 Easy Command Input.]]
-      -  [[#auto-pair][Auto Pair.]]
-      -  [[#fix][Fix.]]
-      -  [[#display-info][Display Info.]]
-      -  [[#integration-with-fzf][Integration with Fzf.]]
-      -  [[#git][Git.]]
-      -  [[#etc][Etc.]]
-    -  [[#13-terminal-utility][1.3 Terminal Utility.]]
-      -  [[#internet-tools][Internet Tools.]]
-      -  [[#terminal-image-viewer][Terminal Image Viewer.]]
-      -  [[#weather][Weather.]]
-      -  [[#map][Map.]]
-  -  [[#2-install][2. Install.]]
-    -  [[#21-supported-platforms][2.1 Supported Platforms.]]
-    -  [[#22-others][2.2 Others.]]
-    -  [[#23-update][2.3 Update.]]
-  -  [[#3-info][3. Info.]]
-    -  [[#31-theme][3.1 Theme.]]
-    -  [[#32-plugins][3.2 Plugins.]]
-    -  [[#33-my-terminal-environment][3.3 My Terminal Environment.]]
+
+:CONTENTS:
+- [[#1-feature][1. Feature.]]
+  - [[#11-powerful-view][1.1 Powerful View.]]
+    - [[#prompt][Prompt.]]
+    - [[#git][Git.]]
+  - [[#12-easy-command-input][1.2 Easy Command Input.]]
+    - [[#auto-pair][Auto Pair.]]
+    - [[#fix][Fix.]]
+    - [[#display-info][Display Info.]]
+    - [[#integration-with-fzf][Integration with Fzf.]]
+    - [[#git][Git.]]
+    - [[#etc][Etc.]]
+  - [[#13-terminal-utility][1.3 Terminal Utility.]]
+    - [[#internet-tools][Internet Tools.]]
+    - [[#terminal-image-viewer][Terminal Image Viewer.]]
+    - [[#weather][Weather.]]
+    - [[#map][Map.]]
+- [[#2-install][2. Install.]]
+  - [[#21-supported-platforms][2.1 Supported Platforms.]]
+  - [[#22-docker][2.2 Docker]]
+  - [[#23-manual-install-others][2.3 Manual Install (Others).]]
+  - [[#24-update][2.4 Update.]]
+- [[#3-info][3. Info.]]
+  - [[#31-theme][3.1 Theme.]]
+  - [[#32-plugins][3.2 Plugins.]]
+  - [[#33-my-terminal-environment][3.3 My Terminal Environment.]]
+:END:
+
 
 * 1. Feature.
 *[[https://black7375.tumblr.com/post/188158544989][Sample Video]]*
@@ -212,7 +222,29 @@ Then, *terminal font* set to one of *[[https://github.com/ryanoasis/nerd-fonts][
 
 When you want to use with awesome tmux, Check [[https://github.com/black7375/BlaCk-Void-Tmux/][BlaCk-Void-Tmux]]
 
-** 2.2 Others.
+- *Beta Version*
+#+BEGIN_SRC shell
+git clone -b dev https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
+bash ~/.zsh/BlaCk-Void-Zsh.sh
+#+END_SRC
+
+** 2.2 Docker
+Pull or Build docker
+
+#+BEGIN_SRC shell
+docker pull alstjr7375/bvzsh:latest
+# or
+git clone https://github.com/black7375/BlaCk-Void-Zsh.git && cd BlaCk-Void-Zsh
+docker build --tag=alstjr7375/bvzsh:lastest .
+#+END_SRC
+
+Run!!
+#+BEGIN_SRC shell
+docker run --rm -it alstjr7375/bvzsh
+#+END_SRC
+
+
+** 2.3 Manual Install (Others).
 - *Requirements*
   + [[https://www.zsh.org/][zsh]]
   + [[https://github.com/powerline/powerline][powerline]]
@@ -261,7 +293,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
   + Terminal set\\
   *Terminal font* set to one of *[[https://github.com/ryanoasis/nerd-fonts][Nerd Fonts]]* && restart.
 
-** 2.3 Update.
+** 2.4 Update.
 =zsh-update=: BVZSH, plugin manger, plugins update.\\
 =font-update=: Nerdfont Update
 
