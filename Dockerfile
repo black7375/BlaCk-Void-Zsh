@@ -16,4 +16,9 @@ ENV NO_DEFAULT YES
 ENV AA bb
 RUN git clone -b dev https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
 RUN ~/.zsh/BlaCk-Void-Zsh.sh
-RUN zsh -ic "@zinit-scheduler burst"
+
+# https://github.com/zdharma/zinit/issues/484
+ARG TERM
+RUN TERM=${TERM:-screen-256color} zsh -isc "@zinit-scheduler burst"
+RUN zsh -isc "zsh-update"
+ENTRYPOINT ["/usr/bin/zsh"]
