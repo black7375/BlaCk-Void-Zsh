@@ -13,7 +13,6 @@ USER dockeruser
 SHELL ["/bin/bash", "-c"]
 ENV NO_FONT YES
 ENV NO_DEFAULT YES
-ENV AA bb
 RUN git clone https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
 RUN ~/.zsh/BlaCk-Void-Zsh.sh
 
