@@ -9,6 +9,11 @@ Awesome Zsh Setting.
 
 *[[https://black7375.tistory.com/59][Korean Docs]]*
 
+
+*Notice!!* :goggles::test_tube::alembic:
+
+We are experimenting with a big change in [[https://github.com/black7375/BlaCk-Void-Zsh/issues/23][#23]].
+
 ** Table of Contents
 :PROPERTIES:
 :TOC:      this
@@ -211,6 +216,12 @@ bash ~/.zsh/BlaCk-Void-Zsh.sh
 Then, *terminal font* set to one of *[[https://github.com/ryanoasis/nerd-fonts][Nerd Fonts]]* (font install's =1= option is =hack nerd font=) && restart.
 
 When you want to use with awesome tmux, Check [[https://github.com/black7375/BlaCk-Void-Tmux/][BlaCk-Void-Tmux]]
+
+- *Beta Version*
+#+BEGIN_SRC shell
+git clone -b dev https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
+bash ~/.zsh/BlaCk-Void-Zsh.sh
+#+END_SRC
 
 ** 2.2 Others.
 - *Requirements*
