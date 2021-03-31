@@ -33,7 +33,7 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 #  (git ls-tree -r --name-only HEAD ||
 #   find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
 #      sed s/^..//) 2> /dev/null'
-export FZF_DEFAULT_COMMAND='rg --type f'
+# export FZF_DEFAULT_COMMAND='rg --type f'
 
 ##this is better #https://tinyurl.com/ydx5katm
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
