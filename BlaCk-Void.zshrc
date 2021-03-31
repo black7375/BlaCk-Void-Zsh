@@ -32,12 +32,7 @@ autoload -Uz cdr
 autoload -Uz chpwd_recent_dirs
 
 ## -- Theme Set ----------------------------------------------------------------
-local ztheme=~/.ztheme
-if [ -e $ztheme ]; then
-    source $ztheme
-else
-    source $BVZSH/BlaCk-Void.ztheme
-fi
+load-file "$BVZSH/BlaCk-Void.ztheme" ~/.ztheme
 
 if [ -z "$BVZSH_THEME" ] ; then
     export BVZSH_THEME='auto'
@@ -239,12 +234,9 @@ if [[ $WSL_ENABLE ]]; then
   zplugin light marzocchi/zsh-notify
 fi
 
-local zplugins=~/.zplugins
-if [ -e $zplugins ]; then
-    source $zplugins
-else
-    source $BVZSH/BlaCk-Void.zplugins
-fi
+load-file "$BVZSH/BlaCk-Void.zplugins" ~/.zplugins
+load-file ~/.zplugins.local
+
 if [ -z "$BVZSH_TOOLS" ] ; then
     export BVZSH_TOOLS='true'
 fi
