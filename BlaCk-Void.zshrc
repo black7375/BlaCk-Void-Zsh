@@ -234,6 +234,12 @@ if [[ $WSL_ENABLE ]]; then
   zplugin light marzocchi/zsh-notify
 fi
 
+ZMAN="$ZPFX/share/man"
+if ! [[ -d "$ZMAN/man1" ]]; then
+  mkdir -pv "$ZMAN/man1"
+fi
+manpath+=($ZMAN)
+
 load-file "$BVZSH/BlaCk-Void.zplugins" ~/.zplugins
 load-file ~/.zplugins.local
 
