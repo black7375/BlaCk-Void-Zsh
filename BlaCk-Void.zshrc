@@ -5,21 +5,21 @@ source ${BVZSH}/lib/bootstrap.zsh
 BVFPATH=${BVZSH}/autoload
 fpath+="${BVFPATH}"
 if [[ -d "$BVFPATH" ]]; then
-    for func in $BVFPATH/*; do
-        autoload -Uz ${func:t}
-    done
+  for func in $BVFPATH/*; do
+    autoload -Uz ${func:t}
+  done
 fi
 unset BVFPATH
 
 # If not Interactively.
 case $- in
-    *i*);;
-    *) return 0;;
+  *i*);;
+  *) return 0;;
 esac
 
 # Instant Prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 ## == Zplugin Set ==============================================================
@@ -35,17 +35,17 @@ autoload -Uz chpwd_recent_dirs
 load-file "$BVZSH/BlaCk-Void.ztheme" ~/.ztheme
 
 if [ -z "$BVZSH_THEME" ] ; then
-    export BVZSH_THEME='auto'
+  export BVZSH_THEME='auto'
 fi
 _zsh-theme $BVZSH_THEME
 
 ## -- Plugin Set ---------------------------------------------------------------
 if type tmux &>/dev/null; then
-    export TMUX_ENABLE=true
+  export TMUX_ENABLE=true
 fi
 
 if type docker &>/dev/null; then
-    export DOCKER_ENABLE=true
+  export DOCKER_ENABLE=true
 fi
 
 if [[ -f "/mnt/c/WINDOWS/system32/wsl.exe" ]]; then
@@ -142,15 +142,16 @@ _zsh-lazyenv-setting() {
 # https://github.com/zdharma/zplugin/issues/119
 ZSH="$HOME/.zplugin/plugins/robbyrussell---oh-my-zsh/"
 local _OMZ_SOURCES=(
-    # Libs
-    lib/compfix.zsh
-    lib/directories.zsh
-    lib/functions.zsh
-    lib/git.zsh
-    lib/termsupport.zsh
+  # Libs
+  lib/compfix.zsh
+  lib/directories.zsh
+  lib/functions.zsh
+  lib/git.zsh
+  lib/termsupport.zsh
 
-    # Plugins
+  # Plugins
 ##  plugins/autojump/autojump.plugin.zsh
+<<<<<<< HEAD
     plugins/command-not-found/command-not-found.plugin.zsh
     plugins/fzf/fzf.plugin.zsh
     plugins/git/git.plugin.zsh
@@ -159,20 +160,29 @@ local _OMZ_SOURCES=(
     plugins/sudo/sudo.plugin.zsh
     plugins/thefuck/thefuck.plugin.zsh
     plugins/urltools/urltools.plugin.zsh
+=======
+  plugins/command-not-found/command-not-found.plugin.zsh
+  plugins/git/git.plugin.zsh
+  plugins/gitfast/gitfast.plugin.zsh
+  plugins/pip/pip.plugin.zsh
+  plugins/sudo/sudo.plugin.zsh
+  plugins/thefuck/thefuck.plugin.zsh
+  plugins/urltools/urltools.plugin.zsh
+>>>>>>> 2caddc9 (Clean: indent)
 )
 if [[ $TMUX_ENABLE ]]; then
-    _OMZ_SOURCES=(
-        $_OMZ_SOURCES
-        plugins/tmux/tmux.plugin.zsh
-        plugins/tmuxinator/tmuxinator.plugin.zsh
-    )
+  _OMZ_SOURCES=(
+    $_OMZ_SOURCES
+    plugins/tmux/tmux.plugin.zsh
+    plugins/tmuxinator/tmuxinator.plugin.zsh
+  )
 fi
 if [[ $DOCKER_ENABLE ]]; then
-    _OMZ_SOURCES=(
-        $_OMZ_SOURCES
-        plugins/docker/_docker
-        plugins/docker-compose/docker-compose.plugin.zsh
-    )
+  _OMZ_SOURCES=(
+    $_OMZ_SOURCES
+    plugins/docker/_docker
+    plugins/docker-compose/docker-compose.plugin.zsh
+  )
 fi
 
 zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
