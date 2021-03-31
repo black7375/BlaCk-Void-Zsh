@@ -199,8 +199,9 @@ zplugin ice wait"0b" lucid
 zplugin light hlissner/zsh-autopair
 zplugin ice wait"0b" blockf lucid
 zplugin light zsh-users/zsh-completions
-zplugin ice wait"0c" from"gh-r" as"program" lucid
-zplugin light junegunn/fzf-bin
+zplugin ice wait"0c" from"gh-r" as"command" \
+        atload"export FZF_BASE=$ZINIT[PLUGINS_DIR]/junegunn---fzf/" lucid
+zplugin light junegunn/fzf
 zplugin ice wait"0c" as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg" lucid
 zplugin light BurntSushi/ripgrep
 zplugin ice wait"0c" atload"_enhancd-setting" lucid
@@ -229,7 +230,7 @@ zplugin ice wait"2" atload"_zsh-lazyenv-setting" lucid
 zplugin light black7375/zsh-lazyenv
 zplugin ice wait"2" pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
-zplugin ice wait"2" as"program" pick"tldr" lucid
+zplugin ice wait"2" as"command" pick"tldr" lucid
 zplugin light raylee/tldr
 
 if [[ $WSL_ENABLE ]]; then
