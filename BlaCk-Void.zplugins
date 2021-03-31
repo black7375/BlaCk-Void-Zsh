@@ -5,159 +5,159 @@ export BVZSH_TOOLS='true'
 # Tool List
 # https://github.com/black7375/BlaCk-Void-Zsh/issues/23
 _tool-true() {
-    ##-------------------------File Utils
-    # cd
-    # zoxide
-    zplugin ice wait"2" as"command" from"gh-r" lucid \
-            mv"zoxide* -> zoxide" eval"./zoxide init zsh" atload"alias cd=z"
-    zplugin light ajeetdsouza/zoxide
+## -- File Utils ---------------------------------------------------------------
+  # cd
+  # zoxide
+  zplugin ice wait"2" as"command" from"gh-r" lucid \
+          mv"zoxide* -> zoxide" eval"./zoxide init zsh" atload"alias cd=z"
+  zplugin light ajeetdsouza/zoxide
 
-    # dir / ls
-    zplugin ice wait"2" eval"dircolors -b LS_COLORS" lucid \
-            atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
-    zplugin light trapd00r/LS_COLORS
+  # dir / ls
+  zplugin ice wait"2" eval"dircolors -b LS_COLORS" lucid \
+          atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+  zplugin light trapd00r/LS_COLORS
 
-    _exa-setting() {
-        alias ls="exa --color auto --icons"
-        alias dir="exa --color auto --icons -F"
-        alias vdir="exa --color auto --icons -lbghHiS@ --git"
-        alias tree="exa --color auto --icons --tree"
-        alias k="exa --color auto --icons -lbghHiS@ --git" # supercrabtree/k
-    }
-    zplugin ice wait"2" as"command" from"gh-r" lucid \
-            mv"exa* -> exa" atload"_exa-setting"
-    zplugin light ogham/exa
+  _exa-setting() {
+    alias ls="exa --color auto --icons"
+    alias dir="exa --color auto --icons -F"
+    alias vdir="exa --color auto --icons -lbghHiS@ --git"
+    alias tree="exa --color auto --icons --tree"
+    alias k="exa --color auto --icons -lbghHiS@ --git" # supercrabtree/k
+  }
+  zplugin ice wait"2" as"command" from"gh-r" lucid \
+          mv"exa* -> exa" atload"_exa-setting"
+  zplugin light ogham/exa
 
-    zplugin ice wait"2" as"completion" lucid \
-            mv"completions.zsh -> _exa"
-    zplugin snippet https://raw.githubusercontent.com/ogham/exa/master/completions/completions.zsh
+  zplugin ice wait"2" as"completion" lucid \
+          mv"completions.zsh -> _exa"
+  zplugin snippet https://raw.githubusercontent.com/ogham/exa/master/completions/completions.zsh
 
     # find
-    zplugin ice wait"2" as"command" from"gh-r" lucid \
-            atclone"cp -vf fd*/autocomplete/_fd _fd; \
-                    cp -vf fd*/fd.1 $ZPFX/man/man1" \
-            atpull"%atclone" \
-            mv"fd* -> fd" pick"fd/fd" atload"alias find=fd"
-    zplugin light sharkdp/fd
+  zplugin ice wait"2" as"command" from"gh-r" lucid \
+          atclone"cp -vf fd*/autocomplete/_fd _fd; \
+                  cp -vf fd*/fd.1 $ZPFX/man/man1" \
+          atpull"%atclone" \
+          mv"fd* -> fd" pick"fd/fd" atload"alias find=fd"
+  zplugin light sharkdp/fd
 
-    # grep
-    # BurntSunshi/ripgrep
-    alias grep="rg" # BurntSunshi/ripgrep is already installed
+  # grep
+  # BurntSunshi/ripgrep
+  alias grep="rg" # BurntSunshi/ripgrep is already installed
 
-    ##-------------------------View Utils
-    # cat
-    zplugin ice wait"2" as"command" from"gh-r" lucid \
-            atclone"cp -vf bat*/autocomplete/bat.zsh _bat; \
-                    cp -vf bat*/bat.1 $ZPFX/man/man1" \
-            atpull"%atclone" \
-            mv"bat* -> bat" pick"bat/bat" atload"alias cat=bat"
-    zplugin light sharkdp/bat
+## -- View Utils ---------------------------------------------------------------
+  # cat
+  zplugin ice wait"2" as"command" from"gh-r" lucid \
+          atclone"cp -vf bat*/autocomplete/bat.zsh _bat; \
+                  cp -vf bat*/bat.1 $ZPFX/man/man1" \
+          atpull"%atclone" \
+          mv"bat* -> bat" pick"bat/bat" atload"alias cat=bat"
+  zplugin light sharkdp/bat
 
-    # cmp / diff
-    _delta-setting() {
-        git config --global core.pager "delta --dark --line-numbers --side-by-side --keep-plus-minus-markers"
-        alias diff="delta --dark --line-numbers --side-by-side --keep-plus-minus-markers"
-    }
-    zplugin ice wait"2" as"command" from"gh-r" lucid \
-            mv"delta* -> delta" pick"delta/delta" atload"_delta-setting"
-    zplugin light dandavison/delta
+  # cmp / diff
+  _delta-setting() {
+    git config --global core.pager "delta --dark --line-numbers --side-by-side --keep-plus-minus-markers"
+    alias diff="delta --dark --line-numbers --side-by-side --keep-plus-minus-markers"
+  }
+  zplugin ice wait"2" as"command" from"gh-r" lucid \
+          mv"delta* -> delta" pick"delta/delta" atload"_delta-setting"
+  zplugin light dandavison/delta
 
-    zplugin ice wait"2" as"completion" lucid \
-            mv"completion.zsh -> _delta"
-    zplugin snippet https://raw.githubusercontent.com/dandavison/delta/master/etc/completion/completion.zsh
+  zplugin ice wait"2" as"completion" lucid \
+          mv"completion.zsh -> _delta"
+  zplugin snippet https://raw.githubusercontent.com/dandavison/delta/master/etc/completion/completion.zsh
 
-    ##-------------------------Network Utils
-    # ping
-    zplugin ice wait"2" as"command" pick"prettyping" lucid \
-            atload"alias ping=prettyping"
-    zplugin light denilsonsa/prettyping
+## -- Network Utils ------------------------------------------------------------
+  # ping
+  zplugin ice wait"2" as"command" pick"prettyping" lucid \
+          atload"alias ping=prettyping"
+  zplugin light denilsonsa/prettyping
 
-    ##-------------------------Other Utils
-    # man
-    case "$OSTYPE" in
-        linux*)
-            zplugin ice wait"2" as"command" from"gh-r" lucid \
-                    mv"tldr* -> tldr" atclone"./tldr --update" atpull"%atclone" \
-                    eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"' atload"alias man=tldr"
-            zplugin light dbrgn/tealdeer
-            ;;
-        *)
-            zplugin ice wait"2" as"command" lucid \
-                    atclone"tldr --update" atpull"%atclone" \
-                    eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"' atload"alias man=tldr"
-            zplugin light pepa65/tldr-bash-client
-            ;;
-    esac
+## -- Other Utils --------------------------------------------------------------
+  # man
+  case "$OSTYPE" in
+    linux*)
+      zplugin ice wait"2" as"command" from"gh-r" lucid \
+              mv"tldr* -> tldr" atclone"./tldr --update" atpull"%atclone" \
+              eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"' atload"alias man=tldr"
+      zplugin light dbrgn/tealdeer
+      ;;
+    *)
+      zplugin ice wait"2" as"command" lucid \
+              atclone"tldr --update" atpull"%atclone" \
+              eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"' atload"alias man=tldr"
+      zplugin light pepa65/tldr-bash-client
+      ;;
+  esac
 }
 
 _tool-advanced() {
-    ##-------------------------File Utils
-    # cp
-    # zplugin ice wait"2" from"gitlab"
-    # zplugin light arijit79/cn
+## -- File Utils ---------------------------------------------------------------
+  # cp
+  # zplugin ice wait"2" from"gitlab"
+  # zplugin light arijit79/cn
 
-    # rm
-    # nivekuil/rip
+  # rm
+  # nivekuil/rip
 
-    # Upload and Share
-    # dutchcoders/transfer.sh
+  # Upload and Share
+  # dutchcoders/transfer.sh
 
-    ##-------------------------View Utils
-    # more / less
-    _slit-setting() {
-        export PAGER="slit"
-        alias more="slit"
-        alias less="slit"
-    }
-    zplugin ice wait"2" as"command" from"gh-r" lucid \
-            mv"slit* -> slit" atload"_slit-setting"
-    zplugin light tigrawap/slit
+## -- View Utils ---------------------------------------------------------------
+  # more / less
+  _slit-setting() {
+    export PAGER="slit"
+    alias more="slit"
+    alias less="slit"
+  }
+  zplugin ice wait"2" as"command" from"gh-r" lucid \
+          mv"slit* -> slit" atload"_slit-setting"
+  zplugin light tigrawap/slit
 
-    # hexdump / xxd
-    # sharkdp/hexyl
+  # hexdump / xxd
+  # sharkdp/hexyl
 
 
-    ##-------------------------Network Utils
-    # ssh
-    # mobile-shell/mosh
+## -- Network Utils ------------------------------------------------------------
+  # ssh
+  # mobile-shell/mosh
 
-    # wget
-    # aria2/aria2
+  # wget
+  # aria2/aria2
 
-    ##-------------------------Other Utils
-    # dmesg
-    # polyverse/rmesg
+## -- Other Utils --------------------------------------------------------------
+  # dmesg
+  # polyverse/rmesg
 
-    # sudo
-    # zplugin ice wait"2" as"program" pick"doas" make lucid # TODO: PR for release
-    # zplugin light slicer69/doas
+  # sudo
+  # zplugin ice wait"2" as"program" pick"doas" make lucid # TODO: PR for release
+  # zplugin light slicer69/doas
 }
 
 _tool-all() {
-    ##-------------------------File Utils
-    # du
-    # Byron/dua-cli
+## -- File Utils ---------------------------------------------------------------
+  # du
+  # Byron/dua-cli
 
-    ##-------------------------View Utils
-    # Log viewer
-    # tstack/lnav
+## -- View Utils ---------------------------------------------------------------
+  # Log viewer
+  # tstack/lnav
 
-    ##-------------------------Network Utils
-    # top
-    # ClementTsang/bottom
+## -- Network Utils ------------------------------------------------------------
+  # top
+  # ClementTsang/bottom
 
-    # HTTP Client
-    # httpie/httpie
+  # HTTP Client
+  # httpie/httpie
 
-    ##-------------------------Other Utils
-    # watch
-    # eradman/entr
+## -- Other Utils --------------------------------------------------------------
+  # watch
+  # eradman/entr
 
-    # Terminal session recorder
-    # asciinema/asciinema
+  # Terminal session recorder
+  # asciinema/asciinema
 
-    # CLI snippet manager
-    # knqyf263/pet
+  # CLI snippet manager
+  # knqyf263/pet
 }
 
 ##-------------------------Custom Set Area---------------------------
