@@ -154,3 +154,16 @@ _zsh-auto-update() {
         command rm -f $lockfile
     fi
 }
+
+load-file() {
+  local file_path="$1"
+  local alter_path="$2"
+
+  if [[ -z "$alter_path" ]] || ! [[ -f "$alter_path" ]]; then
+    if [[ -f "$file_path" ]]; then
+      source "$file_path"
+    fi
+  else
+    source "$alter_path"
+  fi
+}
