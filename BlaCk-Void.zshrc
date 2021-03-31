@@ -157,7 +157,6 @@ local _OMZ_SOURCES=(
     # Plugins
 ##  plugins/autojump/autojump.plugin.zsh
     plugins/command-not-found/command-not-found.plugin.zsh
-    plugins/fzf/fzf.plugin.zsh
     plugins/git/git.plugin.zsh
     plugins/gitfast/gitfast.plugin.zsh
     plugins/pip/pip.plugin.zsh
@@ -199,9 +198,12 @@ zplugin ice wait"0b" lucid
 zplugin light hlissner/zsh-autopair
 zplugin ice wait"0b" blockf lucid
 zplugin light zsh-users/zsh-completions
-zplugin ice wait"0c" from"gh-r" as"command" \
-        atload"export FZF_BASE=$ZINIT[PLUGINS_DIR]/junegunn---fzf/" lucid
+zplugin ice wait"0c" from"gh-r" as"command" lucid
 zplugin light junegunn/fzf
+zplugin ice wait"0c" as"completion" blockf lucid
+zplugin snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+zplugin ice wait"0c" lucid
+zplugin snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 zplugin ice wait"0c" as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg" lucid
 zplugin light BurntSushi/ripgrep
 zplugin ice wait"0c" atload"_enhancd-setting" lucid
