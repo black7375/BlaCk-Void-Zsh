@@ -1,4 +1,4 @@
-##-------------------------Power Tools Set---------------------------
+## == Power Tools Set ==========================================================
 # Power Tools Mode: true false | TODO: advanced all
 export BVZSH_TOOLS="${BVZSH_TOOLS:=true}"
 
@@ -170,7 +170,7 @@ _tool-all() {
   # knqyf263/pet
 }
 
-##-------------------------Custom Set Area---------------------------
+## == Custom Set Area ==========================================================
 # How to write?
 # https://github.com/zdharma/zinit
 # https://zdharma.org/zinit/wiki/Example-Minimal-Setup/
