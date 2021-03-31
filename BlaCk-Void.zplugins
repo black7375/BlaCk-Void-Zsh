@@ -83,7 +83,7 @@ _tool-true() {
       ;;
     *)
       zplugin ice wait"2" as"command" lucid \
-              atclone"tldr --update" atpull"%atclone" \
+              atclone"./tldr --update" atpull"%atclone" \
               eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"' atload"alias man=tldr"
       zplugin light pepa65/tldr-bash-client
       ;;

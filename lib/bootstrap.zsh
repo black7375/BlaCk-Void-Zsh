@@ -50,12 +50,17 @@ _zsh-tools() {
             echo "--------------------\n"
             echo "Command: zsh-theme THEME_NAME\n"
             echo "Default: true"
-            echo "Options: false"
+            echo "Options: false advanced"
             return
             ;;
 
         'true')
             _tool-true
+            ;;
+
+        'advanced')
+            _tool-true
+            _tool-advanced
             ;;
 
         'false')
