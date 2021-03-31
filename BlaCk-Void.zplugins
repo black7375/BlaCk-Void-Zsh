@@ -131,6 +131,16 @@ _tool-advanced() {
   # sudo
   # zplugin ice wait"2" as"program" pick"doas" make lucid # TODO: PR for release
   # zplugin light slicer69/doas
+
+  # man
+  zplugin ice wait"2" as"command" pick"src/rlwrap" lucid \
+          atclone"autoreconf --install; ./configure;" atpull"%atclone" make
+  zplugin light hanslub42/rlwrap
+  zplugin ice wait"2" as"command" lucid \
+          mv"*.sh -> cht.sh" atclone"chmod +x cht.sh" atpull"%atclone"
+  zplugin snippet https://cheat.sh/:cht.sh
+  zplugin ice wait"2" as"completion" mv"*sh -> _cht" lucid
+  zplugin snippet https://cheat.sh/:zsh
 }
 
 _tool-all() {
