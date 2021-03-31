@@ -151,6 +151,19 @@ local _OMZ_SOURCES=(
 
   # Plugins
 ##  plugins/autojump/autojump.plugin.zsh
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    plugins/command-not-found/command-not-found.plugin.zsh
+    plugins/fzf/fzf.plugin.zsh
+    plugins/git/git.plugin.zsh
+    plugins/gitfast/gitfast.plugin.zsh
+    plugins/pip/pip.plugin.zsh
+    plugins/sudo/sudo.plugin.zsh
+    plugins/thefuck/thefuck.plugin.zsh
+    plugins/urltools/urltools.plugin.zsh
+=======
+>>>>>>> dev
   plugins/command-not-found/command-not-found.plugin.zsh
   plugins/git/git.plugin.zsh
   plugins/gitfast/gitfast.plugin.zsh
@@ -158,6 +171,10 @@ local _OMZ_SOURCES=(
   plugins/sudo/sudo.plugin.zsh
   plugins/thefuck/thefuck.plugin.zsh
   plugins/urltools/urltools.plugin.zsh
+<<<<<<< HEAD
+=======
+>>>>>>> 2caddc9 (Clean: indent)
+>>>>>>> dev
 )
 if [[ $TMUX_ENABLE ]]; then
   _OMZ_SOURCES=(
