@@ -78,16 +78,26 @@ _tool-true() {
     linux*)
       zplugin ice wait"2" as"command" from"gh-r" lucid \
               mv"tldr* -> tldr" atclone"./tldr --update" atpull"%atclone" \
-              eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"' atload"alias man=tldr"
+              eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"'
       zplugin light dbrgn/tealdeer
       ;;
     *)
       zplugin ice wait"2" as"command" lucid \
               atclone"./tldr --update" atpull"%atclone" \
-              eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"' atload"alias man=tldr"
+              eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"'
       zplugin light pepa65/tldr-bash-client
       ;;
   esac
+
+  # Useable Script Using Bat
+  _bat-extras-setting() {
+    alias man="batman"
+    alias lesspipe="batpipe"
+  }
+  zplugin ice wait"2" as"command" from"gh-r" mv"bin/* -> ." lucid \
+          atclone"cp -vf man/*.1 $ZPFX/share/man/man1" atpull"%atclone" \
+          atload"_bat-extras-setting"
+  zplugin light eth-p/bat-extras
 }
 
 _tool-advanced() {
