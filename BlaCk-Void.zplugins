@@ -1,6 +1,6 @@
 ##-------------------------Power Tools Set---------------------------
 # Power Tools Mode: true false | TODO: advanced all
-export BVZSH_TOOLS='true'
+export BVZSH_TOOLS="${BVZSH_TOOLS:=true}"
 
 # Tool List
 # https://github.com/black7375/BlaCk-Void-Zsh/issues/23
