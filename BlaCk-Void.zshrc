@@ -132,11 +132,6 @@ _zsh-notify-setting() {
   zstyle ':notify:*' success-title "Command finished (in #{time_elapsed} seconds)"
 }
 
-_zsh-lazyenv-setting() {
-  export ZSH_EVALCACHE_DIR=${BVZSH}/cache
-  lazyenv-enabled
-}
-
 ## -- Plugin Load --------------------------------------------------------------
 ## -- Bundles from the oh-my-zsh ---------------------------
 # https://github.com/zdharma/zplugin/issues/119
@@ -180,6 +175,7 @@ zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
 zplugin light robbyrussell/oh-my-zsh
 
 ## -- Bundles from the custom repo -------------------------
+zplugin light NICHOLAS85/z-a-eval
 zplugin light chrissicool/zsh-256color
 zplugin light mafredri/zsh-async
 zplugin ice depth"1"
@@ -219,8 +215,6 @@ zplugin ice wait"2" lucid
 zplugin light jocelynmallon/zshmarks
 zplugin ice wait"2" lucid
 zplugin light changyuheng/zsh-interactive-cd
-zplugin ice wait"2" atload"_zsh-lazyenv-setting" lucid
-zplugin light black7375/zsh-lazyenv
 zplugin ice wait"2" pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
 zplugin ice wait"2" as"program" pick"tldr" lucid
@@ -233,6 +227,7 @@ fi
 
 load-file "$BVZSH/BlaCk-Void.zplugins" ~/.zplugins
 load-file ~/.zplugins.local
+source $BVZSH/lib/lazyenv.zsh
 
 _zpcompinit-custom
 zplugin cdreplay -q
