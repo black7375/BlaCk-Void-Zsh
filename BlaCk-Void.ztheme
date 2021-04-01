@@ -4,13 +4,13 @@
 ## == Powerlevel10k Set ========================================================
 ## -- Theme Mode ---------------------------------------------------------------
 # Theme Mode: auto powerline simple powerline-single simple-single | TODO: normal normal-single
-export BVZSH_THEME='auto'
+export BVZSH_THEME="${BVZSH_THEME:=auto}"
 
 # Color Mode: auto fixed flex
-export BVZSH_COLOR='auto'
+export BVZSH_COLOR="${BVZSH_COLOR:=auto}"
 
 # TODO: Icon  Mode: auto nerd powerline | TODO: emoji unicode ascii
-export BVZSH_ICON='auto'
+export BVZSH_ICON="${BVZSH_ICON:=auto}"
 
 ## -- Color Set ----------------------------------------------------------------
 ## Color
