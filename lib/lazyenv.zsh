@@ -40,10 +40,6 @@ lazyfn-add() {
 }
 
 lazyenv-apply() {
-  zplugin ice wait"2" id-as"_local/lazyenvP" lucid \
-          eval"${LAZYPATH_COMMANDS}" run-atpull
-  zplugin light zdharma/null
-
   zplugin ice wait"2" id-as"_local/lazyenv" lucid \
           eval"${LAZYENV_COMMANDS}" run-atpull
   zplugin light zdharma/null
@@ -78,4 +74,5 @@ lazyfn-add hub     "hub alias -s"
 lazyfn-add thefuck "thefuck --alias"
 lazyfn-add scmpuff "scmpuff init -s"
 lazyfn-add kubectl "kubectl completion zsh"
-## == Target of Functions ======================================================
+
+lazyenv-apply
