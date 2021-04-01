@@ -132,11 +132,6 @@ _zsh-notify-setting() {
   zstyle ':notify:*' success-title "Command finished (in #{time_elapsed} seconds)"
 }
 
-_zsh-lazyenv-setting() {
-  export ZSH_EVALCACHE_DIR=${BVZSH}/cache
-  lazyenv-enabled
-}
-
 ## -- Plugin Load --------------------------------------------------------------
 ## -- Bundles from the oh-my-zsh ---------------------------
 # https://github.com/zdharma/zplugin/issues/119
@@ -150,7 +145,7 @@ local _OMZ_SOURCES=(
   lib/termsupport.zsh
 
   # Plugins
-##  plugins/autojump/autojump.plugin.zsh
+  # plugins/autojump/autojump.plugin.zsh
   plugins/command-not-found/command-not-found.plugin.zsh
   plugins/git/git.plugin.zsh
   plugins/gitfast/gitfast.plugin.zsh
@@ -224,8 +219,6 @@ zplugin ice wait"2" lucid
 zplugin light jocelynmallon/zshmarks
 zplugin ice wait"2" lucid
 zplugin light changyuheng/zsh-interactive-cd
-zplugin ice wait"2" atload"_zsh-lazyenv-setting" lucid
-zplugin light black7375/zsh-lazyenv
 zplugin ice wait"2" pick"h.sh" lucid
 zplugin light paoloantinori/hhighlighter
 
@@ -242,6 +235,7 @@ manpath+=($ZMAN)
 
 load-file "$BVZSH/BlaCk-Void.zplugins" ~/.zplugins
 load-file ~/.zplugins.local
+source $BVZSH/lib/lazyenv.zsh
 
 if [ -z "$BVZSH_TOOLS" ] ; then
   export BVZSH_TOOLS='true'
