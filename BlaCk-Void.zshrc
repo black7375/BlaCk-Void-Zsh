@@ -237,10 +237,6 @@ load-file "$BVZSH/BlaCk-Void.zplugins" ~/.zplugins
 load-file ~/.zplugins.local
 
 ## -- Library Setting --------------------------------------
-BVFPATH=${BVZSH}/completion
-fpath+="${BVFPATH}"
-unset BVFPATH
-
 zplugin ice wait multisrc"lazyenv.zsh completion.zsh fzf-set.zsh" lucid
 zplugin light $BVZSH/lib
 
