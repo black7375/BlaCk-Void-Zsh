@@ -34,9 +34,6 @@ autoload -Uz chpwd_recent_dirs
 ## -- Theme Set ----------------------------------------------------------------
 load-file "$BVZSH/BlaCk-Void.ztheme" ~/.ztheme
 
-if [ -z "$BVZSH_THEME" ] ; then
-  export BVZSH_THEME='auto'
-fi
 _zsh-theme $BVZSH_THEME
 
 ## -- Plugin Set ---------------------------------------------------------------
@@ -57,7 +54,6 @@ fi
 
 ## -- Bundles from the oh-my-zsh ---------------------------
 _OMZ_SETTING() {
-  eval "$(thefuck --alias)"
 }
 
 ## -- Bundles from the custom repo -------------------------
