@@ -231,7 +231,8 @@ fi
 
 load-file "$BVZSH/BlaCk-Void.zplugins" ~/.zplugins
 load-file ~/.zplugins.local
-source $BVZSH/lib/lazyenv.zsh
+zplugin ice wait pick"lazyenv.zsh" lucid
+zplugin light $BVZSH/lib
 
 _zpcompinit-custom
 zplugin cdreplay -q
@@ -320,10 +321,12 @@ BVFPATH=${BVZSH}/completion
 fpath+="${BVFPATH}"
 unset BVFPATH
 
-source $BVZSH/lib/completion.zsh
+zplugin ice wait pick"completion.zsh" lucid
+zplugin light $BVZSH/lib
 
 ## -- fzf --------------------------------------------------
-source $BVZSH/lib/fzf-set.zsh
+zplugin ice wait pick"fzf-set.zsh" lucid
+zplugin light $BVZSH/lib
 
 ## -- Autoupdate Check ---------------------------------------------------------
 _zsh-auto-update
