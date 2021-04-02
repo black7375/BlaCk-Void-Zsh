@@ -231,7 +231,13 @@ fi
 
 load-file "$BVZSH/BlaCk-Void.zplugins" ~/.zplugins
 load-file ~/.zplugins.local
-zplugin ice wait pick"lazyenv.zsh" lucid
+
+## -- Library Setting --------------------------------------
+BVFPATH=${BVZSH}/completion
+fpath+="${BVFPATH}"
+unset BVFPATH
+
+zplugin ice wait multisrc"lazyenv.zsh completion.zsh fzf-set.zsh" lucid
 zplugin light $BVZSH/lib
 
 _zpcompinit-custom
@@ -314,19 +320,6 @@ then
 
   chpwd
 fi
-
-## -- Library Set --------------------------------------------------------------
-## -- Completion -------------------------------------------
-BVFPATH=${BVZSH}/completion
-fpath+="${BVFPATH}"
-unset BVFPATH
-
-zplugin ice wait pick"completion.zsh" lucid
-zplugin light $BVZSH/lib
-
-## -- fzf --------------------------------------------------
-zplugin ice wait pick"fzf-set.zsh" lucid
-zplugin light $BVZSH/lib
 
 ## -- Autoupdate Check ---------------------------------------------------------
 _zsh-auto-update
