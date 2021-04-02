@@ -56,7 +56,7 @@ ifF() {
 
 lazyenv-add nvm   NVM_DIR "
 ifF '[[ \$OSTYPE == \"darwin\"* ]]' \
-'[[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh --no-use' \
+'[[ -s \$(brew --prefix nvm)/nvm.sh ]] && source \$(brew --prefix nvm)/nvm.sh --no-use' \
 '[[ -s \"\${NVM_DIR}/nvm.sh\" ]] && . \"\${NVM_DIR}/nvm.sh\" --no-use
  [[ -s \"\${NVM_DIR}/bash_completion\" ]] && \. \"\${NVM_DIR}/bash_completion\"'
 "
