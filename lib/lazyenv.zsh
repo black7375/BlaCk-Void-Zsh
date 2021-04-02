@@ -7,17 +7,16 @@ evalenv() {
 
   # Try to find ${ENVNAME}, if it's not on the path
   local ENVPATH="\${${ENVEXPORT}}"
-  echo "export ${ENVEXPORT}=\"\${${ENVEXPORT}:=${HOME}/.${ENVNAME}}\""
+  local path_command="export ${ENVEXPORT}=\"\${${ENVEXPORT}:=${HOME}/.${ENVNAME}}\""
+  eval "${path_command}"
+  echo "${path_command}"
   if (( ! ${+commands[${ENVNAME}]} )) && [[ -f ${ENVPATH}/bin/${ENVNAME} ]]; then
     echo "export PATH=\"${ENVPATH}/bin:\${PATH}\""
   fi
 
   # Set PATH & Load
   if (( ${+commands[${ENVNAME}]} )); then
-    echo "
-    export PATH=\"${ENVPATH}/bin:${ENVPATH}/shims:\${PATH}\"
-    $(eval ${ENVEVAL})
-    "
+    echo "$(eval ${ENVEVAL})"
   fi
 }
 
