@@ -61,11 +61,12 @@ ifF '[[ \$OSTYPE == \"darwin\"* ]]' \
  [[ -s \"\${NVM_DIR}/bash_completion\" ]] && \. \"\${NVM_DIR}/bash_completion\"'
 "
 lazyenv-add rvm    RVM_ROOT "
-echo '[[ -s \"\$RVM_ROOT/scripts/rvm\" ]] && . \"\$RVM_ROOT/scripts/rvm\"'"
+ifF '[[ -s \"\$RVM_ROOT/scripts/rvm\" ]]' && '. \"\$RVM_ROOT/scripts/rvm\"'"
 lazyenv-add jenv   JENV_ROOT   "command jenv   init -"
 lazyenv-add goenv  GOENV_ROOT  "command goenv  init -"
 lazyenv-add plenv  PLENV_ROOT  "command plenv  init -"
-lazyenv-add pyenv  PYENV_ROOT  "command pyenv  init -"
+lazyenv-add pyenv  PYENV_ROOT  "command pyenv  init -;
+ifF '[[ -n \"\${ZSH_PYENV_LAZY_VIRTUALENV}\" ]]' '\$(command pyenv virtualenv-init -)'"
 lazyenv-add rbenv  RBENV_ROOT  "command rbenv  init -"
 lazyenv-add nodenv NODENV_ROOT "command nodenv init -"
 lazyenv-add phpenv PHPENV_ROOT "command phpenv init -"
