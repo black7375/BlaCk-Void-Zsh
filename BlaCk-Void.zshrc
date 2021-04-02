@@ -235,7 +235,14 @@ manpath+=($ZMAN)
 
 load-file "$BVZSH/BlaCk-Void.zplugins" ~/.zplugins
 load-file ~/.zplugins.local
-source $BVZSH/lib/lazyenv.zsh
+
+## -- Library Setting --------------------------------------
+BVFPATH=${BVZSH}/completion
+fpath+="${BVFPATH}"
+unset BVFPATH
+
+zplugin ice wait multisrc"lazyenv.zsh completion.zsh fzf-set.zsh" lucid
+zplugin light $BVZSH/lib
 
 if [ -z "$BVZSH_TOOLS" ] ; then
   export BVZSH_TOOLS='true'
@@ -322,17 +329,6 @@ then
 
   chpwd
 fi
-
-## -- Library Set --------------------------------------------------------------
-## -- Completion -------------------------------------------
-BVFPATH=${BVZSH}/completion
-fpath+="${BVFPATH}"
-unset BVFPATH
-
-source $BVZSH/lib/completion.zsh
-
-## -- fzf --------------------------------------------------
-source $BVZSH/lib/fzf-set.zsh
 
 ## -- Autoupdate Check ---------------------------------------------------------
 _zsh-auto-update
