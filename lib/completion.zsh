@@ -120,16 +120,6 @@ zstyle ':completion:*:urls'                         local 'www' '/var/www/' 'pub
 hosts=(`hostname` "$_ssh_hosts[@]" "$_etc_hosts[@]" localhost)
 zstyle ':completion:*:hosts' hosts $hosts
 
-# brew
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
-
-# pip
-if type pip &>/dev/null; then
-    eval "`pip completion --zsh`"
-fi
-
 # Complete words from tmux pane(s) {{{1
 # Source: http://blog.plenz.com/2012-01/zsh-complete-words-from-tmux-pane.html
 # Gist: https://gist.github.com/blueyed/6856354
