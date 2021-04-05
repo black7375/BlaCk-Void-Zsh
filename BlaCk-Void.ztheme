@@ -59,7 +59,7 @@ _zsh-color $BVZSH_COLOR
 
 _powerline-color()
 {
-## -- Left Indicators---------------------------------------
+## -- Left Indicators --------------------------------------
   typeset -g POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND=$yellow
   typeset -g POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND=$black
   typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$blue
@@ -98,11 +98,15 @@ _powerline-color()
   typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND=$black
   typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND=$green
   typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=$black
+
+## -- PS2,3 Indicators -------------------------------------
+  typeset -g POWERLEVEL9K_{CONSTRUCT,SELECT}_BACKGROUND=$grey
+  typeset -g POWERLEVEL9K_{CONSTRUCT,SELECT}_FOREGROUND=$white
 }
 
 _simple-color()
 {
-## -- Left Indicators---------------------------------------
+## -- Left Indicators --------------------------------------
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_BACKGROUND=$black
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,SUDO,REMOTE,REMOTE_SUDO}_FOREGROUND=$light_grey
   typeset -g POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$black
@@ -476,6 +480,11 @@ _powerline-nerd()
 
 ## -- Color Set --------------------------------------------
   _powerline-color
+
+## -- PS2,3 Indicators -------------------------------------
+  typeset -g POWERLEVEL9K_CONSTRUCT_SEGMENT="%K{$POWERLEVEL9K_CONSTRUCT_BACKGROUND}%F{$POWERLEVEL9K_CONSTRUCT_FOREGROUND}%B %_ %b%k"
+  typeset -g POWERLEVEL9K_CONSTRUCT_SEPARATOR="%F{$POWERLEVEL9K_CONSTRUCT_BACKGROUND}$POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR%f"
+  export PS2="${POWERLEVEL9K_CONSTRUCT_SEGMENT}${POWERLEVEL9K_CONSTRUCT_SEPARATOR}${POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR}"
 }
 
 
@@ -536,6 +545,11 @@ _powerline-nerd-single()
 
 ## -- Color Set --------------------------------------------
   _powerline-color
+
+## -- PS2,3 Indicators -------------------------------------
+  typeset -g POWERLEVEL9K_CONSTRUCT_SEGMENT="%K{$POWERLEVEL9K_CONSTRUCT_BACKGROUND}%F{$POWERLEVEL9K_CONSTRUCT_FOREGROUND}%B %_ %b%k"
+  typeset -g POWERLEVEL9K_CONSTRUCT_SEPARATOR="%F{$POWERLEVEL9K_CONSTRUCT_BACKGROUND}$POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR%f"
+  export PS2="${POWERLEVEL9K_CONSTRUCT_SEGMENT}${POWERLEVEL9K_CONSTRUCT_SEPARATOR}${POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR}"
 }
 
 _simple-nerd()
