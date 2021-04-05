@@ -89,6 +89,10 @@ _tool-true() {
       ;;
   esac
 
+  # Useable Script for Zoxide
+  zplugin ice wait"2" lucid
+  zplugin light Mellbourn/zabb
+
   # Useable Script Using Bat
   _bat-extras-setting() {
     alias man="batman"
