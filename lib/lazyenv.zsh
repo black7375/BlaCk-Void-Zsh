@@ -4,14 +4,27 @@ evalenv() {
   local ENVNAME="$1"
   local ENVEXPORT="$2"
   local ENVEVAL="$3"
+  local ENVPRE="$4"
+
+  # Setup Variables
+  local ENVDIR
+  local ENVPATH="\${${ENVEXPORT}}"
+  if [[ "${ENVNAME}" == *"/"* ]]; then
+    ENVDIR="${ENVNAME#*/}"
+    ENVNAME="${ENVNAME%/*}"
+  else
+    ENVDIR="${ENVNAME}"
+  fi
 
   # Try to find ${ENVNAME}, if it's not on the path
-  local ENVPATH="\${${ENVEXPORT}}"
-  local path_command="export ${ENVEXPORT}=\"\${${ENVEXPORT}:=${HOME}/.${ENVNAME}}\""
+  local path_command="export ${ENVEXPORT}=\"\${${ENVEXPORT}:=${HOME}/.${ENVDIR}}\""
   eval "${path_command}"
   echo "${path_command}"
   if (( ! ${+commands[${ENVNAME}]} )) && [[ -f ${ENVPATH}/bin/${ENVNAME} ]]; then
     echo "export PATH=\"${ENVPATH}/bin:\${PATH}\""
+  fi
+  if [[ ! -z "${ENVPRE}" ]]; then
+    eval "${ENVPRE}"
   fi
 
   # Set PATH & Load
@@ -69,6 +82,9 @@ ifF '[[ -n \"\${ZSH_PYENV_LAZY_VIRTUALENV}\" ]]' '\$(command pyenv virtualenv-in
 lazyenv-add rbenv  RBENV_ROOT  "command rbenv  init -"
 lazyenv-add nodenv NODENV_ROOT "command nodenv init -"
 lazyenv-add phpenv PHPENV_ROOT "command phpenv init -"
+# lazyenv-add sdk/sdkman SDKMAN_DIR  "
+# ifF '[[ -s \"\${SDKMAN_DIR}/bin/sdkman-init.sh\" ]]' 'source \"\${SDKMAN_DIR}/bin/sdkman-init.sh\"'" "
+# [[ -s \"\${SDKMAN_DIR}/bin/sdkman-init.sh\" ]] && source \"\${SDKMAN_DIR}/bin/sdkman-init.sh\""
 
 lazyfn-add hub     "hub alias -s"
 lazyfn-add thefuck "thefuck --alias"
