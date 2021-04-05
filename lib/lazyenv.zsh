@@ -73,7 +73,7 @@ ifF '[[ \$OSTYPE == \"darwin\"* ]]' \
  [[ -s \"\${NVM_DIR}/bash_completion\" ]] && \. \"\${NVM_DIR}/bash_completion\"'
 "
 lazyenv-add rvm    RVM_ROOT "
-ifF '[[ -s \"\$RVM_ROOT/scripts/rvm\" ]]' && '. \"\$RVM_ROOT/scripts/rvm\"'"
+ifF '[[ -s \"\$RVM_ROOT/scripts/rvm\" ]]' '. \"\$RVM_ROOT/scripts/rvm\"'"
 lazyenv-add jenv   JENV_ROOT   "command jenv   init -"
 lazyenv-add goenv  GOENV_ROOT  "command goenv  init -"
 lazyenv-add plenv  PLENV_ROOT  "command plenv  init -"
