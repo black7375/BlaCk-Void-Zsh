@@ -25,12 +25,11 @@ _tool-true() {
     alias k="exa --color auto --icons -lbghHiS@ --git" # supercrabtree/k
   }
   zplugin ice wait"2" as"command" from"gh-r" lucid \
-          mv"exa* -> exa" atload"_exa-setting"
+          atclone"cp -vf completions/exa.zsh _exa
+                  cp -vf man/exa.1 $ZPFX/share/man/man1
+                  cp -vf man/exa_colors.5 $ZPFX/share/man" \
+          pick"bin/exa" atload"_exa-setting"
   zplugin light ogham/exa
-
-  zplugin ice wait"2" as"completion" lucid \
-          mv"completions.zsh -> _exa"
-  zplugin snippet https://raw.githubusercontent.com/ogham/exa/master/completions/completions.zsh
 
     # find
   zplugin ice wait"2" as"command" from"gh-r" lucid \
