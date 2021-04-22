@@ -1,6 +1,6 @@
 export BVZSH_THEME='powerline'
 if [ -x "$(command -v powerline)" ] &&
-       ! [ "$(zplugin loaded powerline-binding | rg black7375 |
+       ! [ "$(zplugin loaded powerline-binding | grep black7375 |
           sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "black7375/powerline-binding *" ] ; then
     zplugin light black7375/powerline-binding
 fi
