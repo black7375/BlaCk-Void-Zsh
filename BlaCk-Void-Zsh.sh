@@ -209,8 +209,8 @@ latest_update_date()
   BVZSH_PLUGIN_RECEIPT_F=${BVZSH_PLUGIN_RECEIPT_F:-.zsh_plugin_lastupdate}
   BVZSH_SYSTEM_RECEIPT_F=${BVZSH_SYSTEM_RECEIPT_F:-.zsh_system_lastupdate}
 
-  date +%S > "~/$BVZSH_PLUGIN_RECEIPT_F"
-  date +%S > "~/$BVZSH_SYSTEM_RECEIPT_F"
+  date +%s > "${HOME}/$BVZSH_PLUGIN_RECEIPT_F"
+  date +%s > "${HOME}/$BVZSH_SYSTEM_RECEIPT_F"
 
   echo "write latest update date"
 }
