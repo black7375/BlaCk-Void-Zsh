@@ -202,6 +202,18 @@ if [ -e $profile ]; then
   < $profile tee -a $zprofile
 fi
 
+latest_update_date()
+{
+  BVZSH_PLUGIN_RECEIPT_F=${BVZSH_PLUGIN_RECEIPT_F:-.zsh_plugin_lastupdate}
+  BVZSH_SYSTEM_RECEIPT_F=${BVZSH_SYSTEM_RECEIPT_F:-.zsh_system_lastupdate}
+
+  date +%s > "${HOME}/$BVZSH_PLUGIN_RECEIPT_F"
+  date +%s > "${HOME}/$BVZSH_SYSTEM_RECEIPT_F"
+
+  echo "write latest update date"
+}
+latest_update_date
+
 if ! [[ "$NO_DEFAULT" == YES ]]; then
   echo "-------"
   echo "ZSH as the default shell(need sudo permission)"

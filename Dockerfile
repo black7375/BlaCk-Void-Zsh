@@ -3,7 +3,7 @@ FROM archlinux:latest
 MAINTAINER alstjr375 <alstjr7375@daum.net>
 
 # == User Setting ========================
-RUN pacman -Syyu --noconfirm && pacman -S --noconfirm sudo git
+RUN pacman -Syyu --noconfirm && pacman -S --noconfirm sudo git make gcc inetutils
 RUN useradd -mG wheel dockeruser \
     && echo 'dockeruser ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
@@ -18,6 +18,7 @@ RUN ~/.zsh/BlaCk-Void-Zsh.sh
 
 # https://github.com/zdharma/zinit/issues/484
 ARG TERM
-RUN TERM=${TERM:-screen-256color} zsh -isc "@zinit-scheduler burst"
-RUN zsh -isc "zsh-update"
+ENV TERM ${TERM:-xterm}
+RUN SHELL=/bin/zsh zsh -isc -- "zinit module build; @zinit-scheduler burst || true"
+RUN zsh -isc "source ~/.zsh/lib/lazyenv.zsh && zinit for light-mode id-as"_local/lazyenv" eval"${LAZYENV_COMMANDS}" zdharma/null"
 ENTRYPOINT ["/usr/bin/zsh"]

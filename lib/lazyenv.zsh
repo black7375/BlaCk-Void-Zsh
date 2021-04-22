@@ -56,7 +56,7 @@ ifF() {
 
 lazyenv-add nvm    NVM_DIR "
 ifF '[[ \$OSTYPE == \"darwin\"* ]]' \
-'[[ -s \$(brew --prefix nvm)/nvm.sh ]] && source \$(brew --prefix nvm)/nvm.sh --no-use' \
+'[[ -s \\\$(brew --prefix nvm)/nvm.sh ]] && source \\\$(brew --prefix nvm)/nvm.sh --no-use' \
 '[[ -s \"\${NVM_DIR}/nvm.sh\" ]] && . \"\${NVM_DIR}/nvm.sh\" --no-use
  [[ -s \"\${NVM_DIR}/bash_completion\" ]] && \. \"\${NVM_DIR}/bash_completion\"'
 "
@@ -74,7 +74,7 @@ lazyfn-add hub     "hub alias -s"
 lazyfn-add thefuck "thefuck --alias"
 lazyfn-add scmpuff "scmpuff init -s"
 lazyfn-add kubectl "kubectl completion zsh"
-lazyfn-add brew    "echo \"FPATH=\$(brew --prefix)/share/zsh/site-functions:\$FPATH\""
+lazyfn-add brew    "echo 'FPATH=\\\$(brew --prefix)/share/zsh/site-functions:\$FPATH'"
 lazyfn-add pip     "pip completion --zsh"
 
 lazyenv-apply
