@@ -65,7 +65,7 @@ set_brew()
   if ! [ -x "$(command -v brew)" ]; then
     echo "Now, Install Brew." >&2
 
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     local BREW_PREFIX
     BREW_PREFIX=$(brew --prefix)
     export PATH=${BREW_PREFIX}/bin:${BREW_PREFIX}/sbin:$PATH
