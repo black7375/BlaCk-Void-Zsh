@@ -1,0 +1,12 @@
+local file="${1}"
+local target="${file}.bak"
+
+if [ -e "${file}" ]; then
+  rm -rf "${file}"
+fi
+mv -f  "${target}" "${file}"
+
+local lookupTarget="${target}.bak"
+if [ -e "${lookupTarget}" ]; then
+  autorestore "${target}"
+fi
