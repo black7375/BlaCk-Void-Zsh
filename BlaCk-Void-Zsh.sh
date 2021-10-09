@@ -71,7 +71,7 @@ set_brew()
     export PATH=${BREW_PREFIX}/bin:${BREW_PREFIX}/sbin:$PATH
   fi
 
-  brew install "${BRW_PACKAGE_NAME[@]}"
+  brew install "${MAC_PACKAGE_NAME[@]}"
 }
 
 pip_install()
