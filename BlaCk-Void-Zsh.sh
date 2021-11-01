@@ -84,7 +84,7 @@ etc_install()
   pip_install
 
   mkdir ~/.zplugin
-  git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
+  git clone https://github.com/zdharma-continuum/zinit.git ~/.zplugin/bin
   curl -L "$BVZSH" https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > "$BVZSH"/prettyping
   chmod +x "$BVZSH"/prettyping
   if ! [[ "$NO_FONT" == YES ]]; then

@@ -182,7 +182,7 @@ zplugin ice depth"1"
 zplugin light romkatv/powerlevel10k
 
 zplugin ice wait"0a" atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" atload"_zsh_highlight" lucid
-zplugin light zdharma/fast-syntax-highlighting
+zplugin light zdharma-continuum/fast-syntax-highlighting
 zplugin ice wait"0a" compile'{src/*.zsh,src/strategies/*}' atinit"ZSH_AUTOSUGGEST_USE_ASYNC=1" atload"_zsh_autosuggest_start" lucid
 zplugin light zsh-users/zsh-autosuggestions
 zplugin ice wait"0b" lucid
