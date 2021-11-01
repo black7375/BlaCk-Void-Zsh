@@ -224,7 +224,7 @@ When you want to use with awesome tmux, Check [[https://github.com/black7375/Bla
 
 - *Beta Version*
 #+BEGIN_SRC shell
-git clone -b dev https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
+git clone -b powertools https://github.com/black7375/BlaCk-Void-Zsh.git ~/.zsh
 bash ~/.zsh/BlaCk-Void-Zsh.sh
 #+END_SRC
 
@@ -234,7 +234,7 @@ Pull or Build docker
 #+BEGIN_SRC shell
 docker pull alstjr7375/bvzsh:latest
 # or
-git clone https://github.com/black7375/BlaCk-Void-Zsh.git && cd BlaCk-Void-Zsh
+git clone https://github.com/black7375/BlaCk-Void-Zsh.git && cd BlaCk-Void-Zsh/Docker
 docker build --tag=alstjr7375/bvzsh:lastest .
 #+END_SRC
 
