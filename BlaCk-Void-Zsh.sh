@@ -65,13 +65,11 @@ set_brew()
   if ! [ -x "$(command -v brew)" ]; then
     echo "Now, Install Brew." >&2
 
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     local BREW_PREFIX
     BREW_PREFIX=$(brew --prefix)
     export PATH=${BREW_PREFIX}/bin:${BREW_PREFIX}/sbin:$PATH
   fi
-
-  brew install "${BRW_PACKAGE_NAME[@]}"
 }
 
 pip_install()
@@ -86,7 +84,7 @@ etc_install()
   pip_install
 
   mkdir ~/.zplugin
-  git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
+  git clone https://github.com/zdharma-continuum/zinit.git ~/.zplugin/bin
   if ! [[ "$NO_FONT" == YES ]]; then
     "$BVZSH"/install_font.sh
   fi
