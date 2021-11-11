@@ -261,7 +261,7 @@ docker run --rm -it alstjr7375/bvzsh
   + zinit(replace antigen, old name: zplugin)
     #+BEGIN_SRC shell
     mkdir ~/.zplugin
-    git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
+    git clone https://github.com/zdharma-continuum/zinit.git ~/.zplugin/bin
     #+END_SRC
 
   + nerdfont(powerline support font)  
@@ -304,7 +304,7 @@ docker run --rm -it alstjr7375/bvzsh
 
 ** 3.2 Plugins.
 *Plugin Manager*
-- [[https://github.com/zdharma/zinit][Zinit]](Old Name: Zplugin)
+- [[https://github.com/zdharma-continuum/zinit][Zinit]](Old Name: Zplugin)
 
 *Default Repo ([[https://github.com/robbyrussell/oh-my-zsh][robbyrussell's oh-my-zsh]]).*
 
@@ -358,7 +358,7 @@ docker run --rm -it alstjr7375/bvzsh
   Additional completion definitions for Zsh.
 - [[https://github.com/b4b4r07/enhancd][Enhancd]]:
   A next-generation cd command with an interactive filter.
-- [[https://github.com/zdharma/fast-syntax-highlighting][Fast Syntax Highlighting]]:
+- [[https://github.com/zdharma-continuum/fast-syntax-highlighting][Fast Syntax Highlighting]]:
   Feature rich syntax highlighting for Zsh.
 - [[https://github.com/wfxr/forgit][Forgit]]:
   Forgit is a utility tool for git taking advantage of fuzzy finder fzf.
