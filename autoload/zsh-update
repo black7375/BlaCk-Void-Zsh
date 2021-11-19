@@ -22,7 +22,7 @@ if ! [ -e $ZPLUGIN_BIN ]; then
     echo "\n--------------------"
     echo "Install Zplugin"
     mkdir ~/.zplugin
-    git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
+    git clone https://github.com/zdharma-continuum/zinit.git ~/.zplugin/bin
 
     echo "\n--------------------"
     echo "Remove Antigen"
