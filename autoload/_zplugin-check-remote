@@ -1,9 +1,19 @@
 echo "Check git remote.."
 
 ORI_DIR=$(pwd)
+
+# zplugin -> zinit [repo name]
 cd $ZPLUGIN_DIR
 if git remote -v | grep origin | grep zplugin ; then
     git remote set-url origin https://github.com/zdharma-continuum/zinit.git
+    git pull
 fi
+
+# zdharma/zinit -> zdharma-continuum/zinit
+if git remote -v | grep origin | grep zdharma/zinit ; then
+    git remote set-url origin https://github.com/zdharma-continuum/zinit.git
+    git pull
+fi
+
 cd $ORI_DIR
 unset ORI_DIR
