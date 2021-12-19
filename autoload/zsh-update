@@ -9,26 +9,12 @@ zsh-compile
 
 echo "\n--------------------"
 echo "Plugins update"
+unfunction _zplugin-check-remote
+autoload -Uz _zplugin-check-remote
+
 _zplugin-check-remote
 zplugin self-update
 zplugin update --parallel
-
-# Antigen -> Zplugin
-if ! [ -e $ZPLUGIN_BIN ]; then
-    echo "\n--------------------"
-    echo "Change Plugin Manager!!"
-    echo "--------------------"
-
-    echo "\n--------------------"
-    echo "Install Zplugin"
-    mkdir ~/.zplugin
-    git clone https://github.com/zdharma/zinit.git ~/.zplugin/bin
-
-    echo "\n--------------------"
-    echo "Remove Antigen"
-    rm -rfv $BVZSH/antigen.zsh
-    rm -rfv ~/.antigen
-fi
 
 # zplugin Snippet -> zplugin light
 _OMZ_LIB=~/.zplugin/snippets/https--github.com--robbyrussell--oh-my-zsh--tree--master--lib/

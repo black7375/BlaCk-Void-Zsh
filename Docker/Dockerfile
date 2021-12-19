@@ -20,5 +20,5 @@ RUN ~/.zsh/BlaCk-Void-Zsh.sh
 ARG TERM
 ENV TERM ${TERM:-xterm}
 RUN SHELL=/bin/zsh zsh -isc -- "zinit module build; @zinit-scheduler burst || true"
-RUN zsh -isc "source ~/.zsh/lib/lazyenv.zsh && zinit for light-mode id-as"_local/lazyenv" eval"${LAZYENV_COMMANDS}" zdharma/null"
+RUN zsh -isc "source ~/.zsh/lib/lazyenv.zsh && zinit for light-mode id-as"_local/lazyenv" eval"${LAZYENV_COMMANDS}" zdharma-continuum/null"
 ENTRYPOINT ["/usr/bin/zsh"]
