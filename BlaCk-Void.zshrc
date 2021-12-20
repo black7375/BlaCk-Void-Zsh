@@ -186,8 +186,8 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice wait"0a" compile'{src/*.zsh,src/strategies/*}' atinit"ZSH_AUTOSUGGEST_USE_ASYNC=1" atload"_zsh_autosuggest_start" lucid
 zinit light zsh-users/zsh-autosuggestions
 zinit ice wait"0b" lucid
-zzinit light hlissner/zsh-autopair
-zzinit ice wait"0b" blockf atpull"zinit creinstall -q ." lucid
+zinit light hlissner/zsh-autopair
+zinit ice wait"0b" blockf atpull"zinit creinstall -q ." lucid
 zinit light zsh-users/zsh-completions
 zinit ice wait"0c" as"command" from"gh-r" lucid
 zinit light junegunn/fzf
