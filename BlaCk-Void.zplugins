@@ -8,16 +8,16 @@ _tool-true() {
 ## -- File Utils ---------------------------------------------------------------
   # cd
   # zoxide
-  zplugin ice wait"2" as"command" from"gh-r" lucid \
-          mv"zoxide* -> zoxide" eval"./zoxide/zoxide init zsh" \
-          atclone"cp -vf ./zoxide/man/* $ZPFX/share/man/man1" \
-          pick"zoxide/zoxide" atload"alias cd=z"
-  zplugin light ajeetdsouza/zoxide
+  zinit ice wait"2" as"command" from"gh-r" lucid \
+        mv"zoxide* -> zoxide" eval"./zoxide/zoxide init zsh" \
+        atclone"cp -vf ./zoxide/man/* $ZPFX/share/man/man1" \
+        pick"zoxide/zoxide" atload"alias cd=z"
+  zinit light ajeetdsouza/zoxide
 
   # dir / ls
-  zplugin ice wait"2" eval"dircolors -b LS_COLORS" lucid \
-          atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
-  zplugin light trapd00r/LS_COLORS
+  zinit ice wait"2" eval"dircolors -b LS_COLORS" lucid \
+        atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+  zinit light trapd00r/LS_COLORS
 
   _exa-setting() {
     alias ls="exa --color auto --icons"
@@ -26,20 +26,20 @@ _tool-true() {
     alias tree="exa --color auto --icons --tree"
     alias k="exa --color auto --icons -lbghHiS@ --git" # supercrabtree/k
   }
-  zplugin ice wait"2" as"command" from"gh-r" lucid \
-          atclone"cp -vf completions/exa.zsh _exa
-                  cp -vf man/exa.1 $ZPFX/share/man/man1
-                  cp -vf man/exa_colors.5 $ZPFX/share/man" \
-          pick"bin/exa" atload"_exa-setting"
-  zplugin light ogham/exa
+  zinit ice wait"2" as"command" from"gh-r" lucid \
+        atclone"cp -vf completions/exa.zsh _exa
+                cp -vf man/exa.1 $ZPFX/share/man/man1
+                cp -vf man/exa_colors.5 $ZPFX/share/man" \
+        pick"bin/exa" atload"_exa-setting"
+  zinit light ogham/exa
 
     # find
-  zplugin ice wait"2" as"command" from"gh-r" lucid \
-          atclone"cp -vf fd*/autocomplete/_fd _fd; \
-                  cp -vf fd*/fd.1 $ZPFX/share/man/man1" \
-          atpull"%atclone" \
-          mv"fd* -> fd" pick"fd/fd" atload"alias find=fd"
-  zplugin light sharkdp/fd
+  zinit ice wait"2" as"command" from"gh-r" lucid \
+        atclone"cp -vf fd*/autocomplete/_fd _fd; \
+                cp -vf fd*/fd.1 $ZPFX/share/man/man1" \
+        atpull"%atclone" \
+        mv"fd* -> fd" pick"fd/fd" atload"alias find=fd"
+  zinit light sharkdp/fd
 
   # grep
   # BurntSunshi/ripgrep
@@ -47,69 +47,69 @@ _tool-true() {
 
 ## -- View Utils ---------------------------------------------------------------
   # cat
-  zplugin ice wait"2" as"command" from"gh-r" lucid \
-          atclone"cp -vf bat*/autocomplete/bat.zsh _bat; \
-                  cp -vf bat*/bat.1 $ZPFX/share/man/man1" \
-          atpull"%atclone" \
-          mv"bat* -> bat" pick"bat/bat" atload"alias cat=bat"
-  zplugin light sharkdp/bat
+  zinit ice wait"2" as"command" from"gh-r" lucid \
+        atclone"cp -vf bat*/autocomplete/bat.zsh _bat; \
+                cp -vf bat*/bat.1 $ZPFX/share/man/man1" \
+        atpull"%atclone" \
+        mv"bat* -> bat" pick"bat/bat" atload"alias cat=bat"
+  zinit light sharkdp/bat
 
   # cmp / diff
   _delta-setting() {
     git config --global core.pager "delta --dark --line-numbers --side-by-side --keep-plus-minus-markers"
     alias diff="delta --dark --line-numbers --side-by-side --keep-plus-minus-markers"
   }
-  zplugin ice wait"2" as"command" from"gh-r" lucid \
-          mv"delta* -> delta" pick"delta/delta" atload"_delta-setting"
-  zplugin light dandavison/delta
+  zinit ice wait"2" as"command" from"gh-r" lucid \
+        mv"delta* -> delta" pick"delta/delta" atload"_delta-setting"
+  zinit light dandavison/delta
 
-  zplugin ice wait"2" as"completion" lucid \
-          mv"completion.zsh -> _delta"
-  zplugin snippet https://raw.githubusercontent.com/dandavison/delta/master/etc/completion/completion.zsh
+  zinit ice wait"2" as"completion" lucid \
+        mv"completion.zsh -> _delta"
+  zinit snippet https://raw.githubusercontent.com/dandavison/delta/master/etc/completion/completion.zsh
 
 ## -- Network Utils ------------------------------------------------------------
   # ping
-  zplugin ice wait"2" as"command" pick"prettyping" lucid \
-          atload"alias ping=prettyping"
-  zplugin light denilsonsa/prettyping
+  zinit ice wait"2" as"command" pick"prettyping" lucid \
+        atload"alias ping=prettyping"
+  zinit light denilsonsa/prettyping
 
 ## -- Other Utils --------------------------------------------------------------
   # man
   case "$OSTYPE" in
     linux*)
-      zplugin ice wait"2" as"command" from"gh-r" lucid \
-              mv"tldr* -> tldr" atclone"./tldr --update" atpull"%atclone" \
-              eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"'
-      zplugin light dbrgn/tealdeer
+      zinit ice wait"2" as"command" from"gh-r" lucid \
+            mv"tldr* -> tldr" atclone"./tldr --update" atpull"%atclone" \
+            eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"'
+      zinit light dbrgn/tealdeer
       ;;
     *)
-      zplugin ice wait"2" as"command" lucid \
-              atclone"./tldr --update" atpull"%atclone" \
-              eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"'
-      zplugin light pepa65/tldr-bash-client
+      zinit ice wait"2" as"command" lucid \
+            atclone"./tldr --update" atpull"%atclone" \
+            eval'echo "complete -W \"$(./tldr 2>/dev/null --list)\" tldr"'
+      zinit light pepa65/tldr-bash-client
       ;;
   esac
 
   # Useable Script for Zoxide
-  zplugin ice wait"2" lucid
-  zplugin light Mellbourn/zabb
+  zinit ice wait"2" lucid
+  zinit light Mellbourn/zabb
 
   # Useable Script Using Bat
   _bat-extras-setting() {
     alias man="batman"
     alias lesspipe="batpipe"
   }
-  zplugin ice wait"2" as"command" from"gh-r" mv"bin/* -> ." lucid \
-          atclone"cp -vf man/*.1 $ZPFX/share/man/man1" atpull"%atclone" \
-          atload"_bat-extras-setting"
-  zplugin light eth-p/bat-extras
+  zinit ice wait"2" as"command" from"gh-r" mv"bin/* -> ." lucid \
+        atclone"cp -vf man/*.1 $ZPFX/share/man/man1" atpull"%atclone" \
+        atload"_bat-extras-setting"
+  zinit light eth-p/bat-extras
 }
 
 _tool-advanced() {
 ## -- File Utils ---------------------------------------------------------------
   # cp
-  # zplugin ice wait"2" from"gitlab"
-  # zplugin light arijit79/cn
+  # zinit ice wait"2" from"gitlab"
+  # zinit light arijit79/cn
 
   # rm
   # nivekuil/rip
@@ -124,9 +124,9 @@ _tool-advanced() {
   #  alias more="slit"
   #  alias less="slit"
   # }
-  # zplugin ice wait"2" as"command" from"gh-r" lucid \
+  # zinit ice wait"2" as"command" from"gh-r" lucid \
   #         mv"slit* -> slit" atload"_slit-setting"
-  # zplugin light tigrawap/slit
+  # zinit light tigrawap/slit
 
   # hexdump / xxd
   # sharkdp/hexyl
@@ -144,18 +144,18 @@ _tool-advanced() {
   # polyverse/rmesg
 
   # sudo
-  # zplugin ice wait"2" as"program" pick"doas" make lucid # TODO: PR for release
-  # zplugin light slicer69/doas
+  # zinit ice wait"2" as"program" pick"doas" make lucid # TODO: PR for release
+  # zinit light slicer69/doas
 
   # man
-  zplugin ice wait"2" as"command" pick"src/rlwrap" lucid \
-          atclone"autoreconf --install; ./configure;" atpull"%atclone" make
-  zplugin light hanslub42/rlwrap
-  zplugin ice wait"2" as"command" lucid \
-          mv"*.sh -> cht.sh" atclone"chmod +x cht.sh" atpull"%atclone"
-  zplugin snippet https://cheat.sh/:cht.sh
-  zplugin ice wait"2" as"completion" mv"*sh -> _cht" lucid
-  zplugin snippet https://cheat.sh/:zsh
+  zinit ice wait"2" as"command" pick"src/rlwrap" lucid \
+        atclone"autoreconf --install; ./configure;" atpull"%atclone" make
+  zinit light hanslub42/rlwrap
+  zinit ice wait"2" as"command" lucid \
+        mv"*.sh -> cht.sh" atclone"chmod +x cht.sh" atpull"%atclone"
+  zinit snippet https://cheat.sh/:cht.sh
+  zinit ice wait"2" as"completion" mv"*sh -> _cht" lucid
+  zinit snippet https://cheat.sh/:zsh
 }
 
 _tool-all() {
