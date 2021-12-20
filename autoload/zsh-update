@@ -9,14 +9,14 @@ zsh-compile
 
 echo "\n--------------------"
 echo "Plugins update"
-unfunction _zplugin-check-remote
-autoload -Uz _zplugin-check-remote
+unfunction _zinit-check-remote
+autoload -Uz _zinit-check-remote
 
-_zplugin-check-remote
-zplugin self-update
-zplugin update --parallel
+_zinit-check-remote
+zinit self-update
+zinit update --parallel
 
-# zplugin Snippet -> zplugin light
+# zinit Snippet -> zinit light
 _OMZ_LIB=~/.zplugin/snippets/https--github.com--robbyrussell--oh-my-zsh--tree--master--lib/
 if [[ -e $_OMZ_LIB ]]; then
     rm -rfv $_OMZ_LIB/compfix.zsh $_OMZ_LIB/termsupport.zsh
