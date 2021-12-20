@@ -23,11 +23,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ## == Zplugin Set ==============================================================
-ZPLUGIN_DIR=~/.zplugin/bin
-ZPLUGIN_BIN=${ZPLUGIN_DIR}/zplugin.zsh
-source $ZPLUGIN_BIN
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+ZINIT_DIR=~/.zplugin/bin
+ZINIT_BIN=${ZINIT_DIR}/zinit.zsh
+source $ZINIT_BIN
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 autoload -Uz cdr
 autoload -Uz chpwd_recent_dirs
 
@@ -169,62 +169,62 @@ if [[ $DOCKER_ENABLE ]]; then
   )
 fi
 
-zplugin ice from"gh" pick"/dev/null" nocompletions blockf lucid \
+zinit ice from"gh" pick"/dev/null" nocompletions blockf lucid \
         multisrc"${_OMZ_SOURCES}" compile"(${(j.|.)_OMZ_SOURCES})" \
         atload"_OMZ_SETTING" wait"1c"
-zplugin light robbyrussell/oh-my-zsh
+zinit light robbyrussell/oh-my-zsh
 
 ## -- Bundles from the custom repo -------------------------
-zplugin light NICHOLAS85/z-a-eval
-zplugin light chrissicool/zsh-256color
-zplugin light mafredri/zsh-async
-zplugin ice depth"1"
-zplugin light romkatv/powerlevel10k
+zinit light NICHOLAS85/z-a-eval
+zinit light chrissicool/zsh-256color
+zinit light mafredri/zsh-async
+zinit ice depth"1"
+zinit light romkatv/powerlevel10k
 
-zplugin ice wait"0a" atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" atload"_zsh_highlight" lucid
-zplugin light zdharma-continuum/fast-syntax-highlighting
-zplugin ice wait"0a" compile'{src/*.zsh,src/strategies/*}' atinit"ZSH_AUTOSUGGEST_USE_ASYNC=1" atload"_zsh_autosuggest_start" lucid
-zplugin light zsh-users/zsh-autosuggestions
-zplugin ice wait"0b" lucid
-zplugin light hlissner/zsh-autopair
-zplugin ice wait"0b" blockf atpull"zinit creinstall -q ." lucid
-zplugin light zsh-users/zsh-completions
-zplugin ice wait"0c" as"command" from"gh-r" lucid
-zplugin light junegunn/fzf
-zplugin ice wait"0c" as"completion" blockf lucid
-zplugin snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-zplugin ice wait"0c" lucid
-zplugin snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
-zplugin ice wait"0c" as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg" lucid
-zplugin light BurntSushi/ripgrep
-zplugin ice wait"0c" atload"_enhancd-setting" lucid
-zplugin light b4b4r07/enhancd
-zplugin ice wait"0c" atload"_zsh-history-substring-search-setting" lucid
-zplugin light zsh-users/zsh-history-substring-search
+zinit ice wait"0a" atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" atload"_zsh_highlight" lucid
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit ice wait"0a" compile'{src/*.zsh,src/strategies/*}' atinit"ZSH_AUTOSUGGEST_USE_ASYNC=1" atload"_zsh_autosuggest_start" lucid
+zinit light zsh-users/zsh-autosuggestions
+zinit ice wait"0b" lucid
+zzinit light hlissner/zsh-autopair
+zzinit ice wait"0b" blockf atpull"zinit creinstall -q ." lucid
+zinit light zsh-users/zsh-completions
+zinit ice wait"0c" as"command" from"gh-r" lucid
+zinit light junegunn/fzf
+zinit ice wait"0c" as"completion" blockf lucid
+zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+zinit ice wait"0c" lucid
+zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
+zinit ice wait"0c" as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg" lucid
+zinit light BurntSushi/ripgrep
+zinit ice wait"0c" atload"_enhancd-setting" lucid
+zinit light b4b4r07/enhancd
+zinit ice wait"0c" atload"_zsh-history-substring-search-setting" lucid
+zinit light zsh-users/zsh-history-substring-search
 
-zplugin ice wait"1a" atload"_alias-tip-setting" lucid
-zplugin light djui/alias-tips
-zplugin ice wait"1b" atload"_zsh-git-smart-commands-setting" blockf lucid
-zplugin light seletskiy/zsh-git-smart-commands
-zplugin ice wait"1b" atload"_fzf-widgets-setting" lucid
-zplugin light ytet5uy4/fzf-widgets
+zinit ice wait"1a" atload"_alias-tip-setting" lucid
+zinit light djui/alias-tips
+zinit ice wait"1b" atload"_zsh-git-smart-commands-setting" blockf lucid
+zinit light seletskiy/zsh-git-smart-commands
+zinit ice wait"1b" atload"_fzf-widgets-setting" lucid
+zinit light ytet5uy4/fzf-widgets
 
-zplugin ice wait"2" as"completion" lucid
-zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-zplugin ice wait"2" lucid
-zplugin light wfxr/forgit
-zplugin ice wait"2" lucid
-zplugin light peterhurford/up.zsh
-zplugin ice wait"2" lucid
-zplugin light jocelynmallon/zshmarks
-zplugin ice wait"2" lucid
-zplugin light changyuheng/zsh-interactive-cd
-zplugin ice wait"2" pick"h.sh" lucid
-zplugin light paoloantinori/hhighlighter
+zinit ice wait"2" as"completion" lucid
+zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+zinit ice wait"2" lucid
+zinit light wfxr/forgit
+zinit ice wait"2" lucid
+zinit light peterhurford/up.zsh
+zinit ice wait"2" lucid
+zinit light jocelynmallon/zshmarks
+zinit ice wait"2" lucid
+zinit light changyuheng/zsh-interactive-cd
+zinit ice wait"2" pick"h.sh" lucid
+zinit light paoloantinori/hhighlighter
 
 if [[ $WSL_ENABLE ]]; then
-  zplugin ice wait"2" atload"_zsh-notify-setting" lucid
-  zplugin light marzocchi/zsh-notify
+  zinit ice wait"2" atload"_zsh-notify-setting" lucid
+  zinit light marzocchi/zsh-notify
 fi
 
 ZMAN="$ZPFX/share/man"
@@ -237,8 +237,8 @@ load-file "$BVZSH/BlaCk-Void.zplugins" ~/.zplugins
 load-file ~/.zplugins.local
 
 ## -- Library Setting --------------------------------------
-zplugin ice wait multisrc"lazyenv.zsh completion.zsh fzf-set.zsh" lucid
-zplugin light $BVZSH/lib
+zinit ice wait multisrc"lazyenv.zsh completion.zsh fzf-set.zsh" lucid
+zinit light $BVZSH/lib
 
 if [ -z "$BVZSH_TOOLS" ] ; then
   export BVZSH_TOOLS='true'
@@ -246,7 +246,7 @@ fi
 _zsh-tools $BVZSH_TOOLS
 
 _zpcompinit-custom
-zplugin cdreplay -q
+zinit cdreplay -q
 
 ## == From bashrc ==============================================================
 # enable color support of ls and also add handy aliases
