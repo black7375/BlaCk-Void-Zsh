@@ -24,7 +24,7 @@ fi
 
 ## == Zplugin Set ==============================================================
 ZINIT_DIR=~/.zplugin/bin
-ZINIT_BIN=${ZPLUGIN_DIR}/zinit.zsh
+ZINIT_BIN=${ZINIT_DIR}/zinit.zsh
 source $ZINIT_BIN
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
