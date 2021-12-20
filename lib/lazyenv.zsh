@@ -52,9 +52,9 @@ lazyfn-add() {
 }
 
 lazyenv-apply() {
-  zplugin ice wait"2" id-as"_local/lazyenv" lucid \
+  zinit ice wait"2" id-as"_local/lazyenv" lucid \
           eval"${LAZYENV_COMMANDS}" run-atpull
-  zplugin light zdharma-continuum/null
+  zinit light zdharma-continuum/null
   typeset -U path
 }
 

@@ -130,12 +130,12 @@ _zsh-auto-update() {
                 echo "It has been $(expr ${last_plugin} / $day_seconds) days since your plugins were updated"
                 echo "Updating plugins"
             fi
-            unfunction _zplugin-check-remote
-            autoload -Uz _zplugin-check-remote
-            _zplugin-check-remote
+            unfunction _zinit-check-remote
+            autoload -Uz _zinit-check-remote
+            _zinit-check-remote
 
-            zplugin self-update
-            zplugin update
+            zinit self-update
+            zinit update
             date +%s >! ~/${BVZSH_PLUGIN_RECEIPT_F}
         fi
 
@@ -146,9 +146,9 @@ _zsh-auto-update() {
             fi
             git -C $BVZSH pull
             zsh-compile
-            unfunction _zplugin-check-remote
-            autoload -Uz _zplugin-check-remote
-            _zplugin-check-remote
+            unfunction _zinit-check-remote
+            autoload -Uz _zinit-check-remote
+            _zinit-check-remote
             date +%s >! ~/${BVZSH_SYSTEM_RECEIPT_F}
         fi
     }
