@@ -12,16 +12,10 @@ echo "Plugins update"
 unfunction _zinit-check-remote
 autoload -Uz _zinit-check-remote
 
-<<<<<<< HEAD
 _zplugin-check-remote
 zplugin self-update
 zplugin update --parallel
 zplugin recache
-=======
-_zinit-check-remote
-zinit self-update
-zinit update --parallel
->>>>>>> master
 
 # zinit Snippet -> zinit light
 _OMZ_LIB=~/.zplugin/snippets/https--github.com--robbyrussell--oh-my-zsh--tree--master--lib/
