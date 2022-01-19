@@ -9,9 +9,10 @@ _tool-true() {
   # cd
   # zoxide
   zinit ice wait"2" as"command" from"gh-r" lucid \
-        mv"zoxide* -> zoxide" eval"./zoxide/zoxide init zsh" \
-        atclone"cp -vf ./zoxide/man/* $ZPFX/share/man/man1" \
-        pick"zoxide/zoxide" atload"alias cd=z"
+        eval"./zoxide init zsh" \
+        atclone"cp -vf ./completions/_zoxide _zoxide
+                cp -vf ./man/* $ZPFX/share/man/man1" \
+        pick"./zoxide" atload"alias cd=z"
   zinit light ajeetdsouza/zoxide
 
   # dir / ls
