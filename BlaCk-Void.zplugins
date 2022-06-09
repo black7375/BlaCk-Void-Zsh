@@ -101,7 +101,7 @@ _tool-true() {
     alias lesspipe="batpipe"
   }
   zinit ice wait"2" as"command" from"gh-r" mv"bin/* -> ." lucid \
-        atclone"cp -vf man/*.1 $ZPFX/share/man/man1" atpull"%atclone" \
+        atclone"cp -vf man/*.1 $ZPFX/share/man/man1; cp -vf bin/* ." atpull"%atclone" \
         atload"_bat-extras-setting"
   zinit light eth-p/bat-extras
 }
