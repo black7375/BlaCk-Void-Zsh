@@ -76,5 +76,6 @@ lazyfn-add scmpuff "scmpuff init -s"
 lazyfn-add kubectl "kubectl completion zsh"
 lazyfn-add brew    "echo 'FPATH=\\\$(brew --prefix)/share/zsh/site-functions:\$FPATH'"
 lazyfn-add pip     "pip completion --zsh"
+lazyfn-add pipenv  "_PIPENV_COMPLETE=zsh_source pipenv"
 
 lazyenv-apply
