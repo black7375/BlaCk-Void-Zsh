@@ -1,0 +1,8 @@
+# https://shapeshed.com/zsh-corrupt-history-file/
+local historyFile="${HISTFILE:-$HOME/.zsh_history}"
+local badHistoryFile="${historyFile}_bad"
+
+mv "${historyFile}" "${badHistoryFile}"
+strings "${badHistoryFile}" > "${historyFile}"
+fc -R "${historyFile}"
+rm "${badHistoryFile}"
