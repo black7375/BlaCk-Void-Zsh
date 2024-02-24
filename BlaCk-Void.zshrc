@@ -164,9 +164,12 @@ fi
 if [[ $DOCKER_ENABLE ]]; then
   _OMZ_SOURCES=(
     $_OMZ_SOURCES
-    plugins/docker/_docker
+    plugins/docker/docker.plugin.zsh
     plugins/docker-compose/docker-compose.plugin.zsh
   )
+  if [[ ! -d "${ZSH_CACHE_DIR:-$HOME/.cache/zinit}/completions" ]]; then
+    mkdir -p "${ZSH_CACHE_DIR:-$HOME/.cache/zinit}/completions"
+  fi
 fi
 
 zinit ice from"gh" pick"/dev/null" nocompletions blockf lucid \
@@ -209,8 +212,6 @@ zinit light seletskiy/zsh-git-smart-commands
 zinit ice wait"1b" atload"_fzf-widgets-setting" lucid
 zinit light ytet5uy4/fzf-widgets
 
-zinit ice wait"2" as"completion" lucid
-zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 zinit ice wait"2" lucid
 zinit light wfxr/forgit
 zinit ice wait"2" lucid
