@@ -48,7 +48,8 @@ if type docker &>/dev/null; then
   export DOCKER_ENABLE=true
 fi
 
-if [[ -f "/mnt/c/WINDOWS/system32/wsl.exe" ]]; then
+if [[ -f "/proc/sys/fs/binfmt_misc/WSLInterop" ]]; then
+  # https://superuser.com/questions/1749781/how-can-i-check-if-the-environment-is-wsl-from-a-shell-script
   # We're in WSL, which defaults to umask 0 and causes issues with compaudit
   umask 0022
 
@@ -225,7 +226,7 @@ zinit light paoloantinori/hhighlighter
 zinit ice wait"2" as"command" pick"tldr" lucid
 zinit light raylee/tldr
 
-if [[ $WSL_ENABLE ]]; then
+if [[ ! $WSL_ENABLE ]]; then
   zinit ice wait"2" atload"_zsh-notify-setting" lucid
   zinit light marzocchi/zsh-notify
 fi
